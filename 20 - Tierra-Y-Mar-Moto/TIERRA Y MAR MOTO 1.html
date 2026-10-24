@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tierra Y Mar Moto | Location, Vente & Excursions Nador</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f6f6f6',
+                            100: '#e7e7e7',
+                            200: '#d1d1d1',
+                            300: '#b0b0b0',
+                            400: '#888888',
+                            500: '#6d6d6d',
+                            600: '#5d5d5d',
+                            700: '#4f4f4f',
+                            800: '#454545',
+                            900: '#3d3d3d',
+                            950: '#0a0a0a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #050505;
+            color: #f3f4f6;
+        }
+
+        .glass-header {
+            background: rgba(10, 10, 10, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(255, 255, 255, 0.05);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #262626;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #404040;
+        }
+
+        .bw-media {
+            filter: grayscale(100%) contrast(110%);
+            transition: filter 0.5s ease, transform 0.5s ease;
+        }
+        .bw-card:hover .bw-media {
+            filter: grayscale(0%) contrast(100%);
+            transform: scale(1.03);
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .animate-toast {
+            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+</head>
+<body class="bg-black text-neutral-100 antialiased selection:bg-neutral-200 selection:text-black">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-neutral-900 border-b border-neutral-800 text-xs py-2 px-4 text-neutral-400 font-medium tracking-wider">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="hidden md:flex items-center gap-6">
+                <span class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-neutral-300"></i> Quartier Al Matar, Avenue 30, Nador, Maroc</span>
+                <a href="tel:+212673844989" class="hover:text-white transition flex items-center gap-2"><i class="fa-solid fa-phone text-neutral-300"></i> +212 673 844 989</a>
+            </div>
+            <div class="flex items-center gap-3 mx-auto sm:mx-0">
+                <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span id="topbar-status">Ouvert 7j/7 pour Réservations & Locations</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN NAVIGATION BAR -->
+    <header class="sticky top-0 z-40 glass-header transition-all duration-300 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20 gap-4">
+                
+                <!-- BRAND LOGO -->
+                <a href="#home" class="flex items-center gap-3 shrink-0 group">
+                    <div class="w-10 h-10 flex items-center justify-center group-hover:border-neutral-200 transition-colors">
+                        <img src="./assets/img/logo0.png" alt style="width: 40px" />
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-black text-base sm:text-xl tracking-widest text-white uppercase leading-none">TIERRA Y MAR</span>
+                        <span class="text-[10px] tracking-[0.3em] text-neutral-400 font-semibold uppercase mt-1">MOTO • NADOR</span>
+                    </div>
+                </a>
+
+                <!-- DESKTOP MENU -->
+                <nav class="hidden lg:flex items-center gap-8 font-bold text-xs uppercase tracking-widest">
+                    <a href="#home" id="nav-home" class="text-neutral-300 hover:text-white transition-colors">Accueil</a>
+                    <a href="#about" id="nav-about" class="text-neutral-400 hover:text-white transition-colors">À Propos</a>
+                    <a href="#services" id="nav-services" class="text-neutral-400 hover:text-white transition-colors">Services</a>
+                    <a href="#tours" id="nav-tours" class="text-neutral-400 hover:text-white transition-colors">Nos Tours</a>
+                    <a href="#contact" id="nav-contact" class="text-neutral-400 hover:text-white transition-colors">Contact</a>
+                </nav>
+
+                <!-- RIGHT CONTROLS: LANGUAGE & CTA -->
+                <div class="flex items-center gap-3 shrink-0">
+                    <!-- LANGUAGE SELECTOR -->
+                    <div class="relative">
+                        <div class="flex items-center bg-neutral-900 border border-neutral-800 rounded-lg px-2.5 py-1.5 focus-within:border-neutral-500 transition-colors">
+                            <i class="fa-solid fa-globe text-neutral-400 text-xs mr-2"></i>
+                            <select id="language-switcher" onchange="changeLanguage(this.value)" class="bg-transparent text-xs font-semibold text-neutral-200 focus:outline-none cursor-pointer">
+                                <option value="fr" class="bg-neutral-900 text-white">Français (FR)</option>
+                                <option value="en" class="bg-neutral-900 text-white">English (EN)</option>
+                                <option value="ar" class="bg-neutral-900 text-white">العربية (AR)</option>
+                                <option value="es" class="bg-neutral-900 text-white">Español (ES)</option>
+                                <option value="de" class="bg-neutral-900 text-white">Deutsch (DE)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- BOOK CTA -->
+                    <button onclick="openBookingModal()" id="btn-quick-book" class="hidden sm:inline-flex items-center justify-center px-4 py-2.5 text-xs uppercase font-extrabold tracking-widest text-black bg-white rounded-lg hover:bg-neutral-200 active:bg-neutral-300 transition-all shadow-md shrink-0">
+                        Réserver
+                    </button>
+
+                    <!-- MOBILE MENU TOGGLE -->
+                    <button type="button" onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg text-neutral-400 hover:text-white focus:outline-none" aria-label="Menu Mobile">
+                        <i id="mobile-menu-icon" class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOBILE NAV DROPDOWN -->
+        <div id="mobile-menu" class="hidden lg:hidden border-b border-neutral-800 bg-neutral-950 px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" onclick="toggleMobileMenu()" id="mob-nav-home" class="block py-2 text-xs uppercase font-bold tracking-widest text-white border-b border-neutral-900">Accueil</a>
+            <a href="#about" onclick="toggleMobileMenu()" id="mob-nav-about" class="block py-2 text-xs uppercase font-bold tracking-widest text-neutral-400 border-b border-neutral-900">À Propos</a>
+            <a href="#services" onclick="toggleMobileMenu()" id="mob-nav-services" class="block py-2 text-xs uppercase font-bold tracking-widest text-neutral-400 border-b border-neutral-900">Services</a>
+            <a href="#tours" onclick="toggleMobileMenu()" id="mob-nav-tours" class="block py-2 text-xs uppercase font-bold tracking-widest text-neutral-400 border-b border-neutral-900">Nos Tours</a>
+            <a href="#contact" onclick="toggleMobileMenu()" id="mob-nav-contact" class="block py-2 text-xs uppercase font-bold tracking-widest text-neutral-400 border-b border-neutral-900">Contact</a>
+            
+            <div class="pt-2 grid grid-cols-2 gap-2">
+                <a href="https://wa.me/212673844989" target="_blank" class="py-3 text-xs uppercase font-black tracking-widest text-white bg-emerald-600 rounded-lg text-center flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-base"></i> WhatsApp
+                </a>
+                <button onclick="toggleMobileMenu(); openBookingModal()" id="mob-btn-book" class="py-3 text-xs uppercase font-black tracking-widest text-black bg-white rounded-lg text-center">
+                    Réserver
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative min-h-[88vh] flex items-center justify-center border-b border-neutral-900 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="./assets/img/bg1.jpg" alt="Rider Tierra y Mar Moto Nador" class="w-full h-full object-cover filter grayscale contrast-125 opacity-35 transform scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-700 bg-neutral-900/80 backdrop-blur-md mb-8">
+                <span class="w-2 h-2 rounded-full bg-white"></span>
+                <span id="hero-badge" class="text-[11px] uppercase tracking-widest font-semibold text-neutral-300">Location, Vente & Excursions N°1 à Nador</span>
+            </div>
+
+            <h1 id="hero-title" class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight uppercase leading-none text-white mb-6">
+                TIERRA Y MAR MOTO
+            </h1>
+
+            <p id="hero-subtitle" class="text-base sm:text-xl text-neutral-400 max-w-2xl mx-auto font-light leading-relaxed mb-10">
+                L'aventure sans limites sur Terre & Mer. Quads, Motos, Buggies Can-Am & Jet-Skis Sea-Doo à Nador.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button onclick="openBookingModal()" id="hero-btn-primary" class="w-full sm:w-auto px-8 py-4 bg-white text-black text-xs uppercase font-black tracking-widest rounded-xl hover:bg-neutral-200 transition-all transform hover:-translate-y-0.5 shadow-xl">
+                    Explorer & Réserver
+                </button>
+                <a href="https://wa.me/212673844989?text=Bonjour%20Tierra%20Y%20Mar%20Moto,%20je%20souhaite%20réserver" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white border border-emerald-500 text-xs uppercase font-bold tracking-widest rounded-xl transition-all flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp Direct
+                </a>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 pt-12 border-t border-neutral-800/80 text-center max-w-4xl mx-auto">
+                <div class="p-3">
+                    <p class="text-2xl sm:text-3xl font-black text-white">100%</p>
+                    <p id="stat-1" class="text-[11px] uppercase tracking-wider text-neutral-500 font-medium">Sécurité & Guide</p>
+                </div>
+                <div class="p-3">
+                    <p class="text-2xl sm:text-3xl font-black text-white">Can-Am</p>
+                    <p id="stat-2" class="text-[11px] uppercase tracking-wider text-neutral-500 font-medium">& Sea-Doo Officiels</p>
+                </div>
+                <div class="p-3">
+                    <p class="text-2xl sm:text-3xl font-black text-white">7j/7</p>
+                    <p id="stat-3" class="text-[11px] uppercase tracking-wider text-neutral-500 font-medium">Ouvert Toute l'Année</p>
+                </div>
+                <div class="p-3">
+                    <p class="text-2xl sm:text-3xl font-black text-white">5★</p>
+                    <p id="stat-4" class="text-[11px] uppercase tracking-wider text-neutral-500 font-medium">Satisfaction Clients</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: ABOUT US & VIDEO -->
+    <section id="about" class="py-24 border-b border-neutral-900 bg-neutral-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span id="about-badge" class="text-xs uppercase tracking-[0.3em] font-extrabold text-neutral-500">Passion Inégalée</span>
+                <h2 id="about-title" class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white mt-2">À Propos de Notre Centre</h2>
+                <div class="w-12 h-1 bg-white mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7">
+                    <div class="glass-card p-3 rounded-2xl overflow-hidden relative group">
+                        <div class="aspect-video w-full rounded-xl overflow-hidden bg-neutral-900 relative">
+                            <iframe 
+                                class="w-full h-full bw-media" 
+                                src="https://www.youtube.com/embed/lDuDG93eJOw" 
+                                title="Tierra Y Mar Moto Adventure Nador" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="p-4 flex items-center justify-between text-xs text-neutral-400">
+                            <span id="video-caption" class="font-medium flex items-center gap-2"><i class="fa-solid fa-circle-play"></i> Découvrez Nador avec Tierra Y Mar Moto</span>
+                            <span class="font-mono text-neutral-500">HD 1080p</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 space-y-6">
+                    <h3 id="about-heading" class="text-2xl font-bold uppercase tracking-wide text-white">
+                        Le Spécialiste N°1 des Sports Mécaniques à Nador
+                    </h3>
+                    <p id="about-p1" class="text-neutral-400 text-sm leading-relaxed font-light">
+                        Idéalement situé au Quartier Al Matar, Avenue 30 à Nador, Tierra Y Mar Moto est votre centre privilégié pour la location, l'achat et les excursions guidées en Quads, Motos, Buggies Can-Am et Jet-Skis Sea-Doo.
+                    </p>
+                    <p id="about-p2" class="text-neutral-400 text-sm leading-relaxed font-light">
+                        Nos guides professionnels vous font découvrir les paysages exceptionnels de la région : Mont Gurugu, Cap de l'Eau, lagune de Marchica et expéditions jusqu'au désert de Merzouga.
+                    </p>
+
+                    <div class="p-4 rounded-xl bg-neutral-900/90 border border-neutral-800 space-y-3">
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-white mt-1"></i>
+                            <div>
+                                <p id="about-loc-label" class="text-xs font-bold uppercase text-white">Adresse du Showroom</p>
+                                <p id="about-loc-val" class="text-xs text-neutral-400">Quartier Al Matar, Avenue 30, Nador, Maroc</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-clock text-white mt-1"></i>
+                            <div>
+                                <p id="about-hours-label" class="text-xs font-bold uppercase text-white">Horaires d'Ouverture</p>
+                                <p id="about-hours-val" class="text-xs text-neutral-400">Lundi - Dimanche : 08:30 - 20:00 (7j/7)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <p id="about-social-label" class="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-3">Suivez Nos Aventures</p>
+                        <div class="flex items-center gap-3">
+                            <a href="https://www.instagram.com/tierra.y.mar.moto" target="_blank" class="w-10 h-10 rounded-lg bg-neutral-900 border border-neutral-800 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all">
+                                <i class="fa-brands fa-instagram text-sm"></i>
+                            </a>
+                            <a href="https://wa.me/212673844989" target="_blank" class="w-10 h-10 rounded-lg bg-neutral-900 border border-neutral-800 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all">
+                                <i class="fa-brands fa-whatsapp text-sm"></i>
+                            </a>
+                            <a href="tel:+212673844989" class="w-10 h-10 rounded-lg bg-neutral-900 border border-neutral-800 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all">
+                                <i class="fa-solid fa-phone text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: OUR SERVICES (Généré dynamiquement) -->
+    <section id="services" class="py-24 border-b border-neutral-900 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span id="services-badge" class="text-xs uppercase tracking-[0.3em] font-extrabold text-neutral-500">Flotte Haute Performance</span>
+                <h2 id="services-title" class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white mt-2">Nos Services</h2>
+                <div class="w-12 h-1 bg-white mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div id="services-container" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
+        </div>
+    </section>
+
+    <!-- SECTION: OUR TOURS (Généré dynamiquement) -->
+    <section id="tours" class="py-24 border-b border-neutral-900 bg-neutral-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div>
+                    <span id="tours-badge" class="text-xs uppercase tracking-[0.3em] font-extrabold text-neutral-500">Expéditions Inoubliables</span>
+                    <h2 id="tours-title" class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white mt-2">Nos Tours</h2>
+                </div>
+                <p id="tours-subtitle" class="text-neutral-400 text-sm max-w-md font-light mt-4 md:mt-0">
+                    Des itinéraires guidés uniques créés pour les passionnés d'aventure, de nature et de sensations fortes.
+                </p>
+            </div>
+
+            <div id="tours-container" class="grid grid-cols-1 lg:grid-cols-3 gap-8"></div>
+        </div>
+    </section>
+
+    <!-- SECTION: LOCATION & CONTACT INFO -->
+    <section id="contact" class="py-24 bg-black border-b border-neutral-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Contact Details -->
+                <div class="space-y-8">
+                    <div>
+                        <span id="contact-badge" class="text-xs uppercase tracking-[0.3em] font-extrabold text-neutral-500">Contact & Accès</span>
+                        <h2 id="contact-title" class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white mt-2">Visitez Notre Magasin</h2>
+                    </div>
+
+                    <p id="contact-desc" class="text-neutral-400 text-sm font-light leading-relaxed">
+                        Des questions concernant la vente, la location longue durée ou la réservation d'un groupe pour une excursion ? Contactez directement notre équipe à Nador.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-map-pin text-lg text-white"></i>
+                            </div>
+                            <div>
+                                <h4 id="contact-addr-title" class="text-sm font-bold uppercase text-white">Adresse du Magasin</h4>
+                                <p id="contact-addr-val" class="text-xs text-neutral-400 mt-1">Quartier Al Matar, Avenue 30, Nador, Maroc</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-phone text-lg text-white"></i>
+                            </div>
+                            <div>
+                                <h4 id="contact-phone-title" class="text-sm font-bold uppercase text-white">Téléphone & WhatsApp</h4>
+                                <p class="text-xs text-neutral-400 mt-1"><a href="tel:+212673844989" class="hover:text-white">+212 673 844 989</a></p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center shrink-0">
+                                <i class="fa-brands fa-instagram text-lg text-white"></i>
+                            </div>
+                            <div>
+                                <h4 id="contact-email-title" class="text-sm font-bold uppercase text-white">Instagram Officiel</h4>
+                                <p class="text-xs text-neutral-400 mt-1"><a href="https://www.instagram.com/tierra.y.mar.moto" target="_blank" class="hover:text-white">@tierra.y.mar.moto</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 flex flex-wrap gap-4">
+                        <a href="https://wa.me/212673844989" target="_blank" class="px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-black uppercase tracking-widest rounded-xl transition-all flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Discuter sur WhatsApp
+                        </a>
+                        <a href="https://www.google.com/maps/place/51+N%C2%B0+:+160,+Tierra+y+mar+moto,+ILO,+QT+AL+MATAR+ONDA,+Nador+62000/data=!4m2!3m1!1s0xd77a792876cd219:0x59271cdfb339078b?utm_source=mstt_1&entry=gps&lucs=47068615,,47075915&g_ep=CAESCTExLjk5LjUwMBgAINeCAyoSNDcwNjg2MTUsLDQ3MDc1OTE1QgJNQQ%3D%3D" target="_blank" class="px-6 py-4 bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 text-white text-xs font-bold uppercase tracking-widest rounded-xl transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-location-arrow"></i> Google Maps
+                        </a>
+                    </div>
+                </div>
+
+                <!-- MAP BOX -->
+                <div class="glass-card p-4 rounded-2xl h-[400px] relative overflow-hidden flex flex-col justify-between bg-neutral-950 border border-neutral-800">
+                    <div class="absolute inset-0 bg-neutral-900/50 flex flex-col items-center justify-center p-8 text-center">
+                        <div class="w-16 h-16 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-map-location-dot text-2xl text-white"></i>
+                        </div>
+                        <h3 id="map-box-title" class="text-lg font-bold uppercase text-white mb-2">Localisation Nador</h3>
+                        <p id="map-box-desc" class="text-xs text-neutral-400 max-w-xs mb-6">
+                            Quartier Al Matar, Avenue 30, Nador. Accès facile pour l'embarquement des quads et le départ des circuits.
+                        </p>
+                        <a href="https://www.google.com/maps/place/51+N%C2%B0+:+160,+Tierra+y+mar+moto,+ILO,+QT+AL+MATAR+ONDA,+Nador+62000/data=!4m2!3m1!1s0xd77a792876cd219:0x59271cdfb339078b?utm_source=mstt_1&entry=gps&lucs=47068615,,47075915&g_ep=CAESCTExLjk5LjUwMBgAINeCAyoSNDcwNjg2MTUsLDQ3MDc1OTE1QgJNQQ%3D%3D" target="_blank" class="px-5 py-2.5 bg-neutral-800 hover:bg-neutral-700 border border-neutral-600 text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-colors flex items-center gap-2">
+                            <i class="fa-solid fa-directions"></i> Ouvrir sur Google Maps
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-neutral-950 text-neutral-400 py-12 border-t border-neutral-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-neutral-900">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full border border-neutral-700 bg-neutral-900 flex items-center justify-center">
+                        <i class="fa-solid fa-motorcycle text-sm text-white"></i>
+                    </div>
+                    <span class="font-extrabold text-sm tracking-widest text-white uppercase">TIERRA Y MAR MOTO</span>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-6 text-xs uppercase font-bold text-neutral-400">
+                    <a href="#home" class="hover:text-white transition-colors">Accueil</a>
+                    <a href="#about" class="hover:text-white transition-colors">À Propos</a>
+                    <a href="#services" class="hover:text-white transition-colors">Services</a>
+                    <a href="#tours" class="hover:text-white transition-colors">Tours</a>
+                    <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <a href="https://www.instagram.com/tierra.y.mar.moto" target="_blank" class="text-neutral-400 hover:text-white text-sm transition-colors"><i class="fa-brands fa-instagram text-lg"></i></a>
+                    <a href="https://wa.me/212673844989" target="_blank" class="text-neutral-400 hover:text-white text-sm transition-colors"><i class="fa-brands fa-whatsapp text-lg"></i></a>
+                    <a href="tel:+212673844989" class="text-neutral-400 hover:text-white text-sm transition-colors"><i class="fa-solid fa-phone text-lg"></i></a>
+                </div>
+            </div>
+
+            <div class="pt-8 text-center text-xs text-neutral-600 font-medium">
+                <p id="footer-copy">Copyright © 2026 Tierra Y Mar Moto Nador. Tous droits réservés. Quartier Al Matar, Avenue 30, Nador, Maroc.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE BOOKING MODAL -->
+    <div id="booking-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-card bg-neutral-950 border border-neutral-800 rounded-2xl w-full max-w-lg p-6 sm:p-8 relative shadow-2xl">
+            <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-neutral-400 hover:text-white p-2 text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="mb-6">
+                <span id="modal-badge" class="text-[10px] font-black uppercase tracking-widest text-neutral-500">Demande de Réservation</span>
+                <h3 id="modal-title" class="text-2xl font-black uppercase text-white mt-1">Réservez Votre Expérience</h3>
+                <p id="modal-subtitle" class="text-xs text-neutral-400 mt-1">Remplissez le formulaire et notre équipe confirmera la disponibilité rapidement.</p>
+            </div>
+
+            <form id="booking-form" onsubmit="handleBookingSubmit(event)" class="space-y-4">
+                <div>
+                    <label id="lbl-fullname" class="block text-xs font-bold uppercase text-neutral-300 mb-1">Nom Complet</label>
+                    <input type="text" id="input-name" required class="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-neutral-400" placeholder="Mohamed Alami">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label id="lbl-phone" class="block text-xs font-bold uppercase text-neutral-300 mb-1">Téléphone / WhatsApp</label>
+                        <input type="tel" id="input-phone" required class="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-neutral-400" placeholder="+212 600 000000">
+                    </div>
+                    <div>
+                        <label id="lbl-service-select" class="block text-xs font-bold uppercase text-neutral-300 mb-1">Expérience Souhaitée</label>
+                        <select id="modal-experience-select" class="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-neutral-400 cursor-pointer">
+                            <option value="Demande d'Information Générale">Demande d'Information</option>
+                            <option value="Iksane Village Historical">Iksane Village Historical</option>
+                            <option value="Boukana Beach">Boukana Beach</option>
+                            <option value="Mountain Gorgo">Mountain Gorgo</option>
+                            <option value="Location de Véhicule">Location de Véhicule</option>
+                            <option value="Demande d'achat / Vente">Vente / Achat de Moto/Quad</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label id="lbl-date" class="block text-xs font-bold uppercase text-neutral-300 mb-1">Date Souhaitée</label>
+                        <input type="date" id="input-date" required class="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-neutral-400">
+                    </div>
+                    <div>
+                        <label id="lbl-people" class="block text-xs font-bold uppercase text-neutral-300 mb-1">Nombre de Personnes</label>
+                        <input type="number" id="input-people" min="1" max="20" value="1" class="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-neutral-400">
+                    </div>
+                </div>
+
+                <div>
+                    <label id="lbl-notes" class="block text-xs font-bold uppercase text-neutral-300 mb-1">Notes / Demandes Spéciales</label>
+                    <textarea id="input-notes" rows="3" class="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-neutral-400" placeholder="Précisez votre véhicule désiré ou niveau d'expérience..."></textarea>
+                </div>
+
+                <button type="submit" id="btn-modal-submit" class="w-full py-3.5 bg-white text-black text-xs font-black uppercase tracking-widest rounded-lg hover:bg-neutral-200 transition-colors mt-2">
+                    Envoyer la Demande sur WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast-message" class="fixed bottom-5 right-5 z-50 hidden bg-neutral-900 border border-neutral-700 text-white px-5 py-4 rounded-xl shadow-2xl flex items-center gap-3 max-w-md animate-toast">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-xl"></i>
+        <div>
+            <p id="toast-title" class="text-xs font-bold uppercase">Demande Préparée !</p>
+            <p id="toast-body" class="text-xs text-neutral-400">Redirection vers WhatsApp en cours...</p>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC & COMPLETE MULTI-LANGUAGE DICTIONARY -->
+    <script>
+        const i18n = {
+            fr: {
+                topbarStatus: "Ouvert 7j/7 pour Réservations & Locations",
+                navHome: "Accueil", navAbout: "À Propos", navServices: "Services", navTours: "Nos Tours", navContact: "Contact",
+                btnQuickBook: "Réserver",
+                heroBadge: "Location, Vente & Excursions N°1 à Nador",
+                heroTitle: "TIERRA Y MAR MOTO",
+                heroSubtitle: "L'aventure sans limites sur Terre & Mer. Quads, Motos, Buggies Can-Am & Jet-Skis Sea-Doo à Nador.",
+                heroBtnPrimary: "Explorer & Réserver", heroBtnSecondary: "WhatsApp Direct",
+                stat1: "Sécurité & Guide", stat2: "& Sea-Doo Officiels", stat3: "Ouvert Toute l'Année", stat4: "Satisfaction Clients",
+                aboutBadge: "Passion Inégalée", aboutTitle: "À Propos de Notre Centre",
+                aboutHeading: "Le Spécialiste N°1 des Sports Mécaniques à Nador",
+                aboutP1: "Idéalement situé au Quartier Al Matar, Avenue 30 à Nador, Tierra Y Mar Moto est votre centre privilégié pour la location, l'achat et les excursions guidées en Quads, Motos, Buggies Can-Am et Jet-Skis Sea-Doo.",
+                aboutP2: "Nos guides professionnels vous font découvrir les paysages exceptionnels de la région : Mont Gurugu, Cap de l'Eau, lagune de Marchica et expéditions jusqu'au désert de Merzouga.",
+                aboutLocLabel: "Adresse du Showroom", aboutLocVal: "Quartier Al Matar, Avenue 30, Nador, Maroc",
+                aboutHoursLabel: "Horaires d'Ouverture", aboutHoursVal: "Lundi - Dimanche : 08:30 - 20:00 (7j/7)",
+                aboutSocialLabel: "Suivez Nos Aventures", videoCaption: "Découvrez Nador avec Tierra Y Mar Moto",
+                
+                servicesBadge: "Flotte Haute Performance", 
+                servicesTitle: "Nos Services",
+                services: [
+                    {
+                        tag: "Magasin & Showroom",
+                        title: "Vente de Motos & Quads",
+                        description: "Découvrez notre stock permanent de véhicules neufs et d'occasion certifiés (Honda X-ADV, CFMOTO 800MT) ainsi que nos pièces de rechange.",
+                        btnText: "Consulter le Catalogue",
+                        action: "Demande d'achat / Vente",
+                        icon: "fa-tags",
+                        image: "./assets/img/3.jpg"
+                    },
+                    {
+                        tag: "Terre & Mer",
+                        title: "Location de Véhicules",
+                        description: "Louez nos Quads, Buggies Can-Am 4 places, Motos et Jet-Skis Sea-Doo. Équipements de sécurité et casques fournis.",
+                        btnText: "Louer un Véhicule",
+                        action: "Location de Véhicule",
+                        icon: "fa-key",
+                        image: "./assets/img/2.jpg"
+                    },
+                    {
+                        tag: "Guides d'Élite",
+                        title: "Tours & Excursions Guidées",
+                        description: "Des randonnées palpitantes vers Gurugu, Cap de l'Eau et de grandes expéditions vers le désert de Merzouga avec assistance technique.",
+                        btnText: "Découvrir nos Circuits",
+                        action: "Excursion Guidée",
+                        icon: "fa-compass",
+                        image: "./assets/img/bg2.jpg"
+                    }
+                ],
+
+                toursBadge: "Expéditions Inoubliables", 
+                toursTitle: "Nos Tours", 
+                toursSubtitle: "Des itinéraires guidés uniques créés pour les passionnés d'aventure, de nature et de sensations fortes.",
+                tours: [
+                    {
+                        badge: "Tour Historique",
+                        title: "Iksane Village Historical",
+                        description: "Plongez dans l'histoire avec le tour historique du village d'Iksane, une excursion moto guidée par des professionnels qui explore le riche patrimoine culturel de Sotolazar.",
+                        type: "Culture & Moto",
+                        guideLabel: "Guide", guideVal: "Professionnel",
+                        locLabel: "Lieu", locVal: "Sotolazar / Iksane",
+                        image: "./assets/img/5.jpg"
+                    },
+                    {
+                        badge: "Aventure Côtière",
+                        title: "Boukana Beach",
+                        description: "Embarquez pour le tour de la plage de Boukana avec Tierra Y Mar Moto pour une aventure côtière exaltante.",
+                        type: "Tour Côtier",
+                        guideLabel: "Vues", guideVal: "Océan & Côtes",
+                        locLabel: "Style", locVal: "Open Road",
+                        image: "./assets/img/1.jpg"
+                    },
+                    {
+                        badge: "Aventure en Montagne",
+                        title: "Mountain Gorgo",
+                        description: "Conquérez la majestueuse montagne de Gorgo lors de cette excursion organisée par Tierra Y Mar Moto.",
+                        type: "Raid en Montagne",
+                        guideLabel: "Aventure", guideVal: "Sommets & Vallées",
+                        locLabel: "Niveau", locVal: "Adrénaline",
+                        image: "./assets/img/6.jpg"
+                    }
+                ],
+
+                contactBadge: "Contact & Accès", contactTitle: "Visitez Notre Magasin", contactDesc: "Des questions concernant la vente, la location longue durée ou la réservation d'un groupe pour une excursion ? Contactez directement notre équipe à Nador.",
+                contactAddrTitle: "Adresse du Magasin", contactAddrVal: "Quartier Al Matar, Avenue 30, Nador, Maroc",
+                contactPhoneTitle: "Téléphone & WhatsApp", contactEmailTitle: "Instagram Officiel", btnSendMsg: "Envoyer un Message",
+                mapBoxTitle: "Localisation Nador", mapBoxDesc: "Quartier Al Matar, Avenue 30, Nador. Accès facile pour l'embarquement des quads et le départ des circuits.",
+                footerCopy: "Copyright © 2026 Tierra Y Mar Moto Nador. Tous droits réservés. Quartier Al Matar, Avenue 30, Nador, Maroc.",
+                modalBadge: "Demande de Réservation", modalTitle: "Réservez Votre Expérience", modalSubtitle: "Remplissez le formulaire et notre équipe confirmera la disponibilité rapidement.",
+                lblFullname: "Nom Complet", lblPhone: "Téléphone / WhatsApp", lblServiceSelect: "Expérience Souhaitée", lblDate: "Date Souhaitée", lblPeople: "Nombre de Personnes", lblNotes: "Notes / Demandes Spéciales", btnModalSubmit: "Envoyer la Demande sur WhatsApp",
+                toastTitle: "Demande Préparée !", toastBody: "Redirection vers WhatsApp en cours..."
+            },
+
+            en: {
+                topbarStatus: "Open 7/7 for Rental & Tour Bookings",
+                navHome: "Home", navAbout: "About Us", navServices: "Services", navTours: "Our Tours", navContact: "Contact",
+                btnQuickBook: "Book Experience",
+                heroBadge: "#1 Powersports Center in Nador",
+                heroTitle: "TIERRA Y MAR MOTO",
+                heroSubtitle: "Riding dreams, creating unique luxury off-road memories across Nador coast, mountains, and desert trails.",
+                heroBtnPrimary: "Explore & Book", heroBtnSecondary: "Direct WhatsApp",
+                stat1: "Guided Safety", stat2: "Can-Am & Sea-Doo", stat3: "Open Year-Round", stat4: "5★ Customer Rating",
+                aboutBadge: "Unmatched Passion", aboutTitle: "About Our Center",
+                aboutHeading: "#1 Powersports Specialist in Nador",
+                aboutP1: "Located in Quartier Al Matar, Avenue 30, Nador, Tierra Y Mar Moto is your premier center for rental, sales, and guided tours in Quads, Motorcycles, Can-Am Buggies, and Sea-Doo Jet-Skis.",
+                aboutP2: "Our professional guides help you explore Mount Gurugu, Cap de l'Eau, Marchica lagoon, and Merzouga desert expeditions.",
+                aboutLocLabel: "Showroom Address", aboutLocVal: "Quartier Al Matar, Avenue 30, Nador, Morocco",
+                aboutHoursLabel: "Opening Hours", aboutHoursVal: "Monday - Sunday: 08:30 AM - 08:00 PM (7/7)",
+                aboutSocialLabel: "Follow Our Adventures", videoCaption: "Discover Nador with Tierra Y Mar Moto",
+                
+                servicesBadge: "High Performance Fleet", 
+                servicesTitle: "Our Services",
+                services: [
+                    {
+                        tag: "Store & Showroom",
+                        title: "Motorcycle & Quad Sales",
+                        description: "Explore our showroom of new and certified pre-owned vehicles (Honda X-ADV, CFMOTO 800MT) and spare parts.",
+                        btnText: "View Catalog",
+                        action: "Demande d'achat / Vente",
+                        icon: "fa-tags",
+                        image: "./assets/img/3.jpg"
+                    },
+                    {
+                        tag: "Land & Sea",
+                        title: "Vehicle Rentals",
+                        description: "Rent Quads, 4-seater Can-Am Buggies, Motorcycles, and Sea-Doo Jet-Skis. Helmets and safety gear included.",
+                        btnText: "Rent a Vehicle",
+                        action: "Location de Véhicule",
+                        icon: "fa-key",
+                        image: "./assets/img/2.jpg"
+                    },
+                    {
+                        tag: "Elite Guides",
+                        title: "Guided Tours & Expeditions",
+                        description: "Thrilling excursions to Mount Gurugu, Cap de l'Eau, and Merzouga desert expeditions with support truck.",
+                        btnText: "Discover Tours",
+                        action: "Excursion Guidée",
+                        icon: "fa-compass",
+                        image: "./assets/img/bg2.jpg"
+                    }
+                ],
+
+                toursBadge: "Unforgettable Expeditions", 
+                toursTitle: "Our Tours", 
+                toursSubtitle: "Unique guided itineraries designed for thrill-seekers, nature enthusiasts, and culture lovers.",
+                tours: [
+                    {
+                        badge: "Historical Tour",
+                        title: "Iksane Village Historical",
+                        description: "Immerse yourself in history with the Iksane Village Historical Tour, a professionally guided motorcycle expedition that explores the rich cultural heritage of Sotolazar.",
+                        type: "Culture & Moto",
+                        guideLabel: "Guide", guideVal: "Professional",
+                        locLabel: "Location", locVal: "Sotolazar / Iksane",
+                        image: "./assets/img/5.jpg"
+                    },
+                    {
+                        badge: "Coastal Adventure",
+                        title: "Boukana Beach",
+                        description: "Embark on the Boukana Beach Tour with Tierra Y Mar Moto for an exhilarating coastal adventure.",
+                        type: "Coastal Tour",
+                        guideLabel: "Views", guideVal: "Ocean & Coasts",
+                        locLabel: "Style", locVal: "Open Road",
+                        image: "./assets/img/1.jpg"
+                    },
+                    {
+                        badge: "Mountain Adventure",
+                        title: "Mountain Gorgo",
+                        description: "Conquer the majestic Mountain Gorgo on this expertly curated tour by Tierra Y Mar Moto.",
+                        type: "Mountain Raid",
+                        guideLabel: "Adventure", guideVal: "Peaks & Valleys",
+                        locLabel: "Level", locVal: "Adrenaline",
+                        image: "./assets/img/6.jpg"
+                    }
+                ],
+
+                contactBadge: "Contact & Location", contactTitle: "Visit Our Center", contactDesc: "Questions regarding sales, long-term rentals, or group bookings? Reach out to our team in Nador.",
+                contactAddrTitle: "Store Address", contactAddrVal: "Quartier Al Matar, Avenue 30, Nador, Morocco",
+                contactPhoneTitle: "Phone & WhatsApp", contactEmailTitle: "Official Instagram", btnSendMsg: "Send Us A Message",
+                mapBoxTitle: "Nador Location", mapBoxDesc: "Quartier Al Matar, Avenue 30, Nador. Easy access for starting trails and quad loading.",
+                footerCopy: "Copyright © 2026 Tierra Y Mar Moto Nador. All rights reserved. Quartier Al Matar, Avenue 30, Nador, Morocco.",
+                modalBadge: "Reservation Request", modalTitle: "Book Your Experience", modalSubtitle: "Fill out the form and our team will confirm availability instantly.",
+                lblFullname: "Full Name", lblPhone: "Phone / WhatsApp", lblServiceSelect: "Select Experience", lblDate: "Preferred Date", lblPeople: "Group Size", lblNotes: "Notes / Special Requests", btnModalSubmit: "Send Request via WhatsApp",
+                toastTitle: "Request Prepared!", toastBody: "Redirecting to WhatsApp..."
+            },
+
+            ar: {
+                topbarStatus: "مفتوح 7/7 للحجوزات والكراء",
+                navHome: "الرئيسية", navAbout: "من نحن", navServices: "خدماتنا", navTours: "جولاتنا", navContact: "تواصل معنا",
+                btnQuickBook: "احجز الآن",
+                heroBadge: "المركز رقم 1 للكراء والبيع والجولات بالناظور",
+                heroTitle: "تييرا ي مار موتو",
+                heroSubtitle: "مغامرة بلا حدود على الأرض والبحر. كواطرو، دراجات نارية، بوغيات Can-Am وجيت سكي Sea-Doo بالناظور.",
+                heroBtnPrimary: "استكشف واحجز", heroBtnSecondary: "واتساب مباشر",
+                stat1: "سلامة ومرافقة", stat2: "وكيل رسمي", stat3: "مفتوح طوال السنة", stat4: "تقييم ممتاز 5★",
+                aboutBadge: "شغف لا مثيل له", aboutTitle: "عن مركزنا",
+                aboutHeading: "المتخصص الأول في الرياضات الميكانيكية بالناظور",
+                aboutP1: "يقع مركزنا بحي المطار شارع 30 بالناظور، وهو وجهتكم الأولى للكراء والبيع والجولات السياحية في الدراجات النارية والكواطرو والبوغي وجيت سكي.",
+                aboutP2: "يقودكم مرشدونا لمعاينة أجمل المناظر: جبل كوركو، كاب دي لو، بحيرة مارتشيكا ورحلات صحراء مرزوكة.",
+                aboutLocLabel: "عنوان المعرض", aboutLocVal: "حي المطار، شارع 30، الناظور، المغرب",
+                aboutHoursLabel: "ساعات العمل", aboutHoursVal: "الإثنين - الأحد: 08:30 - 20:00 (طيلة الأسبوع)",
+                aboutSocialLabel: "تابعوا مغامراتنا", videoCaption: "اكتشف الناظور مع تييرا ي مار موتو",
+                
+                servicesBadge: "أسطول فاخر", 
+                servicesTitle: "خدماتنا",
+                services: [
+                    {
+                        tag: "المتجر والمعرض",
+                        title: "بيع الدراجات والكواطرو",
+                        description: "اكتشف تشكيلتنا المضمونة من الدراجات الجديدة والمستعملة وقطع الغيار الأصلية.",
+                        btnText: "تصفح الكاتالوج",
+                        action: "Demande d'achat / Vente",
+                        icon: "fa-tags",
+                        image: "./assets/img/3.jpg"
+                    },
+                    {
+                        tag: "الأرض والبحر",
+                        title: "كراء المركبات",
+                        description: "كراء الكواطرو والبوغي والدراجات وجيت سكي Sea-Doo مع الخوذات ومعدات السلامة.",
+                        btnText: "اكرِ مركبة",
+                        action: "Location de Véhicule",
+                        icon: "fa-key",
+                        image: "./assets/img/2.jpg"
+                    },
+                    {
+                        tag: "مرشدون محترفون",
+                        title: "جولات ورحلات سياحية",
+                        description: "رحلات ممتعة نحو كوركو، كاب دي لو ورحلات صحراوية لمرزوكة مع شاحنة الدعم.",
+                        btnText: "استكشف الرحلات",
+                        action: "Excursion Guidée",
+                        icon: "fa-compass",
+                        image: "./assets/img/bg2.jpg"
+                    }
+                ],
+
+                toursBadge: "رحلات لا تُنسى", 
+                toursTitle: "جولاتنا", 
+                toursSubtitle: "مسارات موجهة مصممة لعشاق الإثارة والطبيعة والمغامرة.",
+                tours: [
+                    {
+                        badge: "جولة تاريخية",
+                        title: "قرية إكسان التاريخية",
+                        description: "انغمس في التاريخ مع جولة قرية إكسان التاريخية، وهي رحلة بدراجة نارية برفقة مرشدين محترفين تستكشف التراث الثقافي الغني لسوتولازار.",
+                        type: "ثقافة ودراجات",
+                        guideLabel: "المرشد", guideVal: "محترف",
+                        locLabel: "الموقع", locVal: "سوتولازار / إكسان",
+                        image: "./assets/img/5.jpg"
+                    },
+                    {
+                        badge: "مغامرة ساحلية",
+                        title: "شاطئ بوكانة",
+                        description: "انطلق في جولة شاطئ بوكانة مع تييرا ي مار موتو لخوض مغامرة ساحلية مذهلة لاستكشاف الخلجان المخفية.",
+                        type: "جولة ساحلية",
+                        guideLabel: "المناظر", guideVal: "محيط وشواطئ",
+                        locLabel: "الأسلوب", locVal: "طريق مفتوح",
+                        image: "./assets/img/1.jpg"
+                    },
+                    {
+                        badge: "مغامرة جبلية",
+                        title: "جبل كوركو",
+                        description: "قهر جبل كوركو المهيب في هذه الجولة المصممة خصيصاً من طرف تييرا ي مار موتو.",
+                        type: "غارة جبلية",
+                        guideLabel: "المغامرة", guideVal: "قمم ووديان",
+                        locLabel: "المستوى", locVal: "أدرينالين",
+                        image: "./assets/img/6.jpg"
+                    }
+                ],
+
+                contactBadge: "تواصل وموقع", contactTitle: "زوروا معرضنا", contactDesc: "هل لديك استفسار حول البيع أو الكراء أو حجوزات المجموعات؟ تواصل معنا مباشرة بالناظور.",
+                contactAddrTitle: "عنوان المحل", contactAddrVal: "حي المطار، شارع 30، الناظور، المغرب",
+                contactPhoneTitle: "الهاتف والواتساب", contactEmailTitle: "إنستغرام الرسمي", btnSendMsg: "أرسل رسالة",
+                mapBoxTitle: "موقعنا بالناظور", mapBoxDesc: "حي المطار شارع 30 بالناظور. موقع ممتاز وسهل للانطلاق.",
+                footerCopy: "حقوق النشر © 2026 تييرا ي مار موتو الناظور. جميع الحقوق محفوظة. حي المطار، شارع 30، الناظور.",
+                modalBadge: "طلب حجز", modalTitle: "احجز تجربتك", modalSubtitle: "أدخل بياناتك وسيقوم فريقنا بتأكيد الحجز فوراً عبر الواتساب.",
+                lblFullname: "الاسم الكامل", lblPhone: "الهاتف / واتساب", lblServiceSelect: "اختر التجربة", lblDate: "التاريخ المفضل", lblPeople: "عدد الأشخاص", lblNotes: "ملاحظات خاصة", btnModalSubmit: "إرسال الطلب عبر الواتساب",
+                toastTitle: "تم إعداد الطلب!", toastBody: "جاري التوجيه إلى الواتساب..."
+            },
+
+            es: {
+                topbarStatus: "Abierto 7/7 para Reservas y Alquileres",
+                navHome: "Inicio", navAbout: "Nosotros", navServices: "Servicios", navTours: "Rutas", navContact: "Contacto",
+                btnQuickBook: "Reservar",
+                heroBadge: "Nº 1 en Alquiler, Venta y Excursiones en Nador",
+                heroTitle: "TIERRA Y MAR MOTO",
+                heroSubtitle: "Aventura sin límites en Tierra y Mar. Quads, Motos, Buggies Can-Am y Jet-Skis Sea-Doo en Nador.",
+                heroBtnPrimary: "Explorar y Reservar", heroBtnSecondary: "WhatsApp Directo",
+                stat1: "Seguridad y Guía", stat2: "Oficiales Can-Am", stat3: "Abierto Todo el Año", stat4: "Valoración 5★",
+                aboutBadge: "Pasión Inigualable", aboutTitle: "Sobre Nuestro Centro",
+                aboutHeading: "El Especialista Nº 1 en Motor en Nador",
+                aboutP1: "Ubicado en Quartier Al Matar, Avenida 30, Nador, Tierra Y Mar Moto es tu centro de referencia para alquiler, venta y excursiones en Quad, Moto, Buggy y Jet-Ski.",
+                aboutP2: "Nuestros guías te llevarán a descubrir el Monte Gurugú, Cap de l'Eau, la laguna de Marchica y expediciones al desierto de Merzouga.",
+                aboutLocLabel: "Dirección de la Tienda", aboutLocVal: "Quartier Al Matar, Avenida 30, Nador, Marruecos",
+                aboutHoursLabel: "Horario de Apertura", aboutHoursVal: "Lunes - Domingo: 08:30 - 20:00 (7/7)",
+                aboutSocialLabel: "Sigue Nuestras Aventuras", videoCaption: "Descubre Nador con Tierra Y Mar Moto",
+                
+                servicesBadge: "Flota de Alta Gama", 
+                servicesTitle: "Nuestros Servicios",
+                services: [
+                    {
+                        tag: "Tienda y Showroom",
+                        title: "Venta de Motos y Quads",
+                        description: "Descubre nuestro stock permanente de vehículos nuevos y de ocasión (Honda X-ADV, CFMOTO 800MT) y recambios.",
+                        btnText: "Ver Catálogo",
+                        action: "Demande d'achat / Vente",
+                        icon: "fa-tags",
+                        image: "./assets/img/3.jpg"
+                    },
+                    {
+                        tag: "Tierra y Mar",
+                        title: "Alquiler de Vehículos",
+                        description: "Alquila Quads, Buggies Can-Am de 4 plazas, Motos y Jet-Skis Sea-Doo. Cascos y equipamiento incluidos.",
+                        btnText: "Alquilar Vehículo",
+                        action: "Location de Véhicule",
+                        icon: "fa-key",
+                        image: "./assets/img/2.jpg"
+                    },
+                    {
+                        tag: "Guías de Élite",
+                        title: "Rutas Guiadas",
+                        description: "Rutas emocionantes al Monte Gurugú, Cap de l'Eau y grandes expediciones a Merzouga con soporte técnico.",
+                        btnText: "Ver Rutas",
+                        action: "Excursion Guidée",
+                        icon: "fa-compass",
+                        image: "./assets/img/bg2.jpg"
+                    }
+                ],
+
+                toursBadge: "Excursiones Inolvidables", 
+                toursTitle: "Nuestras Rutas", 
+                toursSubtitle: "Itinerarios guiados diseñados para amantes de la adrenalina y la naturaleza.",
+                tours: [
+                    {
+                        badge: "Tour Histórico",
+                        title: "Pueblo Histórico de Iksane",
+                        description: "Sumérgete en la historia con el Tour Histórico del Pueblo de Iksane, una expedición en moto guiada por profesionales.",
+                        type: "Cultura y Moto",
+                        guideLabel: "Guía", guideVal: "Profesional",
+                        locLabel: "Lugar", locVal: "Sotolazar / Iksane",
+                        image: "./assets/img/5.jpg"
+                    },
+                    {
+                        badge: "Aventura Costera",
+                        title: "Playa de Boukana",
+                        description: "Embárcate en el Tour de la Playa de Boukana con Tierra Y Mar Moto para una emocionante aventura costera.",
+                        type: "Tour Costero",
+                        guideLabel: "Vistas", guideVal: "Océano y Costas",
+                        locLabel: "Estilo", locVal: "Open Road",
+                        image: "./assets/img/1.jpg"
+                    },
+                    {
+                        badge: "Aventura en Montaña",
+                        title: "Monte Gorgo",
+                        description: "Conquista el majestuoso Monte Gorgo en este tour comisariado por expertos de Tierra Y Mar Moto.",
+                        type: "Raid de Montaña",
+                        guideLabel: "Aventura", guideVal: "Cumbres y Valles",
+                        locLabel: "Nivel", locVal: "Adrenalina",
+                        image: "./assets/img/6.jpg"
+                    }
+                ],
+
+                contactBadge: "Contacto y Ubicación", contactTitle: "Visita Nuestra Tienda", contactDesc: "¿Dudas sobre compra, alquiler o grupos? Contacta directamente con nuestro equipo en Nador.",
+                contactAddrTitle: "Dirección Tienda", contactAddrVal: "Quartier Al Matar, Avenida 30, Nador, Marruecos",
+                contactPhoneTitle: "Teléfono y WhatsApp", contactEmailTitle: "Instagram Oficial", btnSendMsg: "Enviar Mensaje",
+                mapBoxTitle: "Ubicación en Nador", mapBoxDesc: "Quartier Al Matar, Avenida 30, Nador. Fácil acceso para el inicio de las rutas.",
+                footerCopy: "Copyright © 2026 Tierra Y Mar Moto Nador. Todos los derechos reservados. Quartier Al Matar, Avenida 30, Nador.",
+                modalBadge: "Solicitud de Reserva", modalTitle: "Reserva Tu Experiencia", modalSubtitle: "Rellena el formulario y confirmaremos la disponibilidad inmediatamente.",
+                lblFullname: "Nombre Completo", lblPhone: "Teléfono / WhatsApp", lblServiceSelect: "Experiencia Deseada", lblDate: "Fecha Preferida", lblPeople: "Personas", lblNotes: "Notas Especiales", btnModalSubmit: "Enviar Solicitud por WhatsApp",
+                toastTitle: "¡Solicitud Preparada!", toastBody: "Redirigiendo a WhatsApp..."
+            },
+
+            de: {
+                topbarStatus: "Offen 7/7 für Buchungen & Vermietung",
+                navHome: "Startseite", navAbout: "Über Uns", navServices: "Leistungen", navTours: "Touren", navContact: "Kontakt",
+                btnQuickBook: "Buchen",
+                heroBadge: "Nr. 1 Vermietung & Touren in Nador",
+                heroTitle: "TIERRA Y MAR MOTO",
+                heroSubtitle: "Abenteuer auf Land und Meer. Quads, Motorräder, Can-Am Buggys & Sea-Doo Jet-Skis in Nador.",
+                heroBtnPrimary: "Entdecken & Buchen", heroBtnSecondary: "Direkt WhatsApp",
+                stat1: "Sicherheit & Guide", stat2: "Offiziell Can-Am", stat3: "Ganzjährig Geöffnet", stat4: "5★ Bewertung",
+                aboutBadge: "Unvergleichliche Leidenschaft", aboutTitle: "Über Unser Zentrum",
+                aboutHeading: "Nr. 1 Spezialist für Motorsport in Nador",
+                aboutP1: "In Quartier Al Matar, Avenue 30, Nador gelegen, bieten wir Vermietung, Verkauf und Touren mit Quads, Motorrädern, Buggys und Jet-Skis.",
+                aboutP2: "Unsere Guides führen Sie zum Mount Gurugu, Cap de l'Eau, Marchica Lagune und Merzouga Wüste.",
+                aboutLocLabel: "Showroom Adresse", aboutLocVal: "Quartier Al Matar, Avenue 30, Nador, Marokko",
+                aboutHoursLabel: "Öffnungszeiten", aboutHoursVal: "Montag - Sonntag: 08:30 - 20:00 Uhr (7/7)",
+                aboutSocialLabel: "Folgen Sie Uns", videoCaption: "Erleben Sie Nador mit Tierra Y Mar Moto",
+                
+                servicesBadge: "High-End Flotte", 
+                servicesTitle: "Unsere Leistungen",
+                services: [
+                    {
+                        tag: "Geschäft & Showroom",
+                        title: "Motorrad & Quad Verkauf",
+                        description: "Entdecken Sie neue und gebrauchte Fahrzeuge (Honda X-ADV, CFMOTO 800MT) und Ersatzteile.",
+                        btnText: "Katalog Ansehen",
+                        action: "Demande d'achat / Vente",
+                        icon: "fa-tags",
+                        image: "./assets/img/3.jpg"
+                    },
+                    {
+                        tag: "Land & Meer",
+                        title: "Fahrzeugvermietung",
+                        description: "Mieten Sie Quads, 4-Sitzer Can-Am Buggys, Motorräder und Sea-Doo Jet-Skis inklusive Ausrüstung.",
+                        btnText: "Fahrzeug Mieten",
+                        action: "Location de Véhicule",
+                        icon: "fa-key",
+                        image: "./assets/img/2.jpg"
+                    },
+                    {
+                        tag: "Elite-Guides",
+                        title: "Geführte Touren",
+                        description: "Touren zum Mount Gurugu, Cap de l'Eau und Merzouga Wüsten-Expeditionen mit Support.",
+                        btnText: "Touren Entdecken",
+                        action: "Excursion Guidée",
+                        icon: "fa-compass",
+                        image: "./assets/img/bg2.jpg"
+                    }
+                ],
+
+                toursBadge: "Unvergessliche Ausflüge", 
+                toursTitle: "Unsere Touren", 
+                toursSubtitle: "Geführte Offroad-Routen für Natur- und Adrenalinliebhaber.",
+                tours: [
+                    {
+                        badge: "Historische Tour",
+                        title: "Historisches Dorf Iksane",
+                        description: "Tauchen Sie ein in die Geschichte mit der historischen Iksane-Dorf-Tour, einer professionell geführten Motorradexpedition.",
+                        type: "Kultur & Motorrad",
+                        guideLabel: "Guide", guideVal: "Professionell",
+                        locLabel: "Ort", locVal: "Sotolazar / Iksane",
+                        image: "./assets/img/5.jpg"
+                    },
+                    {
+                        badge: "Küstenabenteuer",
+                        title: "Boukana Strand",
+                        description: "Begeben Sie sich auf die Boukana Strandtour mit Tierra Y Mar Moto für ein aufregendes Küstenabenteuer.",
+                        type: "Küsten-Tour",
+                        guideLabel: "Aussicht", guideVal: "Ozean & Küste",
+                        locLabel: "Stil", locVal: "Open Road",
+                        image: "./assets/img/1.jpg"
+                    },
+                    {
+                        badge: "Bergabenteuer",
+                        title: "Berg Gorgo",
+                        description: "Erobern Sie den majestätischen Berg Gorgo auf dieser exklusiv kuratierten Tour von Tierra Y Mar Moto.",
+                        type: "Berg-Raid",
+                        guideLabel: "Abenteuer", guideVal: "Gipfel & Täler",
+                        locLabel: "Level", locVal: "Adrenalin",
+                        image: "./assets/img/6.jpg"
+                    }
+                ],
+
+                contactBadge: "Kontakt & Standort", contactTitle: "Besuchen Sie Uns", contactDesc: "Fragen zu Verkauf, Vermietung oder Gruppen? Kontaktieren Sie unser Team in Nador.",
+                contactAddrTitle: "Adresse Shop", contactAddrVal: "Quartier Al Matar, Avenue 30, Nador, Marokko",
+                contactPhoneTitle: "Telefon & WhatsApp", contactEmailTitle: "Offizielles Instagram", btnSendMsg: "Nachricht Senden",
+                mapBoxTitle: "Standort Nador", mapBoxDesc: "Quartier Al Matar, Avenue 30, Nador. Bequemer Startpunkt für Touren.",
+                footerCopy: "Copyright © 2026 Tierra Y Mar Moto Nador. Alle Rechte vorbehalten. Quartier Al Matar, Avenue 30, Nador.",
+                modalBadge: "Buchungsanfrage", modalTitle: "Erlebnis Buchen", modalSubtitle: "Füllen Sie das Formular aus, wir bestätigen die Verfügbarkeit umgehend.",
+                lblFullname: "Vollständiger Name", lblPhone: "Telefon / WhatsApp", lblServiceSelect: "Erlebnis Auswählen", lblDate: "Wunschdatum", lblPeople: "Personen", lblNotes: "Besondere Wünsche", btnModalSubmit: "Anfrage per WhatsApp Senden",
+                toastTitle: "Anfrage Vorbereitet!", toastBody: "Weiterleitung zu WhatsApp..."
+            }
+        };
+
+        function changeLanguage(lang) {
+            const dict = i18n[lang] || i18n.fr;
+            
+            if (lang === 'ar') {
+                document.documentElement.setAttribute('dir', 'rtl');
+                document.documentElement.setAttribute('lang', 'ar');
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr');
+                document.documentElement.setAttribute('lang', lang);
+            }
+
+            // Traduction des textes classiques (balises simples)
+            Object.keys(dict).forEach(key => {
+                if (key !== 'services' && key !== 'tours') {
+                    const kebabId = key.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
+                    const elem = document.getElementById(kebabId);
+                    if (elem) {
+                        elem.innerText = dict[key];
+                    }
+                }
+            });
+
+            // --- RENDU DYNAMIQUE DES SERVICES ---
+            const servicesContainer = document.getElementById('services-container');
+            if (servicesContainer && dict.services) {
+                servicesContainer.innerHTML = dict.services.map(s => `
+                    <div class="bw-card glass-card rounded-2xl overflow-hidden flex flex-col group">
+                        <div class="relative h-64 overflow-hidden bg-neutral-900">
+                            <img src="${s.image}" alt="${s.title}" class="w-full h-full object-cover bw-media">
+                            <div class="absolute top-4 left-4 right-4 flex justify-between items-center">
+                                <span class="px-3 py-1 bg-black/80 backdrop-blur-md rounded-full text-[10px] uppercase tracking-wider font-extrabold text-white border border-neutral-700">${s.tag}</span>
+                            </div>
+                        </div>
+                        <div class="p-8 flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center mb-4">
+                                    <i class="fa-solid ${s.icon} text-white"></i>
+                                </div>
+                                <h3 class="text-xl font-bold uppercase text-white mb-3">${s.title}</h3>
+                                <p class="text-neutral-400 text-sm font-light leading-relaxed mb-6">${s.description}</p>
+                            </div>
+                            <button onclick="openBookingModal('${s.action}')" class="w-full py-3 bg-neutral-900 hover:bg-white hover:text-black border border-neutral-800 text-xs font-bold uppercase tracking-widest rounded-xl transition-all">
+                                ${s.btnText}
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // --- RENDU DYNAMIQUE DES TOURS ---
+            const toursContainer = document.getElementById('tours-container');
+            if (toursContainer && dict.tours) {
+                toursContainer.innerHTML = dict.tours.map(t => `
+                    <div class="bw-card glass-card rounded-2xl overflow-hidden flex flex-col border border-neutral-800">
+                        <div class="relative h-72 overflow-hidden bg-neutral-900">
+                            <img src="${t.image}" alt="${t.title}" class="w-full h-full object-cover bw-media">
+                            <div class="absolute top-4 left-4">
+                                <span class="px-3 py-1 bg-black/90 text-white rounded-md text-[11px] font-bold uppercase tracking-wider border border-neutral-700">${t.badge}</span>
+                            </div>
+                            <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end bg-gradient-to-t from-black/90 to-transparent p-2 rounded-lg">
+                                <div>
+                                    <span class="text-xs text-neutral-400 block">${t.guideLabel}</span>
+                                    <span class="text-xs font-bold text-white">${t.guideVal}</span>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-xs text-neutral-400 block">${t.locLabel}</span>
+                                    <span class="text-xs font-bold text-white">${t.locVal}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-xl font-extrabold uppercase text-white mb-2">${t.title}</h3>
+                                <p class="text-neutral-400 text-xs font-light leading-relaxed mb-6 text-justify">${t.description}</p>
+                            </div>
+                            <div class="border-t border-neutral-800/80 pt-4 flex items-center justify-between">
+                                <div>
+                                    <span class="text-[10px] text-neutral-500 uppercase tracking-widest block">Type</span>
+                                    <span class="text-sm font-black text-white">${t.type}</span>
+                                </div>
+                                <button onclick="openBookingModal('${t.title}')" class="px-5 py-2.5 bg-white text-black text-xs font-black uppercase tracking-wider rounded-lg hover:bg-neutral-200 transition-colors">
+                                    ${lang === 'ar' ? 'احجز الآن' : (lang === 'es' ? 'Reservar' : (lang === 'de' ? 'Buchen' : 'Réserver'))}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('mobile-menu-icon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                menu.classList.add('hidden');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        }
+
+        function openBookingModal(selectedExperience = null) {
+            const modal = document.getElementById('booking-modal');
+            const select = document.getElementById('modal-experience-select');
+            if (selectedExperience && select) {
+                select.value = selectedExperience;
+            }
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBookingModal() {
+            const modal = document.getElementById('booking-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function handleBookingSubmit(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('input-name').value;
+            const phone = document.getElementById('input-phone').value;
+            const experience = document.getElementById('modal-experience-select').value;
+            const date = document.getElementById('input-date').value;
+            const people = document.getElementById('input-people').value;
+            const notes = document.getElementById('input-notes').value;
+
+            const message = `Bonjour Tierra Y Mar Moto Nador,%0A%0AJe souhaite effectuer une réservation :%0A- *Nom* : ${name}%0A- *Téléphone* : ${phone}%0A- *Service/Tour* : ${experience}%0A- *Date* : ${date}%0A- *Personnes* : ${people}%0A- *Notes* : ${notes || 'Aucune'}`;
+
+            closeBookingModal();
+
+            const toast = document.getElementById('toast-message');
+            toast.classList.remove('hidden');
+            
+            setTimeout(() => {
+                toast.classList.add('hidden');
+                window.open(`https://wa.me/212673844989?text=${message}`, '_blank');
+            }, 1500);
+
+            document.getElementById('booking-form').reset();
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            changeLanguage('fr');
+        });
+    </script>
+</body>
+</html>

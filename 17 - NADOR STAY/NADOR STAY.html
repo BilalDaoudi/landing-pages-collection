@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nador Stay | Location d'Appartements de Standing à Nador</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        indigo: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#312e81',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        arabic: ['Cairo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        [dir="rtl"] body {
+            font-family: 'Cairo', sans-serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(49, 46, 129, 0.85) 100%), url('https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-indigo-600 selection:text-white">
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-600 to-indigo-400 flex items-center justify-center text-white shadow-md shadow-indigo-500/30">
+                    <i class="fa-solid fa-building text-xl"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold text-white tracking-wide" data-i18n="logoTitle">NADOR <span class="text-indigo-400">STAY</span></span>
+                    <span class="block text-xs text-slate-400 font-medium" data-i18n="logoSub">Appartements Meublés de Standing</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-8 rtl:space-x-reverse text-sm font-semibold text-slate-300">
+                <a href="#accueil" class="hover:text-indigo-400 transition" data-i18n="navHome">Accueil</a>
+                <a href="#simulateur" class="text-indigo-400 hover:text-indigo-300 transition flex items-center space-x-1 rtl:space-x-reverse"><i class="fa-solid fa-calculator text-xs"></i> <span data-i18n="navSimulator">Simulateur</span></a>
+                <a href="#appartements" class="hover:text-indigo-400 transition" data-i18n="navAppts">Nos Appartements</a>
+                <a href="#pourquoi" class="hover:text-indigo-400 transition" data-i18n="navWhy">Pourquoi Nous</a>
+                <a href="#quartiers" class="hover:text-indigo-400 transition" data-i18n="navDistricts">Quartiers & Corniche</a>
+            </nav>
+
+            <!-- Actions & Mobile Menu Button -->
+            <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-800 text-white text-xs font-bold px-2.5 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-indigo-500 cursor-pointer">
+                    <option value="fr">🇫🇷 FR</option>
+                    <option value="ar">🇲🇦 AR</option>
+                    <option value="en">🇬🇧 EN</option>
+                    <option value="es">🇪🇸 ES</option>
+                </select>
+
+                <a href="https://wa.me/212600000000?text=Bonjour,%20je%20souhaite%20louer%20un%20appartement%20à%20Nador." target="_blank" class="hidden sm:inline-flex items-center space-x-2 rtl:space-x-reverse bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-lg transition">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span data-i18n="whatsappBtn">WhatsApp 24/7</span>
+                </a>
+
+                <!-- Mobile Hamburger Toggle -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-slate-300 hover:text-white p-2 focus:outline-none text-xl">
+                    <i class="fa-solid fa-bars" id="menuIcon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 px-6 py-6 space-y-4 shadow-2xl">
+            <a href="#accueil" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-indigo-400 font-medium text-sm" data-i18n="navHome">Accueil</a>
+            <a href="#simulateur" onclick="toggleMobileMenu()" class="block text-indigo-400 font-medium text-sm" data-i18n="navSimulator">Simulateur</a>
+            <a href="#appartements" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-indigo-400 font-medium text-sm" data-i18n="navAppts">Nos Appartements</a>
+            <a href="#pourquoi" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-indigo-400 font-medium text-sm" data-i18n="navWhy">Pourquoi Nous</a>
+            <a href="#quartiers" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-indigo-400 font-medium text-sm" data-i18n="navDistricts">Quartiers & Corniche</a>
+            <div class="pt-2">
+                <a href="https://wa.me/212600000000?text=Bonjour,%20je%20souhaite%20louer%20un%20appartement%20à%20Nador." target="_blank" class="w-full inline-flex items-center justify-center space-x-2 bg-emerald-600 text-white font-bold text-xs px-4 py-3 rounded-xl shadow-md">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span data-i18n="whatsappBtn">WhatsApp 24/7</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero-gradient min-h-[85vh] flex items-center justify-center text-white px-4 py-20 text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto z-10">
+            <span class="inline-flex items-center space-x-2 rtl:space-x-reverse bg-indigo-600/30 border border-indigo-500/50 text-indigo-200 text-xs font-bold px-4 py-1.5 rounded-full mb-6 uppercase tracking-wider">
+                <i class="fa-solid fa-water"></i>
+                <span data-i18n="badgeHero">Corniche Mar Chica • Centre-ville • Vue Mer</span>
+            </span>
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6 leading-tight" data-i18n="heroTitle">
+                Votre Séjour de Luxe et Confort à Nador
+            </h1>
+            <p class="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto mb-10" data-i18n="heroSubtitle">
+                Appartements meublés haut de gamme, entièrement équipés, climatisés avec Wi-Fi haut débit et parking sécurisé pour vos vacances ou séjours d'affaires.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#simulateur" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-indigo-600/40 transition transform hover:-translate-y-1 text-center" data-i18n="btnSimulator">
+                    <i class="fa-solid fa-calculator mr-2"></i> Estimer mon budget séjour
+                </a>
+                <a href="#appartements" class="w-full sm:w-auto bg-slate-800/90 hover:bg-slate-700 text-white font-bold px-8 py-4 rounded-xl border border-slate-700 shadow-xl transition transform hover:-translate-y-1 text-center" data-i18n="btnSeeAppts">
+                    Voir les appartements
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simulateur de Budget -->
+    <section id="simulateur" class="py-20 bg-indigo-950 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#4f46e5_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="bg-indigo-500/20 text-indigo-300 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full border border-indigo-500/30 inline-block mb-3" data-i18n="simBadge">Outil Exclusif Nador Stay</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold" data-i18n="simTitle">Simulateur de Séjour & Estimation en Direct</h2>
+                <p class="text-slate-300 text-sm mt-2" data-i18n="simSub">Calculez instantanément le tarif estimé de votre séjour selon vos critères de voyage.</p>
+            </div>
+
+            <div class="bg-slate-900/90 backdrop-blur-xl border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-indigo-400 mb-2" data-i18n="simTypeLabel">1. Type de Standing / Gamme</label>
+                        <select id="simType" onchange="calculateBudget()" class="w-full bg-slate-800 border border-slate-700 text-white rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-indigo-500">
+                            <option value="350">Studio / Centre-ville (350 MAD / nuit)</option>
+                            <option value="500" selected>Appartement Standard Corniche (500 MAD / nuit)</option>
+                            <option value="750">Appartement Grand Standing Vue Mer (750 MAD / nuit)</option>
+                            <option value="1200">Penthouse de Luxe Mar Chica (1200 MAD / nuit)</option>
+                        </select>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-indigo-400 mb-2" data-i18n="simNightsLabel">2. Nombre de Nuits</label>
+                            <input type="number" id="simNights" value="5" min="1" max="90" oninput="calculateBudget()" class="w-full bg-slate-800 border border-slate-700 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-indigo-400 mb-2" data-i18n="simSeasonLabel">3. Saison / Période</label>
+                            <select id="simSeason" onchange="calculateBudget()" class="w-full bg-slate-800 border border-slate-700 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500">
+                                <option value="1">Basse saison (Tarif standard)</option>
+                                <option value="1.15">Haute saison / Été / MRE (+15% - forte demande)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 bg-indigo-900/40 border border-indigo-500/30 rounded-2xl p-6 text-center flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-indigo-300 font-bold" data-i18n="simResultTitle">Estimation Totale Séjour</span>
+                        <div id="simTotalAmount" class="text-4xl font-black text-white mt-2 mb-1">2,875 MAD</div>
+                        <p id="simDetailsText" class="text-xs text-slate-300 mb-6">Inclus : Wi-Fi fibre, charges et parking sécurisé.</p>
+                    </div>
+                    <button onclick="bookFromSimulator()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-emerald-600/30 transition flex items-center justify-center space-x-2 rtl:space-x-reverse">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                        <span data-i18n="simBtnWhatsapp">Réserver cette simulation sur WhatsApp</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Apartments Catalog Section avec Pagination -->
+    <section id="appartements" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4" data-i18n="catalogTitle">Nos Appartements Disponibles</h2>
+            <p class="text-slate-600" data-i18n="catalogSub">Des logements propres, modernes et idéalement situés dans les meilleurs quartiers de Nador.</p>
+            
+            <div class="flex flex-wrap items-center justify-center gap-2 mt-8">
+                <button onclick="filterCategory('all')" id="cat-all" class="cat-btn px-5 py-2.5 rounded-xl font-bold text-xs uppercase transition bg-indigo-600 text-white shadow-md" data-i18n="catAll">Tous</button>
+                <button onclick="filterCategory('corniche')" id="cat-corniche" class="cat-btn px-5 py-2.5 rounded-xl font-bold text-xs uppercase transition bg-white text-slate-700 hover:bg-slate-100 border border-slate-200" data-i18n="catCorniche">Vue Mer / Corniche</button>
+                <button onclick="filterCategory('centre')" id="cat-centre" class="cat-btn px-5 py-2.5 rounded-xl font-bold text-xs uppercase transition bg-white text-slate-700 hover:bg-slate-100 border border-slate-200" data-i18n="catCentre">Centre-ville</button>
+                <button onclick="filterCategory('standing')" id="cat-standing" class="cat-btn px-5 py-2.5 rounded-xl font-bold text-xs uppercase transition bg-white text-slate-700 hover:bg-slate-100 border border-slate-200" data-i18n="catStanding">Grand Standing / Luxe</button>
+            </div>
+        </div>
+
+        <!-- Grille des Appartements -->
+        <div id="apptGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"></div>
+
+        <!-- Pagination Controls -->
+        <div id="paginationContainer" class="flex items-center justify-center space-x-2 rtl:space-x-reverse"></div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="pourquoi" class="bg-slate-900 text-white py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl font-extrabold mb-4" data-i18n="whyTitle">Pourquoi Réserver avec Nador Stay ?</h2>
+                <p class="text-slate-400" data-i18n="whySub">Nous garantissons votre confort et votre tranquillité durant tout votre séjour.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-slate-800/60 border border-slate-700/80 p-8 rounded-2xl shadow-lg">
+                    <div class="w-14 h-14 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-wifi"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="why1Title">Équipements Modernes</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed" data-i18n="why1Desc">Wi-Fi haut débit fibre, climatisation réversible, TV connectée, cuisine entièrement équipée.</p>
+                </div>
+
+                <div class="bg-slate-800/60 border border-slate-700/80 p-8 rounded-2xl shadow-lg">
+                    <div class="w-14 h-14 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="why2Title">Résidences Sécurisées</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed" data-i18n="why2Desc">Immeubles calmes et sécurisés avec gardiennage 24h/24 et parking souterrain ou surveillé.</p>
+                </div>
+
+                <div class="bg-slate-800/60 border border-slate-700/80 p-8 rounded-2xl shadow-lg">
+                    <div class="w-14 h-14 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-face-smile"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="why3Title">Accueil Personnalisé</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed" data-i18n="why3Desc">Remise des clés rapide à votre arrivée, assistance disponible 7j/7 pour toutes vos demandes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Districts / Location Highlight -->
+    <section id="quartiers" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gradient-to-r from-indigo-950 to-slate-900 rounded-3xl overflow-hidden shadow-2xl text-white grid grid-cols-1 lg:grid-cols-2">
+            <div class="p-8 sm:p-12 flex flex-col justify-center">
+                <span class="text-indigo-400 text-xs font-bold uppercase tracking-wider mb-2" data-i18n="distBadge">Emplacements Stratégiques</span>
+                <h2 class="text-3xl font-extrabold mb-6" data-i18n="distTitle">Vivez au Cœur de Nador ou Face à Mar Chica</h2>
+                <p class="text-slate-300 text-sm leading-relaxed mb-6" data-i18n="distDesc">
+                    Que vous préfériez l'animation de l'avenue Mohammed V, la proximité des commerces et cafés du centre-ville, ou le calme reposant avec vue panoramique sur la lagune de Mar Chica, nous avons l'adresse qu'il vous faut.
+                </p>
+                <ul class="space-y-3 mb-8 text-sm text-slate-200">
+                    <li class="flex items-center space-x-3 rtl:space-x-reverse"><i class="fa-solid fa-circle-check text-indigo-400"></i> <span data-i18n="distPoint1">Proche des restaurants, cafés et supermarchés</span></li>
+                    <li class="flex items-center space-x-3 rtl:space-x-reverse"><i class="fa-solid fa-circle-check text-indigo-400"></i> <span data-i18n="distPoint2">Accès rapide vers l'aéroport Nador Al Aroui (NDB)[cite: 2]</span></li>
+                    <li class="flex items-center space-x-3 rtl:space-x-reverse"><i class="fa-solid fa-circle-check text-indigo-400"></i> <span data-i18n="distPoint3">Idéal familles et MRE en vacances[cite: 2]</span></li>
+                </ul>
+                <div>
+                    <a href="https://wa.me/212600000000?text=Bonjour,%20je%20veux%20connaître%20les%20disponibilités%20des%20appartements." target="_blank" class="inline-flex items-center space-x-2 rtl:space-x-reverse bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-3.5 rounded-xl shadow-lg transition">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                        <span data-i18n="distBtn">Vérifier les disponibilités</span>
+                    </a>
+                </div>
+            </div>
+            <div class="relative min-h-[300px] lg:min-h-full">
+                <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=1000" alt="Nador Apartments" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 lg:bg-gradient-to-r lg:from-slate-900/40"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-slate-950 text-slate-400 pt-16 pb-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+            <div>
+                <div class="flex items-center space-x-3 rtl:space-x-reverse mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white">
+                        <i class="fa-solid fa-building text-lg"></i>
+                    </div>
+                    <span class="text-xl font-extrabold text-white">NADOR <span class="text-indigo-400">STAY</span></span>
+                </div>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6" data-i18n="footerDesc">
+                    Agence spécialisée dans la location d'appartements meublés de standing à Nador. Confort et excellence garantis.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-base mb-4" data-i18n="footerQuartiers">Quartiers Principaux</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><i class="fa-solid fa-angle-right text-indigo-500 text-xs mr-1"></i> Corniche Mar Chica</li>
+                    <li><i class="fa-solid fa-angle-right text-indigo-500 text-xs mr-1"></i> Centre-ville (Av. Mohammed V)</li>
+                    <li><i class="fa-solid fa-angle-right text-indigo-500 text-xs mr-1"></i> Hay Arriad & Ville Nouvelle</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-base mb-4" data-i18n="footerContact">Contact Direct</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><i class="fa-solid fa-phone text-indigo-500 mr-2"></i> +212 6 00 00 00 00</li>
+                    <li><i class="fa-brands fa-whatsapp text-emerald-500 mr-2"></i> +212 6 00 00 00 00 (WhatsApp)</li>
+                    <li><i class="fa-solid fa-envelope text-indigo-500 mr-2"></i> contact@nadorstay.ma</li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-slate-900 text-center text-xs text-slate-500">
+            <p data-i18n="copyright">&copy; 2026 Nador Stay. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative text-slate-800">
+            <button onclick="closeBookingModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600 text-xl font-bold">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="mb-6">
+                <span class="text-xs font-bold text-indigo-600 uppercase bg-indigo-50 px-3 py-1 rounded-full" data-i18n="modalBadge">Réservation Appartement</span>
+                <h3 id="modalApptTitle" class="text-2xl font-black text-slate-900 mt-2">Nom de l'appartement</h3>
+                <p id="modalApptPrice" class="text-indigo-600 font-bold text-lg">500 MAD / nuit</p>
+            </div>
+
+            <form id="bookingForm" onsubmit="submitBooking(event)" class="space-y-4">
+                <input type="hidden" id="apptModelInput">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1" data-i18n="labelFullName">Nom complet</label>
+                    <input type="text" id="clientName" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500" placeholder="Ex. Karim Amrani">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1" data-i18n="labelPhone">Téléphone / WhatsApp</label>
+                        <input type="tel" id="clientPhone" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500" placeholder="+212 6...">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1" data-i18n="labelGuests">Nombre de personnes</label>
+                        <select id="clientGuests" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500">
+                            <option value="1-2 personnes">1 - 2 personnes</option>
+                            <option value="3-4 personnes">3 - 4 personnes</option>
+                            <option value="5+ personnes">5+ personnes / Famille</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1" data-i18n="labelCheckin">Date d'arrivée</label>
+                        <input type="date" id="checkinDate" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1" data-i18n="labelCheckout">Date de départ</label>
+                        <input type="date" id="checkoutDate" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500">
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 rounded-xl shadow-lg shadow-emerald-600/30 transition flex items-center justify-center space-x-2 rtl:space-x-reverse mt-2">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <span data-i18n="btnConfirmWhatsapp">Confirmer et réserver sur WhatsApp</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript App Code avec Menu Responsive et Pagination -->
+    <script>
+        const apptsData = [
+            { id: 1, name: "Appartement Vue Mer Mar Chica", category: "corniche", price: 600, image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80&w=800", rooms: "2 Chambres + Salon", area: "95 m²", wifi: "Fibre Optique", view: "Vue panoramique lagune" },
+            { id: 2, name: "Studio Moderne Centre-ville Nador", category: "centre", price: 350, image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&q=80&w=800", rooms: "1 Chambre + Kitchenette", area: "50 m²", wifi: "Fibre Optique", view: "Proche commerces & cafés" },
+            { id: 3, name: "Duplex de Standing Ville Nouvelle", category: "standing", price: 900, image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800", rooms: "3 Chambres + Grand Salon", area: "140 m²", wifi: "Fibre Optique", view: "Standing luxueux & Garage" },
+            { id: 4, name: "Appartement Cosy Corniche", category: "corniche", price: 500, image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=800", rooms: "2 Chambres + Balcon", area: "80 m²", wifi: "Fibre Optique", view: "À 2 pas de la promenade" },
+            { id: 5, name: "Appartement Familial Hay Arriad", category: "centre", price: 450, image: "https://images.unsplash.com/photo-1502005229762-cf1b4da7c5d6?auto=format&fit=crop&q=80&w=800", rooms: "3 Chambres Lumineuses", area: "110 m²", wifi: "Fibre Optique", view: "Quartier calme & résidentiel" },
+            { id: 6, name: "Penthouse de Luxe Mar Chica", category: "standing", price: 1200, image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800", rooms: "3 Suites + Terrasse géante", area: "180 m²", wifi: "Fibre Optique", view: "Vue imprenable mer & coucher de soleil" },
+            { id: 7, name: "Appartement Prestige Boulevard Mohammed V", category: "centre", price: 550, image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=800", rooms: "2 Chambres + Séjour moderne", area: "85 m²", wifi: "Fibre Optique", view: "En plein cœur de l'animation" },
+            { id: 8, name: "Résidence Les Flamants Rose Corniche", category: "corniche", price: 700, image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800", rooms: "2 Chambres + Terrasse vue mer", area: "100 m²", wifi: "Fibre Optique", view: "Première ligne sur la lagune" },
+            { id: 9, name: "Appartement Standing Arekmane Route", category: "standing", price: 800, image: "https://images.unsplash.com/photo-1502005229762-cf1b4da7c5d6?auto=format&fit=crop&q=80&w=800", rooms: "3 Chambres + Piscine résidence", area: "130 m²", wifi: "Fibre Optique", view: "Calme & Résidentiel haut de gamme" },
+            { id: 10, name: "Studio Exclusif Gare Nador", category: "centre", price: 300, image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&q=80&w=800", rooms: "Studio équipé", area: "40 m²", wifi: "Fibre Optique", view: "Proche transports et commodités" },
+            { id: 11, name: "Appartement Luxe Marina Nador", category: "standing", price: 1100, image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800", rooms: "3 Chambres de standing", area: "150 m²", wifi: "Fibre Optique", view: "Vue directe port de plaisance" },
+            { id: 12, name: "Appartement Vue Lagune Quartier Administratif", category: "corniche", price: 650, image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80&w=800", rooms: "2 Chambres + Salon spacieux", area: "90 m²", wifi: "Fibre Optique", view: "Vue imprenable sur l'eau" }
+        ];
+
+        let currentLang = 'fr';
+        let currentCategory = 'all';
+        let currentPage = 1;
+        const itemsPerPage = 6;
+
+        const translations = {
+            fr: {
+                logoSub: "Appartements Meublés de Standing",
+                navHome: "Accueil",
+                navSimulator: "Simulateur",
+                navAppts: "Nos Appartements",
+                navWhy: "Pourquoi Nous",
+                navDistricts: "Quartiers & Corniche",
+                whatsappBtn: "WhatsApp 24/7",
+                badgeHero: "Corniche Mar Chica • Centre-ville • Vue Mer",
+                heroTitle: "Votre Séjour de Luxe et Confort à Nador",
+                heroSubtitle: "Appartements meublés haut de gamme, entièrement équipés, climatisés avec Wi-Fi haut débit et parking sécurisé pour vos vacances ou séjours d'affaires.",
+                btnSimulator: "Estimer mon budget séjour",
+                btnSeeAppts: "Voir les appartements",
+                simBadge: "Outil Exclusif Nador Stay",
+                simTitle: "Simulateur de Séjour & Estimation en Direct",
+                simSub: "Calculez instantanément le tarif estimé de votre séjour selon vos critères de voyage.",
+                simTypeLabel: "1. Type de Standing / Gamme",
+                simNightsLabel: "2. Nombre de Nuits",
+                simSeasonLabel: "3. Saison / Période",
+                simResultTitle: "Estimation Totale Séjour",
+                simBtnWhatsapp: "Réserver cette simulation sur WhatsApp",
+                catalogTitle: "Nos Appartements Disponibles",
+                catalogSub: "Des logements propres, modernes et idéalement situés dans les meilleurs quartiers de Nador.",
+                catAll: "Tous",
+                catCorniche: "Vue Mer / Corniche",
+                catCentre: "Centre-ville",
+                catStanding: "Grand Standing / Luxe",
+                perNight: "/ nuit",
+                btnBookAppt: "Réserver cet appartement",
+                whyTitle: "Pourquoi Réserver avec Nador Stay ?",
+                whySub: "Nous garantissons votre confort et votre tranquillité durant tout votre séjour.",
+                why1Title: "Équipements Modernes",
+                why1Desc: "Wi-Fi haut débit fibre, climatisation réversible, TV connectée, cuisine entièrement équipée.",
+                why2Title: "Résidences Sécurisées",
+                why2Desc: "Immeubles calmes et sécurisés avec gardiennage 24h/24 et parking souterrain ou surveillé.",
+                why3Title: "Accueil Personnalisé",
+                why3Desc: "Remise des clés rapide à votre arrivée, assistance disponible 7j/7 pour toutes vos demandes.",
+                distBadge: "Emplacements Stratégiques",
+                distTitle: "Vivez au Cœur de Nador ou Face à Mar Chica",
+                distDesc: "Que vous préfériez l'animation de l'avenue Mohammed V, la proximité des commerces et cafés du centre-ville, ou le calme reposant avec vue panoramique sur la lagune de Mar Chica, nous avons l'adresse qu'il vous faut.",
+                distPoint1: "Proche des restaurants, cafés et supermarchés",
+                distPoint2: "Accès rapide vers l'aéroport Nador Al Aroui (NDB)",
+                distPoint3: "Idéal familles et MRE en vacances",
+                distBtn: "Vérifier les disponibilités",
+                footerDesc: "Agence spécialisée dans la location d'appartements meublés de standing à Nador. Confort et excellence garantis.",
+                footerQuartiers: "Quartiers Principaux",
+                footerContact: "Contact Direct",
+                copyright: "© 2026 Nador Stay. Tous droits réservés.",
+                modalBadge: "Réservation Appartement",
+                labelFullName: "Nom complet",
+                labelPhone: "Téléphone / WhatsApp",
+                labelGuests: "Nombre de personnes",
+                labelCheckin: "Date d'arrivée",
+                labelCheckout: "Date de départ",
+                btnConfirmWhatsapp: "Confirmer et réserver sur WhatsApp"
+            },
+            ar: {
+                logoSub: "شقق مفروشة راقية",
+                navHome: "الرئيسية",
+                navSimulator: "المحاكي",
+                navAppts: "شققنا",
+                navWhy: "لماذا نحن",
+                navDistricts: "الأحياء والكورنيش",
+                whatsappBtn: "واتساب 24/7",
+                badgeHero: "كورنيش مارشيكا • وسط المدينة • إطلالة على البحر",
+                heroTitle: "إقامتك الفاخرة والمريحة في الناظور",
+                heroSubtitle: "شقق مفروشة عالية الجودة، مجهزة بالكامل ومكيفة مع إنترنت عالي السرعة وموقف آمن لعطلتك أو زيارتك للعمل.",
+                btnSimulator: "احسب ميزانية إقامتك",
+                btnSeeAppts: "شاهد الشقق",
+                simBadge: "أداة حصرية من ناظور ستاي",
+                simTitle: "محاكي الإقامة والتقدير الفوري",
+                simSub: "احسب السعر التقديري لإقامتك فورياً حسب تفضيلات سفرك.",
+                simTypeLabel: "1. مستوى الشقة / الفئة",
+                simNightsLabel: "2. عدد الليالي",
+                simSeasonLabel: "3. الموسم / الفترة",
+                simResultTitle: "التكلفة التقديرية الإجمالية",
+                simBtnWhatsapp: "احجز هذه المحاكاة عبر واتساب",
+                catalogTitle: "الشقق المتاحة للإيجار",
+                catalogSub: "شقق نظيفة، حديثة وموقعة بأفضل أحياء الناظور.",
+                catAll: "الكل",
+                catCorniche: "إطلالة على البحر / الكورنيش",
+                catCentre: "وسط المدينة",
+                catStanding: "فاخر / راقي",
+                perNight: "/ ليلة",
+                btnBookAppt: "احجز هذه الشقة",
+                whyTitle: "لماذا تحجز مع ناظور ستاي؟",
+                whySub: "نحن نضمن راحتك وطمأنينتك طوال فترة إقامتك.",
+                why1Title: "مرافق حديثة",
+                why1Desc: "إنترنت ألياف ضوئية عالي السرعة، تكييف، تلفاز ذكي ومطبخ مجهز بالكامل.",
+                why2Title: "إقامات محروسة",
+                why2Desc: "عمارات هادئة وآمنة مع حراسة على مدار الساعة وموقف سيارات.",
+                why3Title: "استقبال شخصي",
+                why3Desc: "تسليم سريع للمفاتيح عند الوصول ودعم متاح 7 أيام في الأسبوع.",
+                distBadge: "مواقع استراتيجية",
+                distTitle: "عش في قلب الناظور أو أمام مارشيكا",
+                distDesc: "سواء كنت تفضل حيوية شارع محمد الخامس، القرب من المقاهي والمتاجر، أو الهدوء بإطلالة بانورامية على بحيرة مارشيكا، فلدينا العنوان المناسب لك.",
+                distPoint1: "قريب من المطاعم، المقاهي والمحلات التجارية",
+                distPoint2: "وصول سريع إلى مطار الناظور العروي",
+                distPoint3: "مثالي للعائلات ومغاربة العالم",
+                distBtn: "التحقق من التوفر",
+                footerDesc: "وكالة متخصصة في تأجير الشقق المفروشة الراقية في الناظور. الراحة والجودة مضمونة.",
+                footerQuartiers: "الأحياء الرئيسية",
+                footerContact: "اتصال مباشر",
+                copyright: "© 2026 Nador Stay. جميع الحقوق محفوظة.",
+                modalBadge: "حجز شقة",
+                labelFullName: "الاسم الكامل",
+                labelPhone: "الهاتف / واتساب",
+                labelGuests: "عدد الأشخاص",
+                labelCheckin: "تاريخ الوصول",
+                labelCheckout: "تاريخ المغادرة",
+                btnConfirmWhatsapp: "تأكيد والحجز عبر واتساب"
+            },
+            en: {
+                logoSub: "Luxury Furnished Apartments",
+                navHome: "Home",
+                navSimulator: "Simulator",
+                navAppts: "Our Apartments",
+                navWhy: "Why Us",
+                navDistricts: "Districts & Corniche",
+                whatsappBtn: "WhatsApp 24/7",
+                badgeHero: "Mar Chica Corniche • City Center • Sea View",
+                heroTitle: "Your Luxury & Comfortable Stay in Nador",
+                heroSubtitle: "High-end furnished apartments, fully equipped, air-conditioned with high-speed Wi-Fi and secure parking for your holidays or business trips.",
+                btnSimulator: "Estimate my stay budget",
+                btnSeeAppts: "View apartments",
+                simBadge: "Nador Stay Exclusive Tool",
+                simTitle: "Stay Simulator & Direct Estimation",
+                simSub: "Instantly calculate the estimated price of your stay based on your travel criteria.",
+                simTypeLabel: "1. Standing / Apartment Type",
+                simNightsLabel: "2. Number of Nights",
+                simSeasonLabel: "3. Season / Period",
+                simResultTitle: "Total Estimated Stay",
+                simBtnWhatsapp: "Book this simulation on WhatsApp",
+                catalogTitle: "Available Apartments",
+                catalogSub: "Clean, modern, and ideally located accommodations in the best neighborhoods of Nador.",
+                catAll: "All",
+                catCorniche: "Sea View / Corniche",
+                catCentre: "City Center",
+                catStanding: "Luxury / High Standing",
+                perNight: "/ night",
+                btnBookAppt: "Book This Apartment",
+                whyTitle: "Why Book With Nador Stay?",
+                whySub: "We guarantee your comfort and peace of mind throughout your stay.",
+                why1Title: "Modern Amenities",
+                why1Desc: "High-speed fiber Wi-Fi, reverse cycle AC, smart TV, fully equipped kitchen.",
+                why2Title: "Secure Residences",
+                why2Desc: "Quiet and secure buildings with 24/7 security and parking.",
+                why3Title: "Personalized Welcome",
+                why3Desc: "Quick key handover upon arrival, support available 7/7 for all your requests.",
+                distBadge: "Strategic Locations",
+                distTitle: "Live in the Heart of Nador or Facing Mar Chica",
+                distDesc: "Whether you prefer the buzz of Mohammed V Avenue or the relaxing panoramic view of the Mar Chica lagoon, we have the right address for you.",
+                distPoint1: "Close to restaurants, cafes, and supermarkets",
+                distPoint2: "Quick access to Nador Al Aroui Airport (NDB)",
+                distPoint3: "Ideal for families and expats",
+                distBtn: "Check Availability",
+                footerDesc: "Specialized agency for luxury furnished apartment rentals in Nador. Comfort and excellence guaranteed.",
+                footerQuartiers: "Main Districts",
+                footerContact: "Direct Contact",
+                copyright: "© 2026 Nador Stay. All rights reserved.",
+                modalBadge: "Apartment Booking",
+                labelFullName: "Full Name",
+                labelPhone: "Phone / WhatsApp",
+                labelGuests: "Number of Guests",
+                labelCheckin: "Check-in Date",
+                labelCheckout: "Check-out Date",
+                btnConfirmWhatsapp: "Confirm & Book on WhatsApp"
+            },
+            es: {
+                logoSub: "Apartamentos Amueblados de Standing",
+                navHome: "Inicio",
+                navSimulator: "Simulador",
+                navAppts: "Nuestros Appartamentos",
+                navWhy: "Por Qué Elegirnos",
+                navDistricts: "Zonas y Cornisa",
+                whatsappBtn: "WhatsApp 24/7",
+                badgeHero: "Cornisa Mar Chica • Centro • Vista al Mar",
+                heroTitle: "Su Estancia de Lujo y Confort en Nador",
+                heroSubtitle: "Apartamentos amueblados de alta gama, totalmente equipados, con aire acondicionado, Wi-Fi de alta velocidad y parking seguro.",
+                btnSimulator: "Estimar presupuesto",
+                btnSeeAppts: "Ver apartamentos",
+                simBadge: "Herramienta Exclusiva Nador Stay",
+                simTitle: "Simulador de Estancia y Estimación Directa",
+                simSub: "Calcule instantáneamente el precio estimado de su estancia según sus criterios.",
+                simTypeLabel: "1. Tipo de Apartamento / Standing",
+                simNightsLabel: "2. Número de Noches",
+                simSeasonLabel: "3. Temporada / Periodo",
+                simResultTitle: "Estimación Total Estancia",
+                simBtnWhatsapp: "Reservar esta simulación por WhatsApp",
+                catalogTitle: "Apartamentos Disponibles",
+                catalogSub: "Alojamientos limpios, modernos y excelentemente situados en los mejores barrios de Nador.",
+                catAll: "Todos",
+                catCorniche: "Vista al Mar / Cornisa",
+                catCentre: "Centro de Nador",
+                catStanding: "Lujo / Gran Standing",
+                perNight: "/ noche",
+                btnBookAppt: "Reservar apartamento",
+                whyTitle: "¿Por qué reservar con Nador Stay?",
+                whySub: "Garantizamos su comodidad y tranquilidad durante toda su estancia.",
+                why1Title: "Comodidades Modernas",
+                why1Desc: "Wi-Fi de fibra óptica, aire acondicionado, smart TV y cocina totalmente equipada.",
+                why2Title: "Residencias Seguras",
+                why2Desc: "Edificios tranquilos y seguros con vigilancia 24/7 y aparcamiento.",
+                why3Title: "Bienvenida Personalizada",
+                why3Desc: "Entrega rápida de llaves y soporte disponible 7/7 para cualquier necesidad.",
+                distBadge: "Ubicaciones Estratégicas",
+                distTitle: "Viva en el Corazón de Nador o Frente a Mar Chica",
+                distDesc: "Ya sea que prefiera la animación de la Avenida Mohammed V o las vistas panorámicas a la laguna de Mar Chica, tenemos el lugar perfecto para usted.",
+                distPoint1: "Cerca de restaurantes, cafeterías y supermercados",
+                distPoint2: "Acceso rápido al Aeropuerto Nador Al Aroui",
+                distPoint3: "Ideal para familias y viajeros",
+                distBtn: "Ver disponibilidad",
+                footerDesc: "Agencia especializada en el alquiler de apartamentos amueblados de standing en Nador.",
+                footerQuartiers: "Zonas Principales",
+                footerContact: "Contacto Directo",
+                copyright: "© 2026 Nador Stay. Todos los derechos reservados.",
+                modalBadge: "Reserva de Apartamento",
+                labelFullName: "Nombre completo",
+                labelPhone: "Teléfono / WhatsApp",
+                labelGuests: "Número de huéspedes",
+                labelCheckin: "Fecha de llegada",
+                labelCheckout: "Fecha de salida",
+                btnConfirmWhatsapp: "Confirmar y reservar por WhatsApp"
+            }
+        };
+
+        // Gestion du Menu Burger Mobile
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.className = "fa-solid fa-bars";
+            } else {
+                icon.className = "fa-solid fa-xmark";
+            }
+        }
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            const htmlTag = document.documentElement;
+            htmlTag.setAttribute('lang', lang);
+            if (lang === 'ar') {
+                htmlTag.setAttribute('dir', 'rtl');
+            } else {
+                htmlTag.setAttribute('dir', 'ltr');
+            }
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            renderAppts();
+            calculateBudget();
+        }
+
+        function calculateBudget() {
+            const pricePerNight = parseFloat(document.getElementById('simType').value);
+            const nights = parseInt(document.getElementById('simNights').value) || 1;
+            const seasonMultiplier = parseFloat(document.getElementById('simSeason').value);
+
+            const total = Math.round(pricePerNight * nights * seasonMultiplier);
+            document.getElementById('simTotalAmount').textContent = total.toLocaleString() + " MAD";
+        }
+
+        function bookFromSimulator() {
+            const typeSelect = document.getElementById('simType');
+            const typeText = typeSelect.options[typeSelect.selectedIndex].text;
+            const nights = document.getElementById('simNights').value;
+            const total = document.getElementById('simTotalAmount').textContent;
+
+            const text = `Bonjour Nador Stay, suite au simulateur en ligne, je souhaite réserver :%0a- Type : *${typeText}*%0a- Durée : *${nights} nuit(s)*%0a- Budget estimé : *${total}*%0aMerci de me confirmer la disponibilité.`;
+
+            window.open(`https://wa.me/212600000000?text=${text}`, '_blank');
+        }
+
+        // Filtrage par catégorie
+        function filterCategory(category) {
+            currentCategory = category;
+            currentPage = 1; // Réinitialiser à la première page
+
+            // Style des boutons de filtre
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.className = "cat-btn px-5 py-2.5 rounded-xl font-bold text-xs uppercase transition bg-white text-slate-700 hover:bg-slate-100 border border-slate-200";
+            });
+            document.getElementById('cat-' + category).className = "cat-btn px-5 py-2.5 rounded-xl font-bold text-xs uppercase transition bg-indigo-600 text-white shadow-md";
+
+            renderAppts();
+        }
+
+        // Rendu des appartements avec pagination
+        function renderAppts() {
+            const grid = document.getElementById('apptGrid');
+            const paginationContainer = document.getElementById('paginationContainer');
+            grid.innerHTML = '';
+            paginationContainer.innerHTML = '';
+
+            const filtered = currentCategory === 'all' 
+                ? apptsData 
+                : apptsData.filter(a => a.category === currentCategory);
+
+            const totalPages = Math.ceil(filtered.length / itemsPerPage);
+            if (currentPage > totalPages && totalPages > 0) {
+                currentPage = totalPages;
+            }
+
+            const start = (currentPage - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const paginatedItems = filtered.slice(start, end);
+
+            paginatedItems.forEach(appt => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between";
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="relative h-56 overflow-hidden bg-slate-100">
+                            <img src="${appt.image}" alt="${appt.name}" class="w-full h-full object-cover transform hover:scale-105 transition duration-500">
+                            <span class="absolute top-4 left-4 rtl:left-auto rtl:right-4 bg-slate-900/80 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-lg uppercase">
+                                ${appt.category}
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">${appt.name}</h3>
+                            <div class="grid grid-cols-2 gap-2 text-xs text-slate-600 mb-6 pb-4 border-b border-slate-100">
+                                <div><i class="fa-solid fa-bed mr-1 text-indigo-600"></i> ${appt.rooms}</div>
+                                <div><i class="fa-solid fa-ruler-combined mr-1 text-indigo-600"></i> ${appt.area}</div>
+                                <div><i class="fa-solid fa-wifi mr-1 text-indigo-600"></i> ${appt.wifi}</div>
+                                <div><i class="fa-solid fa-mountain-sun mr-1 text-indigo-600"></i> ${appt.view}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center justify-between">
+                        <div>
+                            <span class="text-2xl font-black text-indigo-600">${appt.price} MAD</span>
+                            <span class="text-xs text-slate-400 font-medium">${translations[currentLang].perNight}</span>
+                        </div>
+                        <button onclick="openBookingModal('${appt.name}', ${appt.price})" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs px-4 py-3 rounded-xl shadow-md transition">
+                            ${translations[currentLang].btnBookAppt}
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            // Génération de la pagination
+            if (totalPages > 1) {
+                for (let i = 1; i <= totalPages; i++) {
+                    const pageBtn = document.createElement('button');
+                    pageBtn.textContent = i;
+                    pageBtn.className = i === currentPage 
+                        ? "w-10 h-10 rounded-xl bg-indigo-600 text-white font-bold text-sm shadow-md transition" 
+                        : "w-10 h-10 rounded-xl bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 font-bold text-sm transition";
+                    pageBtn.onclick = () => {
+                        currentPage = i;
+                        renderAppts();
+                        document.getElementById('appartements').scrollIntoView({ behavior: 'smooth' });
+                    };
+                    paginationContainer.appendChild(pageBtn);
+                }
+            }
+        }
+
+        function openBookingModal(name, price) {
+            document.getElementById('apptModelInput').value = name;
+            document.getElementById('modalApptTitle').textContent = name;
+            document.getElementById('modalApptPrice').textContent = price + " MAD / " + (currentLang === 'ar' ? 'ليلة' : currentLang === 'es' ? 'noche' : currentLang === 'en' ? 'night' : 'nuit');
+            document.getElementById('bookingModal').classList.remove('hidden');
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.add('hidden');
+        }
+
+        function submitBooking(e) {
+            e.preventDefault();
+            const appt = document.getElementById('apptModelInput').value;
+            const name = document.getElementById('clientName').value;
+            const phone = document.getElementById('clientPhone').value;
+            const guests = document.getElementById('clientGuests').value;
+            const checkin = document.getElementById('checkinDate').value;
+            const checkout = document.getElementById('checkoutDate').value;
+
+            const text = `Bonjour Nador Stay, je souhaite réserver un appartement :%0a- Logement : *${appt}*%0a- Nom : *${name}*%0a- Téléphone : *${phone}*%0a- Voyageurs : *${guests}*%0a- Du : *${checkin}* Au : *${checkout}*`;
+
+            window.open(`https://wa.me/212600000000?text=${text}`, '_blank');
+            closeBookingModal();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAppts();
+            calculateBudget();
+        });
+    </script>
+</body>
+</html>

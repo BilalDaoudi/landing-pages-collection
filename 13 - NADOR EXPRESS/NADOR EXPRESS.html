@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nador Express | Service de Livraison Rapide à Nador & Environs</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            900: '#064e3b',
+                        },
+                        dark: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        arabic: ['Cairo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        [dir="rtl"] body {
+            font-family: 'Cairo', sans-serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(6, 78, 59, 0.92) 0%, rgba(15, 23, 42, 0.95) 100%), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-emerald-500 selection:text-white">
+
+    <!-- Top Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-emerald-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white shadow-md shadow-emerald-500/30">
+                    <i class="fa-solid fa-truck-fast text-2xl"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold text-slate-900 tracking-wide" data-i18n="logoTitle">NADOR <span class="text-emerald-600">EXPRESS</span></span>
+                    <span class="block text-xs text-slate-500 font-medium" data-i18n="logoSub">Livraison & Messagerie</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-8 rtl:space-x-reverse text-sm font-semibold text-slate-600">
+                <a href="#accueil" class="hover:text-emerald-600 transition" data-i18n="navHome">Accueil</a>
+                <a href="#tarifs" class="hover:text-emerald-600 transition" data-i18n="navCalculator">Simulateur & Tarifs</a>
+                <a href="#zones" class="hover:text-emerald-600 transition" data-i18n="navZones">Zones Desservies</a>
+                <a href="#services" class="hover:text-emerald-600 transition" data-i18n="navServices">Nos Services</a>
+                <a href="#contact" class="hover:text-emerald-600 transition" data-i18n="navContact">Contact</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                <!-- Language Selector -->
+                <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-100 text-slate-800 text-xs font-bold px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-emerald-500 cursor-pointer">
+                    <option value="fr">🇫🇷 FR</option>
+                    <option value="ar">🇲🇦 AR</option>
+                    <option value="en">🇬🇧 EN</option>
+                    <option value="es">🇪🇸 ES</option>
+                </select>
+
+                <!-- WhatsApp Quick CTA -->
+                <a href="https://wa.me/212600000000?text=Bonjour,%20je%20souhaite%20expédier%20un%20colis%20à%20Nador." target="_blank" class="hidden sm:inline-flex items-center space-x-2 rtl:space-x-reverse bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-lg shadow-emerald-600/30 transition transform hover:-translate-y-0.5">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span data-i18n="whatsappBtn">WhatsApp 24/7</span>
+                </a>
+
+                <!-- Mobile Menu Toggle Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden w-11 h-11 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl flex items-center justify-center transition-colors focus:outline-none" aria-label="Menu mobile">
+                    <i id="mobileMenuIcon" class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown Panel -->
+        <div id="mobileMenuPanel" class="hidden md:hidden bg-white border-b border-slate-200 px-6 py-6 space-y-4 shadow-xl transition-all duration-300">
+            <a href="#accueil" onclick="toggleMobileMenu()" class="block text-slate-700 hover:text-emerald-600 font-semibold text-sm py-1" data-i18n="navHome">Accueil</a>
+            <a href="#tarifs" onclick="toggleMobileMenu()" class="block text-slate-700 hover:text-emerald-600 font-semibold text-sm py-1" data-i18n="navCalculator">Simulateur & Tarifs</a>
+            <a href="#zones" onclick="toggleMobileMenu()" class="block text-slate-700 hover:text-emerald-600 font-semibold text-sm py-1" data-i18n="navZones">Zones Desservies</a>
+            <a href="#services" onclick="toggleMobileMenu()" class="block text-slate-700 hover:text-emerald-600 font-semibold text-sm py-1" data-i18n="navServices">Nos Services</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block text-slate-700 hover:text-emerald-600 font-semibold text-sm py-1" data-i18n="navContact">Contact</a>
+            
+            <div class="pt-2 border-t border-slate-100">
+                <a href="https://wa.me/212600000000?text=Bonjour,%20je%20souhaite%20expédier%20un%20colis%20à%20Nador." target="_blank" class="w-full inline-flex items-center justify-center space-x-2 rtl:space-x-reverse bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-4 py-3 rounded-xl shadow-md transition">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span data-i18n="whatsappBtn">WhatsApp 24/7</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero-gradient min-h-[85vh] flex items-center justify-center text-white px-4 py-20 text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto z-10">
+            <span class="inline-flex items-center space-x-2 rtl:space-x-reverse bg-emerald-600/30 border border-emerald-500/50 text-emerald-200 text-xs font-bold px-4 py-1.5 rounded-full mb-6 uppercase tracking-wider">
+                <i class="fa-solid fa-bolt text-amber-400"></i>
+                <span data-i18n="badgeHero">Livraison Express • Nador & Périphérie</span>
+            </span>
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6 leading-tight" data-i18n="heroTitle">
+                Expédiez Vos Colis en Toute Rapidité à Nador
+            </h1>
+            <p class="text-lg sm:text-xl text-slate-200 max-w-2xl mx-auto mb-10" data-i18n="heroSubtitle">
+                Service de livraison express pour e-commerce, particuliers et entreprises. Collecte à domicile et livraison sécurisée à Nador, Beni Ansar, Selouane et environs.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#tarifs" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-emerald-600/40 transition transform hover:-translate-y-1 text-center" data-i18n="btnCalc">
+                    Estimer ma livraison
+                </a>
+                <a href="https://wa.me/212600000000?text=Bonjour,%20je%20veux%20commander%20une%20course%20urgente." target="_blank" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white font-bold px-8 py-4 rounded-xl border border-white/20 transition transform hover:-translate-y-1 text-center flex items-center justify-center space-x-2 rtl:space-x-reverse">
+                    <i class="fa-brands fa-whatsapp text-emerald-400 text-xl"></i>
+                    <span data-i18n="btnWhatsApp">Commander par WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delivery Calculator Section -->
+    <section id="tarifs" class="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-3xl shadow-xl border border-slate-200 p-8 sm:p-12">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-2" data-i18n="calcTitle">Simulateur & Estimation de Livraison</h2>
+                <p class="text-slate-600 text-sm" data-i18n="calcSub">Calculez instantanément le tarif de votre course ou colis selon la zone de destination.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-2" data-i18n="labelZone">Zone de Destination</label>
+                        <select id="calcZone" onchange="calculatePrice()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-emerald-500 font-semibold cursor-pointer">
+                            <option value="30" data-i18n="zoneCenter">Nador Centre-ville & Corniche (30 MAD)</option>
+                            <option value="40" data-i18n="zoneBeni">Beni Ansar / Farhana (40 MAD)</option>
+                            <option value="45" data-i18n="zoneSelouane">Selouane / Université (45 MAD)</option>
+                            <option value="60" data-i18n="zoneArekmane">Bouarg / Kariat Arekmane (60 MAD)</option>
+                            <option value="70" data-i18n="zoneAroui">Aéroport Nador Al Aroui (70 MAD)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-2" data-i18n="labelType">Type d'Envoi</label>
+                        <select id="calcType" onchange="calculatePrice()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-emerald-500 font-semibold cursor-pointer">
+                            <option value="0" data-i18n="typeColis">Colis Standard / E-commerce</option>
+                            <option value="15" data-i18n="typeFragile">Colis Fragile / Document (+15 MAD)</option>
+                            <option value="25" data-i18n="typeExpress">Course Urgente / Express (< 2h)</option>
+                        </select>
+                    </div>
+
+                    <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-emerald-800 font-bold uppercase block" data-i18n="estTotal">Tarif Estimé :</span>
+                            <span id="priceDisplay" class="text-3xl font-black text-emerald-700">30 MAD</span>
+                        </div>
+                        <span class="text-xs bg-emerald-600 text-white font-bold px-3 py-1.5 rounded-lg" data-i18n="estTime">⏱️ Délai : 1h - 3h</span>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 text-white rounded-2xl p-8 flex flex-col justify-between h-full">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4" data-i18n="boxInfoTitle">Détails de l'Expédition</h3>
+                        <ul class="space-y-3 text-sm text-slate-300 mb-6">
+                            <li class="flex items-center space-x-2 rtl:space-x-reverse"><i class="fa-solid fa-check text-emerald-400"></i> <span data-i18n="info1">Ramassage gratuit chez vous ou au magasin</span></li>
+                            <li class="flex items-center space-x-2 rtl:space-x-reverse"><i class="fa-solid fa-check text-emerald-400"></i> <span data-i18n="info2">Paiement à la livraison (Cash on Delivery)</span></li>
+                            <li class="flex items-center space-x-2 rtl:space-x-reverse"><i class="fa-solid fa-check text-emerald-400"></i> <span data-i18n="info3">Suivi en temps réel par téléphone ou WhatsApp</span></li>
+                        </ul>
+                    </div>
+                    <button onclick="bookDelivery()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 rounded-xl shadow-lg transition flex items-center justify-center space-x-2 rtl:space-x-reverse">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                        <span data-i18n="btnBookDelivery">Réserver cette course sur WhatsApp</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Zones Section -->
+    <section id="zones" class="py-20 bg-slate-100 border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-4" data-i18n="zonesTitle">Zones Desservies à Nador & Alentours</h2>
+                <p class="text-slate-600 text-sm" data-i18n="zonesSub">Nous couvrons l'ensemble de la province de Nador avec une rapidité exemplaire.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl mb-4 font-bold">1</div>
+                    <h3 class="text-xl font-bold mb-2 text-slate-900" data-i18n="zoneTitle1">Nador Centre & Corniche</h3>
+                    <p class="text-slate-600 text-sm mb-4" data-i18n="zoneDesc1">Ville Nouvelle, Hay Arriad, Taheddart, Quartier Administratif et Corniche Mar Chica.</p>
+                    <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">⏱️ 30 min - 1h</span>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl mb-4 font-bold">2</div>
+                    <h3 class="text-xl font-bold mb-2 text-slate-900" data-i18n="zoneTitle2">Beni Ansar & Selouane</h3>
+                    <p class="text-slate-600 text-sm mb-4" data-i18n="zoneDesc2">Beni Ansar, frontière Melilla, Selouane et zone universitaire Pluridisciplinaire.</p>
+                    <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">⏱️ 1h - 2h</span>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl mb-4 font-bold">3</div>
+                    <h3 class="text-xl font-bold mb-2 text-slate-900" data-i18n="zoneTitle3">Arekmane & Aéroport</h3>
+                    <p class="text-slate-600 text-sm mb-4" data-i18n="zoneDesc3">Kariat Arekmane, Bouarg, Zaio et l'Aéroport Nador Al Aroui (NDB).</p>
+                    <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">⏱️ 1h30 - 3h</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2 class="text-3xl font-extrabold text-slate-900 mb-4" data-i18n="servTitle">Nos Solutions de Livraison</h2>
+            <p class="text-slate-600 text-sm" data-i18n="servSub">Des services adaptés aux particuliers, aux boutiques en ligne et aux entreprises locales.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm">
+                <div class="w-14 h-14 rounded-xl bg-emerald-600/10 text-emerald-600 flex items-center justify-center text-2xl mb-6">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3" data-i18n="s1Title">E-commerce & Boutiques</h3>
+                <p class="text-slate-600 text-sm leading-relaxed" data-i18n="s1Desc">Gestion de stock, ramassage quotidien chez vous, livraison aux clients et reversement rapide des fonds (COD).</p>
+            </div>
+
+            <div class="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm">
+                <div class="w-14 h-14 rounded-xl bg-emerald-600/10 text-emerald-600 flex items-center justify-center text-2xl mb-6">
+                    <i class="fa-solid fa-box-open"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3" data-i18n="s2Title">Colis & Particuliers</h3>
+                <p class="text-slate-600 text-sm leading-relaxed" data-i18n="s2Desc">Envoi de documents administratifs, cadeaux, clés ou colis personnels d'un point à un autre à Nador.</p>
+            </div>
+
+            <div class="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm">
+                <div class="w-14 h-14 rounded-xl bg-emerald-600/10 text-emerald-600 flex items-center justify-center text-2xl mb-6">
+                    <i class="fa-solid fa-utensils"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3" data-i18n="s3Title">Courses Urgentes & Restauration</h3>
+                <p class="text-slate-600 text-sm leading-relaxed" data-i18n="s3Desc">Service de livraison dédié pour les restaurants, pharmacies, boulangeries et courses express de dernière minute.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-slate-950 text-slate-400 pt-16 pb-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+            <div>
+                <div class="flex items-center space-x-3 rtl:space-x-reverse mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white">
+                        <i class="fa-solid fa-truck-fast text-lg"></i>
+                    </div>
+                    <span class="text-xl font-extrabold text-white">NADOR <span class="text-emerald-500">EXPRESS</span></span>
+                </div>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6" data-i18n="footerDesc">
+                    Votre partenaire de confiance pour la livraison rapide et sécurisée à Nador et ses environs.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-base mb-4" data-i18n="footerZones">Zones Principales</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><i class="fa-solid fa-angle-right text-emerald-500 text-xs mr-1"></i> Nador Centre & Corniche</li>
+                    <li><i class="fa-solid fa-angle-right text-emerald-500 text-xs mr-1"></i> Beni Ansar & Selouane</li>
+                    <li><i class="fa-solid fa-angle-right text-emerald-500 text-xs mr-1"></i> Arekmane & Aéroport NDB</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-base mb-4" data-i18n="footerContact">Contact Direct</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><i class="fa-solid fa-phone text-emerald-500 mr-2"></i> +212 6 00 00 00 00</li>
+                    <li><i class="fa-brands fa-whatsapp text-emerald-500 mr-2"></i> +212 6 00 00 00 00 (WhatsApp)</li>
+                    <li><i class="fa-solid fa-location-dot text-emerald-500 mr-2"></i> Avenue Mohammed V, Nador</li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-slate-900 text-center text-xs text-slate-500">
+            <p data-i18n="copyright">&copy; 2026 Nador Express. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript App Code -->
+    <script>
+        let currentLang = 'fr';
+
+        const translations = {
+            fr: {
+                logoSub: "Livraison & Messagerie",
+                navHome: "Accueil",
+                navCalculator: "Simulateur & Tarifs",
+                navZones: "Zones Desservies",
+                navServices: "Nos Services",
+                navContact: "Contact",
+                whatsappBtn: "WhatsApp 24/7",
+                badgeHero: "Livraison Express • Nador & Périphérie",
+                heroTitle: "Expédiez Vos Colis en Toute Rapidité à Nador",
+                heroSubtitle: "Service de livraison express pour e-commerce, particuliers et entreprises. Collecte à domicile et livraison sécurisée à Nador, Beni Ansar, Selouane et environs.",
+                btnCalc: "Estimer ma livraison",
+                btnWhatsApp: "Commander par WhatsApp",
+                calcTitle: "Simulateur & Estimation de Livraison",
+                calcSub: "Calculez instantanément le tarif de votre course ou colis selon la zone de destination.",
+                labelZone: "Zone de Destination",
+                zoneCenter: "Nador Centre-ville & Corniche (30 MAD)",
+                zoneBeni: "Beni Ansar / Farhana (40 MAD)",
+                zoneSelouane: "Selouane / Université (45 MAD)",
+                zoneArekmane: "Bouarg / Kariat Arekmane (60 MAD)",
+                zoneAroui: "Aéroport Nador Al Aroui (70 MAD)",
+                labelType: "Type d'Envoi",
+                typeColis: "Colis Standard / E-commerce",
+                typeFragile: "Colis Fragile / Document (+15 MAD)",
+                typeExpress: "Course Urgente / Express (< 2h)",
+                estTotal: "Tarif Estimé :",
+                estTime: "⏱️ Délai : 1h - 3h",
+                boxInfoTitle: "Détails de l'Expédition",
+                info1: "Ramassage gratuit chez vous ou au magasin",
+                info2: "Paiement à la livraison (Cash on Delivery)",
+                info3: "Suivi en temps réel par téléphone ou WhatsApp",
+                btnBookDelivery: "Réserver cette course sur WhatsApp",
+                zonesTitle: "Zones Desservies à Nador & Alentours",
+                zonesSub: "Nous couvrons l'ensemble de la province de Nador avec une rapidité exemplaire.",
+                zoneTitle1: "Nador Centre & Corniche",
+                zoneDesc1: "Ville Nouvelle, Hay Arriad, Taheddart, Quartier Administratif et Corniche Mar Chica.",
+                zoneTitle2: "Beni Ansar & Selouane",
+                zoneDesc2: "Beni Ansar, frontière Melilla, Selouane et zone universitaire Pluridisciplinaire.",
+                zoneTitle3: "Arekmane & Aéroport",
+                zoneDesc3: "Kariat Arekmane, Bouarg, Zaio et l'Aéroport Nador Al Aroui (NDB).",
+                servTitle: "Nos Solutions de Livraison",
+                servSub: "Des services adaptés aux particuliers, aux boutiques en ligne et aux entreprises locales.",
+                s1Title: "E-commerce & Boutiques",
+                s1Desc: "Gestion de stock, ramassage quotidien chez vous, livraison aux clients et reversement rapide des fonds (COD).",
+                s2Title: "Colis & Particuliers",
+                s2Desc: "Envoi de documents administratifs, cadeaux, clés ou colis personnels d'un point à un autre à Nador.",
+                s3Title: "Courses Urgentes & Restauration",
+                s3Desc: "Service de livraison dédié pour les restaurants, pharmacies, boulangeries et courses express de dernière minute.",
+                footerDesc: "Votre partenaire de confiance pour la livraison rapide et sécurisée à Nador et ses environs.",
+                footerZones: "Zones Principales",
+                footerContact: "Contact Direct",
+                copyright: "© 2026 Nador Express. Tous droits réservés."
+            },
+            ar: {
+                logoSub: "التوصيل والبريد السريع",
+                navHome: "الرئيسية",
+                navCalculator: "حاسبة الأسعار",
+                navZones: "المناطق المغطاة",
+                navServices: "خدماتنا",
+                navContact: "اتصل بنا",
+                whatsappBtn: "واتساب 24/7",
+                badgeHero: "توصيل سريع • الناظور والنواحي",
+                heroTitle: "اشحن طردك بكل سرعة وثقة في الناظور",
+                heroSubtitle: "خدمة توصيل سريعة للتجارة الإلكترونية، الأفراد والشركات. استلام من الباب وتوصيل آمن في الناظور، بني انصار، سلوان والنواحي.",
+                btnCalc: "احسب تكلفة التوصيل",
+                btnWhatsApp: "اطلب عبر واتساب",
+                calcTitle: "حاسبة وتقدير تكلفة التوصيل",
+                calcSub: "احسب فوراً ثمن الشحن أو التوصيل حسب وجهة التسليم.",
+                labelZone: "منطقة الوصول",
+                zoneCenter: "وسط مدينة الناظور والكورنيش (30 درهم)",
+                zoneBeni: "بني انصار / فرخانة (40 درهم)",
+                zoneSelouane: "سلوان / الحي الجامعي (45 درهم)",
+                zoneArekmane: "بوعرارة / كاريط أركمان (60 درهم)",
+                zoneAroui: "مطار الناظور العروي (70 درهم)",
+                labelType: "نوع الشحنة",
+                typeColis: "طرد عادي / تجارة إلكترونية",
+                typeFragile: "طرد قابل للكسر / وثائق (+15 درهم)",
+                typeExpress: "طلب عاجل / سريع (أقل من ساعتين)",
+                estTotal: "التكلفة التقديرية:",
+                estTime: "⏱️ الوقت الإضافي: 1h - 3h",
+                boxInfoTitle: "تفاصيل الشحن",
+                info1: "استلام مجاني من منزلك أو محلك",
+                info2: "الدفع عند الاستلام (Cash on Delivery)",
+                info3: "تتبع مباشر عبر الهاتف أو الواتساب",
+                btnBookDelivery: "احجز هذه الطلبية عبر واتساب",
+                zonesTitle: "المناطق المغطاة في الناظور والنواحي",
+                zonesSub: "نغطي إقليم الناظور بأكمله بسرعة وكفاءة عالية.",
+                zoneTitle1: "وسط الناظور والكورنيش",
+                zoneDesc1: "المدينة الجديدة، حي العري وراة، تاهدارت، الحي الإداري وكورنيش مارشيكا.",
+                zoneTitle2: "بني انصار وسلوان",
+                zoneDesc2: "بني انصار، المعبر الحدودي مليلية، سلوان والحي الجامعي متعدد التخصصات.",
+                zoneTitle3: "أركمان والمطار",
+                zoneDesc3: "كاريط أركمان، بوأرغ، زايو ومطار الناظور العروي (NDB).",
+                servTitle: "حلول التوصيل لدينا",
+                servSub: "خدمات مخصصة للأفراد، المتاجر الإلكترونية والشركات المحلية.",
+                s1Title: "التجارة الإلكترونية والمتاجر",
+                s1Desc: "إدارة المخزون، الاستلام اليومي من متجرك، التوصيل للزبائن وتحويل الأموال بسرعة.",
+                s2Title: "الطرود والأفراد",
+                s2Desc: "إرسال المستندات الإدارية، الهدايا، المفاتيح أو الطرود الشخصية بين مختلف أحياء الناظور.",
+                s3Title: "الطلبات العاجلة والمطاعم",
+                s3Desc: "خدمة توصيل مخصصة للمطاعم، الصيدليات، المخابز والطلبات المستعجلة.",
+                footerDesc: "شريكك الموثوق للتوصيل السريع والآمن في الناظور وما حولها.",
+                footerZones: "المناطق الرئيسية",
+                footerContact: "اتصال مباشر",
+                copyright: "© 2026 Nador Express. جميع الحقوق محفوظة."
+            },
+            en: {
+                logoSub: "Delivery & Courier",
+                navHome: "Home",
+                navCalculator: "Simulator & Rates",
+                navZones: "Delivery Zones",
+                navServices: "Our Services",
+                navContact: "Contact",
+                whatsappBtn: "WhatsApp 24/7",
+                badgeHero: "Express Delivery • Nador & Suburbs",
+                heroTitle: "Ship Your Packages Fast in Nador",
+                heroSubtitle: "Express delivery service for e-commerce, individuals, and businesses. Home pickup and secure delivery in Nador, Beni Ansar, Selouane, and surroundings.",
+                btnCalc: "Estimate Delivery",
+                btnWhatsApp: "Order via WhatsApp",
+                calcTitle: "Delivery Simulator & Estimate",
+                calcSub: "Instantly calculate the rate for your package or errand based on destination.",
+                labelZone: "Destination Zone",
+                zoneCenter: "Nador City Center & Corniche (30 MAD)",
+                zoneBeni: "Beni Ansar / Farhana (40 MAD)",
+                zoneSelouane: "Selouane / University (45 MAD)",
+                zoneArekmane: "Bouarg / Kariat Arekmane (60 MAD)",
+                zoneAroui: "Nador Al Aroui Airport (70 MAD)",
+                labelType: "Shipment Type",
+                typeColis: "Standard Parcel / E-commerce",
+                typeFragile: "Fragile Parcel / Document (+15 MAD)",
+                typeExpress: "Urgent Express Errand (< 2h)",
+                estTotal: "Estimated Price:",
+                estTime: "⏱️ Time: 1h - 3h",
+                boxInfoTitle: "Shipping Details",
+                info1: "Free pickup at your home or store",
+                info2: "Cash on delivery available",
+                info3: "Real-time tracking by phone or WhatsApp",
+                btnBookDelivery: "Book this delivery on WhatsApp",
+                zonesTitle: "Service Zones in Nador & Surroundings",
+                zonesSub: "We cover the entire Nador province with exemplary speed.",
+                zoneTitle1: "Nador Center & Corniche",
+                zoneDesc1: "Ville Nouvelle, Hay Arriad, Taheddart, Administrative District, and Mar Chica Corniche.",
+                zoneTitle2: "Beni Ansar & Selouane",
+                zoneDesc2: "Beni Ansar, Melilla border, Selouane, and Multidisciplinary University area.",
+                zoneTitle3: "Arekmane & Airport",
+                zoneDesc3: "Kariat Arekmane, Bouarg, Zaio, and Nador Al Aroui Airport (NDB).",
+                servTitle: "Our Delivery Solutions",
+                servSub: "Tailored services for individuals, online stores, and local businesses.",
+                s1Title: "E-commerce & Stores",
+                s1Desc: "Stock management, daily pickup at your location, customer delivery, and fast COD fund returns.",
+                s2Title: "Parcels & Individuals",
+                s2Desc: "Send administrative documents, gifts, keys, or personal packages from one point to another in Nador.",
+                s3Title: "Urgent Errands & Food",
+                s3Desc: "Dedicated delivery service for restaurants, pharmacies, bakeries, and last-minute express runs.",
+                footerDesc: "Your trusted partner for fast and secure delivery in Nador and surroundings.",
+                footerZones: "Main Zones",
+                footerContact: "Direct Contact",
+                copyright: "© 2026 Nador Express. All rights reserved."
+            },
+            es: {
+                logoSub: "Entrega y Paquetería",
+                navHome: "Inicio",
+                navCalculator: "Simulador y Tarifas",
+                navZones: "Zonas de Entrega",
+                navServices: "Nuestros Servicios",
+                navContact: "Contacto",
+                whatsappBtn: "WhatsApp 24/7",
+                badgeHero: "Entrega Express • Nador y Alrededores",
+                heroTitle: "Envía Tus Paquetes Rápidamente en Nador",
+                heroSubtitle: "Servicio de entrega express para comercio electrónico, particulares y empresas. Recogida a domicilio y entrega segura en Nador, Beni Ansar, Selouane.",
+                btnCalc: "Estimar Entrega",
+                btnWhatsApp: "Pedir por WhatsApp",
+                calcTitle: "Simulador y Estimación de Entrega",
+                calcSub: "Calcula al instante la tarifa de tu envío o recado según la zona de destino.",
+                labelZone: "Zona de Destino",
+                zoneCenter: "Centro de Nador y Cornisa (30 MAD)",
+                zoneBeni: "Beni Ansar / Farhana (40 MAD)",
+                zoneSelouane: "Selouane / Universidad (45 MAD)",
+                zoneArekmane: "Bouarg / Kariat Arekmane (60 MAD)",
+                zoneAroui: "Aeropuerto Nador Al Aroui (70 MAD)",
+                labelType: "Tipo de Envío",
+                typeColis: "Paquete Estándar / E-commerce",
+                typeFragile: "Paquete Frágil / Documento (+15 MAD)",
+                typeExpress: "Recado Urgente / Express (< 2h)",
+                estTotal: "Precio Estimado:",
+                estTime: "⏱️ Tiempo: 1h - 3h",
+                boxInfoTitle: "Detalles del Envío",
+                info1: "Recogida gratuita en casa o tienda",
+                info2: "Pago contra reembolso disponible",
+                info3: "Seguimiento en tiempo real por teléfono o WhatsApp",
+                btnBookDelivery: "Reservar este envío en WhatsApp",
+                zonesTitle: "Zonas de Servicio en Nador y Alrededores",
+                zonesSub: "Cubrimos toda la provincia de Nador con una velocidad ejemplar.",
+                zoneTitle1: "Nador Centro y Cornisa",
+                zoneDesc1: "Ville Nouvelle, Hay Arriad, Taheddart, Distrito Administrativo y Cornisa Mar Chica.",
+                zoneTitle2: "Beni Ansar y Selouane",
+                zoneDesc2: "Beni Ansar, frontera con Melilla, Selouane y zona universitaria.",
+                zoneTitle3: "Arekmane y Aeropuerto",
+                zoneDesc3: "Kariat Arekmane, Bouarg, Zaio y Aeropuerto Nador Al Aroui (NDB).",
+                servTitle: "Nuestras Soluciones de Entrega",
+                servSub: "Servicios adaptados para particulares, tiendas online y empresas locales.",
+                s1Title: "E-commerce y Tiendas",
+                s1Desc: "Gestión de stock, recogida diaria en tu local, entrega a clientes y retorno rápido de fondos (COD).",
+                s2Title: "Paquetes y Particulares",
+                s2Desc: "Envío de documentos administrativos, regalos, llaves o paquetes personales de un punto a otro en Nador.",
+                s3Title: "Recados Urgentes y Comida",
+                s3Desc: "Servicio de entrega dedicado para restaurantes, farmacias, panaderías y recados express.",
+                footerDesc: "Tu socio de confianza para una entrega rápida y segura en Nador y alrededores.",
+                footerZones: "Zonas Principales",
+                footerContact: "Contacto Directo",
+                copyright: "© 2026 Nador Express. Todos los derechos reservados."
+            }
+        };
+
+        // Gestion du menu mobile responsive
+        function toggleMobileMenu() {
+            const panel = document.getElementById('mobileMenuPanel');
+            const icon = document.getElementById('mobileMenuIcon');
+            panel.classList.toggle('hidden');
+            if (panel.classList.contains('hidden')) {
+                icon.className = "fa-solid fa-bars text-lg";
+            } else {
+                icon.className = "fa-solid fa-xmark text-lg";
+            }
+        }
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            const htmlTag = document.documentElement;
+            htmlTag.setAttribute('lang', lang);
+            if (lang === 'ar') {
+                htmlTag.setAttribute('dir', 'rtl');
+            } else {
+                htmlTag.setAttribute('dir', 'ltr');
+            }
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            calculatePrice();
+        }
+
+        function calculatePrice() {
+            const zoneBase = parseInt(document.getElementById('calcZone').value) || 30;
+            const typeExtra = parseInt(document.getElementById('calcType').value) || 0;
+            const total = zoneBase + typeExtra;
+            document.getElementById('priceDisplay').textContent = total + " MAD";
+        }
+
+        function bookDelivery() {
+            const zoneSelect = document.getElementById('calcZone');
+            const zoneText = zoneSelect.options[zoneSelect.selectedIndex].text;
+            const typeSelect = document.getElementById('calcType');
+            const typeText = typeSelect.options[typeSelect.selectedIndex].text;
+            const total = document.getElementById('priceDisplay').textContent;
+
+            const text = `Bonjour Nador Express, je souhaite réserver une course/livraison :%0a- Destination : *${zoneText}*%0a- Type : *${typeText}*%0a- Tarif estimé : *${total}*`;
+            window.open(`https://wa.me/212600000000?text=${text}`, '_blank');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            calculatePrice();
+        });
+    </script>
+</body>
+</html>

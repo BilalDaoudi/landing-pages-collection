@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NADOR SCENTS - Parfumerie de Niche au Maroc</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            DEFAULT: '#D4AF37',
+                            light: '#F3E5AB',
+                            dark: '#AA8C2C',
+                            muted: 'rgba(212, 175, 55, 0.15)'
+                        },
+                        dark: {
+                            DEFAULT: '#0B0B0B',
+                            card: '#141414',
+                            lighter: '#1F1F1F',
+                            border: '#2A2A2A'
+                        }
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        arabic: ['Cairo', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0B0B0B;
+            color: #E5E5E5;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        body.lang-ar {
+            font-family: 'Cairo', sans-serif;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #AA8C2C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #D4AF37 0%, #AA8C2C 100%);
+        }
+        .gold-border {
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+        .gold-border:hover {
+            border-color: #D4AF37;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0B0B;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2A2A2A;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+    </style>
+</head>
+<body class="bg-dark text-gray-100 antialiased selection:bg-gold selection:text-black">
+
+    <!-- TOP BAR -->
+    <div class="bg-[#050505] border-b border-dark-border text-xs py-2 px-4 text-center text-gray-400">
+        <span data-i18n="topbar_text"><i class="fa-solid fa-truck-fast text-gold mx-2"></i> Livraison rapide partout au Maroc (24/48h) • Paiement à la livraison</span>
+        <span class="mx-4 font-semibold text-gold"><i class="fa-solid fa-phone ml-1"></i> <span data-i18n="topbar_call">Commandez au</span> +212 7 07 90 08 67</span>
+    </div>
+
+    <!-- HEADER / NAVBAR -->
+    <header class="sticky top-0 z-50 bg-dark/95 backdrop-blur-md border-b border-dark-border transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden text-gray-300 hover:text-gold text-xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 rounded-full bg-gold/10 border border-gold/40 flex items-center justify-center group-hover:border-gold transition-colors">
+                    <i class="fa-solid fa-crown text-gold text-lg"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-cinzel font-bold tracking-widest text-lg sm:text-xl text-white">NADOR <span class="text-gold">SCENTS</span></span>
+                    <span class="text-[9px] tracking-[0.25em] text-gray-400 uppercase font-sans" data-i18n="subtitle_header">Parfumerie de Niche</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide">
+                <a href="#accueil" class="text-gold transition-colors" data-i18n="nav_home">Accueil</a>
+                <a href="#packs" class="text-gray-300 hover:text-gold transition-colors" data-i18n="nav_packs">Packs Promo</a>
+                <a href="#catalogue" class="text-gray-300 hover:text-gold transition-colors" data-i18n="nav_collection">Collection</a>
+                <a href="#decants" class="text-gray-300 hover:text-gold transition-colors" data-i18n="nav_decant">L'Art du Décant</a>
+                <a href="#categories" class="text-gray-300 hover:text-gold transition-colors" data-i18n="nav_categories">Catégories</a>
+                <a href="#apropos" class="text-gray-300 hover:text-gold transition-colors" data-i18n="nav_about">À propos</a>
+                <a href="#contact" class="text-gray-300 hover:text-gold transition-colors" data-i18n="nav_contact">Contact</a>
+            </nav>
+
+            <!-- Right Icons -->
+            <div class="flex items-center gap-4">
+                <!-- Search Icon trigger -->
+                <button onclick="toggleSearch()" class="text-gray-300 hover:text-gold transition-colors p-2" title="Rechercher">
+                    <i class="fa-solid fa-magnifying-glass text-lg"></i>
+                </button>
+
+                <!-- Interactive Language Selector -->
+                <div class="relative">
+                    <button onclick="toggleLangDropdown()" class="flex items-center gap-1.5 bg-dark-lighter border border-dark-border hover:border-gold px-3 py-1.5 rounded-full text-xs font-medium text-white transition-colors">
+                        <i class="fa-solid fa-globe text-gold"></i>
+                        <span id="current-lang-label">FR</span>
+                        <i class="fa-solid fa-chevron-down text-[10px] text-gray-400"></i>
+                    </button>
+                    <!-- Dropdown Menu -->
+                    <div id="lang-dropdown" class="hidden absolute right-0 mt-2 w-28 bg-dark-card border border-dark-border rounded-xl shadow-xl overflow-hidden z-50">
+                        <button onclick="changeLanguage('fr')" class="w-full text-left px-4 py-2 text-xs text-gray-300 hover:bg-gold/10 hover:text-gold transition-colors flex items-center justify-between">Français <span>🇫🇷</span></button>
+                        <button onclick="changeLanguage('ar')" class="w-full text-left px-4 py-2 text-xs text-gray-300 hover:bg-gold/10 hover:text-gold transition-colors flex items-center justify-between">العربية <span>🇲🇦</span></button>
+                        <button onclick="changeLanguage('en')" class="w-full text-left px-4 py-2 text-xs text-gray-300 hover:bg-gold/10 hover:text-gold transition-colors flex items-center justify-between">English <span>🇬🇧</span></button>
+                    </div>
+                </div>
+
+                <!-- Cart Button -->
+                <button onclick="toggleCart()" class="relative bg-dark-lighter border border-dark-border hover:border-gold p-2.5 rounded-full text-gray-300 hover:text-gold transition-all">
+                    <i class="fa-solid fa-bag-shopping text-lg"></i>
+                    <span id="cart-badge" class="absolute -top-1 -right-1 bg-gold text-black font-bold text-[10px] w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- SEARCH BAR OVERLAY -->
+        <div id="search-bar-container" class="hidden bg-[#111] border-b border-dark-border px-4 py-3">
+            <div class="max-w-3xl mx-auto flex items-center gap-3">
+                <i class="fa-solid fa-magnifying-glass text-gold"></i>
+                <input type="text" id="search-input" oninput="filterProducts()" placeholder="Rechercher un parfum, une marque..." class="w-full bg-transparent text-white placeholder-gray-500 focus:outline-none text-sm" data-i18n-placeholder="search_placeholder">
+                <button onclick="toggleSearch()" class="text-gray-400 hover:text-white text-sm"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div id="mobile-menu" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden">
+        <div class="bg-dark w-4/5 max-w-sm h-full p-6 flex flex-col justify-between border-r border-dark-border">
+            <div>
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-crown text-gold text-xl"></i>
+                        <span class="font-cinzel font-bold text-lg text-white">NADOR SCENTS</span>
+                    </div>
+                    <button onclick="toggleMobileMenu()" class="text-gray-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <nav class="flex flex-col gap-4 text-base font-medium">
+                    <a href="#accueil" onclick="toggleMobileMenu()" class="text-gold py-2 border-b border-dark-border" data-i18n="nav_home">Accueil</a>
+                    <a href="#packs" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-gold py-2 border-b border-dark-border" data-i18n="nav_packs">Packs Promo</a>
+                    <a href="#catalogue" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-gold py-2 border-b border-dark-border" data-i18n="nav_collection">Collection</a>
+                    <a href="#decants" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-gold py-2 border-b border-dark-border" data-i18n="nav_decant">L'Art du Décant</a>
+                    <a href="#categories" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-gold py-2 border-b border-dark-border" data-i18n="nav_categories">Catégories</a>
+                    <a href="#apropos" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-gold py-2 border-b border-dark-border" data-i18n="nav_about">À propos</a>
+                    <a href="#contact" onclick="toggleMobileMenu()" class="text-gray-300 hover:text-gold py-2" data-i18n="nav_contact">Contact</a>
+                </nav>
+            </div>
+            <div class="text-xs text-gray-500 text-center border-t border-dark-border pt-4">
+                Commandes : <span class="text-gold font-bold">+212 7 07 90 08 67</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section id="accueil" class="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(11,11,11,0.7), rgba(11,11,11,0.95)), url('https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&w=1920&q=80');">
+        <div class="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-7 space-y-6">
+                <div class="inline-flex items-center gap-2 bg-gold/10 border border-gold/30 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider text-gold uppercase">
+                    <i class="fa-solid fa-certificate"></i> <span data-i18n="hero_badge">Parfums de Luxe & Décants Authentiques</span>
+                </div>
+                <h1 class="font-cinzel text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1]">
+                    <span data-i18n="hero_title_1">L'Essence du Luxe</span> <br><span class="gold-gradient-text" data-i18n="hero_title_2">à Portée de Main</span>
+                </h1>
+                <p class="text-gray-300 text-base sm:text-lg max-w-xl font-light leading-relaxed" data-i18n="hero_desc">
+                    Découvrez notre sélection exclusive de parfums de niche et de décants authentiques. Des fragrances uniques pour une identité qui vous ressemble.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="#packs" class="gold-gradient-bg text-black font-bold px-8 py-4 rounded-full shadow-lg hover:opacity-90 transition-all flex items-center gap-3 text-sm tracking-wider">
+                        <span data-i18n="btn_packs">Voir les Packs Promo</span> <i class="fa-solid fa-fire"></i>
+                    </a>
+                    <a href="#catalogue" class="border border-gold/50 hover:border-gold text-white font-medium px-8 py-4 rounded-full transition-all text-sm tracking-wider bg-black/40 backdrop-blur-sm" data-i18n="btn_discover">
+                        Découvrir la collection
+                    </a>
+                </div>
+
+                <!-- Trust Badges -->
+                <div class="grid grid-cols-3 gap-4 pt-8 border-t border-dark-border/60">
+                    <div class="flex items-center gap-3">
+                        <div class="text-gold text-xl"><i class="fa-solid fa-shield-check"></i></div>
+                        <div class="text-xs text-gray-400 font-medium" data-i18n="trust_1">Produits 100% authentiques</div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="text-gold text-xl"><i class="fa-solid fa-truck"></i></div>
+                        <div class="text-xs text-gray-400 font-medium" data-i18n="trust_2">Livraison rapide partout au Maroc</div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="text-gold text-xl"><i class="fa-solid fa-headset"></i></div>
+                        <div class="text-xs text-gray-400 font-medium" data-i18n="trust_3">Service client à votre écoute</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Featured Bottles Image Showcase -->
+            <div class="lg:col-span-5 hidden lg:flex justify-center relative">
+                <div class="relative w-full max-w-md h-[450px] rounded-2xl overflow-hidden border border-gold/20 shadow-2xl bg-dark-card/50 backdrop-blur-md p-4 flex items-center justify-center">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                    <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=800&q=80" alt="Parfums de Luxe Nador Scents" class="w-full h-full object-cover rounded-xl transform hover:scale-105 transition-transform duration-700">
+                    <div class="absolute bottom-6 left-6 right-6 bg-black/70 backdrop-blur-md p-4 rounded-xl border border-gold/30">
+                        <span class="text-gold text-xs uppercase tracking-widest font-bold" data-i18n="showcase_sub">Collection Exclusive</span>
+                        <h4 class="font-cinzel text-white text-lg font-bold">Oud Wood & Aventus</h4>
+                        <p class="text-gray-400 text-xs mt-1" data-i18n="showcase_desc">Disponible en flacon complet et décants 2ml, 5ml, 10ml</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION: 5 PACKS PROMO -->
+    <section id="packs" class="py-20 bg-dark border-t border-dark-border relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-gold text-xs uppercase tracking-[0.2em] font-semibold" data-i18n="packs_subtitle">Offres Exclusives</span>
+                <h2 class="font-cinzel text-3xl sm:text-5xl font-bold text-white mt-2" data-i18n="packs_title">Nos 5 Packs & Coffrets Cadeaux</h2>
+                <p class="text-gray-400 text-sm mt-3" data-i18n="packs_desc">Profitez de réductions exceptionnelles sur nos sélections de coffrets et packs découverte de décants et flacons.</p>
+            </div>
+
+            <!-- PACKS GRID (5 Packs) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Pack 1 -->
+                <div class="bg-dark-card border border-gold/40 rounded-3xl overflow-hidden p-6 relative flex flex-col justify-between shadow-xl hover:border-gold transition-all">
+                    <div class="absolute top-4 right-4 bg-gold text-black font-bold text-xs px-3 py-1 rounded-full uppercase">Économie 25%</div>
+                    <div>
+                        <div class="w-full h-48 rounded-2xl overflow-hidden mb-6 bg-dark">
+                            <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=600&q=80" alt="Pack Découverte 3x 10ml" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-gold text-xs uppercase tracking-wider font-semibold">Coffret Découverte</span>
+                        <h3 class="font-cinzel text-white text-xl font-bold mt-1">Pack Découverte 3x 10ml</h3>
+                        <p class="text-gray-300 text-xs mt-2">Choisissez 3 parfums de niche en format 10ml parmi notre collection exclusive.</p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-dark-border flex items-center justify-between">
+                        <div>
+                            <span class="text-gray-500 line-through text-xs">850 MAD</span>
+                            <span class="text-white font-bold text-lg block">650 MAD</span>
+                        </div>
+                        <button onclick="addPackToCart('Pack Découverte 3x 10ml', 650, 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=600&q=80')" class="gold-gradient-bg text-black font-bold text-xs px-5 py-3 rounded-full hover:opacity-90 transition-all">
+                            Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pack 2 (Featured) -->
+                <div class="bg-gradient-to-b from-dark-card to-dark border-2 border-gold rounded-3xl overflow-hidden p-6 relative flex flex-col justify-between shadow-2xl">
+                    <div class="absolute top-4 right-4 bg-gold text-black font-bold text-xs px-3 py-1 rounded-full uppercase">Le Plus Populaire</div>
+                    <div>
+                        <div class="w-full h-48 rounded-2xl overflow-hidden mb-6 bg-dark">
+                            <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=80" alt="Pack Duo Homme" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-gold text-xs uppercase tracking-wider font-semibold">Duo de Prestige</span>
+                        <h3 class="font-cinzel text-white text-xl font-bold mt-1">Pack Duo Homme (Elixir + Wood)</h3>
+                        <p class="text-gray-300 text-xs mt-2">Le combo parfait pour homme : Tom Ford Oud Wood & Dior Sauvage Elixir (Formats 100ml).</p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-dark-border flex items-center justify-between">
+                        <div>
+                            <span class="text-gray-500 line-through text-xs">3740 MAD</span>
+                            <span class="text-gold font-bold text-xl block">2990 MAD</span>
+                        </div>
+                        <button onclick="addPackToCart('Pack Duo Homme (Elixir + Wood)', 2990, 'https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=80')" class="gold-gradient-bg text-black font-bold text-xs px-5 py-3 rounded-full hover:opacity-90 transition-all">
+                            Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pack 3 -->
+                <div class="bg-dark-card border border-gold/40 rounded-3xl overflow-hidden p-6 relative flex flex-col justify-between shadow-xl hover:border-gold transition-all">
+                    <div class="absolute top-4 right-4 bg-gold text-black font-bold text-xs px-3 py-1 rounded-full uppercase">Coffret Cadeau</div>
+                    <div>
+                        <div class="w-full h-48 rounded-2xl overflow-hidden mb-6 bg-dark">
+                            <img src="https://images.unsplash.com/photo-1583445013765-46c20c4a6772?auto=format&fit=crop&w=600&q=80" alt="Coffret 5 Décants 5ml" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-gold text-xs uppercase tracking-wider font-semibold">Collection 5ml</span>
+                        <h3 class="font-cinzel text-white text-xl font-bold mt-1">Coffret 5 Décants Niche 5ml</h3>
+                        <p class="text-gray-300 text-xs mt-2">5 miniatures de luxe de 5ml pour varier vos fragrances selon vos envies.</p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-dark-border flex items-center justify-between">
+                        <div>
+                            <span class="text-gray-500 line-through text-xs">750 MAD</span>
+                            <span class="text-white font-bold text-lg block">550 MAD</span>
+                        </div>
+                        <button onclick="addPackToCart('Coffret 5 Décants Niche 5ml', 550, 'https://images.unsplash.com/photo-1583445013765-46c20c4a6772?auto=format&fit=crop&w=600&q=80')" class="gold-gradient-bg text-black font-bold text-xs px-5 py-3 rounded-full hover:opacity-90 transition-all">
+                            Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pack 4 -->
+                <div class="bg-dark-card border border-gold/40 rounded-3xl overflow-hidden p-6 relative flex flex-col justify-between shadow-xl hover:border-gold transition-all">
+                    <div class="absolute top-4 right-4 bg-gold text-black font-bold text-xs px-3 py-1 rounded-full uppercase">Spécial Femme</div>
+                    <div>
+                        <div class="w-full h-48 rounded-2xl overflow-hidden mb-6 bg-dark">
+                            <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=600&q=80" alt="Pack Duo Féminin" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-gold text-xs uppercase tracking-wider font-semibold">Élégance Féminine</span>
+                        <h3 class="font-cinzel text-white text-xl font-bold mt-1">Pack Duo Femme (Yara + Good Girl)</h3>
+                        <p class="text-gray-300 text-xs mt-2">Le duo envoûtant et sucré pour femme en format flacon 100ml.</p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-dark-border flex items-center justify-between">
+                        <div>
+                            <span class="text-gray-500 line-through text-xs">1980 MAD</span>
+                            <span class="text-white font-bold text-lg block">1550 MAD</span>
+                        </div>
+                        <button onclick="addPackToCart('Pack Duo Femme (Yara + Good Girl)', 1550, 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=600&q=80')" class="gold-gradient-bg text-black font-bold text-xs px-5 py-3 rounded-full hover:opacity-90 transition-all">
+                            Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pack 5 -->
+                <div class="bg-dark-card border border-gold/40 rounded-3xl overflow-hidden p-6 relative flex flex-col justify-between shadow-xl hover:border-gold transition-all md:col-span-2 lg:col-span-1">
+                    <div class="absolute top-4 right-4 bg-gold text-black font-bold text-xs px-3 py-1 rounded-full uppercase">Méga Coffret</div>
+                    <div>
+                        <div class="w-full h-48 rounded-2xl overflow-hidden mb-6 bg-dark">
+                            <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=600&q=80" alt="Méga Pack VIP 10 Décants" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-gold text-xs uppercase tracking-wider font-semibold">Collection VIP</span>
+                        <h3 class="font-cinzel text-white text-xl font-bold mt-1">Méga Coffret VIP 10 Décants 5ml</h3>
+                        <p class="text-gray-300 text-xs mt-2">Le vestiaire olfactif complet : 10 décants des parfums les plus prestigieux du monde.</p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-dark-border flex items-center justify-between">
+                        <div>
+                            <span class="text-gray-500 line-through text-xs">1600 MAD</span>
+                            <span class="text-white font-bold text-lg block">1190 MAD</span>
+                        </div>
+                        <button onclick="addPackToCart('Méga Coffret VIP 10 Décants 5ml', 1190, 'https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=600&q=80')" class="gold-gradient-bg text-black font-bold text-xs px-5 py-3 rounded-full hover:opacity-90 transition-all">
+                            Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION: CATALOGUE (20 PRODUITS) -->
+    <section id="catalogue" class="py-20 bg-dark-card border-t border-b border-dark-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-gold text-xs uppercase tracking-[0.2em] font-semibold" data-i18n="cat_subtitle">Nos Coups de Cœur</span>
+                    <h2 class="font-cinzel text-3xl sm:text-4xl font-bold text-white mt-1" data-i18n="cat_title">Catalogue (20 Produits Exclusifs)</h2>
+                    <p class="text-gray-400 text-sm mt-2" data-i18n="cat_desc">Des créations rares et prestigieuses, soigneusement sélectionnées.</p>
+                </div>
+                <div class="mt-6 md:mt-0 flex flex-wrap gap-2">
+                    <button onclick="filterCategory('all', this)" class="cat-btn active-filter px-4 py-2 rounded-full text-xs font-semibold border border-gold bg-gold text-black transition-all" data-i18n="filter_all">Tous</button>
+                    <button onclick="filterCategory('homme', this)" class="cat-btn px-4 py-2 rounded-full text-xs font-semibold border border-dark-border hover:border-gold text-gray-300 transition-all" data-i18n="filter_homme">Homme</button>
+                    <button onclick="filterCategory('femme', this)" class="cat-btn px-4 py-2 rounded-full text-xs font-semibold border border-dark-border hover:border-gold text-gray-300 transition-all" data-i18n="filter_femme">Femme</button>
+                    <button onclick="filterCategory('unisexe', this)" class="cat-btn px-4 py-2 rounded-full text-xs font-semibold border border-dark-border hover:border-gold text-gray-300 transition-all" data-i18n="filter_unisexe">Unisexe</button>
+                    <button onclick="filterCategory('decant', this)" class="cat-btn px-4 py-2 rounded-full text-xs font-semibold border border-dark-border hover:border-gold text-gray-300 transition-all" data-i18n="filter_decant">Décants</button>
+                    <button onclick="filterCategory('nouveau', this)" class="cat-btn px-4 py-2 rounded-full text-xs font-semibold border border-dark-border hover:border-gold text-gray-300 transition-all" data-i18n="filter_nouveau">Nouveautés</button>
+                </div>
+            </div>
+
+            <!-- PRODUCT GRID -->
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+
+        </div>
+    </section>
+
+    <!-- SECTION: DÉCANTS & COMPTE À REBOURS -->
+    <section id="decants" class="py-20 relative bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(11,11,11,0.92), rgba(11,11,11,0.95)), url('https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=1920&q=80');">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-gold text-xs uppercase tracking-[0.2em] font-semibold" data-i18n="decant_sec_sub">L'Art du Décant</span>
+                    <h2 class="font-cinzel text-3xl sm:text-5xl font-bold text-white" data-i18n="decant_sec_title">Testez Avant d'Adopter</h2>
+                    <p class="text-gray-300 text-base leading-relaxed" data-i18n="decant_sec_desc">
+                        Nos décants vous permettent de découvrir vos parfums préférés en petit format, à petit prix. L'expérience du luxe, sans engagement.
+                    </p>
+                    <div class="space-y-3 pt-2">
+                        <div class="flex items-center gap-3 text-gray-300 text-sm"><i class="fa-solid fa-check text-gold"></i> <span data-i18n="decant_pt_1">Formats pratiques : 2ml - 5ml - 10ml</span></div>
+                        <div class="flex items-center gap-3 text-gray-300 text-sm"><i class="fa-solid fa-check text-gold"></i> <span data-i18n="decant_pt_2">Large choix de grandes marques de niche</span></div>
+                        <div class="flex items-center gap-3 text-gray-300 text-sm"><i class="fa-solid fa-check text-gold"></i> <span data-i18n="decant_pt_3">Qualité et authenticité garanties à 100%</span></div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6 flex justify-center">
+                    <div class="relative w-full max-w-lg rounded-2xl overflow-hidden border border-gold/30 shadow-2xl p-6 bg-dark-card/90 backdrop-blur-md">
+                        <!-- Décompte (Countdown Timer) -->
+                        <div class="mb-6 text-center bg-gold/10 border border-gold/30 rounded-xl p-4">
+                            <span class="text-gold text-xs uppercase tracking-widest font-bold block mb-1" data-i18n="countdown_title"><i class="fa-solid fa-stopwatch mr-1"></i> Vente Flash - Décants & Packs</span>
+                            <div id="countdown" class="flex justify-center gap-4 text-white font-cinzel font-bold text-xl mt-2">
+                                <div class="flex flex-col items-center"><span id="days" class="text-gold">02</span><span class="text-[9px] uppercase text-gray-400 font-sans">Jours</span></div> :
+                                <div class="flex flex-col items-center"><span id="hours" class="text-gold">14</span><span class="text-[9px] uppercase text-gray-400 font-sans">Heures</span></div> :
+                                <div class="flex flex-col items-center"><span id="minutes" class="text-gold">35</span><span class="text-[9px] uppercase text-gray-400 font-sans">Min</span></div> :
+                                <div class="flex flex-col items-center"><span id="seconds" class="text-gold">50</span><span class="text-[9px] uppercase text-gray-400 font-sans">Sec</span></div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-4 text-center">
+                            <div class="bg-dark p-3 rounded-xl border border-dark-border"><span class="block text-gold font-bold text-lg">2 ml</span><span class="text-xs text-gray-400" data-i18n="decant_size_1">Découverte</span></div>
+                            <div class="bg-dark p-3 rounded-xl border border-dark-border"><span class="block text-gold font-bold text-lg">5 ml</span><span class="text-xs text-gray-400" data-i18n="decant_size_2">Populaire</span></div>
+                            <div class="bg-dark p-3 rounded-xl border border-dark-border"><span class="block text-gold font-bold text-lg">10 ml</span><span class="text-xs text-gray-400" data-i18n="decant_size_3">Intensif</span></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: CATÉGORIES -->
+    <section id="categories" class="py-20 bg-dark border-t border-dark-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-gold text-xs uppercase tracking-[0.2em] font-semibold" data-i18n="cat_sec_sub">Nos Catégories</span>
+                    <h2 class="font-cinzel text-3xl sm:text-4xl font-bold text-white mt-1" data-i18n="cat_sec_title">Trouvez le parfum qui vous correspond</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                <div onclick="filterCategory('homme', document.querySelectorAll('.cat-btn')[1])" class="group relative h-80 rounded-2xl overflow-hidden cursor-pointer border border-dark-border hover:border-gold transition-all">
+                    <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=600&q=80" alt="Parfums Homme" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 right-4 text-center">
+                        <h3 class="font-cinzel text-white text-lg font-bold group-hover:text-gold transition-colors" data-i18n="card_cat_homme">Parfums Homme</h3>
+                        <p class="text-gray-300 text-xs mt-1" data-i18n="card_cat_homme_sub">Élégance & Caractère</p>
+                    </div>
+                </div>
+                <div onclick="filterCategory('femme', document.querySelectorAll('.cat-btn')[2])" class="group relative h-80 rounded-2xl overflow-hidden cursor-pointer border border-dark-border hover:border-gold transition-all">
+                    <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=600&q=80" alt="Parfums Femme" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 right-4 text-center">
+                        <h3 class="font-cinzel text-white text-lg font-bold group-hover:text-gold transition-colors" data-i18n="card_cat_femme">Parfums Femme</h3>
+                        <p class="text-gray-300 text-xs mt-1" data-i18n="card_cat_femme_sub">Douceur & Féminité</p>
+                    </div>
+                </div>
+                <div onclick="filterCategory('decant', document.querySelectorAll('.cat-btn')[4])" class="group relative h-80 rounded-2xl overflow-hidden cursor-pointer border border-dark-border hover:border-gold transition-all">
+                    <img src="https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&w=600&q=80" alt="Décants" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 right-4 text-center">
+                        <h3 class="font-cinzel text-white text-lg font-bold group-hover:text-gold transition-colors" data-i18n="card_cat_decant">Décants</h3>
+                        <p class="text-gray-300 text-xs mt-1" data-i18n="card_cat_decant_sub">Petits formats, grandes émotions</p>
+                    </div>
+                </div>
+                <div onclick="filterCategory('unisexe', document.querySelectorAll('.cat-btn')[3])" class="group relative h-80 rounded-2xl overflow-hidden cursor-pointer border border-dark-border hover:border-gold transition-all">
+                    <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=600&q=80" alt="Parfums Unisexes" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 right-4 text-center">
+                        <h3 class="font-cinzel text-white text-lg font-bold group-hover:text-gold transition-colors" data-i18n="card_cat_uni">Parfums Unisexes</h3>
+                        <p class="text-gray-300 text-xs mt-1" data-i18n="card_cat_uni_sub">Liberté d'expression</p>
+                    </div>
+                </div>
+                <div onclick="filterCategory('nouveau', document.querySelectorAll('.cat-btn')[5])" class="group relative h-80 rounded-2xl overflow-hidden cursor-pointer border border-dark-border hover:border-gold transition-all">
+                    <img src="https://images.unsplash.com/photo-1583445013765-46c20c4a6772?auto=format&fit=crop&w=600&q=80" alt="Nouveautés" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 right-4 text-center">
+                        <span class="bg-gold text-black text-[10px] font-bold px-2 py-0.5 rounded uppercase">NEW</span>
+                        <h3 class="font-cinzel text-white text-lg font-bold group-hover:text-gold transition-colors mt-1" data-i18n="card_cat_new">Nouveautés</h3>
+                        <p class="text-gray-300 text-xs mt-1" data-i18n="card_cat_new_sub">Les dernières pépites</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION: A PROPOS -->
+    <section id="apropos" class="py-20 bg-dark-card border-t border-dark-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-gold text-xs uppercase tracking-[0.2em] font-semibold">NADOR SCENTS</span>
+                    <h2 class="font-cinzel text-3xl sm:text-4xl font-bold text-white" data-i18n="about_title">Plus qu'une parfumerie, une passion.</h2>
+                    <p class="text-gray-300 text-sm sm:text-base leading-relaxed" data-i18n="about_desc">
+                        Basée à Nador, Nador Scents vous propose une sélection rigoureuse des plus grandes marques de parfums. Notre mission : vous offrir une expérience olfactive unique, avec des produits 100% authentiques et un service irréprochable.
+                    </p>
+                    <div class="pt-2">
+                        <a href="tel:+212707900867" class="inline-flex items-center gap-3 bg-dark border border-gold/40 hover:border-gold px-6 py-3 rounded-full text-gold font-semibold text-sm transition-all">
+                            <i class="fa-solid fa-phone"></i> <span data-i18n="about_call">Contact direct :</span> +212 7 07 90 08 67
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6">
+                    <div class="bg-dark p-8 rounded-2xl border border-gold/20 relative shadow-xl">
+                        <span class="text-gold text-4xl font-serif absolute top-4 left-6 opacity-40">“</span>
+                        <h3 class="text-white font-cinzel font-bold text-lg mb-4" data-i18n="testi_title">Ils nous font confiance</h3>
+                        <p class="text-gray-300 text-sm italic mb-6" data-i18n="testi_quote">
+                            "Qualité au top ! Les parfums sont authentiques et la livraison était très rapide. Je recommande vivement Nador Scents !"
+                        </p>
+                        <div class="flex items-center justify-between border-t border-dark-border pt-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center font-bold text-gold text-sm">AR</div>
+                                <div>
+                                    <h4 class="text-white text-sm font-semibold">Ahmed R.</h4>
+                                    <span class="text-xs text-gray-500">Nador</span>
+                                </div>
+                            </div>
+                            <div class="text-gold text-xs space-x-1">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact" class="bg-dark border-t border-dark-border pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+            <div class="space-y-4">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-crown text-gold text-xl"></i>
+                    <span class="font-cinzel font-bold text-lg text-white">NADOR SCENTS</span>
+                </div>
+                <p class="text-gray-400 text-xs leading-relaxed" data-i18n="footer_desc">
+                    Votre destination de choix pour la parfumerie de niche et les décants de luxe au Maroc.
+                </p>
+            </div>
+            <div>
+                <h4 class="font-cinzel text-white font-bold text-sm mb-4 tracking-wider" data-i18n="footer_nav">Navigation</h4>
+                <ul class="space-y-2 text-xs text-gray-400">
+                    <li><a href="#accueil" class="hover:text-gold transition-colors" data-i18n="nav_home">Accueil</a></li>
+                    <li><a href="#packs" class="hover:text-gold transition-colors" data-i18n="nav_packs">Packs Promo</a></li>
+                    <li><a href="#catalogue" class="hover:text-gold transition-colors" data-i18n="nav_collection">Collection</a></li>
+                    <li><a href="#decants" class="hover:text-gold transition-colors" data-i18n="nav_decant">L'Art du Décant</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-cinzel text-white font-bold text-sm mb-4 tracking-wider" data-i18n="footer_info">Informations</h4>
+                <ul class="space-y-2 text-xs text-gray-400">
+                    <li><a href="#" class="hover:text-gold transition-colors" data-i18n="info_legal">Mentions légales</a></li>
+                    <li><a href="#" class="hover:text-gold transition-colors" data-i18n="info_privacy">Politique de confidentialité</a></li>
+                </ul>
+            </div>
+            <div class="space-y-3">
+                <h4 class="font-cinzel text-white font-bold text-sm mb-4 tracking-wider" data-i18n="footer_contact">Contact & Commandes</h4>
+                <p class="text-xs text-gray-400 flex items-center gap-2"><i class="fa-solid fa-location-dot text-gold"></i> Nador, Maroc</p>
+                <p class="text-xs text-gray-400 flex items-center gap-2"><i class="fa-solid fa-phone text-gold"></i> <a href="tel:+212707900867" class="hover:text-gold font-semibold">+212 7 07 90 08 67</a></p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-dark-border pt-6 text-center text-xs text-gray-500">
+            <p>&copy; 2026 Nador Scents. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- CART SIDEBAR DRAWER -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div class="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity" onclick="toggleCart()"></div>
+        <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-dark border-l border-dark-border flex flex-col justify-between shadow-2xl">
+                <div class="p-6 border-b border-dark-border flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-bag-shopping text-gold text-lg"></i>
+                        <h3 class="font-cinzel text-white font-bold text-lg" data-i18n="cart_title">Votre Panier</h3>
+                    </div>
+                    <button onclick="toggleCart()" class="text-gray-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4"></div>
+                <div class="p-6 border-t border-dark-border space-y-4 bg-dark-card">
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-400" data-i18n="cart_subtotal">Sous-total</span>
+                        <span id="cart-subtotal" class="font-bold text-white">0 MAD</span>
+                    </div>
+                    <div class="flex items-center justify-between text-base font-bold border-t border-dark-border pt-3">
+                        <span class="text-white" data-i18n="cart_total">Total</span>
+                        <span id="cart-total" class="text-gold text-lg">0 MAD</span>
+                    </div>
+                    <button onclick="checkoutWhatsApp()" class="w-full gold-gradient-bg text-black font-bold py-3.5 rounded-full shadow-lg hover:opacity-95 transition-all flex items-center justify-center gap-2 text-sm tracking-wider">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> <span data-i18n="cart_whatsapp">Commander via WhatsApp</span>
+                    </button>
+                    <a href="tel:+212707900867" class="w-full border border-gold/50 hover:border-gold text-white font-medium py-3 rounded-full text-center block text-xs transition-all">
+                        <i class="fa-solid fa-phone mr-1 text-gold"></i> <span data-i18n="cart_call">Ou appeler le +212 7 07 90 08 67</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Translations Dictionary
+        const translations = {
+            fr: {
+                topbar_text: "Livraison rapide partout au Maroc (24/48h) • Paiement à la livraison",
+                topbar_call: "Commandez au",
+                subtitle_header: "Parfumerie de Niche",
+                nav_home: "Accueil",
+                nav_packs: "Packs Promo",
+                nav_collection: "Collection",
+                nav_decant: "L'Art du Décant",
+                nav_categories: "Catégories",
+                nav_about: "À propos",
+                nav_contact: "Contact",
+                search_placeholder: "Rechercher un parfum, une marque...",
+                hero_badge: "Parfums de Luxe & Décants Authentiques",
+                hero_title_1: "L'Essence du Luxe",
+                hero_title_2: "à Portée de Main",
+                hero_desc: "Découvrez notre sélection exclusive de parfums de niche et de décants authentiques. Des fragrances uniques pour une identité qui vous ressemble.",
+                btn_discover: "Découvrir la collection",
+                btn_packs: "Voir les Packs Promo",
+                trust_1: "Produits 100% authentiques",
+                trust_2: "Livraison rapide partout au Maroc",
+                trust_3: "Service client à votre écoute",
+                showcase_sub: "Collection Exclusive",
+                showcase_desc: "Disponible en flacon complet et décants 2ml, 5ml, 10ml",
+                packs_subtitle: "Offres Exclusives",
+                packs_title: "Nos 5 Packs & Coffrets Cadeaux",
+                packs_desc: "Profitez de réductions exceptionnelles sur nos sélections de coffrets et packs découverte.",
+                cat_subtitle: "Nos Coups de Cœur",
+                cat_title: "Catalogue (20 Produits Exclusifs)",
+                cat_desc: "Des créations rares et prestigieuses, soigneusement sélectionnées.",
+                filter_all: "Tous",
+                filter_homme: "Homme",
+                filter_femme: "Femme",
+                filter_unisexe: "Unisexe",
+                filter_decant: "Décants",
+                filter_nouveau: "Nouveautés",
+                decant_sec_sub: "L'Art du Décant",
+                decant_sec_title: "Testez Avant d'Adopter",
+                decant_sec_desc: "Nos décants vous permettent de découvrir vos parfums préférés en petit format, à petit prix.",
+                decant_pt_1: "Formats pratiques : 2ml - 5ml - 10ml",
+                decant_pt_2: "Large choix de grandes marques de niche",
+                decant_pt_3: "Qualité et authenticité garanties à 100%",
+                decant_size_1: "Découverte",
+                decant_size_2: "Populaire",
+                decant_size_3: "Intensif",
+                countdown_title: "Vente Flash - Décants & Packs",
+                cat_sec_sub: "Nos Catégories",
+                cat_sec_title: "Trouvez le parfum qui vous correspond",
+                card_cat_homme: "Parfums Homme",
+                card_cat_homme_sub: "Élégance & Caractère",
+                card_cat_femme: "Parfums Femme",
+                card_cat_femme_sub: "Douceur & Féminité",
+                card_cat_decant: "Décants",
+                card_cat_decant_sub: "Petits formats, grandes émotions",
+                card_cat_uni: "Parfums Unisexes",
+                card_cat_uni_sub: "Liberté d'expression",
+                card_cat_new: "Nouveautés",
+                card_cat_new_sub: "Les dernières pépites",
+                about_title: "Plus qu'une parfumerie, une passion.",
+                about_desc: "Basée à Nador, Nador Scents vous propose une sélection rigoureuse des plus grandes marques de parfums.",
+                about_call: "Contact direct :",
+                testi_title: "Ils nous font confiance",
+                testi_quote: "\"Qualité au top ! Les parfums sont authentiques et la livraison était très rapide.\"",
+                footer_desc: "Votre destination de choix pour la parfumerie de niche et les décants de luxe au Maroc.",
+                footer_nav: "Navigation",
+                footer_info: "Informations",
+                footer_contact: "Contact & Commandes",
+                info_legal: "Mentions légales",
+                info_privacy: "Politique de confidentialité",
+                cart_title: "Votre Panier",
+                cart_subtotal: "Sous-total",
+                cart_total: "Total",
+                cart_whatsapp: "Commander via WhatsApp",
+                cart_call: "Ou appeler le +212 7 07 90 08 67",
+                btn_add_cart: "Ajouter au panier"
+            },
+            ar: {
+                topbar_text: "توصيل سريع في جميع أنحاء المغرب • الدفع عند الاستلام",
+                topbar_call: "اطلب عبر",
+                subtitle_header: "عطور نيش فاخرة",
+                nav_home: "الرئيسية",
+                nav_packs: "العروض الخاصة",
+                nav_collection: "المجموعة",
+                nav_decant: "فن العينات",
+                nav_categories: "التصنيفات",
+                nav_about: "من نحن",
+                nav_contact: "اتصل بنا",
+                search_placeholder: "ابحث عن عطر أو ماركة...",
+                hero_badge: "عطور فاخرة وعينات أصلية",
+                hero_title_1: "جوهر الفخامة",
+                hero_title_2: "بين يديك",
+                hero_desc: "اكتشف تشكيلتنا الحصرية من العطور المتخصصة والعينات الأصلية.",
+                btn_discover: "اكتشف المجموعة",
+                btn_packs: "عرض العروض الخاصة",
+                trust_1: "منتجات أصلية 100%",
+                trust_2: "توصيل سريع في كل المغرب",
+                trust_3: "خدمة عملاء في خدمتكم",
+                showcase_sub: "مجموعة حصرية",
+                showcase_desc: "متوفر بزجاجة كاملة وعينات 2 مل، 5 مل، 10 مل",
+                packs_subtitle: "عروض حصرية",
+                packs_title: "الباقات الـ 5 والهدايا المميزة",
+                packs_desc: "استفد من تخفيضات استثنائية على مجموعات العينات وباقات العطور.",
+                cat_subtitle: "المفضلات لدينـا",
+                cat_title: "الكتالوج (20 منتجاً حصرياً)",
+                cat_desc: "إبداعات نادرة ومميزة مختارة بعناية.",
+                filter_all: "الكل",
+                filter_homme: "رجال",
+                filter_femme: "نساء",
+                filter_unisexe: "للجنسين",
+                filter_decant: "عينات",
+                filter_nouveau: "جديد",
+                decant_sec_sub: "فن العينات",
+                decant_sec_title: "جرب قبل الشراء",
+                decant_sec_desc: "تتيح لك العينات اكتشاف عطرك المفضل بأحجام صغيرة وأسعار مناسبة.",
+                decant_pt_1: "أحجام عملية: 2مل - 5مل - 10مل",
+                decant_pt_2: "تشكيلة واسعة من أشهر الماركات",
+                decant_pt_3: "جودة وأصالة مضمونة 100%",
+                decant_size_1: "اكتشاف",
+                decant_size_2: "شائع",
+                decant_size_3: "مكثف",
+                countdown_title: "تخفيضات لفترة محدودة - العينات والباقات",
+                cat_sec_sub: "التصنيفات",
+                cat_sec_title: "اعثر على العطر الذي يناسبك",
+                card_cat_homme: "عطور الرجال",
+                card_cat_homme_sub: "أناقة وشخصية",
+                card_cat_femme: "عطور النساء",
+                card_cat_femme_sub: "نعومة وأنوثة",
+                card_cat_decant: "عينات",
+                card_cat_decant_sub: "أحجام صغيرة، مشاعر كبرى",
+                card_cat_uni: "عطور للجنسين",
+                card_cat_uni_sub: "حرية التعبير",
+                card_cat_new: "الجديد",
+                card_cat_new_sub: "أحدث الإصدارات",
+                about_title: "أكثر من مجرد عطور، إنه شغف.",
+                about_desc: "مقرها في الناظور، تقترح عليك نادور سنتس تشكيلة دقيقة بمنتجات أصلية 100%.",
+                about_call: "اتصال مباشر:",
+                testi_title: "ثقوا بنـا",
+                testi_quote: "\"جودة ممتازة! العطور أصلية والتوصيل كان سريعاً جداً.\"",
+                footer_desc: "وجهتك المفضلة لعطور النيش وعينات الفخامة في المغرب.",
+                footer_nav: "التنقل",
+                footer_info: "معلومات",
+                footer_contact: "اتصل والطلبات",
+                info_legal: "إشعارات قانونية",
+                info_privacy: "سياسة الخصوصية",
+                cart_title: "سلة التسوق",
+                cart_subtotal: "المجموع الفرعي",
+                cart_total: "المجموع",
+                cart_whatsapp: "اطلب عبر واتساب",
+                cart_call: "أو اتصل على 0707900867 212+",
+                btn_add_cart: "أضف إلى السلة"
+            },
+            en: {
+                topbar_text: "Fast delivery across Morocco • Cash on delivery",
+                topbar_call: "Order at",
+                subtitle_header: "Niche Perfumery",
+                nav_home: "Home",
+                nav_packs: "Promo Packs",
+                nav_collection: "Collection",
+                nav_decant: "Decants Art",
+                nav_categories: "Categories",
+                nav_about: "About",
+                nav_contact: "Contact",
+                search_placeholder: "Search for a perfume, brand...",
+                hero_badge: "Luxury Perfumes & Authentic Decants",
+                hero_title_1: "The Essence of Luxury",
+                hero_title_2: "At Your Fingertips",
+                hero_desc: "Discover our exclusive selection of niche perfumes and authentic decants.",
+                btn_discover: "Discover Collection",
+                btn_packs: "View Promo Packs",
+                trust_1: "100% Authentic products",
+                trust_2: "Fast delivery throughout Morocco",
+                trust_3: "Responsive customer support",
+                showcase_sub: "Exclusive Collection",
+                showcase_desc: "Available in full bottles and 2ml, 5ml, 10ml decants",
+                packs_subtitle: "Exclusive Offers",
+                packs_title: "Our 5 Packs & Gift Sets",
+                packs_desc: "Enjoy exceptional discounts on our curated gift boxes and decant discovery packs.",
+                cat_subtitle: "Our Favorites",
+                cat_title: "Catalog (20 Exclusive Products)",
+                cat_desc: "Rare and prestigious creations, carefully selected.",
+                filter_all: "All",
+                filter_homme: "Men",
+                filter_femme: "Women",
+                filter_unisexe: "Unisex",
+                filter_decant: "Decants",
+                filter_nouveau: "New",
+                decant_sec_sub: "Decants Art",
+                decant_sec_title: "Test Before You Buy",
+                decant_sec_desc: "Our decants allow you to discover your favorite perfumes in small sizes at affordable prices.",
+                decant_pt_1: "Practical formats: 2ml - 5ml - 10ml",
+                decant_pt_2: "Wide choice of top niche brands",
+                decant_pt_3: "100% Guaranteed quality & authenticity",
+                decant_size_1: "Discovery",
+                decant_size_2: "Popular",
+                decant_size_3: "Intensive",
+                countdown_title: "Flash Sale - Decants & Packs",
+                cat_sec_sub: "Categories",
+                cat_sec_title: "Find the perfume that suits you",
+                card_cat_homme: "Men's Perfumes",
+                card_cat_homme_sub: "Elegance & Character",
+                card_cat_femme: "Women's Perfumes",
+                card_cat_femme_sub: "Softness & Femininity",
+                card_cat_decant: "Decants",
+                card_cat_decant_sub: "Small formats, big emotions",
+                card_cat_uni: "Unisex Perfumes",
+                card_cat_uni_sub: "Freedom of expression",
+                card_cat_new: "New Arrivals",
+                card_cat_new_sub: "The latest gems",
+                about_title: "More than a perfumery, a passion.",
+                about_desc: "Based in Nador, Nador Scents offers a rigorous selection of major perfume brands.",
+                about_call: "Direct contact:",
+                testi_title: "They Trust Us",
+                testi_quote: "\"Top quality! The perfumes are authentic and delivery was very fast.\"",
+                footer_desc: "Your premier destination for niche perfumery and luxury decants in Morocco.",
+                footer_nav: "Navigation",
+                footer_info: "Information",
+                footer_contact: "Contact & Orders",
+                info_legal: "Legal Notice",
+                info_privacy: "Privacy Policy",
+                cart_title: "Your Cart",
+                cart_subtotal: "Subtotal",
+                cart_total: "Total",
+                cart_whatsapp: "Order via WhatsApp",
+                cart_call: "Or call +212 7 07 90 08 67",
+                btn_add_cart: "Add to cart"
+            }
+        };
+
+        let currentLang = 'fr';
+
+        function toggleLangDropdown() {
+            const dropdown = document.getElementById('lang-dropdown');
+            dropdown.classList.toggle('hidden');
+        }
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            document.getElementById('current-lang-label').textContent = lang.toUpperCase();
+            document.getElementById('lang-dropdown').classList.add('hidden');
+
+            if (lang === 'ar') {
+                document.documentElement.setAttribute('dir', 'rtl');
+                document.body.classList.add('lang-ar');
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr');
+                document.body.classList.remove('lang-ar');
+            }
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
+                }
+            });
+
+            renderProducts(products);
+            updateCartUI();
+        }
+
+        // 20 Produits exacts
+        const products = [
+            { id: 1, name: "Oud Wood", brand: "Tom Ford", category: "homme", price: 1990, rating: 5, reviews: 24, image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=600&q=80", badge: "Populaire" },
+            { id: 2, name: "Sauvage Elixir", brand: "Dior", category: "homme", price: 1750, rating: 5, reviews: 18, image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=80", badge: "Best-seller" },
+            { id: 3, name: "Le Male Elixir", brand: "Jean Paul Gaultier", category: "homme", price: 1450, rating: 5, reviews: 32, image: "https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=600&q=80", badge: "Tendance" },
+            { id: 4, name: "Baccarat Rouge 540", brand: "Maison Francis Kurkdjian", category: "unisexe", price: 2490, rating: 5, reviews: 21, image: "https://images.unsplash.com/photo-1583445013765-46c20c4a6772?auto=format&fit=crop&w=600&q=80", badge: "Luxe" },
+            { id: 5, name: "Yara", brand: "Lattafa", category: "femme", price: 499, rating: 5, reviews: 15, image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=600&q=80", badge: "Coup de cœur" },
+            { id: 6, name: "Aventus Décant 10ml", brand: "Creed", category: "decant", price: 280, rating: 5, reviews: 42, image: "https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&w=600&q=80", badge: "Décant" },
+            { id: 7, name: "Naxos", brand: "Xerjoff", category: "unisexe", price: 2150, rating: 5, reviews: 29, image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=600&q=80", badge: "Nouveau" },
+            { id: 8, name: "Oud Maracuja", brand: "Maison Crivelli", category: "unisexe", price: 2600, rating: 5, reviews: 14, image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=80", badge: "Nouveau" },
+            { id: 9, name: "Angels' Share", brand: "By Kilian", category: "unisexe", price: 2350, rating: 5, reviews: 38, image: "https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=600&q=80", badge: "Luxe" },
+            { id: 10, name: "Greenley", brand: "Parfums de Marly", category: "homme", price: 2200, rating: 5, reviews: 19, image: "https://images.unsplash.com/photo-1583445013765-46c20c4a6772?auto=format&fit=crop&w=600&q=80", badge: "Populaire" },
+            { id: 11, name: "Delina", brand: "Parfums de Marly", category: "femme", price: 2250, rating: 5, reviews: 45, image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=600&q=80", badge: "Best-seller" },
+            { id: 12, name: "Herod", brand: "Parfums de Marly", category: "homme", price: 2100, rating: 5, reviews: 27, image: "https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&w=600&q=80", badge: "Populaire" },
+            { id: 13, name: "Lost Cherry", brand: "Tom Ford", category: "unisexe", price: 2450, rating: 5, reviews: 33, image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=600&q=80", badge: "Luxe" },
+            { id: 14, name: "Ganymede", brand: "Marc-Antoine Barrois", category: "unisexe", price: 1950, rating: 5, reviews: 50, image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=80", badge: "Nouveau" },
+            { id: 15, name: "Hacivat", brand: "Nishane", category: "unisexe", price: 1890, rating: 5, reviews: 22, image: "https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=600&q=80", badge: "Populaire" },
+            { id: 16, name: "Black Orchid", brand: "Tom Ford", category: "femme", price: 1550, rating: 5, reviews: 31, image: "https://images.unsplash.com/photo-1583445013765-46c20c4a6772?auto=format&fit=crop&w=600&q=80", badge: "Coup de cœur" },
+            { id: 17, name: "Khamrah", brand: "Lattafa", category: "unisexe", price: 450, rating: 5, reviews: 65, image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=600&q=80", badge: "Best-seller" },
+            { id: 18, name: "Bleu de Chanel Décant 10ml", brand: "Chanel", category: "decant", price: 220, rating: 5, reviews: 88, image: "https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&w=600&q=80", badge: "Décant" },
+            { id: 19, name: "Erba Pura Décant 10ml", brand: "Sospiro", category: "decant", price: 250, rating: 5, reviews: 39, image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=600&q=80", badge: "Décant" },
+            { id: 20, name: "Althair", brand: "Parfums de Marly", category: "homme", price: 2300, rating: 5, reviews: 12, image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=80", badge: "Nouveau" }
+        ];
+
+        let cart = [];
+        let currentFilter = 'all';
+
+        function renderProducts(items) {
+            const grid = document.getElementById('product-grid');
+            if (items.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-gray-400">Aucun parfum trouvé.</div>`;
+                return;
+            }
+
+            const btnText = translations[currentLang]['btn_add_cart'] || "Ajouter au panier";
+
+            grid.innerHTML = items.map(p => `
+                <div class="bg-dark border border-dark-border hover:border-gold/50 rounded-2xl overflow-hidden group transition-all duration-300 flex flex-col justify-between">
+                    <div class="relative h-60 overflow-hidden bg-[#111]">
+                        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-black/70 backdrop-blur-md text-gold border border-gold/30 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">${p.badge}</span>
+                    </div>
+                    <div class="p-4 flex flex-col flex-1 justify-between">
+                        <div>
+                            <span class="text-[10px] text-gray-400 uppercase tracking-wider">${p.brand}</span>
+                            <h3 class="font-cinzel text-white font-bold text-sm mt-1 group-hover:text-gold transition-colors">${p.name}</h3>
+                            <div class="flex items-center gap-1 text-gold text-xs mt-1">
+                                ${'<i class="fa-solid fa-star"></i>'.repeat(p.rating)}
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-dark-border flex items-center justify-between">
+                            <span class="text-white font-bold text-sm">${p.price} MAD</span>
+                            <button onclick="addToCart(${p.id})" class="gold-gradient-bg text-black font-bold text-xs px-3.5 py-2 rounded-full hover:opacity-90 transition-all">
+                                ${btnText}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterCategory(cat, btn) {
+            currentFilter = cat;
+            document.querySelectorAll('.cat-btn').forEach(b => {
+                b.classList.remove('bg-gold', 'text-black', 'border-gold', 'active-filter');
+                b.classList.add('border-dark-border', 'text-gray-300');
+            });
+            if (btn) {
+                btn.classList.add('bg-gold', 'text-black', 'border-gold', 'active-filter');
+                btn.classList.remove('border-dark-border', 'text-gray-300');
+            }
+
+            if (cat === 'all') {
+                renderProducts(products);
+            } else if (cat === 'nouveau') {
+                renderProducts(products.filter(p => p.badge === 'Nouveau'));
+            } else {
+                renderProducts(products.filter(p => p.category === cat));
+            }
+        }
+
+        function filterProducts() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const filtered = products.filter(p => p.name.toLowerCase().includes(query) || p.brand.toLowerCase().includes(query));
+            renderProducts(filtered);
+        }
+
+        function toggleSearch() {
+            const bar = document.getElementById('search-bar-container');
+            bar.classList.toggle('hidden');
+            if(!bar.classList.contains('hidden')) { document.getElementById('search-input').focus(); }
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        function toggleCart() {
+            document.getElementById('cart-drawer').classList.toggle('hidden');
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existing = cart.find(item => item.id === productId);
+            if (existing) { existing.quantity += 1; } else { cart.push({ ...product, quantity: 1 }); }
+            updateCartUI();
+            toggleCart();
+        }
+
+        function addPackToCart(name, price, image) {
+            const existing = cart.find(item => item.name === name);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ id: 'pack_' + Date.now(), name: name, brand: 'Pack Promo', price: price, image: image, quantity: 1 });
+            }
+            updateCartUI();
+            toggleCart();
+        }
+
+        function updateQuantity(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity <= 0) { cart = cart.filter(i => i.id !== productId); }
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const badge = document.getElementById('cart-badge');
+            const itemsContainer = document.getElementById('cart-items');
+            const subtotalEl = document.getElementById('cart-subtotal');
+            const totalEl = document.getElementById('cart-total');
+
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            badge.textContent = totalCount;
+
+            if (cart.length === 0) {
+                itemsContainer.innerHTML = `<div class="text-center py-12 text-gray-500 text-sm">Votre panier est vide.</div>`;
+                subtotalEl.textContent = '0 MAD';
+                totalEl.textContent = '0 MAD';
+                return;
+            }
+
+            let subtotal = 0;
+            itemsContainer.innerHTML = cart.map(item => {
+                subtotal += item.price * item.quantity;
+                return `
+                    <div class="flex items-center justify-between bg-dark-lighter p-3 rounded-xl border border-dark-border">
+                        <div class="flex items-center gap-3">
+                            <img src="${item.image}" alt="${item.name}" class="w-14 h-14 object-cover rounded-lg">
+                            <div>
+                                <h4 class="text-white text-xs font-bold font-cinzel">${item.name}</h4>
+                                <span class="text-[10px] text-gray-400">${item.brand}</span>
+                                <div class="text-gold text-xs font-semibold mt-1">${item.price} MAD</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="updateQuantity('${item.id}', -1)" class="w-6 h-6 rounded bg-dark border border-dark-border text-gray-300 hover:text-white flex items-center justify-center text-xs">-</button>
+                            <span class="text-xs font-bold text-white">${item.quantity}</span>
+                            <button onclick="updateQuantity('${item.id}', 1)" class="w-6 h-6 rounded bg-dark border border-dark-border text-gray-300 hover:text-white flex items-center justify-center text-xs">+</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            subtotalEl.textContent = subtotal + ' MAD';
+            totalEl.textContent = subtotal + ' MAD';
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) { alert('Votre panier est vide.'); return; }
+            let message = "Bonjour Nador Scents, je souhaite commander les articles suivants :\n\n";
+            let total = 0;
+            cart.forEach(item => {
+                message += `- ${item.name} (${item.brand}) x${item.quantity} : ${item.price * item.quantity} MAD\n`;
+                total += item.price * item.quantity;
+            });
+            message += `\nTotal : ${total} MAD\nLivraison au Maroc.\n\nCommande validée via le +212 7 07 90 08 67.`;
+
+            const encoded = encodeURIComponent(message);
+            window.open(`https://wa.me/212707900867?text=${encoded}`, '_blank');
+        }
+
+        // Countdown Timer Logic
+        function startCountdown() {
+            let time = 2 * 24 * 60 * 60 + 14 * 60 * 60 + 35 * 60 + 50;
+            setInterval(() => {
+                if (time > 0) time--;
+                const days = Math.floor(time / (3600 * 24));
+                const hours = Math.floor((time % (3600 * 24)) / 3600);
+                const minutes = Math.floor((time % 3600) / 60);
+                const seconds = time % 60;
+
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            }, 1000);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts(products);
+            startCountdown();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nador Rent Car | Location de Voiture Haut de Gamme à Nador</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                        },
+                        dark: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        arabic: ['Cairo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        [dir="rtl"] body {
+            font-family: 'Cairo', sans-serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(30, 58, 138, 0.85) 100%), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Top Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-brand-600 to-blue-400 flex items-center justify-center text-white shadow-md shadow-brand-500/30">
+                    <i class="fa-solid fa-car-side text-2xl"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold text-white tracking-wide" data-i18n="logoTitle">NADOR <span class="text-brand-500">RENT CAR</span></span>
+                    <span class="block text-xs text-slate-400 font-medium" data-i18n="logoSub">Location & Aéroport</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center space-x-8 rtl:space-x-reverse text-sm font-semibold text-slate-300">
+                <a href="#accueil" class="hover:text-brand-500 transition" data-i18n="navHome">Accueil</a>
+                <a href="#vehicules" class="hover:text-brand-500 transition" data-i18n="navCars">Nos Voitures</a>
+                <a href="#pourquoi" class="hover:text-brand-500 transition" data-i18n="navWhy">Pourquoi Nous</a>
+                <a href="#aeroport" class="hover:text-brand-500 transition" data-i18n="navAirport">Aéroport NDB</a>
+                <a href="#contact" class="hover:text-brand-500 transition" data-i18n="navContact">Contact</a>
+            </nav>
+
+            <!-- Actions (Language Selector & WhatsApp CTA) -->
+            <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                <!-- Language Selector -->
+                <div class="relative">
+                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-800 text-white text-xs font-bold px-3 py-2 rounded-lg border border-slate-700 focus:outline-none focus:border-brand-500 cursor-pointer">
+                        <option value="fr">🇫🇷 FR</option>
+                        <option value="ar">🇲🇦 AR</option>
+                        <option value="en">🇬🇧 EN</option>
+                        <option value="es">🇪🇸 ES</option>
+                    </select>
+                </div>
+
+                <!-- WhatsApp Quick Button -->
+                <a href="https://wa.me/212600000000?text=Bonjour,%20je%20souhaite%20louer%20une%20voiture%20à%20Nador." target="_blank" class="hidden sm:inline-flex items-center space-x-2 rtl:space-x-reverse bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-lg shadow-emerald-600/30 transition transform hover:-translate-y-0.5">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span data-i18n="whatsappBtn">WhatsApp 24/7</span>
+                </a>
+
+                <!-- Mobile Menu Toggle -->
+                <button id="mobileMenuBtn" class="md:hidden text-slate-300 hover:text-white p-2 text-xl focus:outline-none">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Drawer -->
+        <div id="mobileMenu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-6 py-4 space-y-3">
+            <a href="#accueil" class="block text-slate-300 hover:text-brand-500 font-medium py-1" data-i18n="navHome" onclick="toggleMobileMenu()">Accueil</a>
+            <a href="#vehicules" class="block text-slate-300 hover:text-brand-500 font-medium py-1" data-i18n="navCars" onclick="toggleMobileMenu()">Nos Voitures</a>
+            <a href="#pourquoi" class="block text-slate-300 hover:text-brand-500 font-medium py-1" data-i18n="navWhy" onclick="toggleMobileMenu()">Pourquoi Nous</a>
+            <a href="#aeroport" class="block text-slate-300 hover:text-brand-500 font-medium py-1" data-i18n="navAirport" onclick="toggleMobileMenu()">Aéroport NDB</a>
+            <a href="#contact" class="block text-slate-300 hover:text-brand-500 font-medium py-1" data-i18n="navContact" onclick="toggleMobileMenu()">Contact</a>
+            <div class="pt-2">
+                <a href="https://wa.me/212600000000" target="_blank" class="w-full bg-emerald-600 text-white text-center py-2.5 rounded-xl font-bold block shadow">
+                    <i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp 24/7
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero-gradient min-h-[85vh] flex items-center justify-center text-white px-4 py-20 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto text-center z-10">
+            <span class="inline-flex items-center space-x-2 rtl:space-x-reverse bg-brand-600/30 border border-brand-500/50 text-brand-300 text-xs font-bold px-4 py-1.5 rounded-full mb-6 uppercase tracking-wider shadow-sm">
+                <i class="fa-solid fa-location-dot"></i>
+                <span data-i18n="badgeHero">Nador • Aéroport NDB • Ville • Corniche</span>
+            </span>
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6 leading-tight" data-i18n="heroTitle">
+                Prenez la Route en Toute Liberté à Nador
+            </h1>
+            <p class="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto mb-10" data-i18n="heroSubtitle">
+                Large choix de véhicules récents, climatisés et assurés. Livraison gratuite à l'aéroport Nador Al Aroui ou à votre domicile.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#vehicules" class="w-full sm:w-auto bg-brand-600 hover:bg-brand-500 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-brand-600/40 transition transform hover:-translate-y-1 text-center" data-i18n="btnSeeCars">
+                    Découvrir nos voitures
+                </a>
+                <a href="https://wa.me/212600000000?text=Bonjour,%20je%20veux%20réserver%20une%20voiture." target="_blank" class="w-full sm:w-auto bg-slate-800/90 hover:bg-slate-700 text-white font-bold px-8 py-4 rounded-xl border border-slate-700 shadow-xl transition transform hover:-translate-y-1 text-center flex items-center justify-center space-x-2 rtl:space-x-reverse">
+                    <i class="fa-brands fa-whatsapp text-emerald-400 text-xl"></i>
+                    <span data-i18n="btnFastBooking">Réservation Express WhatsApp</span>
+                </a>
+            </div>
+
+            <!-- Quick Trust Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 pt-12 border-t border-slate-800/80 max-w-4xl mx-auto text-left rtl:text-right">
+                <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <div class="text-brand-400 text-2xl"><i class="fa-solid fa-car-on"></i></div>
+                    <div>
+                        <div class="text-2xl font-black">100%</div>
+                        <div class="text-xs text-slate-400" data-i18n="stat1">Véhicules récents</div>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <div class="text-brand-400 text-2xl"><i class="fa-solid fa-plane-arrival"></i></div>
+                    <div>
+                        <div class="text-2xl font-black" data-i18n="stat2Val">Aéroport</div>
+                        <div class="text-xs text-slate-400" data-i18n="stat2">Livraison NDB</div>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <div class="text-brand-400 text-2xl"><i class="fa-solid fa-headset"></i></div>
+                    <div>
+                        <div class="text-2xl font-black">24/7</div>
+                        <div class="text-xs text-slate-400" data-i18n="stat3">Assistance & Support</div>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <div class="text-brand-400 text-2xl"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div>
+                        <div class="text-2xl font-black">Tous Risques</div>
+                        <div class="text-xs text-slate-400" data-i18n="stat4">Assurance incluse</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fleet Section -->
+    <section id="vehicules" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4" data-i18n="fleetTitle">Notre Flotte Automobile</h2>
+            <p class="text-slate-600" data-i18n="fleetSub">Choisissez le véhicule qui correspond à votre séjour, que ce soit pour la ville, les longs trajets ou les vacances en famille.</p>
+            
+            <!-- Category Filter Buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-2 mt-8">
+                <button onclick="filterCars('all')" class="category-btn active px-5 py-2.5 rounded-xl font-bold text-xs uppercase transition bg-brand-600 text-white shadow-md" data-i18n="catAll">Tous</button>
+                <button onclick="filterCars('citadine')" class="category-btn px-5 py-2.5 rounded-xl font-bold text-xs uppercase transition bg-white text-slate-700 hover:bg-slate-100 border border-slate-200" data-i18n="catCitadine">Citadines</button>
+                <button onclick="filterCars('berline')" class="category-btn px-5 py-2.5 rounded-xl font-bold text-xs uppercase transition bg-white text-slate-700 hover:bg-slate-100 border border-slate-200" data-i18n="catBerline">Berlines</button>
+                <button onclick="filterCars('suv')" class="category-btn px-5 py-2.5 rounded-xl font-bold text-xs uppercase transition bg-white text-slate-700 hover:bg-slate-100 border border-slate-200" data-i18n="catSuv">SUV & 4x4</button>
+                <button onclick="filterCars('familiale')" class="category-btn px-5 py-2.5 rounded-xl font-bold text-xs uppercase transition bg-white text-slate-700 hover:bg-slate-100 border border-slate-200" data-i18n="catFamiliale">Familiales</button>
+            </div>
+        </div>
+
+        <!-- Car Grid -->
+        <div id="carGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Cars will be dynamically populated via JavaScript -->
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="pourquoi" class="bg-slate-900 text-white py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl font-extrabold mb-4" data-i18n="whyTitle">Pourquoi Choisir Nador Rent Car ?</h2>
+                <p class="text-slate-400" data-i18n="whySub">Nous nous engageons à vous offrir le meilleur rapport qualité-prix et un service irréprochable.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-slate-800/60 border border-slate-700/80 p-8 rounded-2xl shadow-lg">
+                    <div class="w-14 h-14 rounded-xl bg-brand-600/20 text-brand-400 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-tags"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="why1Title">Prix Transparent</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed" data-i18n="why1Desc">Pas de frais cachés. Nos tarifs incluent l'assurance et le kilométrage adapté à vos besoins à Nador.</p>
+                </div>
+
+                <div class="bg-slate-800/60 border border-slate-700/80 p-8 rounded-2xl shadow-lg">
+                    <div class="w-14 h-14 rounded-xl bg-brand-600/20 text-brand-400 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-plane-circle-check"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="why2Title">Livraison Aéroport NDB</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed" data-i18n="why2Desc">Votre voiture vous attend dès votre atterrissage à l'aéroport de Nador Al Aroui avec un panneau à votre nom.</p>
+                </div>
+
+                <div class="bg-slate-800/60 border border-slate-700/80 p-8 rounded-2xl shadow-lg">
+                    <div class="w-14 h-14 rounded-xl bg-brand-600/20 text-brand-400 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-handshake-angle"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="why3Title">Assistance 24/7</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed" data-i18n="why3Desc">Une équipe locale à votre écoute à tout moment pour vous assister en cas de besoin pendant votre séjour.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Airport Delivery Highlight -->
+    <section id="aeroport" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gradient-to-r from-brand-900 to-slate-900 rounded-3xl overflow-hidden shadow-2xl text-white grid grid-cols-1 lg:grid-cols-2">
+            <div class="p-8 sm:p-12 flex flex-col justify-center">
+                <span class="text-brand-400 text-xs font-bold uppercase tracking-wider mb-2" data-i18n="airportBadge">Service MRE & Voyageurs</span>
+                <h2 class="text-3xl font-extrabold mb-6" data-i18n="airportTitle">Livraison Rapide à l'Aéroport Nador Al Aroui (NDB)</h2>
+                <p class="text-slate-300 text-sm leading-relaxed mb-6" data-i18n="airportDesc">
+                    Vous voyagez depuis l'Europe ou une autre ville marocaine ? Ne perdez pas une minute. Réservez votre véhicule à l'avance et récupérez les clés directement au terminal des arrivées de l'aéroport de Nador. Restitution rapide et flexible lors de votre départ.
+                </p>
+                <ul class="space-y-3 mb-8 text-sm text-slate-200">
+                    <li class="flex items-center space-x-3 rtl:space-x-reverse"><i class="fa-solid fa-circle-check text-emerald-400"></i> <span data-i18n="airportPoint1">Accueil personnalisé avec pancarte nominative</span></li>
+                    <li class="flex items-center space-x-3 rtl:space-x-reverse"><i class="fa-solid fa-circle-check text-emerald-400"></i> <span data-i18n="airportPoint2">Formalités rapides en moins de 5 minutes</span></li>
+                    <li class="flex items-center space-x-3 rtl:space-x-reverse"><i class="fa-solid fa-circle-check text-emerald-400"></i> <span data-i18n="airportPoint3">Paiement flexible (Espèces / Carte)</span></li>
+                </ul>
+                <div>
+                    <a href="https://wa.me/212600000000?text=Bonjour,%20je%20souhaite%20réserver%20une%20voiture%20à%20l'aéroport%20de%20Nador." target="_blank" class="inline-flex items-center space-x-2 rtl:space-x-reverse bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-3.5 rounded-xl shadow-lg transition">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                        <span data-i18n="airportBtn">Réserver pour l'Aéroport</span>
+                    </a>
+                </div>
+            </div>
+            <div class="relative min-h-[300px] lg:min-h-full">
+                <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&q=80&w=1000" alt="Nador Airport Rental" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 lg:bg-gradient-to-r lg:from-slate-900/40"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Location Footer Section -->
+    <footer id="contact" class="bg-slate-950 text-slate-400 pt-16 pb-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+            <div>
+                <div class="flex items-center space-x-3 rtl:space-x-reverse mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-brand-600 flex items-center justify-center text-white">
+                        <i class="fa-solid fa-car-side text-lg"></i>
+                    </div>
+                    <span class="text-xl font-extrabold text-white">NADOR <span class="text-brand-500">RENT CAR</span></span>
+                </div>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6" data-i18n="footerDesc">
+                    Votre agence de location de voitures de confiance à Nador. Services professionnels, véhicules récents et assistance 24/7.
+                </p>
+                <div class="flex space-x-4 rtl:space-x-reverse text-slate-300">
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-brand-600 hover:text-white transition"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-brand-600 hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://wa.me/212600000000" target="_blank" class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold text-base mb-4" data-i18n="footerZones">Zones de Livraison</h4>
+                <ul class="space-y-2 text-sm">
+                    <li class="flex items-center space-x-2 rtl:space-x-reverse"><i class="fa-solid fa-angle-right text-brand-500 text-xs"></i> <span data-i18n="zone1">Aéroport Nador Al Aroui (NDB)</span></li>
+                    <li class="flex items-center space-x-2 rtl:space-x-reverse"><i class="fa-solid fa-angle-right text-brand-500 text-xs"></i> <span data-i18n="zone2">Centre-ville Nador</span></li>
+                    <li class="flex items-center space-x-2 rtl:space-x-reverse"><i class="fa-solid fa-angle-right text-brand-500 text-xs"></i> <span data-i18n="zone3">Corniche & Mar Chica</span></li>
+                    <li class="flex items-center space-x-2 rtl:space-x-reverse"><i class="fa-solid fa-angle-right text-brand-500 text-xs"></i> <span data-i18n="zone4">Beni Ansar & Selouane</span></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold text-base mb-4" data-i18n="footerContact">Contact Direct</h4>
+                <ul class="space-y-3 text-sm">
+                    <li class="flex items-center space-x-3 rtl:space-x-reverse">
+                        <i class="fa-solid fa-phone text-brand-500"></i>
+                        <span>+212 6 00 00 00 00</span>
+                    </li>
+                    <li class="flex items-center space-x-3 rtl:space-x-reverse">
+                        <i class="fa-brands fa-whatsapp text-emerald-500"></i>
+                        <span>+212 6 00 00 00 00 (WhatsApp)</span>
+                    </li>
+                    <li class="flex items-center space-x-3 rtl:space-x-reverse">
+                        <i class="fa-solid fa-envelope text-brand-500"></i>
+                        <span>contact@nadorrentcar.ma</span>
+                    </li>
+                    <li class="flex items-center space-x-3 rtl:space-x-reverse">
+                        <i class="fa-solid fa-location-dot text-brand-500"></i>
+                        <span data-i18n="footerAddress">Avenue Mohammed V & Aéroport, Nador</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-slate-900 text-center text-xs text-slate-500">
+            <p data-i18n="copyright">&copy; 2026 Nador Rent Car. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative text-slate-800 animate-in fade-in zoom-in duration-200">
+            <button onclick="closeBookingModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600 text-xl font-bold">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="mb-6">
+                <span class="text-xs font-bold text-brand-600 uppercase bg-brand-50 px-3 py-1 rounded-full" data-i18n="modalBadge">Réservation Instantanée</span>
+                <h3 id="modalCarTitle" class="text-2xl font-black text-slate-900 mt-2">Nom du véhicule</h3>
+                <p id="modalCarPrice" class="text-brand-600 font-bold text-lg">250 MAD / jour</p>
+            </div>
+
+            <form id="bookingForm" onsubmit="submitBooking(event)" class="space-y-4">
+                <input type="hidden" id="carModelInput">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1" data-i18n="labelFullName">Nom complet</label>
+                    <input type="text" id="clientName" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-500" placeholder="Ex. Mohammed Alami">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1" data-i18n="labelPhone">Téléphone / WhatsApp</label>
+                        <input type="tel" id="clientPhone" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-500" placeholder="+212 6...">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1" data-i18n="labelLocation">Lieu de prise en charge</label>
+                        <select id="clientPickup" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-500">
+                            <option value="Aéroport Nador Al Aroui (NDB)" data-i18n="pickupAirport">Aéroport Nador Al Aroui (NDB)</option>
+                            <option value="Centre-ville Nador" data-i18n="pickupCity">Centre-ville Nador</option>
+                            <option value="Corniche Mar Chica" data-i18n="pickupCorniche">Corniche Mar Chica</option>
+                            <option value="Gare / Autre" data-i18n="pickupOther">Gare / Autre</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1" data-i18n="labelStart">Date de début</label>
+                        <input type="date" id="startDate" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1" data-i18n="labelEnd">Date de fin</label>
+                        <input type="date" id="endDate" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-500">
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 rounded-xl shadow-lg shadow-emerald-600/30 transition flex items-center justify-center space-x-2 rtl:space-x-reverse mt-2">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <span data-i18n="btnConfirmWhatsapp">Confirmer et envoyer sur WhatsApp</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript Application Code -->
+    <script>
+        // Car Data Catalog
+        const carsData = [
+            {
+                id: 1,
+                name: "Dacia Logan / Sandero",
+                category: "citadine",
+                price: 250,
+                image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&q=80&w=800",
+                transmission: "Manuelle",
+                fuel: "Diesel",
+                seats: 5,
+                bags: 2
+            },
+            {
+                id: 2,
+                name: "Renault Clio 5",
+                category: "citadine",
+                price: 320,
+                image: "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&q=80&w=800",
+                transmission: "Manuelle",
+                fuel: "Diesel",
+                seats: 5,
+                bags: 2
+            },
+            {
+                id: 3,
+                name: "Peugeot 208",
+                category: "citadine",
+                price: 350,
+                image: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&q=80&w=800",
+                transmission: "Automatique",
+                fuel: "Diesel",
+                seats: 5,
+                bags: 2
+            },
+            {
+                id: 4,
+                name: "Hyundai Accent",
+                category: "berline",
+                price: 380,
+                image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=800",
+                transmission: "Automatique",
+                fuel: "Diesel",
+                seats: 5,
+                bags: 3
+            },
+            {
+                id: 5,
+                name: "Dacia Duster 4x4",
+                category: "suv",
+                price: 500,
+                image: "https://images.unsplash.com/photo-1533106497176-45ae19e68ba2?auto=format&fit=crop&q=80&w=800",
+                transmission: "Manuelle",
+                fuel: "Diesel",
+                seats: 5,
+                bags: 4
+            },
+            {
+                id: 6,
+                name: "Hyundai Tucson",
+                category: "suv",
+                price: 700,
+                image: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&q=80&w=800",
+                transmission: "Automatique",
+                fuel: "Diesel",
+                seats: 5,
+                bags: 4
+            },
+            {
+                id: 7,
+                name: "Volkswagen Touareg",
+                category: "familiale",
+                price: 1100,
+                image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=800",
+                transmission: "Automatique",
+                fuel: "Diesel",
+                seats: 7,
+                bags: 5
+            }
+        ];
+
+        // Translations Dictionary
+        const translations = {
+            fr: {
+                logoSub: "Location & Aéroport",
+                navHome: "Accueil",
+                navCars: "Nos Voitures",
+                navWhy: "Pourquoi Nous",
+                navAirport: "Aéroport NDB",
+                navContact: "Contact",
+                whatsappBtn: "WhatsApp 24/7",
+                badgeHero: "Nador • Aéroport NDB • Ville • Corniche",
+                heroTitle: "Prenez la Route en Toute Liberté à Nador",
+                heroSubtitle: "Large choix de véhicules récents, climatisés et assurés. Livraison gratuite à l'aéroport Nador Al Aroui ou à votre domicile.",
+                btnSeeCars: "Découvrir nos voitures",
+                btnFastBooking: "Réservation Express WhatsApp",
+                stat1: "Véhicules récents",
+                stat2Val: "Aéroport",
+                stat2: "Livraison NDB",
+                stat3: "Assistance & Support",
+                stat4: "Assurance incluse",
+                fleetTitle: "Notre Flotte Automobile",
+                fleetSub: "Choisissez le véhicule qui correspond à votre séjour, que ce soit pour la ville, les longs trajets ou les vacances en famille.",
+                catAll: "Tous",
+                catCitadine: "Citadines",
+                catBerline: "Berlines",
+                catSuv: "SUV & 4x4",
+                catFamiliale: "Familiales",
+                perDay: "/ jour",
+                btnBookNow: "Réserver ce véhicule",
+                whyTitle: "Pourquoi Choisir Nador Rent Car ?",
+                whySub: "Nous nous engageons à vous offrir le meilleur rapport qualité-prix et un service irréprochable.",
+                why1Title: "Prix Transparent",
+                why1Desc: "Pas de frais cachés. Nos tarifs incluent l'assurance et le kilométrage adapté à vos besoins à Nador.",
+                why2Title: "Livraison Aéroport NDB",
+                why2Desc: "Votre voiture vous attend dès votre atterrissage à l'aéroport de Nador Al Aroui avec un panneau à votre nom.",
+                why3Title: "Assistance 24/7",
+                why3Desc: "Une équipe locale à votre écoute à tout moment pour vous assister en cas de besoin pendant votre séjour.",
+                airportBadge: "Service MRE & Voyageurs",
+                airportTitle: "Livraison Rapide à l'Aéroport Nador Al Aroui (NDB)",
+                airportDesc: "Vous voyagez depuis l'Europe ou une autre ville marocaine ? Ne perdez pas une minute. Réservez votre véhicule à l'avance et récupérez les clés directement au terminal des arrivées de l'aéroport de Nador. Restitution rapide et flexible lors de votre départ.",
+                airportPoint1: "Accueil personnalisé avec pancarte nominative",
+                airportPoint2: "Formalités rapides en moins de 5 minutes",
+                airportPoint3: "Paiement flexible (Espèces / Carte)",
+                airportBtn: "Réserver pour l'Aéroport",
+                footerDesc: "Votre agence de location de voitures de confiance à Nador. Services professionnels, véhicules récents et assistance 24/7.",
+                footerZones: "Zones de Livraison",
+                zone1: "Aéroport Nador Al Aroui (NDB)",
+                zone2: "Centre-ville Nador",
+                zone3: "Corniche & Mar Chica",
+                zone4: "Beni Ansar & Selouane",
+                footerContact: "Contact Direct",
+                footerAddress: "Avenue Mohammed V & Aéroport, Nador",
+                copyright: "© 2026 Nador Rent Car. Tous droits réservés.",
+                modalBadge: "Réservation Instantanée",
+                labelFullName: "Nom complet",
+                labelPhone: "Téléphone / WhatsApp",
+                labelLocation: "Lieu de prise en charge",
+                pickupAirport: "Aéroport Nador Al Aroui (NDB)",
+                pickupCity: "Centre-ville Nador",
+                pickupCorniche: "Corniche Mar Chica",
+                pickupOther: "Gare / Autre",
+                labelStart: "Date de début",
+                labelEnd: "Date de fin",
+                btnConfirmWhatsapp: "Confirmer et envoyer sur WhatsApp"
+            },
+            ar: {
+                logoSub: "تأجير السيارات والمطار",
+                navHome: "الرئيسية",
+                navCars: "سياراتنا",
+                navWhy: "لماذا نحن",
+                navAirport: "مطار الناظور",
+                navContact: "اتصل بنا",
+                whatsappBtn: "واتساب 24/7",
+                badgeHero: "الناظور • مطار العروي • المدينة • الكورنيش",
+                heroTitle: "انطلق بكل حرية وثقة في الناظور",
+                heroSubtitle: "تشكيلة واسعة من السيارات الحديثة، المكيفة والمؤمنة. توصيل مجاني إلى مطار الناظور العروي أو إلى عنوانك.",
+                btnSeeCars: "اكتشف سياراتنا",
+                btnFastBooking: "حجز سريع عبر واتساب",
+                stat1: "سيارات حديثة",
+                stat2Val: "المطار",
+                stat2: "توصيل مطار العروي",
+                stat3: "مساعدة ودعم",
+                stat4: "تأمين شامل",
+                fleetTitle: "اسطول السيارات المتوفر",
+                fleetSub: "اختر السيارة التي تناسب إقامتك، سواء للتنقل في المدينة أو الرحلات الطويلة أو العائلية.",
+                catAll: "الكل",
+                catCitadine: "صغيرة",
+                catBerline: "سيدان",
+                catSuv: "دفع رباعي",
+                catFamiliale: "عائلية",
+                perDay: "/ يوم",
+                btnBookNow: "احجز هذه السيارة",
+                whyTitle: "لماذا تختار ناظور رنت كار؟",
+                whySub: "نحن ملتزمون بتقديم أفضل قيمة مقابل سعر وخدمة استثنائية لجميع عملائنا.",
+                why1Title: "أسعار شفافة",
+                why1Desc: "بدون رسوم خفية. تشمل أسعارنا التأمين والمسافة المقطوعة المناسبة لاحتياجاتك في الناظور.",
+                why2Title: "توصيل لمطار العروي",
+                why2Desc: "سيارتك في انتظارك فور هبوطك في مطار الناظور العروي مع استقبال شخصي يحمل اسمك.",
+                why3Title: "مساعدة 24/7",
+                why3Desc: "فريق محلي مستعد لمساعدتك وتقديم الدعم في أي وقت طوال فترة إقامتك.",
+                airportBadge: "خدمة مغاربة العالم والمسافرين",
+                airportTitle: "توصيل سريع إلى مطار الناظور العروي (NDB)",
+                airportDesc: "هل تسافر من أوروبا أو مدينة مغربية أخرى؟ لا تضيع أي دقيقة. احجز سيارتك مسبقاً واستلم المفاتيح مباشرة عند بوابة الوصول في مطار الناظور.",
+                airportPoint1: "استقبال شخصي بلافتة تحمل الاسم",
+                airportPoint2: "إجراءات سريعة في أقل من 5 دقائق",
+                airportPoint3: "طرق دفع مرنة (نقداً / بطاقة)",
+                airportBtn: "احجز لمطار الناظور",
+                footerDesc: "وكالة تأجير السيارات الموثوقة في الناظور. خدمات احترافية، سيارات حديثة ودعم مستمر على مدار الساعة.",
+                footerZones: "مناطق التوصيل",
+                zone1: "مطار الناظور العروي (NDB)",
+                zone2: "وسط مدينة الناظور",
+                zone3: "كورنيش مارشيكا",
+                zone4: "بني انصار و سلوان",
+                footerContact: "اتصل بنا مباشرة",
+                footerAddress: "شارع محمد الخامس والمطار، الناظور",
+                copyright: "© 2026 Nador Rent Car. جميع الحقوق محفوظة.",
+                modalBadge: "حجز فوري",
+                labelFullName: "الاسم الكامل",
+                labelPhone: "الهاتف / واتساب",
+                labelLocation: "مكان الاستلام",
+                pickupAirport: "مطار الناظور العروي (NDB)",
+                pickupCity: "وسط مدينة الناظور",
+                pickupCorniche: "كورنيش مارشيكا",
+                pickupOther: "محطة القطار / أخرى",
+                labelStart: "تاريخ البداية",
+                labelEnd: "تاريخ النهاية",
+                btnConfirmWhatsapp: "تأكيد والإرسال عبر واتساب"
+            },
+            en: {
+                logoSub: "Rental & Airport",
+                navHome: "Home",
+                navCars: "Our Cars",
+                navWhy: "Why Us",
+                navAirport: "NDB Airport",
+                navContact: "Contact",
+                whatsappBtn: "WhatsApp 24/7",
+                badgeHero: "Nador • NDB Airport • City • Corniche",
+                heroTitle: "Hit the Road in Nador with Total Freedom",
+                heroSubtitle: "Wide selection of recent, air-conditioned, and insured vehicles. Free delivery to Nador Al Aroui Airport or your doorstep.",
+                btnSeeCars: "Explore Cars",
+                btnFastBooking: "Express WhatsApp Booking",
+                stat1: "Modern Fleet",
+                stat2Val: "Airport",
+                stat2: "NDB Delivery",
+                stat3: "Support 24/7",
+                stat4: "Full Insurance",
+                fleetTitle: "Our Car Fleet",
+                fleetSub: "Choose the vehicle that suits your trip, whether for city driving, long trips, or family vacations.",
+                catAll: "All",
+                catCitadine: "Economy",
+                catBerline: "Sedan",
+                catSuv: "SUV & 4x4",
+                catFamiliale: "Family",
+                perDay: "/ day",
+                btnBookNow: "Book This Car",
+                whyTitle: "Why Choose Nador Rent Car?",
+                whySub: "We are committed to providing you with the best value and flawless service.",
+                why1Title: "Transparent Pricing",
+                why1Desc: "No hidden fees. Our rates include insurance and mileage suited for your travel needs in Nador.",
+                why2Title: "NDB Airport Delivery",
+                why2Desc: "Your car awaits you as soon as you land at Nador Al Aroui Airport with a name sign.",
+                why3Title: "24/7 Assistance",
+                why3Desc: "A local team at your service anytime to assist you during your stay.",
+                airportBadge: "Expatriate & Traveler Service",
+                airportTitle: "Fast Delivery at Nador Al Aroui Airport (NDB)",
+                airportDesc: "Traveling from Europe or another Moroccan city? Don't waste a minute. Book in advance and pick up keys right at the arrivals terminal.",
+                airportPoint1: "Personalized welcome with name sign",
+                airportPoint2: "Quick paperwork in under 5 minutes",
+                airportPoint3: "Flexible payment (Cash / Card)",
+                airportBtn: "Book for Airport",
+                footerDesc: "Your trusted car rental agency in Nador. Professional services, recent vehicles, and 24/7 assistance.",
+                footerZones: "Delivery Zones",
+                zone1: "Nador Al Aroui Airport (NDB)",
+                zone2: "Nador City Center",
+                zone3: "Mar Chica Corniche",
+                zone4: "Beni Ansar & Selouane",
+                footerContact: "Direct Contact",
+                footerAddress: "Mohammed V Ave & Airport, Nador",
+                copyright: "© 2026 Nador Rent Car. All rights reserved.",
+                modalBadge: "Instant Booking",
+                labelFullName: "Full Name",
+                labelPhone: "Phone / WhatsApp",
+                labelLocation: "Pickup Location",
+                pickupAirport: "Nador Al Aroui Airport (NDB)",
+                pickupCity: "Nador City Center",
+                pickupCorniche: "Mar Chica Corniche",
+                pickupOther: "Station / Other",
+                labelStart: "Start Date",
+                labelEnd: "End Date",
+                btnConfirmWhatsapp: "Confirm & Send on WhatsApp"
+            },
+            es: {
+                logoSub: "Alquiler y Aeropuerto",
+                navHome: "Inicio",
+                navCars: "Nuestros Coches",
+                navWhy: "Por Qué Elegirnos",
+                navAirport: "Aeropuerto NDB",
+                navContact: "Contacto",
+                whatsappBtn: "WhatsApp 24/7",
+                badgeHero: "Nador • Aeropuerto NDB • Ciudad • Cornisa",
+                heroTitle: "Disfruta de la Libertad de Conducir en Nador",
+                heroSubtitle: "Amplia selección de vehículos recientes, con aire acondicionado y seguros incluidos. Entrega gratuita en el Aeropuerto Nador Al Aroui.",
+                btnSeeCars: "Ver Coches",
+                btnFastBooking: "Reserva Express WhatsApp",
+                stat1: "Flota Reciente",
+                stat2Val: "Aeropuerto",
+                stat2: "Entrega NDB",
+                stat3: "Soporte 24/7",
+                stat4: "Seguro Incluido",
+                fleetTitle: "Nuestra Flota de Coches",
+                fleetSub: "Elija el vehículo ideal para su estancia, ya sea para la ciudad, viajes largos o vacaciones familiares.",
+                catAll: "Todos",
+                catCitadine: "Económicos",
+                catBerline: "Sedán",
+                catSuv: "SUV & 4x4",
+                catFamiliale: "Familiares",
+                perDay: "/ día",
+                btnBookNow: "Reservar este coche",
+                whyTitle: "¿Por qué elegir Nador Rent Car?",
+                whySub: "Nos comprometemos a ofrecerle la mejor relación calidad-precio y un servicio impecable.",
+                why1Title: "Precios Transparentes",
+                why1Desc: "Sin costes ocultos. Nuestras tarifas incluyen seguro y kilometraje adaptado a sus necesidades.",
+                why2Title: "Entrega en Aeropuerto NDB",
+                why2Desc: "Su coche le espera nada más aterrizar en el Aeropuerto Nador Al Aroui con un cartel con su nombre.",
+                why3Title: "Asistencia 24/7",
+                why3Desc: "Un equipo local a su disposición en todo momento para asistirle durante su estancia.",
+                airportBadge: "Servicio para Viajeros y MRE",
+                airportTitle: "Entrega Rápida en el Aeropuerto Nador Al Aroui (NDB)",
+                airportDesc: "¿Viaja desde Europa u otra ciudad marroquí? No pierda ni un minuto. Reserve su vehículo con antelación y recójalo en la terminal de llegadas.",
+                airportPoint1: "Bienvenida personalizada con cartel nominativo",
+                airportPoint2: "Trámites rápidos en menos de 5 minutos",
+                airportPoint3: "Pago flexible (Efectivo / Tarjeta)",
+                airportBtn: "Reservar para el Aeropuerto",
+                footerDesc: "Su agencia de alquiler de coches de confianza en Nador. Servicios profesionales, vehículos recientes y asistencia 24/7.",
+                footerZones: "Zonas de Entrega",
+                zone1: "Aeropuerto Nador Al Aroui (NDB)",
+                zone2: "Centro de Nador",
+                zone3: "Cornisa de Mar Chica",
+                zone4: "Beni Ansar y Selouane",
+                footerContact: "Contacto Directo",
+                footerAddress: "Av. Mohammed V y Aeropuerto, Nador",
+                copyright: "© 2026 Nador Rent Car. Todos los derechos reservados.",
+                modalBadge: "Reserva Instantánea",
+                labelFullName: "Nombre completo",
+                labelPhone: "Teléfono / WhatsApp",
+                labelLocation: "Lugar de recogida",
+                pickupAirport: "Aeropuerto Nador Al Aroui (NDB)",
+                pickupCity: "Centro de Nador",
+                pickupCorniche: "Cornisa Mar Chica",
+                pickupOther: "Estación / Otro",
+                labelStart: "Fecha de inicio",
+                labelEnd: "Fecha de fin",
+                btnConfirmWhatsapp: "Confirmar y enviar por WhatsApp"
+            }
+        };
+
+        let currentLang = 'fr';
+
+        // Change Language Function
+        function changeLanguage(lang) {
+            currentLang = lang;
+            const htmlTag = document.documentElement;
+            htmlTag.setAttribute('lang', lang);
+            if (lang === 'ar') {
+                htmlTag.setAttribute('dir', 'rtl');
+            } else {
+                htmlTag.setAttribute('dir', 'ltr');
+            }
+
+            // Update all elements with data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            // Re-render cars to update localized strings
+            renderCars(currentFilter);
+        }
+
+        // Render Cars Catalog
+        let currentFilter = 'all';
+
+        function renderCars(filter) {
+            currentFilter = filter;
+            const grid = document.getElementById('carGrid');
+            grid.innerHTML = '';
+
+            const filteredCars = filter === 'all' 
+                ? carsData 
+                : carsData.filter(car => car.category === filter);
+
+            filteredCars.forEach(car => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between";
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="relative h-52 overflow-hidden bg-slate-100">
+                            <img src="${car.image}" alt="${car.name}" class="w-full h-full object-cover transform hover:scale-105 transition duration-500">
+                            <span class="absolute top-4 left-4 rtl:left-auto rtl:right-4 bg-slate-900/80 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-lg uppercase">
+                                ${car.category}
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">${car.name}</h3>
+                            <div class="grid grid-cols-2 gap-2 text-xs text-slate-500 mb-6 pb-4 border-b border-slate-100">
+                                <div><i class="fa-solid fa-gears mr-1 text-brand-500"></i> ${car.transmission}</div>
+                                <div><i class="fa-solid fa-gas-pump mr-1 text-brand-500"></i> ${car.fuel}</div>
+                                <div><i class="fa-solid fa-user-group mr-1 text-brand-500"></i> ${car.seats} Places</div>
+                                <div><i class="fa-solid fa-suitcase mr-1 text-brand-500"></i> ${car.bags} Bagages</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center justify-between">
+                        <div>
+                            <span class="text-2xl font-black text-brand-600">${car.price} MAD</span>
+                            <span class="text-xs text-slate-400 font-medium">${translations[currentLang].perDay}</span>
+                        </div>
+                        <button onclick="openBookingModal('${car.name}', ${car.price})" class="bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs px-4 py-3 rounded-xl shadow-md transition">
+                            ${translations[currentLang].btnBookNow}
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            // Update Category Buttons styling
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.className = "category-btn px-5 py-2.5 rounded-xl font-bold text-xs uppercase transition bg-white text-slate-700 hover:bg-slate-100 border border-slate-200";
+            });
+            event && event.target && event.target.classList.add('bg-brand-600', 'text-white', 'shadow-md', 'border-transparent');
+        }
+
+        function filterCars(category) {
+            renderCars(category);
+        }
+
+        // Modal Logic
+        function openBookingModal(carName, price) {
+            document.getElementById('carModelInput').value = carName;
+            document.getElementById('modalCarTitle').textContent = carName;
+            document.getElementById('modalCarPrice').textContent = price + " MAD / " + (currentLang === 'ar' ? 'اليوم' : currentLang === 'es' ? 'día' : currentLang === 'en' ? 'day' : 'jour');
+            document.getElementById('bookingModal').classList.remove('hidden');
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.add('hidden');
+        }
+
+        function submitBooking(e) {
+            e.preventDefault();
+            const car = document.getElementById('carModelInput').value;
+            const name = document.getElementById('clientName').value;
+            const phone = document.getElementById('clientPhone').value;
+            const pickup = document.getElementById('clientPickup').value;
+            const start = document.getElementById('startDate').value;
+            const end = document.getElementById('endDate').value;
+
+            const text = `Bonjour Nador Rent Car, je souhaite réserver une voiture :%0a- Véhicule : *${car}*%0a- Nom : *${name}*%0a- Téléphone : *${phone}*%0a- Lieu de prise en charge : *${pickup}*%0a- Du : *${start}* Au : *${end}*`;
+            
+            window.open(`https://wa.me/212600000000?text=${text}`, '_blank');
+            closeBookingModal();
+        }
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.add('hidden');
+        }
+
+        // Initialize default view
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCars('all');
+        });
+    </script>
+</body>
+</html>

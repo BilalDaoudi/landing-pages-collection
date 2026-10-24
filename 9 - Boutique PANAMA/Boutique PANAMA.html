@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique Panama - E-Commerce Homme & Streetwear Luxe Maroc</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            300: '#FDE047',
+                            400: '#FBBF24',
+                            500: '#D4AF37',
+                            600: '#B48811',
+                            700: '#8C680A',
+                            glow: 'rgba(212, 175, 55, 0.25)'
+                        },
+                        dark: {
+                            950: '#08080A',
+                            900: '#0F0F12',
+                            800: '#16161C',
+                            700: '#22222B',
+                            600: '#2D2D38'
+                        },
+                        whatsapp: '#25D366'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0F0F12;
+            color: #F3F4F6;
+            font-family: 'Inter', sans-serif;
+        }
+        .gold-border {
+            border-color: #D4AF37;
+        }
+        .gold-glow {
+            box-shadow: 0 0 25px -5px rgba(212, 175, 55, 0.3);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #08080A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #22222B;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+        /* Animation Pulse Keyframes */
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
+        }
+        .animate-pulse-glow {
+            animation: pulseGlow 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-amber-400 selection:text-black pb-16 md:pb-0">
+
+    <!-- Top Announcement Bar avec Compte à Rebours -->
+    <div class="bg-gradient-to-r from-amber-600 via-yellow-400 to-amber-600 text-black text-xs md:text-sm font-extrabold py-2 px-4 shadow-md flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center space-x-2 mx-auto sm:mx-0">
+            <i class="fa-solid fa-truck-fast text-black"></i>
+            <span>LIVRAISON EN 24/48H PARTOUT AU MAROC 🇲🇦 | ESSAYAGE ET PAIEMENT À LA LIVRAISON</span>
+        </div>
+        <!-- Flash Offer Countdown -->
+        <div class="flex items-center space-x-2 bg-black/15 px-3 py-0.5 rounded-full text-xs font-black mx-auto sm:mx-0">
+            <span>OFFRE FLASH :</span>
+            <span id="flash-countdown" class="tracking-widest">04h 28m 12s</span>
+        </div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 bg-dark-900/95 backdrop-blur-md border-b border-dark-700/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            
+            <!-- Logo -->
+            <a href="#" class="flex items-center space-x-3 group shrink-0">
+                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-amber-600 via-amber-400 to-yellow-200 p-0.5 shadow-lg group-hover:scale-105 transition-transform duration-300">
+                    <div class="w-full h-full bg-dark-950 rounded-full flex items-center justify-center">
+                        <i class="fa-solid fa-crown text-amber-400 text-xl"></i>
+                    </div>
+                </div>
+                <div>
+                    <span class="text-xl font-black tracking-wider uppercase text-white block leading-none">Boutique <span class="text-amber-400">Panama</span></span>
+                    <span class="text-[10px] text-gray-400 tracking-widest uppercase block mt-1">Streetwear & Luxury</span>
+                </div>
+            </a>
+
+            <!-- Search Bar Desktop -->
+            <div class="hidden lg:flex flex-1 max-w-md relative">
+                <input type="text" id="desktop-search" onkeyup="handleSearchInput(this.value)" placeholder="Rechercher une marque, veste, basket..." 
+                       class="w-full bg-dark-800 border border-dark-700 focus:border-amber-400 text-xs text-white rounded-full py-2.5 pl-10 pr-4 outline-none transition-all placeholder-gray-500">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 text-xs"></i>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex space-x-6 text-xs font-bold uppercase tracking-wider">
+                <a href="#hero" class="hover:text-amber-400 transition-colors">Accueil</a>
+                <a href="#catalogue" class="hover:text-amber-400 transition-colors">Catalogue</a>
+                <a href="#avis" class="hover:text-amber-400 transition-colors">Avis</a>
+                <a href="#faq" class="hover:text-amber-400 transition-colors">FAQ</a>
+            </nav>
+
+            <!-- Actions Header -->
+            <div class="flex items-center space-x-3">
+                <!-- Direct WhatsApp Contact Button -->
+                <a href="https://wa.me/212704509107?text=Bonjour%20Boutique%20Panama,%20je%20souhaite%20des%20informations%20sur%20vos%20produits." 
+                   target="_blank" 
+                   class="hidden sm:flex items-center space-x-2 bg-whatsapp/10 border border-whatsapp/40 text-whatsapp hover:bg-whatsapp hover:text-black transition-all px-4 py-2 rounded-full font-bold text-xs">
+                    <i class="fa-brands fa-whatsapp text-base"></i>
+                    <span>Contact WhatsApp</span>
+                </a>
+
+                <!-- Cart Toggle Button -->
+                <button onclick="toggleCartDrawer()" class="relative p-3 text-gray-200 hover:text-white bg-dark-800 hover:bg-dark-700 rounded-full border border-dark-700 transition-all flex items-center justify-center">
+                    <i class="fa-solid fa-bag-shopping text-lg"></i>
+                    <span id="cart-badge-count" class="absolute -top-1 -right-1 bg-amber-400 text-black text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-dark-900 shadow">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative overflow-hidden py-12 lg:py-20 bg-gradient-to-b from-dark-950 via-dark-900 to-dark-950 border-b border-dark-700/50">
+        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/10 rounded-full blur-[140px] pointer-events-none animate-pulse-glow"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 bg-amber-500/10 border border-amber-500/30 text-amber-400 px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase">
+                        <i class="fa-solid fa-fire text-amber-400"></i>
+                        <span>Collection Streetwear Luxe 2026</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight uppercase tracking-tight">
+                        BOUTIQUE PANAMA <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-200 to-amber-500">L'Élégance Streetwear</span> Au Maroc
+                    </h1>
+
+                    <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-medium leading-relaxed">
+                        Accédez aux meilleures pièces de la mode homme : vestes softshell, doudoune matelassées, ensembles urbains et baskets tendance. Essayage garanti à la livraison.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#catalogue" class="w-full sm:w-auto bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-black font-black px-8 py-4 rounded-xl shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 transition-all flex items-center justify-center space-x-3 text-xs uppercase tracking-wider">
+                            <i class="fa-solid fa-shop"></i>
+                            <span>Acheter Maintenant</span>
+                        </a>
+
+                        <a href="https://wa.me/212704509107?text=Bonjour,%20je%20souhaite%20voir%20le%20catalogue%20complet%20sur%20WhatsApp" target="_blank" class="w-full sm:w-auto bg-dark-800 hover:bg-dark-700 text-white font-bold px-8 py-4 rounded-xl border border-dark-600 transition-all flex items-center justify-center space-x-3 text-xs uppercase tracking-wider">
+                            <i class="fa-brands fa-whatsapp text-whatsapp text-lg"></i>
+                            <span>Catalogue WhatsApp</span>
+                        </a>
+                    </div>
+
+                    <!-- Trust Reassurance Badges -->
+                    <div class="grid grid-cols-3 gap-3 pt-8 border-t border-dark-700/80 text-center lg:text-left">
+                        <div class="p-3 bg-dark-800/40 rounded-xl border border-dark-700/50">
+                            <i class="fa-solid fa-truck-fast text-amber-400 text-xl mb-1 block"></i>
+                            <span class="block text-xs font-bold text-white">Livraison 24/48h</span>
+                            <span class="text-[10px] text-gray-400">Toutes les villes</span>
+                        </div>
+                        <div class="p-3 bg-dark-800/40 rounded-xl border border-dark-700/50">
+                            <i class="fa-solid fa-hand-holding-dollar text-amber-400 text-xl mb-1 block"></i>
+                            <span class="block text-xs font-bold text-white">Cash à la livraison</span>
+                            <span class="text-[10px] text-gray-400">Payer après vérification</span>
+                        </div>
+                        <div class="p-3 bg-dark-800/40 rounded-xl border border-dark-700/50">
+                            <i class="fa-solid fa-rotate-left text-amber-400 text-xl mb-1 block"></i>
+                            <span class="block text-xs font-bold text-white">Échange Facile</span>
+                            <span class="text-[10px] text-gray-400">Si taille incorrecte</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right Visual Image -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-amber-500 to-yellow-600 opacity-30 blur-lg"></div>
+                        <div class="relative bg-dark-800 rounded-3xl p-3 border border-dark-700 overflow-hidden shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1548883354-7622d03aca27?auto=format&fit=crop&w=800&q=80" 
+                                 alt="Hero Product Panama" 
+                                 class="w-full h-[460px] object-cover rounded-2xl">
+                            
+                            <!-- Floating Product Badge -->
+                            <div class="absolute bottom-6 left-6 right-6 bg-dark-950/90 backdrop-blur-md border border-dark-700 p-4 rounded-2xl flex items-center justify-between">
+                                <div>
+                                    <span class="text-[10px] text-amber-400 font-bold uppercase tracking-wider block">Bestseller Star</span>
+                                    <h4 class="text-sm font-bold text-white">Veste Stone Island Soft Shell</h4>
+                                    <span class="text-base font-black text-amber-400">599 DH <span class="text-xs text-gray-500 line-through">800 DH</span></span>
+                                </div>
+                                <button onclick="openQuickView(1)" class="bg-amber-400 hover:bg-amber-500 text-black px-4 py-2.5 rounded-xl font-bold text-xs uppercase transition-all shadow">
+                                    <i class="fa-solid fa-eye mr-1"></i> Voir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalogue Section avec Barre de Recherche, Filtres & Tri -->
+    <section id="catalogue" class="py-16 bg-dark-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto mb-8">
+                <span class="text-amber-400 text-xs font-bold uppercase tracking-widest block mb-2">Catalogue Officiel</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white uppercase">Nos Collections En Tendance</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-amber-500 to-yellow-300 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Controls Panel (Search Mobile + Category Tabs + Sort + Price) -->
+            <div class="space-y-4 mb-10 bg-dark-900 p-4 rounded-2xl border border-dark-700/80">
+                
+                <!-- Search bar on mobile inside controls -->
+                <div class="lg:hidden relative">
+                    <input type="text" id="mobile-search" onkeyup="handleSearchInput(this.value)" placeholder="Rechercher veste, basket, ensemble..." 
+                           class="w-full bg-dark-800 border border-dark-700 focus:border-amber-400 text-xs text-white rounded-xl py-3 pl-10 pr-4 outline-none">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 text-xs"></i>
+                </div>
+
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
+                    <!-- Category Tabs -->
+                    <div id="category-filters" class="flex flex-wrap justify-center lg:justify-start gap-2 w-full lg:w-auto">
+                        <button onclick="filterCategory('all')" class="cat-btn active bg-amber-400 text-black font-extrabold px-4 py-2 rounded-full text-xs uppercase tracking-wider transition-all shadow">Tous</button>
+                        <button onclick="filterCategory('vestes')" class="cat-btn bg-dark-800 hover:bg-dark-700 border border-dark-700 text-gray-300 px-4 py-2 rounded-full font-bold text-xs uppercase tracking-wider transition-all">Vestes & Manteaux</button>
+                        <button onclick="filterCategory('baskets')" class="cat-btn bg-dark-800 hover:bg-dark-700 border border-dark-700 text-gray-300 px-4 py-2 rounded-full font-bold text-xs uppercase tracking-wider transition-all">Baskets & Sneakers</button>
+                        <button onclick="filterCategory('ensembles')" class="cat-btn bg-dark-800 hover:bg-dark-700 border border-dark-700 text-gray-300 px-4 py-2 rounded-full font-bold text-xs uppercase tracking-wider transition-all">Ensembles & Hoodies</button>
+                    </div>
+
+                    <!-- Sort Options & Price Filter -->
+                    <div class="flex items-center space-x-3 w-full lg:w-auto justify-end text-xs">
+                        <!-- Select Sort -->
+                        <div class="flex items-center space-x-2 w-1/2 lg:w-auto">
+                            <span class="text-gray-400 font-bold hidden sm:inline"><i class="fa-solid fa-arrow-up-wide-short mr-1"></i>Trier:</span>
+                            <select id="sort-select" onchange="applyFiltersAndSort()" class="bg-dark-800 border border-dark-700 text-white rounded-xl px-3 py-2 outline-none focus:border-amber-400 w-full">
+                                <option value="popular">Plus Populaires</option>
+                                <option value="price-asc">Prix: Croissant</option>
+                                <option value="price-desc">Prix: Décroissant</option>
+                                <option value="newest">Nouveautés</option>
+                            </select>
+                        </div>
+
+                        <!-- Max Price Filter -->
+                        <div class="flex items-center space-x-2 w-1/2 lg:w-auto">
+                            <span class="text-gray-400 font-bold hidden sm:inline"><i class="fa-solid fa-filter mr-1"></i>Max:</span>
+                            <select id="price-max-select" onchange="applyFiltersAndSort()" class="bg-dark-800 border border-dark-700 text-white rounded-xl px-3 py-2 outline-none focus:border-amber-400 w-full">
+                                <option value="1000">Tous les Prix</option>
+                                <option value="500">Max 500 DH</option>
+                                <option value="600">Max 600 DH</option>
+                                <option value="700">Max 700 DH</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Products Grid Container -->
+            <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Les cartes produits sont injectées par JS -->
+            </div>
+
+            <!-- Empty State Search Result -->
+            <div id="empty-products" class="hidden text-center py-16 space-y-4">
+                <i class="fa-solid fa-magnifying-glass text-4xl text-gray-600"></i>
+                <h3 class="text-lg font-bold text-white">Aucun produit ne correspond à votre recherche</h3>
+                <button onclick="resetSearchFilters()" class="bg-amber-400 text-black px-6 py-2 rounded-full font-bold text-xs uppercase">Réinitialiser les filtres</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Testimonials & Social Proof -->
+    <section id="avis" class="py-16 bg-dark-900 border-t border-b border-dark-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-amber-400 text-xs font-bold uppercase tracking-widest block mb-2">Avis Vérifiés</span>
+                <h2 class="text-3xl font-black text-white uppercase">Ce Que Disent Nos Clients</h2>
+                <p class="text-xs text-gray-400 mt-2">Plus de 1 500 clients satisfaits à travers le Maroc</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <div class="bg-dark-800 p-6 rounded-2xl border border-dark-700 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 space-x-1 mb-3 text-xs">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-xs sm:text-sm italic mb-4">"Commande livrée en 24h à Maarif Casablanca. La veste Stone Island est juste top, tissus Softshell de qualité. Possibilité d'essayer avant de payer !"</p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-4 border-t border-dark-700">
+                        <div class="w-9 h-9 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-xs">O</div>
+                        <div>
+                            <h5 class="text-xs font-bold text-white">Omar El K.</h5>
+                            <span class="text-[10px] text-gray-400"><i class="fa-solid fa-circle-check text-emerald-400 mr-1"></i>Acheteur vérifié • Casablanca</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-dark-800 p-6 rounded-2xl border border-dark-700 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 space-x-1 mb-3 text-xs">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-xs sm:text-sm italic mb-4">"Les sneakers pointure 42 sont hyper confortables. Service WhatsApp très réactif pour confirmer ma commande à Marrakech. Merci Boutique Panama !"</p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-4 border-t border-dark-700">
+                        <div class="w-9 h-9 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-xs">Y</div>
+                        <div>
+                            <h5 class="text-xs font-bold text-white">Yassine M.</h5>
+                            <span class="text-[10px] text-gray-400"><i class="fa-solid fa-circle-check text-emerald-400 mr-1"></i>Acheteur vérifié • Marrakech</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-dark-800 p-6 rounded-2xl border border-dark-700 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 space-x-1 mb-3 text-xs">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-gray-300 text-xs sm:text-sm italic mb-4">"J'ai pris un ensemble Hoodie XL. La coupe est parfaite. Livraison propre et rapide sur Agadir. Je recommande fortement !"</p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-4 border-t border-dark-700">
+                        <div class="w-9 h-9 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-xs">H</div>
+                        <div>
+                            <h5 class="text-xs font-bold text-white">Hamza B.</h5>
+                            <span class="text-[10px] text-gray-400"><i class="fa-solid fa-circle-check text-emerald-400 mr-1"></i>Acheteur vérifié • Agadir</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Accordion Section -->
+    <section id="faq" class="py-16 bg-dark-950">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="text-amber-400 text-xs font-bold uppercase tracking-widest block mb-2">Foire Aux Questions</span>
+                <h2 class="text-3xl font-black text-white uppercase">Tout Ce Que Vous Devez Savoir</h2>
+            </div>
+
+            <div class="space-y-3">
+                <div class="faq-item bg-dark-800 rounded-2xl border border-dark-700 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full p-5 text-left font-bold text-sm text-white flex justify-between items-center hover:text-amber-400 transition-colors">
+                        <span><i class="fa-solid fa-truck-ramp-box text-amber-400 mr-2"></i> Quels sont les délais et tarifs de livraison au Maroc ?</span>
+                        <i class="fa-solid fa-chevron-down text-xs text-gray-400 transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden px-5 pb-5 text-xs text-gray-400 leading-relaxed border-t border-dark-700/50 pt-3">
+                        Nous livrons dans toutes les villes du Maroc sous 24h à 48h (Grandes villes comme Casablanca, Rabat, Marrakech en 24h). La livraison est <strong>GRATUITE pour toute commande dès 800 DH</strong>. Pour les montants inférieurs, la livraison est à 30 DH.
+                    </div>
+                </div>
+
+                <div class="faq-item bg-dark-800 rounded-2xl border border-dark-700 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full p-5 text-left font-bold text-sm text-white flex justify-between items-center hover:text-amber-400 transition-colors">
+                        <span><i class="fa-solid fa-hand-holding-dollar text-amber-400 mr-2"></i> Comment fonctionne le paiement à la livraison (COD) ?</span>
+                        <i class="fa-solid fa-chevron-down text-xs text-gray-400 transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden px-5 pb-5 text-xs text-gray-400 leading-relaxed border-t border-dark-700/50 pt-3">
+                        Vous ne payez rien à l'avance. Une fois la commande effectuée, le livreur se déplace jusqu'à votre adresse. Vous vérifiez votre colis et vous lui remettez le montant en espèces.
+                    </div>
+                </div>
+
+                <div class="faq-item bg-dark-800 rounded-2xl border border-dark-700 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full p-5 text-left font-bold text-sm text-white flex justify-between items-center hover:text-amber-400 transition-colors">
+                        <span><i class="fa-solid fa-shield-halved text-amber-400 mr-2"></i> Puis-je échanger un article si la taille ne convient pas ?</span>
+                        <i class="fa-solid fa-chevron-down text-xs text-gray-400 transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden px-5 pb-5 text-xs text-gray-400 leading-relaxed border-t border-dark-700/50 pt-3">
+                        Absolument. Si la taille choisie est trop grande ou trop petite, il vous suffit de contacter notre support WhatsApp (+212 704-509107) sous 48h. Nous organiserons le passage du livreur pour l'échange de taille.
+                    </div>
+                </div>
+
+                <div class="faq-item bg-dark-800 rounded-2xl border border-dark-700 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full p-5 text-left font-bold text-sm text-white flex justify-between items-center hover:text-amber-400 transition-colors">
+                        <span><i class="fa-solid fa-comments text-amber-400 mr-2"></i> Comment commander directement par WhatsApp ?</span>
+                        <i class="fa-solid fa-chevron-down text-xs text-gray-400 transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden px-5 pb-5 text-xs text-gray-400 leading-relaxed border-t border-dark-700/50 pt-3">
+                        Il vous suffit d'ajouter vos articles au panier puis d'appuyer sur le bouton "Commander par WhatsApp". Un message structuré avec les détails de vos articles et votre adresse sera automatiquement rédigé.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-950 border-t border-dark-800 text-gray-400 text-xs py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                
+                <div class="space-y-3">
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-solid fa-crown text-amber-400 text-lg"></i>
+                        <span class="text-base font-black text-white uppercase">Boutique Panama</span>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed">
+                        Magasin spécialisé en vêtements, vestes et sneakers pour homme au Maroc. Qualité premium, essayage et paiement à la livraison.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-wider mb-3">Raccourcis</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#hero" class="hover:text-amber-400">Accueil</a></li>
+                        <li><a href="#catalogue" class="hover:text-amber-400">Catalogue Produits</a></li>
+                        <li><a href="#avis" class="hover:text-amber-400">Avis Clients</a></li>
+                        <li><a href="#faq" class="hover:text-amber-400">FAQ & Aide</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-wider mb-3">Service Client</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center space-x-2">
+                            <i class="fa-brands fa-whatsapp text-whatsapp text-sm"></i>
+                            <a href="https://wa.me/212704509107" target="_blank" class="hover:text-amber-400 font-bold">+212 704-509107</a>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fa-brands fa-instagram text-pink-500 text-sm"></i>
+                            <a href="https://instagram.com" target="_blank" class="hover:text-amber-400">@boutiique.panama</a>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i class="fa-solid fa-clock text-amber-400 text-sm"></i>
+                            <span>7j/7 de 09h00 à 22h00</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-wider mb-3">Paiement & Sécurité</h4>
+                    <div class="p-3 bg-dark-800 rounded-xl border border-dark-700 space-y-2">
+                        <div class="flex items-center space-x-2 text-white font-bold">
+                            <i class="fa-solid fa-shield-heart text-amber-400 text-base"></i>
+                            <span>Cash On Delivery</span>
+                        </div>
+                        <p class="text-[11px] text-gray-400">Payer en espèces uniquement après réception de votre colis auprès du livreur.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t border-dark-800 mt-10 pt-6 text-center text-gray-500">
+                &copy; 2026 Boutique Panama Maroc. Tous droits réservés.
+            </div>
+        </div>
+    </footer>
+
+    <!-- STICKY MOBILE NAVIGATION BAR -->
+    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-dark-950/95 backdrop-blur-lg border-t border-dark-700 z-40 px-6 py-2.5 flex items-center justify-between">
+        <a href="#hero" class="flex flex-col items-center text-gray-400 hover:text-amber-400">
+            <i class="fa-solid fa-house text-base"></i>
+            <span class="text-[9px] font-bold mt-1">Accueil</span>
+        </a>
+        <a href="#catalogue" class="flex flex-col items-center text-gray-400 hover:text-amber-400">
+            <i class="fa-solid fa-layer-group text-base"></i>
+            <span class="text-[9px] font-bold mt-1">Produits</span>
+        </a>
+        <button onclick="toggleCartDrawer()" class="flex flex-col items-center text-amber-400 relative">
+            <i class="fa-solid fa-bag-shopping text-lg"></i>
+            <span class="text-[9px] font-bold mt-1">Panier</span>
+            <span id="mobile-cart-badge" class="absolute -top-1 right-1 bg-amber-400 text-black text-[9px] font-black w-4 h-4 rounded-full flex items-center justify-center">0</span>
+        </button>
+        <a href="https://wa.me/212704509107" target="_blank" class="flex flex-col items-center text-whatsapp">
+            <i class="fa-brands fa-whatsapp text-lg"></i>
+            <span class="text-[9px] font-bold mt-1">WhatsApp</span>
+        </a>
+    </div>
+
+    <!-- CART DRAWER MODAL -->
+    <div id="cart-drawer-overlay" onclick="toggleCartDrawer()" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    
+    <div id="cart-drawer" class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-dark-900 border-l border-dark-700 z-50 transform translate-x-full transition-transform duration-300 flex flex-col justify-between shadow-2xl">
+        
+        <!-- Cart Header -->
+        <div class="p-5 border-b border-dark-700 bg-dark-950">
+            <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center space-x-3">
+                    <i class="fa-solid fa-bag-shopping text-amber-400 text-xl"></i>
+                    <h3 class="text-base font-black text-white uppercase tracking-wider">Votre Panier</h3>
+                    <span id="cart-drawer-count" class="bg-amber-400 text-black text-xs font-black px-2 py-0.5 rounded-full">0</span>
+                </div>
+                <button onclick="toggleCartDrawer()" class="p-2 text-gray-400 hover:text-white rounded-full bg-dark-800">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Free Shipping Progress Bar -->
+            <div class="bg-dark-800 p-2.5 rounded-xl border border-dark-700/80">
+                <div class="flex justify-between text-[11px] font-bold mb-1">
+                    <span id="free-shipping-text" class="text-gray-300">Plus que 800 DH pour la livraison OFFERTE !</span>
+                    <span id="free-shipping-percent" class="text-amber-400">0%</span>
+                </div>
+                <div class="w-full h-2 bg-dark-950 rounded-full overflow-hidden">
+                    <div id="free-shipping-bar" class="h-full bg-gradient-to-r from-amber-500 to-yellow-300 w-0 transition-all duration-500"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart Items List Container -->
+        <div id="cart-items-container" class="p-5 overflow-y-auto flex-1 space-y-4">
+            <!-- Items injectés par JS -->
+        </div>
+
+        <!-- Cart Footer / Summary & Checkout Form -->
+        <div class="p-5 border-t border-dark-700 bg-dark-950 space-y-4">
+            
+            <!-- Pricing Summary -->
+            <div class="space-y-1.5 text-xs">
+                <div class="flex justify-between text-gray-400">
+                    <span>Sous-total :</span>
+                    <span id="cart-subtotal" class="font-bold text-white">0 DH</span>
+                </div>
+                <div class="flex justify-between text-gray-400">
+                    <span>Frais de Livraison :</span>
+                    <span id="cart-shipping" class="font-bold text-emerald-400">0 DH</span>
+                </div>
+                <div class="flex justify-between text-sm font-black text-white pt-2 border-t border-dark-700">
+                    <span>TOTAL À PAYER :</span>
+                    <span id="cart-total" class="text-amber-400 text-lg">0 DH</span>
+                </div>
+            </div>
+
+            <!-- Customer Info Quick Inputs -->
+            <div id="checkout-fields" class="space-y-2 pt-2">
+                <input type="text" id="cust-name" placeholder="Nom Complet *" class="w-full bg-dark-800 border border-dark-700 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-amber-400">
+                <input type="tel" id="cust-phone" placeholder="Numéro WhatsApp / Tél *" class="w-full bg-dark-800 border border-dark-700 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-amber-400">
+                
+                <select id="cust-city" class="w-full bg-dark-800 border border-dark-700 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-amber-400">
+                    <option value="">Sélectionnez votre Ville *</option>
+                    <option value="Casablanca">Casablanca</option>
+                    <option value="Rabat">Rabat</option>
+                    <option value="Marrakech">Marrakech</option>
+                    <option value="Tanger">Tanger</option>
+                    <option value="Fès">Fès</option>
+                    <option value="Agadir">Agadir</option>
+                    <option value="Meknès">Meknès</option>
+                    <option value="Oujda">Oujda</option>
+                    <option value="Kenitra">Kénitra</option>
+                    <option value="Tetouan">Tétouan</option>
+                    <option value="Mohammedia">Mohammedia</option>
+                    <option value="El Jadida">El Jadida</option>
+                    <option value="Autre Ville">Autre Ville au Maroc</option>
+                </select>
+
+                <input type="text" id="cust-address" placeholder="Adresse exacte de livraison *" class="w-full bg-dark-800 border border-dark-700 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-amber-400">
+            </div>
+
+            <!-- Order Buttons -->
+            <div class="space-y-2 pt-2">
+                <button onclick="sendWhatsAppOrder()" class="w-full bg-whatsapp hover:bg-emerald-500 text-black font-black py-3 rounded-xl transition-all text-xs uppercase tracking-wider flex items-center justify-center space-x-2 shadow-lg shadow-emerald-900/20">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Valider & Commander sur WhatsApp</span>
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- QUICK VIEW PRODUCT MODAL -->
+    <div id="quickview-overlay" onclick="closeQuickView()" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
+        <div onclick="event.stopPropagation()" class="bg-dark-900 border border-dark-700 rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl relative flex flex-col md:flex-row">
+            
+            <button onclick="closeQuickView()" class="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-dark-950/80 text-gray-400 hover:text-white flex items-center justify-center border border-dark-700">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Left Image & Gallery -->
+            <div class="md:w-1/2 bg-dark-950 p-4 flex flex-col justify-between">
+                <div class="relative rounded-2xl overflow-hidden aspect-square bg-dark-800">
+                    <img id="qv-image" src="" alt="Product Quick View" class="w-full h-full object-cover">
+                    <span id="qv-badge" class="absolute top-3 left-3 text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-full shadow"></span>
+                </div>
+            </div>
+
+            <!-- Right Product Details -->
+            <div class="md:w-1/2 p-6 flex flex-col justify-between space-y-4">
+                <div>
+                    <span id="qv-category" class="text-amber-400 text-[10px] font-bold uppercase tracking-widest block mb-1">Category</span>
+                    <h3 id="qv-title" class="text-lg font-black text-white leading-snug">Product Title</h3>
+                    
+                    <div class="mt-2 flex items-baseline space-x-2">
+                        <span id="qv-price" class="text-2xl font-black text-amber-400">0 DH</span>
+                        <span id="qv-oldprice" class="text-xs text-gray-500 line-through">0 DH</span>
+                    </div>
+
+                    <!-- Urgency Stock Badge -->
+                    <div class="mt-3 inline-flex items-center space-x-1.5 bg-red-500/10 border border-red-500/30 text-red-400 px-2.5 py-1 rounded-lg text-[11px] font-bold">
+                        <i class="fa-solid fa-fire text-xs"></i>
+                        <span>Stock Limité : Plus que 3 en stock !</span>
+                    </div>
+
+                    <p id="qv-desc" class="text-gray-400 text-xs mt-3 leading-relaxed">
+                        Article haute qualité confectionné avec des matériaux durables et une finition d'exception.
+                    </p>
+
+                    <!-- Sizes Selector in Modal -->
+                    <div class="mt-4">
+                        <div class="flex justify-between items-center mb-1.5">
+                            <span class="text-[11px] font-bold text-gray-300 uppercase">Sélectionner la Taille :</span>
+                            <button onclick="toggleSizeGuide()" class="text-[10px] text-amber-400 underline font-bold">Guide des Tailles</button>
+                        </div>
+                        <div id="qv-sizes" class="flex flex-wrap gap-2">
+                            <!-- Sizes injectées par JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-2 pt-2 border-t border-dark-700">
+                    <button id="qv-add-btn" class="w-full bg-amber-400 hover:bg-amber-500 text-black font-black py-3 rounded-xl transition-all text-xs uppercase tracking-wider flex items-center justify-center space-x-2 shadow">
+                        <i class="fa-solid fa-cart-plus text-sm"></i>
+                        <span>Ajouter au Panier</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SIZE GUIDE MODAL -->
+    <div id="sizeguide-modal" onclick="toggleSizeGuide()" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
+        <div onclick="event.stopPropagation()" class="bg-dark-900 border border-dark-700 rounded-2xl max-w-md w-full p-6 text-xs text-gray-300 space-y-4 relative">
+            <button onclick="toggleSizeGuide()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-base"></i>
+            </button>
+            <h3 class="text-sm font-black text-white uppercase"><i class="fa-solid fa-ruler-horizontal text-amber-400 mr-2"></i>Guide des Tailles Vêtements & Chaussures</h3>
+            
+            <div class="space-y-2">
+                <h4 class="font-bold text-amber-400 border-b border-dark-700 pb-1">Vestes & Ensembles (Homme)</h4>
+                <div class="grid grid-cols-2 gap-2 text-[11px]">
+                    <div>M : 60-70 kg | 1m65 - 1m73</div>
+                    <div>L : 70-80 kg | 1m73 - 1m80</div>
+                    <div>XL : 80-90 kg | 1m80 - 1m87</div>
+                    <div>XXL : 90-100 kg | +1m87</div>
+                </div>
+            </div>
+
+            <div class="space-y-2 pt-2">
+                <h4 class="font-bold text-amber-400 border-b border-dark-700 pb-1">Baskets / Shoes</h4>
+                <p class="text-[11px] text-gray-400">Nos paires taillent normalement (True To Size). Prenez votre pointure habituelle.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- LIVE SALES NOTIFICATION POPUP -->
+    <div id="live-sales-toast" class="fixed bottom-20 md:bottom-6 left-4 bg-dark-900/95 border border-dark-700 rounded-2xl p-3 shadow-2xl z-40 max-w-xs transition-all duration-500 transform translate-y-20 opacity-0 pointer-events-none flex items-center space-x-3">
+        <img id="live-toast-img" src="" class="w-11 h-11 object-cover rounded-xl bg-dark-800">
+        <div class="text-[11px]">
+            <span id="live-toast-user" class="font-bold text-white block">Aymane de Casablanca</span>
+            <span id="live-toast-action" class="text-gray-400 block">A acheté <strong id="live-toast-item" class="text-amber-400">Veste Stone Island</strong></span>
+            <span class="text-[9px] text-gray-500">Il y a 2 minutes • Verified Purchase</span>
+        </div>
+    </div>
+
+    <!-- Notification Toast General -->
+    <div id="toast" class="fixed top-24 left-1/2 -translate-x-1/2 bg-amber-400 text-black font-extrabold px-6 py-3 rounded-full shadow-2xl z-50 text-xs uppercase tracking-wider opacity-0 pointer-events-none transition-all duration-300 flex items-center space-x-2">
+        <i class="fa-solid fa-circle-check text-base"></i>
+        <span id="toast-message">Article ajouté au panier !</span>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Database des produits
+        const PRODUCTS = [
+            {
+                id: 1,
+                name: "Veste Stone Island Soft Shell",
+                category: "vestes",
+                price: 599,
+                oldPrice: 800,
+                badge: "TOP VENTE",
+                badgeColor: "bg-red-600",
+                sizes: ["M", "L", "XL", "XXL"],
+                popularity: 98,
+                image: "https://images.unsplash.com/photo-1548883354-7622d03aca27?auto=format&fit=crop&w=600&q=80",
+                desc: "Veste technique imperméable Soft-shell avec écusson sur le bras. Confort thermique optimal pour l'automne-hiver."
+            },
+            {
+                id: 2,
+                name: "Blouson Doudoune LV Monogram Style",
+                category: "vestes",
+                price: 699,
+                oldPrice: 950,
+                badge: "LUXURY",
+                badgeColor: "bg-amber-500 text-black",
+                sizes: ["S", "M", "L", "XL"],
+                popularity: 95,
+                image: "https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=600&q=80",
+                desc: "Doudoune matelassée haute densité avec imprimés discrets monogramme. Chaude, légère et résolument moderne."
+            },
+            {
+                id: 3,
+                name: "Coupe-vent Burberry Style Check",
+                category: "vestes",
+                price: 549,
+                oldPrice: 750,
+                badge: "NOUVEAU",
+                badgeColor: "bg-blue-600",
+                sizes: ["M", "L", "XL"],
+                popularity: 88,
+                image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=600&q=80",
+                desc: "Veste coupe-vent bi-matière aux motifs carreaux légendaires. Capuche détachable et poches zippées."
+            },
+            {
+                id: 4,
+                name: "Sneakers Streetwear Pro Edition",
+                category: "baskets",
+                price: 449,
+                oldPrice: 650,
+                badge: "TENDANCE",
+                badgeColor: "bg-purple-600",
+                sizes: ["40", "41", "42", "43", "44"],
+                popularity: 92,
+                image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=600&q=80",
+                desc: "Baskets au design chunky streetwear. Semelle amortissante ultra-confortable pour un style quotidien affirmed."
+            },
+            {
+                id: 5,
+                name: "Ensemble Hoodie & Jogging Luxury",
+                category: "ensembles",
+                price: 499,
+                oldPrice: 700,
+                badge: "PROMO",
+                badgeColor: "bg-emerald-600",
+                sizes: ["M", "L", "XL", "XXL"],
+                popularity: 90,
+                image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80",
+                desc: "Ensemble molletonné en coton premium. Inclus le sweat à capuche et le pantalon de jogging assorti."
+            },
+            {
+                id: 6,
+                name: "Sneakers Panama Leather Limited",
+                category: "baskets",
+                price: 499,
+                oldPrice: 699,
+                badge: "ÉDITION LIMITÉE",
+                badgeColor: "bg-amber-500 text-black",
+                sizes: ["41", "42", "43", "44"],
+                popularity: 85,
+                image: "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?auto=format&fit=crop&w=600&q=80",
+                desc: "Sneakers minimalistes en finition cuir et daim. Édition ultra-limitée pour les passionnés de sneakers."
+            }
+        ];
+
+        // State Global Application
+        let cart = [];
+        let selectedSizes = {};
+        let currentCategory = 'all';
+        let searchQuery = '';
+        let currentModalProductId = null;
+
+        // Init App
+        document.addEventListener('DOMContentLoaded', () => {
+            PRODUCTS.forEach(p => {
+                selectedSizes[p.id] = p.sizes[0];
+            });
+            renderProducts();
+            startCountdown();
+            initLiveSalesPopup();
+        });
+
+        // Filtrage & Tri combiné
+        function applyFiltersAndSort() {
+            let filtered = PRODUCTS.filter(product => {
+                const matchCategory = currentCategory === 'all' || product.category === currentCategory;
+                const matchSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                                    product.category.toLowerCase().includes(searchQuery.toLowerCase());
+                
+                const maxPrice = parseFloat(document.getElementById('price-max-select').value);
+                const matchPrice = product.price <= maxPrice;
+
+                return matchCategory && matchSearch && matchPrice;
+            });
+
+            // Sorting
+            const sortVal = document.getElementById('sort-select').value;
+            if (sortVal === 'price-asc') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (sortVal === 'price-desc') {
+                filtered.sort((a, b) => b.price - a.price);
+            } else if (sortVal === 'popular') {
+                filtered.sort((a, b) => b.popularity - a.popularity);
+            } else if (sortVal === 'newest') {
+                filtered.sort((a, b) => b.id - a.id);
+            }
+
+            renderProducts(filtered);
+        }
+
+        // Handle Search Input
+        function handleSearchInput(val) {
+            searchQuery = val.trim();
+            applyFiltersAndSort();
+        }
+
+        function filterCategory(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('bg-amber-400', 'text-black', 'font-extrabold');
+                btn.classList.add('bg-dark-800', 'text-gray-300');
+            });
+
+            event.target.classList.remove('bg-dark-800', 'text-gray-300');
+            event.target.classList.add('bg-amber-400', 'text-black', 'font-extrabold');
+
+            applyFiltersAndSort();
+        }
+
+        function resetSearchFilters() {
+            searchQuery = '';
+            currentCategory = 'all';
+            document.getElementById('desktop-search').value = '';
+            document.getElementById('mobile-search').value = '';
+            document.getElementById('price-max-select').value = '1000';
+            document.getElementById('sort-select').value = 'popular';
+            applyFiltersAndSort();
+        }
+
+        // Render Products Cards
+        function renderProducts(items = PRODUCTS) {
+            const container = document.getElementById('products-grid');
+            const emptyState = document.getElementById('empty-products');
+
+            container.innerHTML = '';
+
+            if (items.length === 0) {
+                emptyState.classList.remove('hidden');
+                return;
+            } else {
+                emptyState.classList.add('hidden');
+            }
+
+            items.forEach(product => {
+                const card = document.createElement('div');
+                card.className = "bg-dark-800 rounded-2xl border border-dark-700 overflow-hidden hover:border-amber-500/50 transition-all duration-300 flex flex-col justify-between group";
+
+                card.innerHTML = `
+                    <div>
+                        <div class="relative overflow-hidden aspect-[4/5] bg-dark-700 cursor-pointer" onclick="openQuickView(${product.id})">
+                            <span class="absolute top-3 left-3 ${product.badgeColor} text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-full z-10 shadow">
+                                ${product.badge}
+                            </span>
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            
+                            <!-- Quick View Overlay Button -->
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="bg-dark-900/90 text-white border border-dark-600 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider flex items-center space-x-2">
+                                    <i class="fa-solid fa-eye text-amber-400"></i>
+                                    <span>Aperçu Rapide</span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="p-4">
+                            <h3 onclick="openQuickView(${product.id})" class="text-sm font-bold text-white group-hover:text-amber-400 transition-colors cursor-pointer">${product.name}</h3>
+                            
+                            <!-- Size selector inside card -->
+                            <div class="mt-3">
+                                <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1.5">Taille :</span>
+                                <div class="flex flex-wrap gap-1.5">
+                                    ${product.sizes.map(sz => `
+                                        <button onclick="selectProductSize(${product.id}, '${sz}', this)" 
+                                                class="size-btn-${product.id} px-2 py-0.5 text-[10px] font-bold rounded border ${selectedSizes[product.id] === sz ? 'bg-amber-400 text-black border-amber-400' : 'bg-dark-900 text-gray-300 border-dark-600 hover:border-amber-400'}">
+                                            ${sz}
+                                        </button>
+                                    `).join('')}
+                                </div>
+                            </div>
+
+                            <div class="mt-4 flex items-baseline justify-between">
+                                <div>
+                                    <span class="text-xl font-black text-amber-400">${product.price} DH</span>
+                                    <span class="text-xs text-gray-500 line-through ml-1.5">${product.oldPrice} DH</span>
+                                </div>
+                                <span class="text-[10px] text-emerald-400 font-bold"><i class="fa-solid fa-check mr-1"></i>En Stock</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 pt-0">
+                        <button onclick="addToCart(${product.id})" class="w-full bg-amber-400 hover:bg-amber-500 text-black font-black py-2.5 rounded-xl transition-all text-xs uppercase tracking-wider flex items-center justify-center space-x-2 shadow">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            <span>Ajouter au Panier</span>
+                        </button>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        // Selection Taille
+        function selectProductSize(productId, size, btn) {
+            selectedSizes[productId] = size;
+            document.querySelectorAll(`.size-btn-${productId}`).forEach(b => {
+                b.className = `size-btn-${productId} px-2 py-0.5 text-[10px] font-bold rounded border bg-dark-900 text-gray-300 border-dark-600 hover:border-amber-400`;
+            });
+            btn.className = `size-btn-${productId} px-2 py-0.5 text-[10px] font-bold rounded border bg-amber-400 text-black border-amber-400`;
+        }
+
+        // QUICK VIEW MODAL
+        function openQuickView(productId) {
+            const product = PRODUCTS.find(p => p.id === productId);
+            currentModalProductId = productId;
+
+            document.getElementById('qv-image').src = product.image;
+            document.getElementById('qv-title').innerText = product.name;
+            document.getElementById('qv-category').innerText = product.category;
+            document.getElementById('qv-price').innerText = `${product.price} DH`;
+            document.getElementById('qv-oldprice').innerText = `${product.oldPrice} DH`;
+            document.getElementById('qv-desc').innerText = product.desc;
+
+            const badge = document.getElementById('qv-badge');
+            badge.innerText = product.badge;
+            badge.className = `absolute top-3 left-3 ${product.badgeColor} text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-full shadow`;
+
+            // Sizes
+            const sizesContainer = document.getElementById('qv-sizes');
+            sizesContainer.innerHTML = product.sizes.map(sz => `
+                <button onclick="selectModalSize('${sz}', this)" class="qv-size-btn px-3 py-1.5 text-xs font-bold rounded-lg border ${selectedSizes[product.id] === sz ? 'bg-amber-400 text-black border-amber-400' : 'bg-dark-800 text-gray-300 border-dark-700 hover:border-amber-400'}">
+                    ${sz}
+                </button>
+            `).join('');
+
+            document.getElementById('qv-add-btn').onclick = () => {
+                addToCart(productId);
+                closeQuickView();
+                toggleCartDrawer();
+            };
+
+            const overlay = document.getElementById('quickview-overlay');
+            overlay.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function closeQuickView() {
+            const overlay = document.getElementById('quickview-overlay');
+            overlay.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        function selectModalSize(size, btn) {
+            selectedSizes[currentModalProductId] = size;
+            document.querySelectorAll('.qv-size-btn').forEach(b => {
+                b.className = 'qv-size-btn px-3 py-1.5 text-xs font-bold rounded-lg border bg-dark-800 text-gray-300 border-dark-700 hover:border-amber-400';
+            });
+            btn.className = 'qv-size-btn px-3 py-1.5 text-xs font-bold rounded-lg border bg-amber-400 text-black border-amber-400';
+        }
+
+        function toggleSizeGuide() {
+            const modal = document.getElementById('sizeguide-modal');
+            modal.classList.toggle('opacity-0');
+            modal.classList.toggle('pointer-events-none');
+        }
+
+        // CART LOGIC
+        function addToCart(productId) {
+            const product = PRODUCTS.find(p => p.id === productId);
+            const chosenSize = selectedSizes[productId] || product.sizes[0];
+
+            const existingIndex = cart.findIndex(item => item.id === productId && item.size === chosenSize);
+
+            if (existingIndex > -1) {
+                cart[existingIndex].quantity += 1;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    image: product.image,
+                    size: chosenSize,
+                    quantity: 1
+                });
+            }
+
+            updateCartUI();
+            showToast(`"${product.name}" (${chosenSize}) ajouté !`);
+        }
+
+        function updateQuantity(index, delta) {
+            cart[index].quantity += delta;
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCartUI();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const totalCount = cart.reduce((acc, item) => acc + item.quantity, 0);
+            const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+            
+            // Free Shipping threshold = 800 DH
+            const freeThreshold = 800;
+            const shipping = (subtotal >= freeThreshold || subtotal === 0) ? 0 : 30;
+            const total = subtotal + shipping;
+
+            // Badges
+            document.getElementById('cart-badge-count').innerText = totalCount;
+            document.getElementById('mobile-cart-badge').innerText = totalCount;
+            document.getElementById('cart-drawer-count').innerText = totalCount;
+
+            // Totals
+            document.getElementById('cart-subtotal').innerText = `${subtotal} DH`;
+            document.getElementById('cart-shipping').innerText = shipping === 0 ? "GRATUIT" : `${shipping} DH`;
+            document.getElementById('cart-total').innerText = `${total} DH`;
+
+            // Shipping Progress Bar
+            const percent = Math.min(100, Math.round((subtotal / freeThreshold) * 100));
+            document.getElementById('free-shipping-bar').style.width = `${percent}%`;
+            document.getElementById('free-shipping-percent').innerText = `${percent}%`;
+
+            const textBar = document.getElementById('free-shipping-text');
+            if (subtotal >= freeThreshold) {
+                textBar.innerHTML = `<span class="text-emerald-400"><i class="fa-solid fa-circle-check mr-1"></i>Félicitations ! Livraison OFFERTE</span>`;
+            } else {
+                const diff = freeThreshold - subtotal;
+                textBar.innerText = `Plus que ${diff} DH pour la livraison OFFERTE !`;
+            }
+
+            // Render Items
+            const container = document.getElementById('cart-items-container');
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-gray-500 space-y-3">
+                        <i class="fa-solid fa-bag-shopping text-4xl text-gray-600"></i>
+                        <p class="text-xs font-bold uppercase">Votre panier est vide</p>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = cart.map((item, idx) => `
+                    <div class="flex items-center space-x-3 bg-dark-800 p-3 rounded-xl border border-dark-700">
+                        <img src="${item.image}" class="w-14 h-14 object-cover rounded-lg bg-dark-700">
+                        <div class="flex-1">
+                            <h4 class="text-xs font-bold text-white">${item.name}</h4>
+                            <span class="text-[10px] bg-amber-500/20 text-amber-400 font-bold px-1.5 py-0.5 rounded">Taille: ${item.size}</span>
+                            <div class="text-xs font-black text-amber-400 mt-1">${item.price * item.quantity} DH</div>
+                        </div>
+                        <div class="flex items-center space-x-2 bg-dark-900 rounded-lg p-1 border border-dark-700">
+                            <button onclick="updateQuantity(${idx}, -1)" class="w-5 h-5 text-gray-400 hover:text-white flex items-center justify-center font-bold text-xs">-</button>
+                            <span class="text-xs font-bold text-white">${item.quantity}</span>
+                            <button onclick="updateQuantity(${idx}, 1)" class="w-5 h-5 text-gray-400 hover:text-white flex items-center justify-center font-bold text-xs">+</button>
+                        </div>
+                        <button onclick="removeFromCart(${idx})" class="text-gray-500 hover:text-red-500 text-xs p-1">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function toggleCartDrawer() {
+            const drawer = document.getElementById('cart-drawer');
+            const overlay = document.getElementById('cart-drawer-overlay');
+            const isOpen = !drawer.classList.contains('translate-x-full');
+
+            if (isOpen) {
+                drawer.classList.add('translate-x-full');
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+            } else {
+                drawer.classList.remove('translate-x-full');
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+            }
+        }
+
+        // WHATSAPP ORDER GENERATOR
+        function sendWhatsAppOrder() {
+            if (cart.length === 0) {
+                alert("Votre panier est vide ! Veuillez ajouter un article.");
+                return;
+            }
+
+            const name = document.getElementById('cust-name').value.trim();
+            const phone = document.getElementById('cust-phone').value.trim();
+            const city = document.getElementById('cust-city').value;
+            const address = document.getElementById('cust-address').value.trim();
+
+            if (!name || !phone || !city) {
+                alert("Veuillez renseigner votre Nom, Téléphone et Ville de livraison.");
+                return;
+            }
+
+            const orderNum = 'PANAMA-' + Math.floor(1000 + Math.random() * 9000);
+            const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+            const shipping = subtotal >= 800 ? 0 : 30;
+            const total = subtotal + shipping;
+
+            let message = `*COMMANDE ${orderNum} - BOUTIQUE PANAMA*%0A%0A`;
+            message += `👤 *Nom Client :* ${name}%0A`;
+            message += `📞 *Téléphone :* ${phone}%0A`;
+            message += `🏙️ *Ville :* ${city}%0A`;
+            message += `📍 *Adresse Exacte :* ${address || 'À préciser au livreur'}%0A%0A`;
+            message += `📦 *DÉTAILS DES ARTICLES :*%0A`;
+
+            cart.forEach((item, i) => {
+                message += `${i+1}. *${item.name}* (Taille: *${item.size}*) x${item.quantity} = ${item.price * item.quantity} DH%0A`;
+            });
+
+            message += `%0A💰 *Sous-total :* ${subtotal} DH%0A`;
+            message += `🚚 *Livraison :* ${shipping === 0 ? 'OFFERTE (Gratuite)' : '30 DH'}%0A`;
+            message += `💵 *TOTAL À PAYER (Paiement Cash) :* *${total} DH*%0A%0A`;
+            message += `Je confirme ma commande ! Merci.`;
+
+            const whatsappUrl = `https://wa.me/212704509107?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // FAQ Toggle Accordion
+        function toggleFaq(btn) {
+            const answer = btn.nextElementSibling;
+            const icon = btn.querySelector('.fa-chevron-down');
+
+            answer.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+
+        // Countdown Timer
+        function startCountdown() {
+            let hours = 4, minutes = 28, seconds = 12;
+            const el = document.getElementById('flash-countdown');
+
+            setInterval(() => {
+                seconds--;
+                if (seconds < 0) {
+                    seconds = 59;
+                    minutes--;
+                    if (minutes < 0) {
+                        minutes = 59;
+                        hours--;
+                    }
+                }
+                const h = hours < 10 ? '0' + hours : hours;
+                const m = minutes < 10 ? '0' + minutes : minutes;
+                const s = seconds < 10 ? '0' + seconds : seconds;
+                el.innerText = `${h}h ${m}m ${s}s`;
+            }, 1000);
+        }
+
+        // Live Sales Popups
+        function initLiveSalesPopup() {
+            const buyers = [
+                { name: "Aymane K.", city: "Casablanca", item: "Veste Stone Island" },
+                { name: "Simo M.", city: "Rabat", item: "Sneakers Pro Edition" },
+                { name: "Othmane B.", city: "Marrakech", item: "Ensemble Hoodie Luxury" },
+                { name: "Youssef T.", city: "Tanger", item: "Coupe-vent Burberry Check" }
+            ];
+
+            setInterval(() => {
+                const randomBuyer = buyers[Math.floor(Math.random() * buyers.length)];
+                const randomProduct = PRODUCTS[Math.floor(Math.random() * PRODUCTS.length)];
+
+                document.getElementById('live-toast-user').innerText = `${randomBuyer.name} de ${randomBuyer.city}`;
+                document.getElementById('live-toast-item').innerText = randomProduct.name;
+                document.getElementById('live-toast-img').src = randomProduct.image;
+
+                const toast = document.getElementById('live-sales-toast');
+                toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+
+                setTimeout(() => {
+                    toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+                }, 4000);
+
+            }, 14000);
+        }
+
+        // Toast Helper
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').innerText = msg;
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'pointer-events-none');
+            }, 2500);
+        }
+    </script>
+</body>

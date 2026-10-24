@@ -1,0 +1,823 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Blog Section</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .blog-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        .blog-card {
+            background: #f4f4f4;
+            border-radius: 10px;
+            margin: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1 1 calc(33% - 40px);
+            max-width: calc(33% - 40px);
+            box-sizing: border-box;
+        }
+        .blog-card img {
+            width: 100%;
+            height: auto;
+        }
+        .blog-content {
+            padding: 15px;
+        }
+        .blog-content h3 {
+            margin: 0 0 10px;
+            font-size: 1.5em;
+        }
+        .blog-content p {
+            margin: 0;
+            line-height: 1.5;
+            color: #555;
+        }
+        @media (max-width: 768px) {
+            .blog-card {
+                flex: 1 1 calc(50% - 20px);
+                max-width: calc(50% - 20px);
+            }
+        }
+        @media (max-width: 480px) {
+            .blog-card {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<section class="blog-section">
+    <div class="blog-card">
+        <img src="4.jpg" alt="Blog Image 1">
+        <div class="blog-content">
+            <h3>Blog Title 1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum.</p>
+        </div>
+    </div>
+    <div class="blog-card">
+        <img src="4.jpg" alt="Blog Image 2">
+        <div class="blog-content">
+            <h3>Blog Title 2</h3>
+            <p>Donec dictum augue non magna vehicula, eget suscipit felis hendrerit. Integer sit amet consectetur leo.</p>
+        </div>
+    </div>
+    <div class="blog-card">
+        <img src="4.jpg" alt="Blog Image 3">
+        <div class="blog-content">
+            <h3>Blog Title 3</h3>
+            <p>Quisque euismod lectus vitae justo tincidunt, a consectetur eros hendrerit. Vivamus vel massa sed risus.</p>
+        </div>
+    </div>
+</section>
+
+</body>
+</html> -->
+
+<!-- ============================================================================================================ -->
+<!-- ============================================================================================================ -->
+<!-- ============================================================================================================ -->
+<!-- ============================================================================================================ -->
+<!-- ============================================================================================================ -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Section with Pagination</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .blog-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        .blog-card {
+            background: #f4f4f4;
+            border-radius: 10px;
+            margin: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1 1 calc(33% - 40px);
+            max-width: calc(33% - 40px);
+            box-sizing: border-box;
+        }
+        .blog-card img {
+            width: 100%;
+            height: auto;
+        }
+        .blog-content {
+            padding: 15px;
+        }
+        .blog-content h3 {
+            margin: 0 0 10px;
+            font-size: 1.5em;
+        }
+        .blog-content p {
+            margin: 0;
+            line-height: 1.5;
+            color: #555;
+        }
+        .pagination {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .pagination button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .pagination button[disabled] {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        @media (max-width: 768px) {
+            .blog-card {
+                flex: 1 1 calc(50% - 20px);
+                max-width: calc(50% - 20px);
+            }
+        }
+        @media (max-width: 480px) {
+            .blog-card {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<section class="blog-section" id="blog-section">
+</section>
+
+<div class="pagination" id="pagination">
+    <button id="prev-btn" onclick="prevPage()">Previous</button>
+    <button id="next-btn" onclick="nextPage()">Next</button>
+</div>
+
+<script>
+    const blogs = [
+        {
+            title: "Blog Title 1",
+            image: "4.jpg",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum."
+        },
+        {
+            title: "Blog Title 2",
+            image: "4.jpg",
+            description: "Donec dictum augue non magna vehicula, eget suscipit felis hendrerit. Integer sit amet consectetur leo."
+        },
+        {
+            title: "Blog Title 3",
+            image: "4.jpg",
+            description: "Quisque euismod lectus vitae justo tincidunt, a consectetur eros hendrerit. Vivamus vel massa sed risus."
+        },
+        {
+            title: "Blog Title 4",
+            image: "4.jpg",
+            description: "Aenean vel turpis scelerisque, viverra nulla in, dapibus velit. Nulla facilisi. Curabitur ut pulvinar augue."
+        },
+        {
+            title: "Blog Title 5",
+            image: "4.jpg",
+            description: "Sed ac fermentum massa. Mauris consectetur, quam in tristique interdum, mauris orci efficitur justo, eu finibus eros orci ac est."
+        }
+    ];
+
+    let currentPage = 1;
+    const postsPerPage = 3;
+
+    function displayBlogs() {
+        const blogSection = document.getElementById('blog-section');
+        blogSection.innerHTML = '';
+
+        const start = (currentPage - 1) * postsPerPage;
+        const end = start + postsPerPage;
+        const paginatedBlogs = blogs.slice(start, end);
+
+        paginatedBlogs.forEach(blog => {
+            const blogCard = document.createElement('div');
+            blogCard.className = 'blog-card';
+            blogCard.innerHTML = `
+                <img src="${blog.image}" alt="${blog.title}">
+                <div class="blog-content">
+                    <h3>${blog.title}</h3>
+                    <p>${blog.description}</p>
+                </div>
+            `;
+            blogSection.appendChild(blogCard);
+        });
+
+        document.getElementById('prev-btn').disabled = currentPage === 1;
+        document.getElementById('next-btn').disabled = end >= blogs.length;
+    }
+
+    function prevPage() {
+        if (currentPage > 1) {
+            currentPage--;
+            displayBlogs();
+        }
+    }
+
+    function nextPage() {
+        if ((currentPage * postsPerPage) < blogs.length) {
+            currentPage++;
+            displayBlogs();
+        }
+    }
+
+    // Initial display
+    displayBlogs();
+</script>
+
+</body>
+</html>
+ -->
+
+
+
+<!-- ============================================================================================================ -->
+<!-- ============================================================================================================ -->
+<!-- ============================================================================================================ -->
+<!-- ============================================================================================================ -->
+<!-- ============================================================================================================ -->
+
+<!-- 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Section with Pagination</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .blog-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        .blog-card {
+            background: #f4f4f4;
+            border-radius: 10px;
+            margin: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1 1 calc(33% - 40px);
+            max-width: calc(33% - 40px);
+            box-sizing: border-box;
+        }
+        .blog-card img {
+            width: 100%;
+            height: auto;
+        }
+        .blog-content {
+            padding: 15px;
+        }
+        .blog-content h3 {
+            margin: 0 0 10px;
+            font-size: 1.5em;
+        }
+        .blog-content p {
+            margin: 0;
+            line-height: 1.5;
+            color: #555;
+        }
+        .pagination {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .pagination button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .pagination button[disabled] {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .pagination .page-info {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 1em;
+        }
+        @media (max-width: 768px) {
+            .blog-card {
+                flex: 1 1 calc(50% - 20px);
+                max-width: calc(50% - 20px);
+            }
+        }
+        @media (max-width: 480px) {
+            .blog-card {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<section class="blog-section" id="blog-section">
+</section>
+
+<div class="pagination" id="pagination">
+    <button id="prev-btn" onclick="prevPage()">Previous</button>
+    <span class="page-info" id="page-info"></span>
+    <button id="next-btn" onclick="nextPage()">Next</button>
+</div>
+
+<script>
+    const blogs = [
+        {
+            title: "Blog Title 1",
+            image: "4.jpg",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum."
+        },
+        {
+            title: "Blog Title 2",
+            image: "4.jpg",
+            description: "Donec dictum augue non magna vehicula, eget suscipit felis hendrerit. Integer sit amet consectetur leo."
+        },
+        {
+            title: "Blog Title 3",
+            image: "4.jpg",
+            description: "Quisque euismod lectus vitae justo tincidunt, a consectetur eros hendrerit. Vivamus vel massa sed risus."
+        },
+        {
+            title: "Blog Title 4",
+            image: "4.jpg",
+            description: "Aenean vel turpis scelerisque, viverra nulla in, dapibus velit. Nulla facilisi. Curabitur ut pulvinar augue."
+        },
+        {
+            title: "Blog Title 5",
+            image: "4.jpg",
+            description: "Sed ac fermentum massa. Mauris consectetur, quam in tristique interdum, mauris orci efficitur justo, eu finibus eros orci ac est."
+        }
+    ];
+
+    let currentPage = 1;
+    const postsPerPage = 3;
+
+    function displayBlogs() {
+        const blogSection = document.getElementById('blog-section');
+        blogSection.innerHTML = '';
+
+        const start = (currentPage - 1) * postsPerPage;
+        const end = start + postsPerPage;
+        const paginatedBlogs = blogs.slice(start, end);
+
+        paginatedBlogs.forEach(blog => {
+            const blogCard = document.createElement('div');
+            blogCard.className = 'blog-card';
+            blogCard.innerHTML = `
+                <img src="${blog.image}" alt="${blog.title}">
+                <div class="blog-content">
+                    <h3>${blog.title}</h3>
+                    <p>${blog.description}</p>
+                </div>
+            `;
+            blogSection.appendChild(blogCard);
+        });
+
+        document.getElementById('prev-btn').disabled = currentPage === 1;
+        document.getElementById('next-btn').disabled = end >= blogs.length;
+
+        document.getElementById('page-info').innerText = `Page ${currentPage} of ${Math.ceil(blogs.length / postsPerPage)}`;
+    }
+
+    function prevPage() {
+        if (currentPage > 1) {
+            currentPage--;
+            displayBlogs();
+        }
+    }
+
+    function nextPage() {
+        if ((currentPage * postsPerPage) < blogs.length) {
+            currentPage++;
+            displayBlogs();
+        }
+    }
+
+    // Initial display
+    displayBlogs();
+</script>
+
+</body>
+</html> -->
+
+
+
+
+
+<!-- ============================================================================================================ -->
+<!-- ============================================================================================================ -->
+<!-- ============================================================================================================ -->
+<!-- ============================================================================================================ -->
+<!-- ============================================================================================================ -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Section with Pagination</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .blog-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        .blog-card {
+            background: #f4f4f4;
+            border-radius: 10px;
+            margin: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1 1 calc(33% - 40px);
+            max-width: calc(33% - 40px);
+            box-sizing: border-box;
+        }
+        .blog-card img {
+            width: 100%;
+            height: auto;
+        }
+        .blog-content {
+            padding: 15px;
+        }
+        .blog-content h3 {
+            margin: 0 0 10px;
+            font-size: 1.5em;
+        }
+        .blog-content p {
+            margin: 0;
+            line-height: 1.5;
+            color: #555;
+        }
+        .pagination {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .pagination button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .pagination button[disabled] {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .pagination .page-number {
+            background: #f4f4f4;
+            color: black;
+            border: 1px solid #ddd;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .pagination .page-number.active {
+            background: #007bff;
+            color: white;
+        }
+        @media (max-width: 768px) {
+            .blog-card {
+                flex: 1 1 calc(50% - 20px);
+                max-width: calc(50% - 20px);
+            }
+        }
+        @media (max-width: 480px) {
+            .blog-card {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<section class="blog-section" id="blog-section">
+   Blog posts will be inserted here by JavaScript
+</section>
+
+<div class="pagination" id="pagination">
+    Pagination buttons will be inserted here by JavaScript
+    
+</div>
+
+<script>
+    const blogs = [
+        {
+            title: "Blog Title 1",
+            image: "4.jpg",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum."
+        },
+        {
+            title: "Blog Title 2",
+            image: "4.jpg",
+            description: "Donec dictum augue non magna vehicula, eget suscipit felis hendrerit. Integer sit amet consectetur leo."
+        },
+        {
+            title: "Blog Title 3",
+            image: "4.jpg",
+            description: "Quisque euismod lectus vitae justo tincidunt, a consectetur eros hendrerit. Vivamus vel massa sed risus."
+        },
+        {
+            title: "Blog Title 4",
+            image: "4.jpg",
+            description: "Aenean vel turpis scelerisque, viverra nulla in, dapibus velit. Nulla facilisi. Curabitur ut pulvinar augue."
+        },
+        {
+            title: "Blog Title 5",
+            image: "4.jpg",
+            description: "Sed ac fermentum massa. Mauris consectetur, quam in tristique interdum, mauris orci efficitur justo, eu finibus eros orci ac est."
+        }
+    ];
+
+    let currentPage = 1;
+    const postsPerPage = 3;
+
+    function displayBlogs() {
+        const blogSection = document.getElementById('blog-section');
+        blogSection.innerHTML = '';
+
+        const start = (currentPage - 1) * postsPerPage;
+        const end = start + postsPerPage;
+        const paginatedBlogs = blogs.slice(start, end);
+
+        paginatedBlogs.forEach(blog => {
+            const blogCard = document.createElement('div');
+            blogCard.className = 'blog-card';
+            blogCard.innerHTML = `
+                <img src="${blog.image}" alt="${blog.title}">
+                <div class="blog-content">
+                    <h3>${blog.title}</h3>
+                    <p>${blog.description}</p>
+                </div>
+            `;
+            blogSection.appendChild(blogCard);
+        });
+
+        createPagination();
+    }
+
+    function createPagination() {
+        const pagination = document.getElementById('pagination');
+        pagination.innerHTML = '';
+
+        const totalPages = Math.ceil(blogs.length / postsPerPage);
+
+        for (let i = 1; i <= totalPages; i++) {
+            const pageButton = document.createElement('button');
+            pageButton.className = 'page-number';
+            pageButton.innerText = i;
+            pageButton.onclick = () => goToPage(i);
+
+            if (i === currentPage) {
+                pageButton.classList.add('active');
+            }
+
+            pagination.appendChild(pageButton);
+        }
+    }
+
+    function goToPage(page) {
+        currentPage = page;
+        displayBlogs();
+    }
+
+    // Initial display
+    displayBlogs();
+</script>
+
+</body>
+</html>
+     -->
+
+
+
+     
+<!-- ============================================================================================================ -->
+<!-- ============================================================================================================ -->
+<!-- ============================================================================================================ -->
+<!-- ============================================================================================================ -->
+<!-- ============================================================================================================ -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Section with Load More</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .blog-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        .blog-card {
+            background: #f4f4f4;
+            border-radius: 10px;
+            margin: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1 1 calc(33% - 40px);
+            max-width: calc(33% - 40px);
+            box-sizing: border-box;
+        }
+        .blog-card img {
+            width: 100%;
+            height: auto;
+        }
+        .blog-content {
+            padding: 15px;
+        }
+        .blog-content h3 {
+            margin: 0 0 10px;
+            font-size: 1.5em;
+        }
+        .blog-content p {
+            margin: 0;
+            line-height: 1.5;
+            color: #555;
+        }
+        .load-more {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .load-more button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .load-more button[disabled] {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        @media (max-width: 768px) {
+            .blog-card {
+                flex: 1 1 calc(50% - 20px);
+                max-width: calc(50% - 20px);
+            }
+        }
+        @media (max-width: 480px) {
+            .blog-card {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<section class="blog-section" id="blog-section">
+    <!-- Blog posts will be inserted here by JavaScript -->
+</section>
+
+<div class="load-more" id="load-more">
+    <button id="load-more-btn" onclick="loadMore()">Afficher plus</button>
+</div>
+
+<script>
+    const blogs = [
+        {
+            title: "Blog Title 1",
+            image: "4.jpg",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum."
+        },
+        {
+            title: "Blog Title 2",
+            image: "4.jpg",
+            description: "Donec dictum augue non magna vehicula, eget suscipit felis hendrerit. Integer sit amet consectetur leo."
+        },
+        {
+            title: "Blog Title 3",
+            image: "4.jpg",
+            description: "Quisque euismod lectus vitae justo tincidunt, a consectetur eros hendrerit. Vivamus vel massa sed risus."
+        },
+        {
+            title: "Blog Title 4",
+            image: "4.jpg",
+            description: "Aenean vel turpis scelerisque, viverra nulla in, dapibus velit. Nulla facilisi. Curabitur ut pulvinar augue."
+        },
+        {
+            title: "Blog Title 5",
+            image: "4.jpg",
+            description: "Sed ac fermentum massa. Mauris consectetur, quam in tristique interdum, mauris orci efficitur justo, eu finibus eros orci ac est."
+        },
+        {
+            title: "Blog Title 1",
+            image: "4.jpg",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum."
+        },
+        {
+            title: "Blog Title 2",
+            image: "4.jpg",
+            description: "Donec dictum augue non magna vehicula, eget suscipit felis hendrerit. Integer sit amet consectetur leo."
+        },
+        {
+            title: "Blog Title 3",
+            image: "4.jpg",
+            description: "Quisque euismod lectus vitae justo tincidunt, a consectetur eros hendrerit. Vivamus vel massa sed risus."
+        },
+        {
+            title: "Blog Title 4",
+            image: "4.jpg",
+            description: "Aenean vel turpis scelerisque, viverra nulla in, dapibus velit. Nulla facilisi. Curabitur ut pulvinar augue."
+        },
+        {
+            title: "Blog Title 5",
+            image: "4.jpg",
+            description: "Sed ac fermentum massa. Mauris consectetur, quam in tristique interdum, mauris orci efficitur justo, eu finibus eros orci ac est."
+        }
+    ];
+
+    let currentIndex = 0;
+    const postsPerPage = 3;
+
+    function displayBlogs() {
+        const blogSection = document.getElementById('blog-section');
+        const end = currentIndex + postsPerPage;
+
+        for (let i = currentIndex; i < end && i < blogs.length; i++) {
+            const blog = blogs[i];
+            const blogCard = document.createElement('div');
+            blogCard.className = 'blog-card';
+            blogCard.innerHTML = `
+                <img src="${blog.image}" alt="${blog.title}">
+                <div class="blog-content">
+                    <h3>${blog.title}</h3>
+                    <p>${blog.description}</p>
+                </div>
+            `;
+            blogSection.appendChild(blogCard);
+        }
+
+        currentIndex = end;
+
+        if (currentIndex >= blogs.length) {
+            document.getElementById('load-more-btn').disabled = true;
+        }
+    }
+
+    function loadMore() {
+        displayBlogs();
+    }
+
+    // Initial display
+    displayBlogs();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nador Immo - Immobilier de Luxe & Résidentiel à Nador</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+
+    <!-- Top Bar: Multilingual & Contact Quick Links -->
+    <header class="bg-slate-900 text-white text-xs sm:text-sm py-2 px-4 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-4">
+                <span><i class="fas fa-map-marker-alt text-emerald-400 mr-1"></i> Nador, Maroc</span>
+                <span><i class="fas fa-phone-alt text-emerald-400 mr-1"></i> +212 600-000000</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="text-gray-400">Langue / اللغة:</span>
+                <button onclick="setLanguage('fr')" class="hover:text-emerald-400 font-medium px-1 transition">FR</button>
+                <button onclick="setLanguage('ar')" class="hover:text-emerald-400 font-medium px-1 transition">AR</button>
+                <button onclick="setLanguage('en')" class="hover:text-emerald-400 font-medium px-1 transition">EN</button>
+                <button onclick="setLanguage('es')" class="hover:text-emerald-400 font-medium px-1 transition">ES</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Navigation Bar -->
+    <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="bg-emerald-600 text-white p-2.5 rounded-xl shadow-lg">
+                    <i class="fas fa-building text-xl"></i>
+                </div>
+                <div>
+                    <span class="text-2xl font-extrabold tracking-tight text-slate-900">Nador<span class="text-emerald-600">Immo</span></span>
+                    <span class="block text-[10px] text-gray-500 uppercase tracking-widest font-semibold" data-i18n="subtitle_top">Agence Immobilière</span>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 font-medium text-gray-600">
+                <a href="#properties" class="hover:text-emerald-600 transition" data-i18n="nav_properties">Annonces</a>
+                <a href="#services" class="hover:text-emerald-600 transition" data-i18n="nav_services">Services Pro</a>
+                <a href="#about" class="hover:text-emerald-600 transition" data-i18n="nav_about">À Propos</a>
+                <a href="#contact" class="hover:text-emerald-600 transition" data-i18n="nav_contact">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <a href="https://wa.me/212600000000?text=Bonjour,%20je%20suis%20intéressé(e)%20par%20vos%20biens%20immobiliers%20à%20Nador" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2.5 rounded-xl font-medium shadow-md transition flex items-center gap-2">
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    <span class="hidden sm:inline" data-i18n="whatsapp_btn">WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-[550px] flex items-center justify-center text-white px-4 py-20 relative">
+        <div class="max-w-4xl mx-auto text-center space-y-6 z-10">
+            <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider inline-block backdrop-blur-sm" data-i18n="hero_badge">
+                Le N°1 de l'Immobilier à Nador et Environs
+            </span>
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight" data-i18n="hero_title">
+                Trouvez le Bien de Vos Rêves à Nador
+            </h1>
+            <p class="text-lg text-gray-200 max-w-2xl mx-auto font-light" data-i18n="hero_desc">
+                Appartements de standing, villas vue sur mer, terrains et locaux commerciaux à Nador, Beni Ansar, Arekmane et Selouane.
+            </p>
+
+            <!-- Quick Search Widget -->
+            <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-2xl text-gray-800 mt-8 grid grid-cols-1 sm:grid-cols-4 gap-4">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-500 mb-1 text-left" data-i18n="search_type">Transaction</label>
+                    <select id="filterType" class="w-full bg-gray-50 border border-gray-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
+                        <option value="all" data-i18n="opt_all">Tous types</option>
+                        <option value="vente" data-i18n="opt_sale">À Vendre</option>
+                        <option value="location" data-i18n="opt_rent">À Louer</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-500 mb-1 text-left" data-i18n="search_category">Type de Bien</label>
+                    <select id="filterCat" class="w-full bg-gray-50 border border-gray-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
+                        <option value="all" data-i18n="opt_all_cat">Tous les biens</option>
+                        <option value="appartement" data-i18n="opt_apt">Appartement</option>
+                        <option value="villa" data-i18n="opt_villa">Villa / Maison</option>
+                        <option value="terrain" data-i18n="opt_land">Terrain</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-500 mb-1 text-left" data-i18n="search_loc">Quartier / Zone</label>
+                    <select id="filterLoc" class="w-full bg-gray-50 border border-gray-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
+                        <option value="all" data-i18n="opt_all_loc">Tous les quartiers</option>
+                        <option value="centre">Centre Ville Nador</option>
+                        <option value="corniche">La Corniche</option>
+                        <option value="arekmane">Bouarg / Arekmane</option>
+                        <option value="beni_ansar">Beni Ansar</option>
+                    </select>
+                </div>
+                <div class="flex items-end">
+                    <button onclick="filterProperties()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3.5 px-4 rounded-xl shadow-lg transition flex items-center justify-center gap-2">
+                        <i class="fas fa-search"></i>
+                        <span data-i18n="search_btn">Rechercher</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Listings Section -->
+    <section id="properties" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-4">
+            <div>
+                <span class="text-emerald-600 font-bold uppercase tracking-wider text-xs" data-i18n="listings_tag">Catalogue Exclusif</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 mt-1" data-i18n="listings_title">Nos Dernières Opportunités Immobilières</h2>
+            </div>
+            <div class="flex gap-2 bg-gray-200 p-1.5 rounded-xl">
+                <button onclick="filterCategoryTab('all')" class="tab-btn active bg-white shadow px-4 py-2 rounded-lg text-xs font-semibold transition" data-i18n="tab_all">Tous</button>
+                <button onclick="filterCategoryTab('vente')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold text-gray-600 hover:text-emerald-600 transition" data-i18n="tab_sale">Vente</button>
+                <button onclick="filterCategoryTab('location')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold text-gray-600 hover:text-emerald-600 transition" data-i18n="tab_rent">Location</button>
+            </div>
+        </div>
+
+        <!-- Grid of Property Cards -->
+        <div id="propertyGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Populated via JavaScript -->
+        </div>
+    </section>
+
+    <!-- Why Choose Us / Services Section -->
+    <section id="services" class="bg-slate-900 text-white py-20 px-4 sm:px-6 lg:px-8 mt-12">
+        <div class="max-w-7xl mx-auto text-center">
+            <span class="text-emerald-400 font-bold uppercase tracking-wider text-xs" data-i18n="why_tag">Expertise Locale</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold mt-1 mb-4" data-i18n="why_title">Pourquoi Choisir Nador Immo ?</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto mb-16" data-i18n="why_desc">
+                Nous vous accompagnons à chaque étape de votre projet immobilier à Nador, de la recherche à la signature chez le notaire.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 text-left hover:border-emerald-500 transition">
+                    <div class="bg-emerald-600/20 text-emerald-400 w-14 h-14 rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="feat1_title">Accompagnement Sur Mesure</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed" data-i18n="feat1_desc">Une équipe d'experts natifs de Nador pour négocier et trouver exactement le bien correspondant à vos critères.</p>
+                </div>
+
+                <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 text-left hover:border-emerald-500 transition">
+                    <div class="bg-emerald-600/20 text-emerald-400 w-14 h-14 rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="feat2_title">Sécurité Juridique & Titres</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed" data-i18n="feat2_desc">Tous nos biens sont vérifiés (titres fonciers, conformité urbanistique) pour un achat ou une location en toute sérénité.</p>
+                </div>
+
+                <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 text-left hover:border-emerald-500 transition">
+                    <div class="bg-emerald-600/20 text-emerald-400 w-14 h-14 rounded-xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="feat3_title">Visite Rapide & WhatsApp</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed" data-i18n="feat3_desc">Réservez une visite en un clic via WhatsApp ou organisez une visite virtuelle guidée si vous êtes à l'étranger (MRE).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Valuation CTA -->
+    <section id="contact" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="bg-emerald-700 text-white rounded-3xl p-8 sm:p-14 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-10">
+            <div class="space-y-4 max-w-xl">
+                <span class="bg-white/20 text-white px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider" data-i18n="cta_badge">Contactez-nous</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold" data-i18n="cta_title">Vous avez un bien à vendre ou à louer à Nador ?</h2>
+                <p class="text-emerald-100 text-sm sm:text-base" data-i18n="cta_desc">Confiez votre bien à nos experts et bénéficiez d'une estimation gratuite et d'une visibilité maximale auprès des acheteurs locaux et MRE.</p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+                <a href="https://wa.me/212600000000?text=Bonjour,%20je%20souhaite%20vendre/louer%20mon%20bien%20à%20Nador" target="_blank" class="bg-white text-emerald-700 font-bold px-8 py-4 rounded-xl shadow-lg hover:bg-gray-100 transition text-center flex items-center justify-center gap-2">
+                    <i class="fab fa-whatsapp text-xl text-emerald-600"></i>
+                    <span data-i18n="cta_whatsapp">Parler sur WhatsApp</span>
+                </a>
+                <a href="tel:+212600000000" class="bg-slate-900 text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:bg-slate-800 transition text-center flex items-center justify-center gap-2">
+                    <i class="fas fa-phone"></i>
+                    <span data-i18n="cta_call">Appeler un Conseiller</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-gray-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div class="space-y-4">
+                <div class="flex items-center gap-2 text-white">
+                    <div class="bg-emerald-600 text-white p-2 rounded-lg">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <span class="text-xl font-bold">Nador<span class="text-emerald-500">Immo</span></span>
+                </div>
+                <p class="text-xs leading-relaxed" data-i18n="footer_about">Votre agence immobilière de référence à Nador. Vente, achat, location de biens de standing supérieure.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider" data-i18n="footer_links">Liens Rapides</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#properties" class="hover:text-emerald-400 transition" data-i18n="nav_properties">Annonces</a></li>
+                    <li><a href="#services" class="hover:text-emerald-400 transition" data-i18n="nav_services">Services Pro</a></li>
+                    <li><a href="#about" class="hover:text-emerald-400 transition" data-i18n="nav_about">À Propos</a></li>
+                    <li><a href="#contact" class="hover:text-emerald-400 transition" data-i18n="nav_contact">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider" data-i18n="footer_zones">Zones à Nador</h4>
+                <ul class="space-y-2 text-xs">
+                    <li>Centre Ville Nador</li>
+                    <li>La Corniche & Lagune</li>
+                    <li>Bouarg & Arekmane</li>
+                    <li>Beni Ansar & Port</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider" data-i18n="footer_contact">Contact Direct</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><i class="fas fa-map-marker-alt text-emerald-500 mr-2"></i> Avenue Mohammed V, Nador</li>
+                    <li><i class="fas fa-phone text-emerald-500 mr-2"></i> +212 600-000000</li>
+                    <li><i class="fas fa-envelope text-emerald-500 mr-2"></i> contact@nadorimmo.ma</li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-slate-800 text-center text-xs text-gray-500">
+            &copy; 2026 Nador Immo. Tous droits réservés. | Conçu pour Nador & Environs.
+        </div>
+    </footer>
+
+    <!-- Property Details Modal -->
+    <div id="propertyModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-8 relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 bg-gray-100 hover:bg-gray-200 text-gray-700 w-10 h-10 rounded-full flex items-center justify-center transition">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="modalContent">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Property Database
+        const properties = [
+            {
+                id: 1,
+                title: "Appartement de Standing Vue Mer",
+                location: "corniche",
+                locationName: "La Corniche, Nador",
+                type: "appartement",
+                transaction: "vente",
+                price: "1,250,000 MAD",
+                priceValue: 1250000,
+                beds: 3,
+                baths: 2,
+                area: "145 m²",
+                image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800&auto=format&fit=crop",
+                desc: "Magnifique appartement moderne situé directement sur la corniche de Nador avec vue imprenable sur la lagune. Finitions luxueuses, cuisine équipée et garage sous-terrain inclus."
+            },
+            {
+                id: 2,
+                title: "Villa Moderne avec Jardin",
+                location: "arekmane",
+                locationName: "Bouarg / Arekmane",
+                type: "villa",
+                transaction: "vente",
+                price: "2,850,000 MAD",
+                priceValue: 2850000,
+                beds: 5,
+                baths: 4,
+                area: "350 m²",
+                image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800&auto=format&fit=crop",
+                desc: "Superbe villa contemporaine avec grand jardin arboré et piscine privée proche des plages d'Arekmane. Idéal pour résidence principale ou secondaire de prestige."
+            },
+            {
+                id: 3,
+                title: "Appartement Meublé Centre Ville",
+                location: "centre",
+                locationName: "Centre Ville Nador",
+                type: "appartement",
+                transaction: "location",
+                price: "5,000 MAD / mois",
+                priceValue: 5000,
+                beds: 2,
+                baths: 1,
+                area: "90 m²",
+                image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=800&auto=format&fit=crop",
+                desc: "Appartement cosy, entièrement meublé et équipé au cœur de Nador, proche de toutes commodités (cafés, commerces, transports)."
+            },
+            {
+                id: 4,
+                title: "Terrain Constructible Titré",
+                location: "beni_ansar",
+                locationName: "Beni Ansar",
+                type: "terrain",
+                transaction: "vente",
+                price: "850,000 MAD",
+                priceValue: 850000,
+                beds: 0,
+                baths: 0,
+                area: "500 m²",
+                image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=800&auto=format&fit=crop",
+                desc: "Terrain viabilisé et titré prêt pour construction R+3, situé dans un quartier calme et en plein essor à Beni Ansar."
+            },
+            {
+                id: 5,
+                title: "Duplex Moderne Haut Standing",
+                location: "centre",
+                locationName: "Centre Ville Nador",
+                type: "appartement",
+                transaction: "vente",
+                price: "1,650,000 MAD",
+                priceValue: 1650000,
+                beds: 4,
+                baths: 3,
+                area: "210 m²",
+                image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800&auto=format&fit=crop",
+                desc: "Exceptionnel duplex avec terrasses spacieuses, matériaux de premier choix, climatisation centralisée et ascenseur direct."
+            },
+            {
+                id: 6,
+                title: "Appartement Location Longue Durée",
+                location: "corniche",
+                locationName: "La Corniche, Nador",
+                type: "appartement",
+                transaction: "location",
+                price: "4,500 MAD / mois",
+                priceValue: 4500,
+                beds: 2,
+                baths: 1,
+                area: "85 m²",
+                image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=800&auto=format&fit=crop",
+                desc: "Appartement lumineux non meublé avec vue sur la ville, idéal pour jeune couple ou professionnel."
+            }
+        ];
+
+        // Translations Dictionary
+        const translations = {
+            fr: {
+                subtitle_top: "Agence Immobilière",
+                nav_properties: "Annonces",
+                nav_services: "Services Pro",
+                nav_about: "À Propos",
+                nav_contact: "Contact",
+                whatsapp_btn: "WhatsApp",
+                hero_badge: "Le N°1 de l'Immobilier à Nador et Environs",
+                hero_title: "Trouvez le Bien de Vos Rêves à Nador",
+                hero_desc: "Appartements de standing, villas vue sur mer, terrains et locaux commerciaux à Nador, Beni Ansar, Arekmane et Selouane.",
+                search_type: "Transaction",
+                search_category: "Type de Bien",
+                search_loc: "Quartier / Zone",
+                opt_all: "Tous types",
+                opt_sale: "À Vendre",
+                opt_rent: "À Louer",
+                opt_all_cat: "Tous les biens",
+                opt_apt: "Appartement",
+                opt_villa: "Villa / Maison",
+                opt_land: "Terrain",
+                opt_all_loc: "Tous les quartiers",
+                search_btn: "Rechercher",
+                listings_tag: "Catalogue Exclusif",
+                listings_title: "Nos Dernières Opportunités Immobilières",
+                tab_all: "Tous",
+                tab_sale: "Vente",
+                tab_rent: "Location",
+                why_tag: "Expertise Locale",
+                why_title: "Pourquoi Choisir Nador Immo ?",
+                why_desc: "Nous vous accompagnons à chaque étape de votre projet immobilier à Nador, de la recherche à la signature chez le notaire.",
+                feat1_title: "Accompagnement Sur Mesure",
+                feat1_desc: "Une équipe d'experts natifs de Nador pour négocier et trouver exactement le bien correspondant à vos critères.",
+                feat2_title: "Sécurité Juridique & Titres",
+                feat2_desc: "Tous nos biens sont vérifiés (titres fonciers, conformité urbanistique) pour un achat ou une location en toute sérénité.",
+                feat3_title: "Visite Rapide & WhatsApp",
+                feat3_desc: "Réservez une visite en un clic via WhatsApp ou organisez une visite virtuelle guidée si vous êtes à l'étranger (MRE).",
+                cta_badge: "Contactez-nous",
+                cta_title: "Vous avez un bien à vendre ou à louer à Nador ?",
+                cta_desc: "Confiez votre bien à nos experts et bénéficiez d'une estimation gratuite et d'une visibilité maximale auprès des acheteurs locaux et MRE.",
+                cta_whatsapp: "Parler sur WhatsApp",
+                cta_call: "Appeler un Conseiller",
+                footer_about: "Votre agence immobilière de référence à Nador. Vente, achat, location de biens de standing supérieure.",
+                footer_links: "Liens Rapides",
+                footer_zones: "Zones à Nador",
+                footer_contact: "Contact Direct",
+                details_btn: "Voir les détails",
+                modal_whatsapp: "Contacter sur WhatsApp"
+            },
+            ar: {
+                subtitle_top: "وكالة عقارية",
+                nav_properties: "العروض العقارية",
+                nav_services: "خدماتنا",
+                nav_about: "من نحن",
+                nav_contact: "اتصل بنا",
+                whatsapp_btn: "واتساب",
+                hero_badge: "الرجل الأول في العقارات بالناظور والنواحي",
+                hero_title: "اعثر على منزل أحلامك في الناظور",
+                hero_desc: "شقق راقية، فيلات مطلة على البحر، أراضي ومحلات تجارية في الناظور، بني أنصار، أركمان، و سلوان.",
+                search_type: "نوع المعاملة",
+                search_category: "نوع العقار",
+                search_loc: "المنطقة / الحي",
+                opt_all: "جميع الأنواع",
+                opt_sale: "للبيع",
+                opt_rent: "للإيجار",
+                opt_all_cat: "جميع العقارات",
+                opt_apt: "شقة",
+                opt_villa: "فيلا / منزل",
+                opt_land: "أرض",
+                opt_all_loc: "جميع الأحياء",
+                search_btn: "بحث",
+                listings_tag: "كتالوج حصرية",
+                listings_title: "أحدث العروض العقارية المميزة",
+                tab_all: "الكل",
+                tab_sale: "بيع",
+                tab_rent: "إيجار",
+                why_tag: "خبرة محلية",
+                why_title: "لماذا تختار ناظور إيمو؟",
+                why_desc: "نرافقك في كل خطوات مشروعك العقاري بالناظور، من البحث إلى غاية التوقيع لدى الموثق.",
+                feat1_title: "مواكبة شخصية",
+                feat1_desc: "فريق من الخبراء أبناء الناظور لمساعدتك في العثور على العقار المناسب لاحتياجاتك تماماً.",
+                feat2_title: "أمان قانوني تام",
+                feat2_desc: "جميع عقاراتنا موثقة ومتحقق من سنداتها العقارية لتضمن عملية شراء أو إيجار آمنة.",
+                feat3_title: "معاينة سريعة عبر واتساب",
+                feat3_desc: "احجز موعد الزيارة بضغطة زر أو نظم زيارة افتراضية إذا كنت من مغاربة العالم (MRE).",
+                cta_badge: "اتصل بنا",
+                cta_title: "هل لديك عقار للبيع أو الإيجار في الناظور؟",
+                cta_desc: "ضع عقارك بين أيدي خبرائنا واستفد من تقييم مجاني وتسويق واسع لدى المشترين المحليين ومغاربة العالم.",
+                cta_whatsapp: "تواصل عبر واتساب",
+                cta_call: "اتصل بمستشار",
+                footer_about: "وكالتك العقارية الأولى في الناظور. بيع، شراء، وإيجار عقارات راقية.",
+                footer_links: "روابط سريعة",
+                footer_zones: "مناطق الناظور",
+                footer_contact: "اتصال مباشر",
+                details_btn: "عرض التفاصيل",
+                modal_whatsapp: "تواصل عبر واتساب"
+            },
+            en: {
+                subtitle_top: "Real Estate Agency",
+                nav_properties: "Properties",
+                nav_services: "Pro Services",
+                nav_about: "About",
+                nav_contact: "Contact",
+                whatsapp_btn: "WhatsApp",
+                hero_badge: "#1 Real Estate in Nador & Surroundings",
+                hero_title: "Find Your Dream Property in Nador",
+                hero_desc: "Luxury apartments, sea-view villas, land plots, and commercial spaces in Nador, Beni Ansar, Arekmane, and Selouane.",
+                search_type: "Transaction",
+                search_category: "Property Type",
+                search_loc: "Neighborhood / Area",
+                opt_all: "All Types",
+                opt_sale: "For Sale",
+                opt_rent: "For Rent",
+                opt_all_cat: "All Properties",
+                opt_apt: "Apartment",
+                opt_villa: "Villa / House",
+                opt_land: "Land",
+                opt_all_loc: "All Neighborhoods",
+                search_btn: "Search",
+                listings_tag: "Exclusive Catalog",
+                listings_title: "Our Latest Real Estate Opportunities",
+                tab_all: "All",
+                tab_sale: "Sale",
+                tab_rent: "Rent",
+                why_tag: "Local Expertise",
+                why_title: "Why Choose Nador Immo?",
+                why_desc: "We accompany you at every stage of your real estate project in Nador, from search to notary signing.",
+                feat1_title: "Tailored Support",
+                feat1_desc: "A team of local experts in Nador to negotiate and find the exact property matching your criteria.",
+                feat2_title: "Legal Security & Titles",
+                feat2_desc: "All our properties are verified (land titles, urban compliance) for a worry-free purchase or rental.",
+                feat3_title: "Fast Visits & WhatsApp",
+                feat3_desc: "Book a visit in one click via WhatsApp or organize a guided virtual tour if you live abroad.",
+                cta_badge: "Contact Us",
+                cta_title: "Have a property to sell or rent in Nador?",
+                cta_desc: "Entrust your property to our experts and benefit from a free valuation and maximum visibility.",
+                cta_whatsapp: "Chat on WhatsApp",
+                cta_call: "Call an Advisor",
+                footer_about: "Your premier real estate agency in Nador. Sale, purchase, and rental of top-tier properties.",
+                footer_links: "Quick Links",
+                footer_zones: "Nador Zones",
+                footer_contact: "Direct Contact",
+                details_btn: "View Details",
+                modal_whatsapp: "Contact via WhatsApp"
+            },
+            es: {
+                subtitle_top: "Inmobiliaria",
+                nav_properties: "Propiedades",
+                nav_services: "Servicios Pro",
+                nav_about: "Nosotros",
+                nav_contact: "Contacto",
+                whatsapp_btn: "WhatsApp",
+                hero_badge: "La Inmobiliaria Nº1 en Nador y Alrededores",
+                hero_title: "Encuentra tu Propiedad Soñada en Nador",
+                hero_desc: "Pisos de lujo, villas con vistas al mar, terrenos y locales comerciales en Nador, Beni Ansar, Arekmane y Selouane.",
+                search_type: "Operación",
+                search_category: "Tipo de Inmueble",
+                search_loc: "Zona / Barrio",
+                opt_all: "Todos",
+                opt_sale: "En Venta",
+                opt_rent: "En Alquiler",
+                opt_all_cat: "Todos los inmuebles",
+                opt_apt: "Piso / Apartamento",
+                opt_villa: "Villa / Casa",
+                opt_land: "Terreno",
+                opt_all_loc: "Todas las zonas",
+                search_btn: "Buscar",
+                listings_tag: "Catálogo Exclusivo",
+                listings_title: "Nuestras Últimas Oportunidades Inmobiliarias",
+                tab_all: "Todos",
+                tab_sale: "Venta",
+                tab_rent: "Alquiler",
+                why_tag: "Experiencia Local",
+                why_title: "¿Por qué elegir Nador Immo?",
+                why_desc: "Le acompañamos en cada etapa de su proyecto inmobiliario en Nador, desde la búsqueda hasta la firma ante notario.",
+                feat1_title: "Acompañamiento a Medida",
+                feat1_desc: "Un equipo de expertos locales en Nador para negociar y encontrar exactamente el inmueble que busca.",
+                feat2_title: "Seguridad Jurídica y Títulos",
+                feat2_desc: "Todas nuestras propiedades están verificadas para una compra o alquiler totalmente seguros.",
+                feat3_title: "Visita Rápida y WhatsApp",
+                feat3_desc: "Reserve una visita en un clic por WhatsApp u organice un recorrido virtual guiado.",
+                cta_badge: "Contáctenos",
+                cta_title: "¿Tiene una propiedad en venta o alquiler en Nador?",
+                cta_desc: "Confíe su propiedad a nuestros expertos y benefíciese de una tasación gratuita y máxima visibilidad.",
+                cta_whatsapp: "Hablar por WhatsApp",
+                cta_call: "Llamar a un Asesor",
+                footer_about: "Su agencia inmobiliaria de referencia en Nador. Venta, compra y alquiler de inmuebles.",
+                footer_links: "Enlaces Rápidos",
+                footer_zones: "Zonas de Nador",
+                footer_contact: "Contacto Directo",
+                details_btn: "Ver detalles",
+                modal_whatsapp: "Contactar por WhatsApp"
+            }
+        };
+
+        let currentLang = 'fr';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            if (lang === 'ar') {
+                document.documentElement.dir = 'rtl';
+            } else {
+                document.documentElement.dir = 'ltr';
+            }
+
+            // Update static elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
+            });
+
+            renderProperties(filteredProperties);
+        }
+
+        let filteredProperties = [...properties];
+
+        function renderProperties(list) {
+            const grid = document.getElementById('propertyGrid');
+            grid.innerHTML = '';
+
+            if (list.length === 0) {
+                grid.innerHTML = `<div class="col-span-3 text-center py-12 text-gray-500 font-medium">Aucun bien ne correspond à vos critères de recherche.</div>`;
+                return;
+            }
+
+            list.forEach(prop => {
+                const badgeText = prop.transaction === 'vente' ? (currentLang === 'ar' ? 'للبيع' : 'À Vendre') : (currentLang === 'ar' ? 'للإيجار' : 'À Louer');
+                const badgeColor = prop.transaction === 'vente' ? 'bg-emerald-600' : 'bg-blue-600';
+                const detailsText = translations[currentLang].details_btn;
+
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100 hover:shadow-xl transition flex flex-col justify-between";
+                card.innerHTML = `
+                    <div>
+                        <div class="relative h-60 overflow-hidden group">
+                            <img src="${prop.image}" alt="${prop.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x400/e2e8f0/475569?text=Nador+Immo'">
+                            <span class="absolute top-4 left-4 ${badgeColor} text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow">${badgeText}</span>
+                            <span class="absolute top-4 right-4 bg-slate-900/80 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-lg">${prop.price}</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center text-xs text-gray-500 mb-2 gap-1">
+                                <i class="fas fa-map-marker-alt text-emerald-600"></i>
+                                <span>${prop.locationName}</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">${prop.title}</h3>
+                            <div class="grid grid-cols-3 gap-2 py-3 border-t border-b border-gray-100 text-xs text-gray-600 font-medium text-center">
+                                <div><i class="fas fa-bed text-emerald-600 mr-1"></i> ${prop.beds} Ch.</div>
+                                <div><i class="fas fa-bath text-emerald-600 mr-1"></i> ${prop.baths} SdB</div>
+                                <div><i class="fas fa-ruler-combined text-emerald-600 mr-1"></i> ${prop.area}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0">
+                        <button onclick="openModal(${prop.id})" class="w-full bg-slate-100 hover:bg-emerald-600 hover:text-white text-slate-800 font-semibold py-3 rounded-xl transition text-sm flex items-center justify-center gap-2">
+                            <span>${detailsText}</span>
+                            <i class="fas fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterProperties() {
+            const type = document.getElementById('filterType').value;
+            const cat = document.getElementById('filterCat').value;
+            const loc = document.getElementById('filterLoc').value;
+
+            filteredProperties = properties.filter(p => {
+                const matchType = (type === 'all' || p.transaction === type);
+                const matchCat = (cat === 'all' || p.type === cat);
+                const matchLoc = (loc === 'all' || p.location === loc);
+                return matchType && matchCat && matchLoc;
+            });
+
+            renderProperties(filteredProperties);
+        }
+
+        function filterCategoryTab(tab) {
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-white', 'shadow', 'text-slate-900');
+                btn.classList.add('text-gray-600');
+            });
+            event.target.classList.add('bg-white', 'shadow', 'text-slate-900');
+            event.target.classList.remove('text-gray-600');
+
+            if (tab === 'all') {
+                filteredProperties = [...properties];
+            } else {
+                filteredProperties = properties.filter(p => p.transaction === tab);
+            }
+            renderProperties(filteredProperties);
+        }
+
+        function openModal(id) {
+            const prop = properties.find(p => p.id === id);
+            if (!prop) return;
+
+            const modalContent = document.getElementById('modalContent');
+            const waText = encodeURIComponent(`Bonjour, je souhaite obtenir plus d'informations sur le bien : ${prop.title} (${prop.price}) à ${prop.locationName}`);
+            const waBtnText = translations[currentLang].modal_whatsapp;
+
+            modalContent.innerHTML = `
+                <div class="space-y-6">
+                    <div class="relative h-72 sm:h-80 rounded-2xl overflow-hidden shadow-lg">
+                        <img src="${prop.image}" alt="${prop.title}" class="w-full h-full object-cover">
+                        <span class="absolute top-4 right-4 bg-emerald-600 text-white text-sm font-bold px-4 py-2 rounded-xl">${prop.price}</span>
+                    </div>
+                    <div>
+                        <div class="flex items-center text-xs text-emerald-600 font-semibold mb-1 gap-1">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>${prop.locationName}</span>
+                        </div>
+                        <h2 class="text-2xl font-extrabold text-slate-900 mb-3">${prop.title}</h2>
+                        <div class="flex gap-4 py-2 text-sm text-gray-700 font-medium">
+                            <span><i class="fas fa-bed text-emerald-600 mr-1"></i> ${prop.beds} Chambres</span>
+                            <span><i class="fas fa-bath text-emerald-600 mr-1"></i> ${prop.baths} Salles de bain</span>
+                            <span><i class="fas fa-ruler-combined text-emerald-600 mr-1"></i> ${prop.area}</span>
+                        </div>
+                        <p class="text-gray-600 text-sm leading-relaxed mt-4">${prop.desc}</p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-100 flex flex-col sm:flex-row gap-3">
+                        <a href="https://wa.me/212600000000?text=${waText}" target="_blank" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-lg transition flex items-center justify-center gap-2">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                            <span>${waBtnText}</span>
+                        </a>
+                        <button onclick="closeModal()" class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-3.5 px-6 rounded-xl transition">
+                            Fermer
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('propertyModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('propertyModal').classList.add('hidden');
+        }
+
+        // Initialize on load
+        window.onload = function() {
+            renderProperties(properties);
+        };
+    </script>
+</body>
+</html>

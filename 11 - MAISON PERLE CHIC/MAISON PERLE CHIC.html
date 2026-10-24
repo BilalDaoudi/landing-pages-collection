@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maison Perle Chic — Sacs Artisanaux en Perles & Fermoirs Dorés de Luxe</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts Playfair & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            ivory: '#FAFAFA',
+                            cream: '#F5F2EB',
+                            gold: '#D4AF37',
+                            goldDark: '#B38B22',
+                            goldLight: '#F3E5AB',
+                            black: '#1A1A1A',
+                            charcoal: '#2A2A2A',
+                            pinkPearl: '#F7ECE9',
+                            roseGold: '#B76E79'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gold-shimmer {
+            background: linear-gradient(135deg, #B38B22 0%, #F3E5AB 30%, #D4AF37 50%, #F3E5AB 70%, #B38B22 100%);
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #B38B22 0%, #D4AF37 50%, #8A6813 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .luxury-shadow {
+            box-shadow: 0 15px 35px -5px rgba(212, 175, 55, 0.12), 0 8px 15px -6px rgba(0, 0, 0, 0.05);
+        }
+        .luxury-card {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .luxury-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 45px -10px rgba(212, 175, 55, 0.22);
+        }
+        ::-webkit-scrollbar {
+            width: 7px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAFAFA;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-brand-ivory font-sans text-brand-black antialiased selection:bg-brand-goldLight selection:text-brand-black">
+
+    <div class="bg-brand-black text-white text-xs py-2.5 px-4 text-center tracking-widest uppercase flex justify-between items-center px-6 border-b border-brand-gold/20">
+        <div class="hidden md:flex items-center space-x-4 text-[11px] text-gray-300">
+            <span><i class="fas fa-certificate text-brand-gold mr-1.5"></i> 100% Fait Main & Tissé à la Perle</span>
+            <span>|</span>
+            <span><i class="fas fa-truck-fast text-brand-gold mr-1.5"></i> Livraison Offerte au Maroc</span>
+        </div>
+        <div class="mx-auto md:mx-0 font-serif italic text-brand-goldLight text-xs">
+            ✨ Collection Couture 2026 : Édition Limitée Perles & Métal Doré
+        </div>
+        <div class="hidden lg:flex items-center space-x-4 text-[11px]">
+            <a href="https://wa.me/212600000000" target="_blank" class="hover:text-brand-gold transition"><i class="fab fa-whatsapp text-emerald-400 mr-1"></i> WhatsApp Direct</a>
+            <span class="text-brand-gold font-bold">MAD / EUR</span>
+        </div>
+    </div>
+
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-btn" class="md:hidden text-brand-black hover:text-brand-gold p-2">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-11 h-11 rounded-full gold-shimmer p-0.5 shadow-md flex items-center justify-center">
+                        <div class="w-full h-full bg-brand-black rounded-full flex items-center justify-center transition group-hover:bg-brand-charcoal">
+                            <i class="fas fa-crown text-brand-gold text-lg"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="font-serif text-2xl font-bold tracking-wider text-brand-black block leading-none">MAISON PERLE CHIC</span>
+                        <span class="text-[9px] uppercase tracking-[0.3em] font-sans text-brand-goldDark font-bold block mt-1">Haute Maroquinerie Perlée</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center space-x-8 text-xs font-semibold uppercase tracking-widest text-gray-700">
+                    <a href="#catalogue" class="hover:text-brand-gold transition">Nos Créations</a>
+                    <a href="#savoir-faire" class="hover:text-brand-gold transition">Savoir-Faire</a>
+                    <a href="#avis" class="hover:text-brand-gold transition">Avis Clients</a>
+                    <a href="#faq" class="hover:text-brand-gold transition">FAQ</a>
+                </nav>
+
+                <!-- Action Controls -->
+                <div class="flex items-center space-x-4">
+                    <a href="https://wa.me/212600000000" target="_blank" class="hidden sm:flex items-center space-x-2 text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3.5 py-2 rounded-full hover:bg-emerald-100 transition">
+                        <i class="fab fa-whatsapp text-lg text-emerald-600"></i>
+                        <span>Commander sur WhatsApp</span>
+                    </a>
+
+                    <!-- Cart Trigger Button -->
+                    <button id="open-cart-btn" class="relative bg-brand-black text-white hover:bg-brand-gold hover:text-brand-black px-4 py-2.5 rounded-full flex items-center space-x-2.5 transition shadow-md group">
+                        <div class="relative">
+                            <i class="fas fa-shopping-bag text-base group-hover:scale-110 transition-transform"></i>
+                            <span id="cart-badge" class="absolute -top-2 -right-2 bg-brand-gold text-brand-black font-bold text-[10px] w-4 h-4 rounded-full flex items-center justify-center shadow">0</span>
+                        </div>
+                        <span class="hidden md:inline text-xs font-bold tracking-wider uppercase">Panier</span>
+                        <span id="cart-total-header" class="hidden md:inline font-bold text-brand-goldLight text-xs">0 MAD</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 px-6 py-4 space-y-3">
+            <a href="#catalogue" class="block text-sm font-semibold text-gray-800 border-b border-gray-100 pb-2">Nos Créations Perlées</a>
+            <a href="#savoir-faire" class="block text-sm font-semibold text-gray-800 border-b border-gray-100 pb-2">L'Artisanat & Fermoirs Dorés</a>
+            <a href="#avis" class="block text-sm font-semibold text-gray-800 border-b border-gray-100 pb-2">Témoignages Clients</a>
+            <a href="#faq" class="block text-sm font-semibold text-gray-800 pb-2">Questions Fréquentes</a>
+        </div>
+    </header>
+
+    <section class="relative bg-brand-black text-white overflow-hidden pt-12 pb-20 md:py-28">
+        <!-- Subtle Pattern Overlay -->
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:20px_20px]"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-brand-gold/30 text-brand-goldLight text-xs font-semibold uppercase tracking-widest">
+                        <i class="fas fa-sparkles text-brand-gold"></i>
+                        <span>Collection Exclusive Tissée Main</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-tight leading-tight">
+                        L'Élégance Artisanale <br>
+                        <span class="text-gold-gradient italic font-normal">Fait Main en Perles</span>
+                    </h1>
+
+                    <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                        Chaque création <strong>Maison Perle Chic</strong> est une œuvre d'art unique. Nos sacs à main, clutches et pochettes de soirée sont méticuleusement tressés perle par perle et agrémentés de fermoirs rétro en métal doré inoxydable.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#catalogue" class="gold-shimmer text-brand-black font-bold px-8 py-4 rounded-full shadow-xl hover:brightness-110 transition flex items-center justify-center space-x-3 group text-sm tracking-wider uppercase">
+                            <span>Découvrir la Collection</span>
+                            <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="#savoir-faire" class="border border-brand-gold/40 text-brand-goldLight hover:bg-brand-gold/10 font-semibold px-7 py-4 rounded-full transition flex items-center justify-center space-x-2 text-sm tracking-wider uppercase">
+                            <i class="fas fa-gem text-xs"></i>
+                            <span>Notre Savoir-Faire</span>
+                        </a>
+                    </div>
+
+                    <!-- Highlights Banner -->
+                    <div class="pt-8 grid grid-cols-3 gap-4 border-t border-white/10 text-center lg:text-left">
+                        <div>
+                            <span class="font-serif text-2xl font-bold text-brand-gold block">100%</span>
+                            <span class="text-xs text-gray-400 uppercase tracking-wider">Fait Main</span>
+                        </div>
+                        <div>
+                            <span class="font-serif text-2xl font-bold text-brand-gold block">Inoxydable</span>
+                            <span class="text-xs text-gray-400 uppercase tracking-wider">Fermoirs Dorés</span>
+                        </div>
+                        <div>
+                            <span class="font-serif text-2xl font-bold text-brand-gold block">Sur Mesure</span>
+                            <span class="text-xs text-gray-400 uppercase tracking-wider">WhatsApp Direct</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Graphic Showcase -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden p-3 gold-shimmer shadow-2xl">
+                        <div class="w-full h-full bg-brand-charcoal rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden">
+                            <div class="absolute top-4 right-4 bg-brand-gold/20 text-brand-gold text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-brand-gold/30">
+                                Best-Seller 2026
+                            </div>
+
+                            <!-- Detailed SVG Hero Render of Sac Clutch Perles & Fermoir Doré -->
+                            <div class="w-full flex-1 flex items-center justify-center my-4">
+                                <svg viewBox="0 0 400 400" class="w-full h-full max-h-[300px] filter drop-shadow-2xl">
+                                    <defs>
+                                        <linearGradient id="heroGold" x1="0" y1="0" x2="1" y2="1">
+                                            <stop offset="0%" stop-color="#B38B22"/>
+                                            <stop offset="50%" stop-color="#F3E5AB"/>
+                                            <stop offset="100%" stop-color="#8A6813"/>
+                                        </linearGradient>
+                                        <radialGradient id="pearlShine" cx="30%" cy="30%" r="70%">
+                                            <stop offset="0%" stop-color="#FFFFFF"/>
+                                            <stop offset="60%" stop-color="#F5F2EB"/>
+                                            <stop offset="100%" stop-color="#E2DCD0"/>
+                                        </radialGradient>
+                                    </defs>
+                                    
+                                    <!-- Metallic Handle Loop -->
+                                    <path d="M 140 100 A 60 60 0 0 1 260 100" stroke="url(#heroGold)" stroke-width="12" fill="none" stroke-linecap="round"/>
+                                    
+                                    <!-- Metallic Golden Clasp Framework -->
+                                    <path d="M 100 130 Q 200 100 300 130 L 290 150 Q 200 120 110 150 Z" fill="url(#heroGold)"/>
+                                    <circle cx="200" cy="108" r="14" fill="url(#heroGold)"/>
+                                    <circle cx="200" cy="108" r="8" fill="#FFF"/>
+
+                                    <!-- Bag Pearl Body -->
+                                    <path d="M 100 145 Q 200 130 300 145 L 310 290 C 310 320 280 340 200 340 C 120 340 90 320 90 290 Z" fill="#222" stroke="url(#heroGold)" stroke-width="3"/>
+                                    
+                                    <!-- Pearl Rows Mesh -->
+                                    <g fill="url(#pearlShine)" stroke="#D0C8B8" stroke-width="0.5">
+                                        <!-- Row 1 -->
+                                        <circle cx="120" cy="170" r="9"/><circle cx="142" cy="170" r="9"/><circle cx="164" cy="170" r="9"/><circle cx="186" cy="170" r="9"/><circle cx="208" cy="170" r="9"/><circle cx="230" cy="170" r="9"/><circle cx="252" cy="170" r="9"/><circle cx="274" cy="170" r="9"/>
+                                        <!-- Row 2 -->
+                                        <circle cx="110" cy="192" r="9"/><circle cx="132" cy="192" r="9"/><circle cx="154" cy="192" r="9"/><circle cx="176" cy="192" r="9"/><circle cx="198" cy="192" r="9"/><circle cx="220" cy="192" r="9"/><circle cx="242" cy="192" r="9"/><circle cx="264" cy="192" r="9"/><circle cx="286" cy="192" r="9"/>
+                                        <!-- Row 3 -->
+                                        <circle cx="110" cy="214" r="9"/><circle cx="132" cy="214" r="9"/><circle cx="154" cy="214" r="9"/><circle cx="176" cy="214" r="9"/><circle cx="198" cy="214" r="9"/><circle cx="220" cy="214" r="9"/><circle cx="242" cy="214" r="9"/><circle cx="264" cy="214" r="9"/><circle cx="286" cy="214" r="9"/>
+                                        <!-- Row 4 -->
+                                        <circle cx="115" cy="236" r="9"/><circle cx="137" cy="236" r="9"/><circle cx="159" cy="236" r="9"/><circle cx="181" cy="236" r="9"/><circle cx="203" cy="236" r="9"/><circle cx="225" cy="236" r="9"/><circle cx="247" cy="236" r="9"/><circle cx="269" cy="236" r="9"/>
+                                        <!-- Row 5 -->
+                                        <circle cx="120" cy="258" r="9"/><circle cx="142" cy="258" r="9"/><circle cx="164" cy="258" r="9"/><circle cx="186" cy="258" r="9"/><circle cx="208" cy="258" r="9"/><circle cx="230" cy="258" r="9"/><circle cx="252" cy="258" r="9"/><circle cx="274" cy="258" r="9"/>
+                                        <!-- Row 6 Bottom -->
+                                        <circle cx="135" cy="280" r="9"/><circle cx="157" cy="280" r="9"/><circle cx="179" cy="280" r="9"/><circle cx="201" cy="280" r="9"/><circle cx="223" cy="280" r="9"/><circle cx="245" cy="280" r="9"/><circle cx="267" cy="280" r="9"/>
+                                    </g>
+                                </svg>
+                            </div>
+
+                            <div class="bg-black/60 backdrop-blur-md p-4 rounded-xl border border-brand-gold/30 flex justify-between items-center">
+                                <div>
+                                    <h3 class="font-serif font-bold text-white text-sm">Sac Clutch Perles & Fermoir Doré</h3>
+                                    <p class="text-[11px] text-gray-300">Pochette de soirée artisanale</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-brand-gold font-serif font-bold text-lg block">450 MAD</span>
+                                    <span class="text-[10px] text-gray-400">45 €</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-8 bg-white border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <div class="flex items-center space-x-3 p-3 rounded-xl bg-brand-cream/50">
+                    <div class="w-10 h-10 rounded-full bg-brand-gold/15 text-brand-goldDark flex items-center justify-center flex-shrink-0 text-base">
+                        <i class="fas fa-hands-sparkles"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-xs text-brand-black uppercase tracking-wider">Fait Main</h4>
+                        <p class="text-[11px] text-gray-500">Tissage artisanal de perles</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-3 p-3 rounded-xl bg-brand-cream/50">
+                    <div class="w-10 h-10 rounded-full bg-brand-gold/15 text-brand-goldDark flex items-center justify-center flex-shrink-0 text-base">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-xs text-brand-black uppercase tracking-wider">Fermoirs Dorés</h4>
+                        <p class="text-[11px] text-gray-500">Inoxydables & robustes</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-3 p-3 rounded-xl bg-brand-cream/50">
+                    <div class="w-10 h-10 rounded-full bg-brand-gold/15 text-brand-goldDark flex items-center justify-center flex-shrink-0 text-base">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-xs text-brand-black uppercase tracking-wider">Commande WhatsApp</h4>
+                        <p class="text-[11px] text-gray-500">Assistance & suivi en direct</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-3 p-3 rounded-xl bg-brand-cream/50">
+                    <div class="w-10 h-10 rounded-full bg-brand-gold/15 text-brand-goldDark flex items-center justify-center flex-shrink-0 text-base">
+                        <i class="fas fa-truck text-emerald-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-xs text-brand-black uppercase tracking-wider">Paiement à la Livraison</h4>
+                        <p class="text-[11px] text-gray-500">Partout au Maroc</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="catalogue" class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <span class="text-xs font-bold text-brand-goldDark uppercase tracking-[0.25em] block mb-2">Collection Couture</span>
+            <h2 class="text-3xl sm:text-4xl font-serif font-bold text-brand-black">Sacs & Clutches en Perles</h2>
+            <div class="w-16 h-0.5 bg-brand-gold mx-auto mt-4"></div>
+        </div>
+
+        <!-- Filter Categories -->
+        <div class="flex flex-wrap justify-center gap-2 md:gap-3 mb-10" id="filter-buttons-container">
+            <button data-filter="all" class="filter-btn active bg-brand-black text-white px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition shadow">
+                Tous les Sacs
+            </button>
+            <button data-filter="soirée" class="filter-btn bg-white text-gray-700 hover:bg-brand-cream border border-gray-200 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition">
+                Sacs de Soirée
+            </button>
+            <button data-filter="blanc" class="filter-btn bg-white text-gray-700 hover:bg-brand-cream border border-gray-200 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition">
+                Sacs Blancs / Ivoire
+            </button>
+            <button data-filter="noir" class="filter-btn bg-white text-gray-700 hover:bg-brand-cream border border-gray-200 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition">
+                Sacs Noirs
+            </button>
+            <button data-filter="motif" class="filter-btn bg-white text-gray-700 hover:bg-brand-cream border border-gray-200 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition">
+                Motifs Artisanaux
+            </button>
+        </div>
+
+        <!-- Product Grid Dynamic Display -->
+        <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- JavaScript will render the 6 real products here -->
+        </div>
+    </section>
+
+    <section id="savoir-faire" class="py-16 md:py-24 bg-brand-cream/60 border-t border-b border-brand-gold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <div class="space-y-6">
+                    <span class="text-xs font-bold text-brand-goldDark uppercase tracking-[0.25em] block">Inspiration & Fabrication</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-brand-black leading-snug">
+                        L'art de marier le métal doré et le tissage de perles
+                    </h2>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Chez <strong>Maison Perle Chic</strong>, chaque création débute par la sélection minutieuse des perles nacrées ou facettées. Nos artisanes façonnent ensuite à la main le corps du sac grâce à un fil haute résistance, assurant rigidité et élégance.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="p-4 bg-white rounded-2xl border border-gray-100 shadow-sm">
+                            <i class="fas fa-gem text-brand-gold text-2xl mb-2 block"></i>
+                            <h4 class="font-bold text-sm text-brand-black mb-1">Perles de Haute Qualité</h4>
+                            <p class="text-xs text-gray-500">Éclat nacré sous la lumière, résistant aux rayures.</p>
+                        </div>
+                        <div class="p-4 bg-white rounded-2xl border border-gray-100 shadow-sm">
+                            <i class="fas fa-ring text-brand-gold text-2xl mb-2 block"></i>
+                            <h4 class="font-bold text-sm text-brand-black mb-1">Fermoirs Rétro Dorés</h4>
+                            <p class="text-xs text-gray-500">Cadres en alliage métallique inoxydable avec fermeture à cliquet.</p>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <a href="https://wa.me/212600000000?text=Bonjour,%20je%20souhaite%20une%20cr%C3%A9ation%20sur%20mesure%20en%20perles." target="_blank" class="inline-flex items-center space-x-3 bg-brand-black text-white px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-brand-gold hover:text-brand-black transition shadow-lg">
+                            <i class="fab fa-whatsapp text-emerald-400 text-base"></i>
+                            <span>Demander une création sur mesure</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Graphic Craftsmanship Canvas Visual -->
+                <div class="bg-brand-black p-8 rounded-3xl text-white border border-brand-gold/30 shadow-2xl relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl text-brand-gold">
+                        <i class="fas fa-gem"></i>
+                    </div>
+
+                    <h3 class="font-serif font-bold text-2xl text-brand-goldLight mb-6">Les 4 étapes de fabrication :</h3>
+
+                    <div class="space-y-6">
+                        <div class="flex space-x-4">
+                            <div class="w-8 h-8 rounded-full gold-shimmer text-brand-black font-bold flex items-center justify-center flex-shrink-0 text-sm">1</div>
+                            <div>
+                                <h4 class="font-bold text-sm text-white">Sélection des Perles</h4>
+                                <p class="text-xs text-gray-400">Choix des perles blanches nacrées, noires facettées ou marrons.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex space-x-4">
+                            <div class="w-8 h-8 rounded-full gold-shimmer text-brand-black font-bold flex items-center justify-center flex-shrink-0 text-sm">2</div>
+                            <div>
+                                <h4 class="font-bold text-sm text-white">Tissage Manuel Réseau</h4>
+                                <p class="text-xs text-gray-400">Création des rangs et motifs géométriques à la main.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex space-x-4">
+                            <div class="w-8 h-8 rounded-full gold-shimmer text-brand-black font-bold flex items-center justify-center flex-shrink-0 text-sm">3</div>
+                            <div>
+                                <h4 class="font-bold text-sm text-white">Fixation du Fermoir Doré</h4>
+                                <p class="text-xs text-gray-400">Sertissage précis sur l'armature métallique dorée Kussverschluss.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex space-x-4">
+                            <div class="w-8 h-8 rounded-full gold-shimmer text-brand-black font-bold flex items-center justify-center flex-shrink-0 text-sm">4</div>
+                            <div>
+                                <h4 class="font-bold text-sm text-white">Finition & Anses Perlées</h4>
+                                <p class="text-xs text-gray-400">Ajout des anses rigides dorées, nœuds en satin ou chaînes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="avis" class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <span class="text-xs font-bold text-brand-goldDark uppercase tracking-[0.25em] block mb-2">Témoignages Authentiques</span>
+            <h2 class="text-3xl font-serif font-bold text-brand-black">L'Avis de nos Clientes</h2>
+            <div class="w-16 h-0.5 bg-brand-gold mx-auto mt-4"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <div class="p-6 bg-white rounded-2xl border border-gray-100 luxury-shadow flex flex-col justify-between">
+                <div>
+                    <div class="flex text-amber-400 text-xs space-x-1 mb-3">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-xs text-gray-600 italic leading-relaxed mb-4">
+                        "J'ai acheté le Sac Clutch pour un mariage à Rabat. Le fermoir doré est d'une brillance incroyable et les perles ont fait sensation ! Commande reçue en 24h par WhatsApp."
+                    </p>
+                </div>
+                <div class="flex items-center space-x-3 pt-4 border-t border-gray-100">
+                    <div class="w-9 h-9 rounded-full bg-brand-pinkPearl flex items-center justify-center font-bold text-brand-roseGold text-xs">SK</div>
+                    <div>
+                        <h4 class="font-bold text-xs text-brand-black">Sofia K.</h4>
+                        <span class="text-[10px] text-gray-400">Rabat • Achat Vérifié</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-6 bg-white rounded-2xl border border-gray-100 luxury-shadow flex flex-col justify-between">
+                <div>
+                    <div class="flex text-amber-400 text-xs space-x-1 mb-3">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-xs text-gray-600 italic leading-relaxed mb-4">
+                        "Le cabas 'Nacre Impériale' est une pure merveille. La qualité du tissage est irréprochable et le sac est étonnamment solide. Merci pour l'emballage de luxe !"
+                    </p>
+                </div>
+                <div class="flex items-center space-x-3 pt-4 border-t border-gray-100">
+                    <div class="w-9 h-9 rounded-full bg-brand-goldLight flex items-center justify-center font-bold text-brand-goldDark text-xs">LB</div>
+                    <div>
+                        <h4 class="font-bold text-xs text-brand-black">Leila B.</h4>
+                        <span class="text-[10px] text-gray-400">Casablanca • Achat Vérifié</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-6 bg-white rounded-2xl border border-gray-100 luxury-shadow flex flex-col justify-between">
+                <div>
+                    <div class="flex text-amber-400 text-xs space-x-1 mb-3">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-xs text-gray-600 italic leading-relaxed mb-4">
+                        "Le Mini Sac 'Chic Noir' va avec toutes mes tenues de soirée. L'équipe sur WhatsApp m'a même envoyé une vidéo du sac avant expédition. Très pro !"
+                    </p>
+                </div>
+                <div class="flex items-center space-x-3 pt-4 border-t border-gray-100">
+                    <div class="w-9 h-9 rounded-full bg-brand-cream flex items-center justify-center font-bold text-brand-black text-xs">MA</div>
+                    <div>
+                        <h4 class="font-bold text-xs text-brand-black">Meryem A.</h4>
+                        <span class="text-[10px] text-gray-400">Marrakech • Achat Vérifié</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="faq" class="py-16 bg-brand-cream/30 border-t border-gray-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="text-xs font-bold text-brand-goldDark uppercase tracking-[0.25em] block mb-2">Questions Fréquentes</span>
+                <h2 class="text-3xl font-serif font-bold text-brand-black">Tout ce qu'il faut savoir</h2>
+            </div>
+
+            <div class="space-y-4" id="faq-accordion">
+                
+                <div class="bg-white rounded-2xl border border-gray-200 p-5 cursor-pointer" onclick="toggleFaq(this)">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold text-sm text-brand-black">Comment se déroule la commande par WhatsApp ?</h4>
+                        <i class="fas fa-chevron-down text-brand-gold text-xs transition-transform"></i>
+                    </div>
+                    <div class="hidden pt-3 text-xs text-gray-600 leading-relaxed border-t border-gray-100 mt-3">
+                        En cliquant sur "Commander sur WhatsApp", votre panier est automatiquement converti en un message pré-rédigé contenant le nom des sacs, les prix et le total. Notre équipe valide immédiatement l'adresse de livraison avec vous.
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl border border-gray-200 p-5 cursor-pointer" onclick="toggleFaq(this)">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold text-sm text-brand-black">Les fermoirs métalliques dorés s'oxydent-ils avec le temps ?</h4>
+                        <i class="fas fa-chevron-down text-brand-gold text-xs transition-transform"></i>
+                    </div>
+                    <div class="hidden pt-3 text-xs text-gray-600 leading-relaxed border-t border-gray-100 mt-3">
+                        Non, tous nos fermoirs et armatures sont traités contre l'oxydation. Nous recommandons simplement de conserver votre sac dans son pochon de protection en satin fourni lors de l'achat.
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl border border-gray-200 p-5 cursor-pointer" onclick="toggleFaq(this)">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold text-sm text-brand-black">Quels sont les délais de livraison au Maroc et à l'Étranger ?</h4>
+                        <i class="fas fa-chevron-down text-brand-gold text-xs transition-transform"></i>
+                    </div>
+                    <div class="hidden pt-3 text-xs text-gray-600 leading-relaxed border-t border-gray-100 mt-3">
+                        Au Maroc : Livraison en 24h à 48h avec paiement à la réception. International (Europe) : Expédition Express sous 3 à 5 jours ouvrés.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Product Details Modal -->
+    <div id="product-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[92vh] overflow-y-auto shadow-2xl relative border border-brand-gold/30">
+            <button id="close-modal-btn" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-gray-100 text-gray-600 hover:bg-brand-black hover:text-white flex items-center justify-center z-10 transition">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="grid grid-cols-1 md:grid-cols-2 p-6 md:p-8 gap-8" id="modal-content">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Drawer -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden pointer-events-none">
+        <div id="cart-overlay" class="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300 pointer-events-none"></div>
+        
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+            <div id="cart-panel" class="w-screen max-w-md bg-white shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out pointer-events-auto flex flex-col">
+                
+                <div class="p-6 bg-brand-black text-white flex items-center justify-between border-b border-brand-gold/30">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-shopping-bag text-brand-gold text-lg"></i>
+                        <h3 class="font-serif font-bold text-lg">Votre Panier de Luxe</h3>
+                    </div>
+                    <button id="close-cart-btn" class="text-gray-400 hover:text-white p-2">
+                        <i class="fas fa-times text-lg"></i>
+                    </button>
+                </div>
+
+                <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-4">
+                    <!-- Dynamic cart items rendered here -->
+                </div>
+
+                <div class="p-6 bg-brand-cream border-t border-gray-200 space-y-4">
+                    <div class="space-y-2 text-xs">
+                        <div class="flex justify-between text-gray-600">
+                            <span>Sous-total</span>
+                            <span id="cart-subtotal" class="font-bold text-brand-black">0 MAD</span>
+                        </div>
+                        <div class="flex justify-between text-gray-600">
+                            <span>Livraison Maroc</span>
+                            <span class="text-emerald-600 font-bold">Gratuite</span>
+                        </div>
+                        <div class="flex justify-between text-sm font-bold text-brand-black pt-2 border-t border-gray-200">
+                            <span>Total estimé</span>
+                            <span id="cart-total" class="text-brand-goldDark text-lg font-serif">0 MAD</span>
+                        </div>
+                    </div>
+
+                    <button id="checkout-whatsapp-btn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 rounded-xl shadow-lg transition flex items-center justify-center space-x-2 text-xs uppercase tracking-wider">
+                        <i class="fab fa-whatsapp text-lg"></i>
+                        <span>Finaliser la commande sur WhatsApp</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-notification" class="fixed bottom-6 right-6 z-50 bg-brand-black text-white px-5 py-4 rounded-2xl shadow-2xl border border-brand-gold/40 transform translate-y-20 opacity-0 transition-all duration-300 flex items-center space-x-3">
+        <div class="w-8 h-8 rounded-full gold-shimmer text-brand-black flex items-center justify-center font-bold text-xs flex-shrink-0">
+            <i class="fas fa-check"></i>
+        </div>
+        <div>
+            <h5 class="text-xs font-bold text-white" id="toast-title">Succès</h5>
+            <p class="text-[11px] text-gray-300" id="toast-message">Maison Perle Chic</p>
+        </div>
+    </div>
+
+    <footer class="bg-brand-black text-gray-300 pt-16 pb-8 border-t border-brand-gold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-gray-800">
+                
+                <div class="space-y-4">
+                    <a href="#" class="flex items-center space-x-2">
+                        <span class="font-serif text-xl font-bold tracking-wider text-white">MAISON PERLE CHIC</span>
+                    </a>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        L'adresse d'exception pour vos sacs à main, clutches et pochettes en perles fabriqués à la main avec fermoirs métalliques dorés.
+                    </p>
+                    <div class="flex space-x-3 pt-2">
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/10 hover:bg-brand-gold hover:text-brand-black flex items-center justify-center transition text-xs"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/212600000000" target="_blank" class="w-8 h-8 rounded-full bg-white/10 hover:bg-brand-gold hover:text-brand-black flex items-center justify-center transition text-xs"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-serif font-bold text-xs tracking-widest uppercase mb-4 text-brand-gold">Collection</h4>
+                    <ul class="space-y-2 text-xs text-gray-400">
+                        <li><a href="#catalogue" class="hover:text-brand-gold transition">Sac Clutch Perles & Fermoir Doré</a></li>
+                        <li><a href="#catalogue" class="hover:text-brand-gold transition">Sac Cabas Nacre Impériale</a></li>
+                        <li><a href="#catalogue" class="hover:text-brand-gold transition">Mini Sac Chic Noir</a></li>
+                        <li><a href="#catalogue" class="hover:text-brand-gold transition">Sac Motif Géométrique</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-serif font-bold text-xs tracking-widest uppercase mb-4 text-brand-gold">Maison & Services</h4>
+                    <ul class="space-y-2 text-xs text-gray-400">
+                        <li><a href="#savoir-faire" class="hover:text-brand-gold transition">Notre Savoir-Faire</a></li>
+                        <li><a href="#avis" class="hover:text-brand-gold transition">Avis Clients Vérifiés</a></li>
+                        <li><a href="https://wa.me/212600000000" class="hover:text-brand-gold transition">Commandes Sur Mesure</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-serif font-bold text-xs tracking-widest uppercase mb-4 text-brand-gold">Contact Direct</h4>
+                    <p class="text-xs text-gray-400 mb-2"><i class="fab fa-whatsapp text-emerald-400 mr-2"></i> +212 6 00 00 00 00</p>
+                    <p class="text-xs text-gray-400 mb-2"><i class="fas fa-envelope text-brand-gold mr-2"></i> contact@maisonperlechic.com</p>
+                    <p class="text-xs text-gray-400"><i class="fas fa-location-dot text-brand-gold mr-2"></i> Atelier Boutique — Maroc</p>
+                </div>
+
+            </div>
+
+            <div class="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-gray-500">
+                <p>&copy; 2026 Maison Perle Chic. Tous droits réservés.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <span>Paiement à la livraison</span>
+                    <span>•</span>
+                    <span>100% Fait Main</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Real Product Dataset according to specifications
+        const productsList = [
+            {
+                id: 'prod-1',
+                name: 'Sac Clutch Perles & Fermoir Doré',
+                category: 'soirée',
+                colorType: 'blanc',
+                priceMad: 450,
+                priceEur: 45,
+                rating: 5.0,
+                reviewsCount: 18,
+                badge: 'Best-Seller',
+                pearlType: 'Perles synthétiques nacrées haute brillance (8mm)',
+                clasp: 'Fermoir rétro métallique Kussverschluss en laiton doré',
+                dimensions: '22 cm x 14 cm x 6 cm',
+                care: 'Nettoyer avec un chiffon doux sec, ranger dans son pochon en satin.',
+                svgRender: `<svg viewBox="0 0 300 240" class="w-full h-full object-contain">
+                    <rect width="100%" height="100%" fill="#1a1a1a"/>
+                    <!-- Metallic Arch -->
+                    <path d="M 100 70 A 50 50 0 0 1 200 70" stroke="url(#pGold)" stroke-width="8" fill="none"/>
+                    <!-- Clasp Top Frame -->
+                    <path d="M 60 90 L 240 90 L 230 110 L 70 110 Z" fill="url(#pGold)"/>
+                    <circle cx="150" cy="80" r="10" fill="url(#pGold)"/>
+                    <!-- Body Mesh -->
+                    <rect x="65" y="105" width="170" height="110" rx="15" fill="#252525" stroke="url(#pGold)" stroke-width="2"/>
+                    <g fill="#F5F2EB" stroke="#D4AF37" stroke-width="0.3">
+                        <circle cx="90" cy="130" r="7"/><circle cx="110" cy="130" r="7"/><circle cx="130" cy="130" r="7"/><circle cx="150" cy="130" r="7"/><circle cx="170" cy="130" r="7"/><circle cx="190" cy="130" r="7"/><circle cx="210" cy="130" r="7"/>
+                        <circle cx="80" cy="150" r="7"/><circle cx="100" cy="150" r="7"/><circle cx="120" cy="150" r="7"/><circle cx="140" cy="150" r="7"/><circle cx="160" cy="150" r="7"/><circle cx="180" cy="150" r="7"/><circle cx="200" cy="150" r="7"/><circle cx="220" cy="150" r="7"/>
+                        <circle cx="90" cy="170" r="7"/><circle cx="110" cy="170" r="7"/><circle cx="130" cy="170" r="7"/><circle cx="150" cy="170" r="7"/><circle cx="170" cy="170" r="7"/><circle cx="190" cy="170" r="7"/><circle cx="210" cy="170" r="7"/>
+                        <circle cx="100" cy="190" r="7"/><circle cx="120" cy="190" r="7"/><circle cx="140" cy="190" r="7"/><circle cx="160" cy="190" r="7"/><circle cx="180" cy="190" r="7"/><circle cx="200" cy="190" r="7"/>
+                    </g>
+                    <defs><linearGradient id="pGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#B38B22"/><stop offset="50%" stop-color="#F3E5AB"/><stop offset="100%" stop-color="#8A6813"/></linearGradient></defs>
+                </svg>`,
+                description: 'Pochette de soirée somptueuse recouverte de perles nacrées blanches. Son fermoir rétro en métal doré apporte une touche vintage et chic à toutes vos tenues habillées.'
+            },
+            {
+                id: 'prod-2',
+                name: "Sac Cabas Perlé 'Nacre Impériale'",
+                category: 'blanc',
+                colorType: 'blanc',
+                priceMad: 650,
+                priceEur: 65,
+                rating: 4.9,
+                reviewsCount: 24,
+                badge: 'Coup de Cœur',
+                pearlType: 'Perles de cristal nacrées blanc ivoire (10mm)',
+                clasp: 'Fermoir magnétique intérieur + Anse rigide perlée',
+                dimensions: '26 cm x 20 cm x 8 cm',
+                care: 'Éviter l\'eau salée et le parfum direct sur les perles.',
+                svgRender: `<svg viewBox="0 0 300 240" class="w-full h-full object-contain">
+                    <rect width="100%" height="100%" fill="#1a1a1a"/>
+                    <!-- Pearl Big Handle -->
+                    <path d="M 100 80 C 100 20, 200 20, 200 80" stroke="#FFF" stroke-width="14" fill="none" stroke-linecap="round"/>
+                    <path d="M 100 80 C 100 20, 200 20, 200 80" stroke="#D4AF37" stroke-width="2" fill="none" stroke-dasharray="4 8"/>
+                    <!-- Tote Body -->
+                    <rect x="55" y="80" width="190" height="135" rx="12" fill="#202020" stroke="url(#pGold2)" stroke-width="2"/>
+                    <!-- Vertical Pearl Lines -->
+                    <g fill="#FAFAFA" stroke="#C0C0C0" stroke-width="0.3">
+                        <circle cx="80" cy="100" r="8"/><circle cx="80" cy="125" r="8"/><circle cx="80" cy="150" r="8"/><circle cx="80" cy="175" r="8"/><circle cx="80" cy="198" r="8"/>
+                        <circle cx="115" cy="100" r="8"/><circle cx="115" cy="125" r="8"/><circle cx="115" cy="150" r="8"/><circle cx="115" cy="175" r="8"/><circle cx="115" cy="198" r="8"/>
+                        <circle cx="150" cy="100" r="8"/><circle cx="150" cy="125" r="8"/><circle cx="150" cy="150" r="8"/><circle cx="150" cy="175" r="8"/><circle cx="150" cy="198" r="8"/>
+                        <circle cx="185" cy="100" r="8"/><circle cx="185" cy="125" r="8"/><circle cx="185" cy="150" r="8"/><circle cx="185" cy="175" r="8"/><circle cx="185" cy="198" r="8"/>
+                        <circle cx="220" cy="100" r="8"/><circle cx="220" cy="125" r="8"/><circle cx="220" cy="150" r="8"/><circle cx="220" cy="175" r="8"/><circle cx="220" cy="198" r="8"/>
+                    </g>
+                    <defs><linearGradient id="pGold2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#B38B22"/><stop offset="100%" stop-color="#8A6813"/></linearGradient></defs>
+                </svg>`,
+                description: 'Sac à main rigide entièrement tressé de perles blanches nacrées. Il dispose d\'une anse perlée majestueuse et d\'un volume parfait pour votre téléphone, rouge à lèvres et clés.'
+            },
+            {
+                id: 'prod-3',
+                name: "Mini Sac 'Chic Noir' en Perles",
+                category: 'noir',
+                colorType: 'noir',
+                priceMad: 520,
+                priceEur: 52,
+                rating: 5.0,
+                reviewsCount: 15,
+                badge: 'Tendance',
+                pearlType: 'Perles noires onyx facettées réfléchissant la lumière',
+                clasp: 'Fermoir rotatif métallique doré brillant',
+                dimensions: '18 cm x 12 cm x 5 cm',
+                care: 'Ranger à l\'abri de l\'humidité.',
+                svgRender: `<svg viewBox="0 0 300 240" class="w-full h-full object-contain">
+                    <rect width="100%" height="100%" fill="#111"/>
+                    <!-- Black Handle -->
+                    <path d="M 110 80 C 110 35, 190 35, 190 80" stroke="url(#pGold3)" stroke-width="6" fill="none"/>
+                    <!-- Main Body Black -->
+                    <rect x="70" y="80" width="160" height="130" rx="10" fill="#050505" stroke="url(#pGold3)" stroke-width="3"/>
+                    <!-- Faceted Black Pearl Grid -->
+                    <g fill="#222" stroke="#444" stroke-width="0.8">
+                        <rect x="85" y="95" width="22" height="22" rx="4"/><rect x="115" y="95" width="22" height="22" rx="4"/><rect x="145" y="95" width="22" height="22" rx="4"/><rect x="175" y="95" width="22" height="22" rx="4"/><rect x="205" y="95" width="22" height="22" rx="4"/>
+                        <rect x="85" y="125" width="22" height="22" rx="4"/><rect x="115" y="125" width="22" height="22" rx="4"/><rect x="145" y="125" width="22" height="22" rx="4"/><rect x="175" y="125" width="22" height="22" rx="4"/><rect x="205" y="125" width="22" height="22" rx="4"/>
+                        <rect x="85" y="155" width="22" height="22" rx="4"/><rect x="115" y="155" width="22" height="22" rx="4"/><rect x="145" y="155" width="22" height="22" rx="4"/><rect x="175" y="155" width="22" height="22" rx="4"/><rect x="205" y="155" width="22" height="22" rx="4"/>
+                    </g>
+                    <!-- Golden Lock -->
+                    <rect x="135" y="130" width="30" height="20" rx="3" fill="url(#pGold3)"/>
+                    <circle cx="150" cy="140" r="4" fill="#000"/>
+                    <defs><linearGradient id="pGold3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#B38B22"/><stop offset="100%" stop-color="#F3E5AB"/></linearGradient></defs>
+                </svg>`,
+                description: 'L\'élégance du noir absolu. Ce mini sac du soir est composé de perles noires facettées qui scintillent sous les projecteurs, agrémenté d\'un fermoir doré rectangulaire.'
+            },
+            {
+                id: 'prod-4',
+                name: "Sac Bandoulière 'Motif Géométrique'",
+                category: 'motif',
+                colorType: 'noir',
+                priceMad: 580,
+                priceEur: 58,
+                rating: 4.8,
+                reviewsCount: 11,
+                badge: 'Artisanal',
+                pearlType: 'Perles marrons, ambre et noires tressées en mosaïque',
+                clasp: 'Rabat perlé à fermoir magnétique + Chaîne bandoulière',
+                dimensions: '24 cm x 16 cm x 6 cm',
+                care: 'Nettoyer délicatement avec un chiffon microfibre.',
+                svgRender: `<svg viewBox="0 0 300 240" class="w-full h-full object-contain">
+                    <rect width="100%" height="100%" fill="#1a1a1a"/>
+                    <!-- Long Strap Chain -->
+                    <path d="M 60 100 C 20 20, 280 20, 240 100" stroke="url(#pGold4)" stroke-width="4" stroke-dasharray="6 4" fill="none"/>
+                    <!-- Bag Body -->
+                    <rect x="60" y="80" width="180" height="130" rx="8" fill="#2E1C14" stroke="url(#pGold4)" stroke-width="2"/>
+                    <!-- Geometric Pattern Blocks -->
+                    <g stroke="#D4AF37" stroke-width="1">
+                        <rect x="80" y="100" width="35" height="35" fill="#8B4513"/>
+                        <rect x="120" y="100" width="35" height="35" fill="#1A1A1A"/>
+                        <rect x="160" y="100" width="35" height="35" fill="#8B4513"/>
+                        <rect x="200" y="100" width="35" height="35" fill="#1A1A1A"/>
+                        
+                        <rect x="80" y="145" width="35" height="35" fill="#1A1A1A"/>
+                        <rect x="120" y="145" width="35" height="35" fill="#D4AF37"/>
+                        <rect x="160" y="145" width="35" height="35" fill="#1A1A1A"/>
+                        <rect x="200" y="145" width="35" height="35" fill="#D4AF37"/>
+                    </g>
+                    <defs><linearGradient id="pGold4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#B38B22"/><stop offset="100%" stop-color="#F3E5AB"/></linearGradient></defs>
+                </svg>`,
+                description: 'Modèle d\'inspiration ethnique et géométrique. Mosaïque de perles aux nuances marron, bronze et noir. Livré avec sa bandoulière en chaîne dorée amovible.'
+            },
+            {
+                id: 'prod-5',
+                name: "Sac 'Perles de Soie & Nœud Satin'",
+                category: 'soirée',
+                colorType: 'blanc',
+                priceMad: 490,
+                priceEur: 49,
+                rating: 4.9,
+                reviewsCount: 19,
+                badge: 'Nouveauté',
+                pearlType: 'Perles de culture d\'imitation nacrées et ruban en satin',
+                clasp: 'Fermoir boules dorées + Anse demi-lune',
+                dimensions: '20 cm x 15 cm x 7 cm',
+                care: 'Conserver à l\'abri de la poussière.',
+                svgRender: `<svg viewBox="0 0 300 240" class="w-full h-full object-contain">
+                    <rect width="100%" height="100%" fill="#1a1a1a"/>
+                    <!-- Golden Circular Handle -->
+                    <circle cx="150" cy="70" r="35" stroke="url(#pGold5)" stroke-width="7" fill="none"/>
+                    <!-- Bag Body -->
+                    <path d="M 80 100 Q 150 90 220 100 L 230 200 C 230 215 210 220 150 220 C 90 220 70 215 70 200 Z" fill="#282828" stroke="url(#pGold5)" stroke-width="2"/>
+                    <!-- White Pearl Rows -->
+                    <g fill="#FFF">
+                        <circle cx="100" cy="120" r="6"/><circle cx="125" cy="120" r="6"/><circle cx="150" cy="120" r="6"/><circle cx="175" cy="120" r="6"/><circle cx="200" cy="120" r="6"/>
+                        <circle cx="95" cy="145" r="6"/><circle cx="120" cy="145" r="6"/><circle cx="145" cy="145" r="6"/><circle cx="170" cy="145" r="6"/><circle cx="195" cy="145" r="6"/>
+                        <circle cx="105" cy="170" r="6"/><circle cx="130" cy="170" r="6"/><circle cx="155" cy="170" r="6"/><circle cx="180" cy="170" r="6"/><circle cx="205" cy="170" r="6"/>
+                    </g>
+                    <!-- Bow in Satin -->
+                    <path d="M 120 95 Q 150 85 180 95 Q 195 110 165 115 L 150 105 L 135 115 Q 105 110 120 95 Z" fill="#FAFAFA"/>
+                    <circle cx="150" cy="100" r="5" fill="url(#pGold5)"/>
+                    <defs><linearGradient id="pGold5" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#B38B22"/><stop offset="100%" stop-color="#8A6813"/></linearGradient></defs>
+                </svg>`,
+                description: 'Un sac romantique et précieux. Rehaussé d\'un nœud décoratif en satin blanc pur et d\'une anse dorée en métal rigide. Idéal pour les mariées et cérémonies.'
+            },
+            {
+                id: 'prod-6',
+                name: "Sac à Main Vintage Perles & Anse Dorée",
+                category: 'soirée',
+                colorType: 'blanc',
+                priceMad: 590,
+                priceEur: 59,
+                rating: 5.0,
+                reviewsCount: 16,
+                badge: 'Édition Limitée',
+                pearlType: 'Micro-perles nacrées tressées sur structure renforcée',
+                clasp: 'Cadre rigide à fermoir boule en laiton doré',
+                dimensions: '21 cm x 17 cm x 8 cm',
+                care: 'Nettoyage doux avec un chiffon sec uniquement.',
+                svgRender: `<svg viewBox="0 0 300 240" class="w-full h-full object-contain">
+                    <rect width="100%" height="100%" fill="#1a1a1a"/>
+                    <!-- Golden Handle Loop -->
+                    <path d="M 110 75 A 40 40 0 0 1 190 75" stroke="url(#pGold6)" stroke-width="8" fill="none" stroke-linecap="round"/>
+                    <!-- Vintage Metallic Frame Top -->
+                    <path d="M 70 85 Q 150 70 230 85 L 225 105 Q 150 90 75 105 Z" fill="url(#pGold6)"/>
+                    <circle cx="140" cy="72" r="8" fill="url(#pGold6)"/>
+                    <circle cx="160" cy="72" r="8" fill="url(#pGold6)"/>
+                    <!-- Body Structured Bag -->
+                    <rect x="75" y="103" width="150" height="115" rx="10" fill="#222" stroke="url(#pGold6)" stroke-width="2"/>
+                    <!-- Dense Pearl Texture -->
+                    <g fill="#F0EAE1" stroke="#B0A090" stroke-width="0.2">
+                        <circle cx="95" cy="120" r="5"/><circle cx="110" cy="120" r="5"/><circle cx="125" cy="120" r="5"/><circle cx="140" cy="120" r="5"/><circle cx="155" cy="120" r="5"/><circle cx="170" cy="120" r="5"/><circle cx="185" cy="120" r="5"/><circle cx="200" cy="120" r="5"/>
+                        <circle cx="95" cy="140" r="5"/><circle cx="110" cy="140" r="5"/><circle cx="125" cy="140" r="5"/><circle cx="140" cy="140" r="5"/><circle cx="155" cy="140" r="5"/><circle cx="170" cy="140" r="5"/><circle cx="185" cy="140" r="5"/><circle cx="200" cy="140" r="5"/>
+                        <circle cx="95" cy="160" r="5"/><circle cx="110" cy="160" r="5"/><circle cx="125" cy="160" r="5"/><circle cx="140" cy="160" r="5"/><circle cx="155" cy="160" r="5"/><circle cx="170" cy="160" r="5"/><circle cx="185" cy="160" r="5"/><circle cx="200" cy="160" r="5"/>
+                        <circle cx="95" cy="180" r="5"/><circle cx="110" cy="180" r="5"/><circle cx="125" cy="180" r="5"/><circle cx="140" cy="180" r="5"/><circle cx="155" cy="180" r="5"/><circle cx="170" cy="180" r="5"/><circle cx="185" cy="180" r="5"/><circle cx="200" cy="180" r="5"/>
+                    </g>
+                    <defs><linearGradient id="pGold6" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#B38B22"/><stop offset="50%" stop-color="#F3E5AB"/><stop offset="100%" stop-color="#8A6813"/></linearGradient></defs>
+                </svg>`,
+                description: 'Sac de luxe d\'inspiration vintage avec armature rigide ouvragée et fermoir double boule. Ses finitions dorées en font un accessoire de prestige pour vos grands événements.'
+            }
+        ];
+
+        // Global State Variables
+        let cartState = [];
+        let currentFilter = 'all';
+
+        // Initialize application on DOM loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProductGrid();
+            setupFilterListeners();
+            setupCartDrawerEvents();
+        });
+
+        // Render Catalog Grid based on Filter
+        function renderProductGrid() {
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = '';
+
+            const filteredProducts = productsList.filter(prod => {
+                if (currentFilter === 'all') return true;
+                if (currentFilter === 'soirée') return prod.category === 'soirée';
+                if (currentFilter === 'blanc') return prod.colorType === 'blanc';
+                if (currentFilter === 'noir') return prod.colorType === 'noir';
+                if (currentFilter === 'motif') return prod.category === 'motif';
+                return true;
+            });
+
+            filteredProducts.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'luxury-card bg-white rounded-3xl overflow-hidden border border-gray-100 flex flex-col justify-between luxury-shadow relative group';
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="absolute top-4 left-4 z-10 flex flex-col space-y-1">
+                            <span class="bg-brand-black text-brand-gold font-bold text-[10px] uppercase tracking-widest px-3 py-1 rounded-full border border-brand-gold/30 shadow">
+                                ${product.badge}
+                            </span>
+                        </div>
+
+                        <!-- Product Visual Box -->
+                        <div class="relative w-full aspect-[4/3] bg-brand-black overflow-hidden cursor-pointer" onclick="openProductModal('${product.id}')">
+                            ${product.svgRender}
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="bg-white/95 text-brand-black text-xs font-bold px-4 py-2 rounded-full shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform tracking-wider uppercase">
+                                    <i class="fas fa-eye mr-1.5 text-brand-gold"></i> Aperçu Détaillé
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="p-6">
+                            <div class="flex items-center space-x-1 text-xs text-amber-400 mb-2">
+                                <i class="fas fa-star"></i>
+                                <span class="font-bold text-gray-800 ml-1">${product.rating.toFixed(1)}</span>
+                                <span class="text-gray-400 text-[11px]">(${product.reviewsCount} avis)</span>
+                            </div>
+
+                            <h3 class="font-serif font-bold text-brand-black text-lg hover:text-brand-goldDark transition cursor-pointer line-clamp-1" onclick="openProductModal('${product.id}')">
+                                ${product.name}
+                            </h3>
+
+                            <p class="text-xs text-gray-500 mt-2 line-clamp-2 leading-relaxed font-light">
+                                ${product.description}
+                            </p>
+
+                            <div class="mt-4 pt-4 border-t border-gray-100 flex items-baseline justify-between">
+                                <div>
+                                    <span class="text-xl font-bold font-serif text-brand-goldDark">${product.priceMad} MAD</span>
+                                    <span class="text-xs text-gray-400 ml-1.5">/ ${product.priceEur} €</span>
+                                </div>
+                                <span class="text-[10px] text-emerald-600 font-bold uppercase tracking-wider bg-emerald-50 px-2 py-0.5 rounded">En Stock</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 pt-0">
+                        <button onclick="addToCart('${product.id}')" class="w-full bg-brand-black hover:bg-brand-gold hover:text-brand-black text-white font-bold py-3.5 rounded-2xl text-xs transition flex items-center justify-center space-x-2 tracking-wider uppercase shadow">
+                            <i class="fas fa-shopping-bag text-brand-gold"></i>
+                            <span>Ajouter au Panier</span>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Open Detailed Product Modal
+        function openProductModal(productId) {
+            const product = productsList.find(p => p.id === productId);
+            if (!product) return;
+
+            const modalContent = document.getElementById('modal-content');
+            modalContent.innerHTML = `
+                <div class="bg-brand-black rounded-2xl p-4 flex items-center justify-center relative min-h-[280px]">
+                    <div class="w-full aspect-square">
+                        ${product.svgRender}
+                    </div>
+                </div>
+
+                <div class="flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span class="bg-brand-gold/15 text-brand-goldDark text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">${product.badge}</span>
+                            <span class="text-xs text-emerald-600 font-bold"><i class="fas fa-certificate mr-1"></i> 100% Fait Main</span>
+                        </div>
+
+                        <h2 class="text-2xl font-serif font-bold text-brand-black mb-1">${product.name}</h2>
+                        
+                        <div class="flex items-center space-x-2 text-xs text-amber-400 mb-4">
+                            <i class="fas fa-star"></i>
+                            <span class="font-bold text-brand-black">${product.rating.toFixed(1)}</span>
+                            <span class="text-gray-400">| ${product.reviewsCount} avis clients vérifiés</span>
+                        </div>
+
+                        <div class="text-2xl font-bold font-serif text-brand-goldDark mb-4">
+                            ${product.priceMad} MAD <span class="text-sm font-sans font-normal text-gray-500">(${product.priceEur} €)</span>
+                        </div>
+
+                        <p class="text-xs text-gray-600 leading-relaxed mb-4 font-light">${product.description}</p>
+
+                        <!-- Specifications Grid -->
+                        <div class="bg-brand-cream/60 p-4 rounded-2xl space-y-2 text-xs mb-4 border border-brand-gold/20">
+                            <div><strong class="text-brand-black">Perles :</strong> <span class="text-gray-600">${product.pearlType}</span></div>
+                            <div><strong class="text-brand-black">Fermoir :</strong> <span class="text-gray-600">${product.clasp}</span></div>
+                            <div><strong class="text-brand-black">Dimensions :</strong> <span class="text-gray-600">${product.dimensions}</span></div>
+                            <div><strong class="text-brand-black">Entretien :</strong> <span class="text-gray-600">${product.care}</span></div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <button onclick="addToCart('${product.id}'); closeModal();" class="w-full gold-shimmer text-brand-black font-bold py-4 rounded-2xl shadow-lg hover:brightness-105 transition flex items-center justify-center space-x-2 text-xs uppercase tracking-wider">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span>Ajouter au panier (${product.priceMad} MAD)</span>
+                        </button>
+                        <a href="https://wa.me/212600000000?text=Bonjour,%20je%20souhaite%20des%20informations%20sur%20le%20sac%20:%20${encodeURIComponent(product.name)}" target="_blank" class="w-full bg-emerald-50 text-emerald-700 hover:bg-emerald-100 font-bold py-3.5 rounded-2xl transition flex items-center justify-center space-x-2 text-xs uppercase tracking-wider border border-emerald-200">
+                            <i class="fab fa-whatsapp text-lg text-emerald-600"></i>
+                            <span>Poser une question sur WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+            `;
+
+            const modal = document.getElementById('product-modal');
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.remove('opacity-0'), 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('product-modal');
+            modal.classList.add('opacity-0');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        // Cart State Management
+        function addToCart(productId) {
+            const product = productsList.find(p => p.id === productId);
+            if (!product) return;
+
+            const existingIndex = cartState.findIndex(item => item.id === productId);
+            if (existingIndex > -1) {
+                cartState[existingIndex].qty += 1;
+            } else {
+                cartState.push({
+                    id: product.id,
+                    name: product.name,
+                    priceMad: product.priceMad,
+                    qty: 1,
+                    svgRender: product.svgRender
+                });
+            }
+
+            updateCartUI();
+            showToast('Sac ajouté !', `${product.name} est dans votre panier.`);
+        }
+
+        function updateCartQty(productId, delta) {
+            const index = cartState.findIndex(item => item.id === productId);
+            if (index > -1) {
+                cartState[index].qty += delta;
+                if (cartState[index].qty <= 0) {
+                    cartState.splice(index, 1);
+                }
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            let totalItems = 0;
+            let totalPriceMAD = 0;
+
+            cartState.forEach(item => {
+                totalItems += item.qty;
+                totalPriceMAD += item.priceMad * item.qty;
+            });
+
+            document.getElementById('cart-badge').innerText = totalItems;
+            document.getElementById('cart-total-header').innerText = `${totalPriceMAD} MAD`;
+            document.getElementById('cart-subtotal').innerText = `${totalPriceMAD} MAD`;
+            document.getElementById('cart-total').innerText = `${totalPriceMAD} MAD`;
+
+            const container = document.getElementById('cart-items-container');
+            if (cartState.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-16 text-gray-400">
+                        <i class="fas fa-shopping-bag text-5xl mb-4 text-gray-300"></i>
+                        <p class="text-xs uppercase tracking-wider font-semibold">Votre panier est vide</p>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = cartState.map(item => `
+                    <div class="flex items-center space-x-4 p-3 bg-brand-cream/50 rounded-2xl border border-gray-200">
+                        <div class="w-16 h-16 bg-brand-black rounded-xl overflow-hidden flex-shrink-0">
+                            ${item.svgRender}
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="text-xs font-bold text-brand-black line-clamp-1">${item.name}</h4>
+                            <div class="text-xs text-brand-goldDark font-bold font-serif mt-0.5">${item.priceMad} MAD</div>
+                            <div class="flex items-center space-x-2 mt-2">
+                                <button onclick="updateCartQty('${item.id}', -1)" class="w-6 h-6 bg-white border border-gray-300 rounded-full flex items-center justify-center text-xs font-bold hover:bg-gray-100">-</button>
+                                <span class="text-xs font-bold text-brand-black">${item.qty}</span>
+                                <button onclick="updateCartQty('${item.id}', 1)" class="w-6 h-6 bg-white border border-gray-300 rounded-full flex items-center justify-center text-xs font-bold hover:bg-gray-100">+</button>
+                            </div>
+                        </div>
+                        <button onclick="updateCartQty('${item.id}', -${item.qty})" class="text-gray-400 hover:text-rose-600 p-2">
+                            <i class="fas fa-trash-alt text-xs"></i>
+                        </button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // WhatsApp Checkout Direct Generator
+        function setupCartDrawerEvents() {
+            document.getElementById('open-cart-btn').addEventListener('click', openCartDrawer);
+            document.getElementById('close-cart-btn').addEventListener('click', closeCartDrawer);
+            document.getElementById('cart-overlay').addEventListener('click', closeCartDrawer);
+            document.getElementById('close-modal-btn').addEventListener('click', closeModal);
+
+            document.getElementById('checkout-whatsapp-btn').addEventListener('click', () => {
+                if (cartState.length === 0) {
+                    showToast('Panier Vide', 'Veuillez sélectionner au moins un sac.');
+                    return;
+                }
+
+                let message = "Bonjour Maison Perle Chic ✨,\nJe souhaite passer commande pour les sacs suivants :\n\n";
+                let total = 0;
+
+                cartState.forEach((item, index) => {
+                    const lineTotal = item.priceMad * item.qty;
+                    total += lineTotal;
+                    message += `${index + 1}. *${item.name}* (x${item.qty}) - ${lineTotal} MAD\n`;
+                });
+
+                message += `\n💰 *Total de la commande* : ${total} MAD\n🚚 *Livraison* : Maroc\n\nMerci de me confirmer la disponibilité et la procédure de livraison !`;
+
+                const encodedUrl = `https://wa.me/212600000000?text=${encodeURIComponent(message)}`;
+                window.open(encodedUrl, '_blank');
+            });
+        }
+
+        function openCartDrawer() {
+            const drawer = document.getElementById('cart-drawer');
+            const overlay = document.getElementById('cart-overlay');
+            const panel = document.getElementById('cart-panel');
+
+            drawer.classList.remove('pointer-events-none');
+            overlay.classList.remove('opacity-0', 'pointer-events-none');
+            panel.classList.remove('translate-x-full');
+        }
+
+        function closeCartDrawer() {
+            const drawer = document.getElementById('cart-drawer');
+            const overlay = document.getElementById('cart-overlay');
+            const panel = document.getElementById('cart-panel');
+
+            panel.classList.add('translate-x-full');
+            overlay.classList.add('opacity-0', 'pointer-events-none');
+            setTimeout(() => drawer.classList.add('pointer-events-none'), 300);
+        }
+
+        function setupFilterListeners() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    filterBtns.forEach(b => {
+                        b.className = 'filter-btn bg-white text-gray-700 hover:bg-brand-cream border border-gray-200 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition';
+                    });
+                    e.target.className = 'filter-btn active bg-brand-black text-white px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition shadow';
+                    currentFilter = e.target.getAttribute('data-filter');
+                    renderProductGrid();
+                });
+            });
+
+            document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.toggle('hidden');
+            });
+        }
+
+        function toggleFaq(element) {
+            const content = element.querySelector('div:nth-child(2)');
+            const icon = element.querySelector('.fa-chevron-down');
+            content.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+
+        function showToast(title, message) {
+            const toast = document.getElementById('toast-notification');
+            document.getElementById('toast-title').innerText = title;
+            document.getElementById('toast-message').innerText = message;
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => toast.classList.add('translate-y-20', 'opacity-0'), 3500);
+        }
+    </script>
+</body>
+</html>

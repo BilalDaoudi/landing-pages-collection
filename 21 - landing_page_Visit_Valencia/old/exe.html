@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+
+body{
+    margin: 0;
+}
+    .container {
+      display: grid;
+      grid-template-rows: 80px auto 1fr auto 80px;
+      grid-template-columns: 1fr 4fr 1fr;
+      grid-template-areas:
+        "header header header"
+        "left-aside banner right-aside"
+        "left-aside main right-aside"
+        "left-aside low-content right-aside"
+        "footer footer footer";
+      grid-gap: 0px;
+    }
+
+    .header, .banner, .left-aside, .main, .right-aside, .low-content, .footer {
+      background-color: #ccc;
+      color: white;
+      padding: 20px;
+    }
+
+    .header {
+      grid-area: header;
+      background-color: #2196F3;
+    }
+
+    .banner {
+      grid-area: banner;
+      background-color: #4CAF50;
+    }
+
+    .left-aside {
+      grid-area: left-aside;
+      background-color: #f44336;
+    }
+
+    .main {
+      grid-area: main;
+      background-color: #FFC107;
+    }
+
+    .right-aside {
+      grid-area: right-aside;
+      background-color: #9C27B0;
+    }
+
+    .low-content {
+      grid-area: low-content;
+      background-color: #607D8B;
+    }
+
+    .footer {
+      grid-area: footer;
+      background-color: #795548;
+    }
+
+
+    @media (max-width: 768px) {
+      .container {
+        grid-template-rows: 50px 50px 50px 1fr 50px 50px 50px;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "header"
+          "banner"
+          "left-aside"
+          "main"
+          "right-aside"
+          "low-content"
+          "footer";
+      }
+    }
+  </style>
+  <title>Responsive Grid Layout Example</title>
+</head>
+<body>
+  <div class="container">
+    <div class="header">Header</div>
+    <div class="banner">Banner</div>
+    <div class="left-aside">Left Aside</div>
+    <div class="main">Main Content</div>
+    <div class="right-aside">Right Aside</div>
+    <div class="low-content">Low Content</div>
+    <div class="footer">Footer</div>
+  </div>
+</body>
+</html>

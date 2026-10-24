@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link
+            href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+            rel="stylesheet">
+        <!-- <link rel="stylesheet" href="styles.css"> -->
+        <style>
+            /*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --first-color: hsl(220, 68%, 54%);
+  --first-color-lighten: hsl(220, 68%, 97%);
+  --title-color: hsl(220, 48%, 28%);
+  --text-color: hsl(220, 12%, 45%);
+  --body-color: hsl(220, 100%, 99%);
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Poppins", sans-serif;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+  --smaller-font-size: .75rem;
+  /*========== Font weight ==========*/
+  --font-medium: 500;
+  --font-semi-bold: 600;
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  max-width: 1120px;
+  margin-inline: 1.5rem;
+}
+
+/*=============== HEADER ===============*/
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 2px 8px hsla(220, 68%, 12%, 0.1);
+  background-color: #fff;
+  z-index: var(--z-fixed);
+}
+
+/*=============== NAV ===============*/
+.nav {
+  height: var(--header-height);
+}
+.nav__data {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav__logo {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 0.25rem;
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+  transition: color 0.3s;
+}
+.nav__logo i {
+  font-size: 1.25rem;
+}
+.nav__logo:hover {
+  color: var(--first-color);
+}
+.nav__toggle {
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+.nav__toggle-menu, .nav__toggle-close {
+  font-size: 1.25rem;
+  color: var(--title-color);
+  position: absolute;
+  display: grid;
+  place-items: center;
+  inset: 0;
+  cursor: pointer;
+  transition: opacity 0.1s, transform 0.4s;
+}
+.nav__toggle-close {
+  opacity: 0;
+}
+
+.nav__link {
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+.nav__link:hover {
+  background-color: var(--first-color-lighten);
+}
+
+/* Show menu */
+.show-menu {
+  opacity: 1;
+  top: 3.5rem;
+  pointer-events: initial;
+}
+
+/* Show icon */
+.show-icon .nav__toggle-menu {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+.show-icon .nav__toggle-close {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+/*=============== DROPDOWN ===============*/
+.dropdown__button {
+  cursor: pointer;
+}
+.dropdown__arrow {
+  font-size: 1.5rem;
+  font-weight: initial;
+  transition: transform 0.4s;
+}
+.dropdown__content, .dropdown__group, .dropdown__list {
+  display: grid;
+}
+.dropdown__container {
+  background-color: var(--first-color-lighten);
+  height: 0;
+  overflow: hidden;
+  transition: height 0.4s;
+}
+.dropdown__content {
+  row-gap: 1.75rem;
+}
+.dropdown__group {
+  padding-left: 2.5rem;
+  row-gap: 0.5rem;
+}
+.dropdown__group:first-child {
+  margin-top: 1.25rem;
+}
+.dropdown__group:last-child {
+  margin-bottom: 1.25rem;
+}
+.dropdown__icon i {
+  font-size: 1.25rem;
+  color: var(--first-color);
+}
+.dropdown__title {
+  font-size: var(--small-font-size);
+  font-weight: var(--font-semi-bold);
+  color: var(--title-color);
+}
+.dropdown__list {
+  row-gap: 0.25rem;
+}
+.dropdown__link {
+  font-size: var(--smaller-font-size);
+  font-weight: var(--font-medium);
+  color: var(--text-color);
+  transition: color 0.3s;
+}
+.dropdown__link:hover {
+  color: var(--title-color);
+}
+
+/* Rotate dropdown icon */
+.show-dropdown .dropdown__arrow {
+  transform: rotate(180deg);
+}
+
+/*=============== BREAKPOINTS ===============*/
+
+
+
+
+/* ===================================== */
+
+     
+        .home-section {
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+        .home-image {
+            width: 100%;
+            height: auto;
+        }
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-family:Montserrat, sans-serif;
+        }
+        .centered .centered-title{
+            width: 100%;
+            margin: 0;
+        }
+        .centered .centered-sous-title{
+    font-weight: 700;
+    font-style: normal;
+
+    width: 100%;
+    line-height: 1.2;
+    margin: 0 0 1.5rem;
+    width: auto;
+        }
+        
+
+
+        /* =================================================== */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .blog-section {
+            color: black;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        .blog-card {
+            background: #ffffff;
+            border-radius: 2px;
+            margin: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1 1 calc(33% - 40px);
+            max-width: calc(33% - 40px);
+            box-sizing: border-box;
+        }
+        .blog-card img {
+            width: 100%;
+            height: auto;
+        }
+        .blog-content {
+            padding: 15px;
+        }
+        .blog-content h3 {
+            margin: 0 0 10px;
+            font-size: 1.5em;
+        }
+        .blog-content p {
+            margin: 0;
+            line-height: 1.5;
+            color: #555;
+        }
+        .load-more {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .load-more button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .load-more button[disabled] {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .head-blog-section{
+        text-align: center;color: rgb(42, 40, 40); margin-top: 30px;
+    }
+    .head-blog-section .titre{
+        font-weight: 900;font-size: 25px;font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    .head-blog-section .sous-titre{
+        font-size: 25px;margin-top: 10px;margin-bottom: 15px;font-size:20px;font-family:Georgia, 'Times New Roman', Times, serif;
+    } 
+    .head-blog-section .ligne{
+        height: 5px; background-color: red; width: 40%; margin: auto;
+    }
+
+        /* ===================================== */
+/* For small devices */
+@media screen and (min-width: 1024px) {
+  :root {
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;
+  }
+}
+@media screen and (max-width: 300px) {
+  .dropdown__group {
+    padding-left: 1.5rem;
+  }
+}
+/* For large devices */
+@media screen and (min-width: 1118px) {
+    
+    .blog-section{
+        margin: 50px 100px 0px 100px;
+    }
+    .section__content{
+    margin-top: 4.5rem;
+}
+.home-section img{
+    height: 600px;
+}
+.home-section .centered .centered-title{
+    font-size: 55px;
+}
+.home-section .centered .centered-sous-title{
+    font-size: 2rem;
+}
+
+
+.back-section img{
+    height: 450px;
+}
+.back-section .back .back-p1{
+    font-size: 55px;
+}
+.back-section .back .back-p2{
+    font-size: 1.5rem;
+}
+  /* Nav */
+  .nav {
+    height: calc(var(--header-height) + 1rem);
+    display: flex;
+    justify-content: space-between;
+  }
+  .nav__toggle {
+    display: none;
+  }
+  .nav__list {
+    display: flex;
+    column-gap: 3rem;
+    height: 100%;
+  }
+  .nav li {
+    display: flex;
+  }
+  .nav__link {
+    padding: 0;
+  }
+  .nav__link:hover {
+    background-color: initial;
+  }
+  /* Dropdown */
+  .dropdown__button {
+    column-gap: 0.25rem;
+    pointer-events: none;
+  }
+  .dropdown__container {
+    height: max-content;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 6.5rem;
+    background-color: var(--body-color);
+    box-shadow: 0 6px 8px hsla(220, 68%, 12%, 0.05);
+    pointer-events: none;
+    opacity: 0;
+    transition: top 0.4s, opacity 0.3s;
+  }
+  .dropdown__content {
+    grid-template-columns: repeat(4, max-content);
+    column-gap: 6rem;
+    max-width: 1120px;
+    margin-inline: auto;
+  }
+  .dropdown__group {
+    padding: 4rem 0;
+    align-content: baseline;
+    row-gap: 1.25rem;
+  }
+  .dropdown__group:first-child, .dropdown__group:last-child {
+    margin: 0;
+  }
+  .dropdown__list {
+    row-gap: 0.75rem;
+  }
+  .dropdown__icon {
+    width: 60px;
+    height: 60px;
+    background-color: var(--first-color-lighten);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    margin-bottom: 1rem;
+  }
+  .dropdown__icon i {
+    font-size: 2rem;
+  }
+  .dropdown__title {
+    font-size: var(--normal-font-size);
+  }
+  .dropdown__link {
+    font-size: var(--small-font-size);
+  }
+  .dropdown__link:hover {
+    color: var(--first-color);
+  }
+  .dropdown__item {
+    cursor: pointer;
+  }
+  .dropdown__item:hover .dropdown__arrow {
+    transform: rotate(180deg);
+  }
+  .dropdown__item:hover > .dropdown__container {
+    top: 4.5rem;
+    opacity: 1;
+    pointer-events: initial;
+    cursor: initial;
+  }
+}
+
+        @media screen and (min-width: 1152px) {
+  .container {
+    margin-inline: auto;
+  }
+}
+        @media (max-width: 768px) {
+            .blog-card {
+                flex: 1 1 calc(50% - 20px);
+                max-width: calc(50% - 20px);
+            }
+        }
+        @media (max-width: 480px) {
+            .blog-card {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+
+        @media screen and (max-width: 1118px) {
+  .section__content{
+    margin-top: 3.5rem;
+}
+.home-section img{
+    height: 300px;
+    
+}
+.home-section .centered .centered-title{
+    font-size: 28px;
+}
+.home-section .centered .centered-sous-title{
+    font-size: 1.1rem;
+}
+
+.back-section img{
+    height: 400px;
+}
+.back-section .back .back-p1{
+    font-size: 30px;
+}
+.back-section .back .back-p2{
+    font-size: 1.2rem;
+}
+  .nav__menu {
+    background-color: var(--body-color);
+    position: absolute;
+    left: 0;
+    top: 2.5rem;
+    width: 100%;
+    height: calc(100vh - 3.5rem);
+    overflow: auto;
+    padding-block: 1.5rem 4rem;
+    pointer-events: none;
+    opacity: 0;
+    transition: top 0.4s, opacity 0.3s;
+  }
+  .nav__menu::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  .nav__menu::-webkit-scrollbar-thumb {
+    background-color: hsl(220, 12%, 70%);
+  }
+}
+
+
+
+/* ======================================== */
+/* Styles pour le conteneur des blogs */
+.blog-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Styles pour chaque carte de blog */
+.blog-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s;
+    width: 300px;
+}
+
+.blog-card img {
+    width: 100%;
+    height: auto;
+}
+
+.blog-card .blog-content {
+    padding: 20px;
+}
+
+.blog-card h3 {
+    font-size: 1.5em;
+    margin: 0 0 10px;
+}
+
+.blog-card p {
+    color: #666;
+    font-size: 1em;
+    line-height: 1.5em;
+    margin: 0;
+}
+
+/* Hover effect for blog card */
+.blog-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Styles pour la pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.pagination button {
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1em;
+    padding: 10px 15px;
+    transition: background 0.3s;
+}
+
+
+
+.pagination .num {
+    background: none;
+    color: black;
+    border: #e3a0f6 1px solid ;
+}
+
+.pagination .num:disabled {
+    background: #a6a6fa;
+    color: rgb(255, 255, 255);
+}
+
+.prev_next{
+    background:#d589f6;
+}
+.prev_next:disabled{
+    background:#e0b7f2;
+}
+
+
+.back-section {
+            position: relative;
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+        }
+        .back-image {
+            
+            width: 100%;
+            height: auto;
+        }
+        .back {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-family:Montserrat, sans-serif;
+        }
+        .back .back-p1{
+            width: 100%;
+            margin: 10px;
+            font-size: 60px;
+        }
+        .back .back-p2{
+    font-weight: 700;
+    font-style: normal;
+
+    font-size: 20px;
+    width: 100%;
+    line-height: 1.2;
+    margin: 0 0 1.5rem;
+    width: auto;
+        }
+
+        .back .back-btn{
+            background:#cb9f39;
+            color: #fff;
+            border: none;
+            font-weight: 700;
+            font-size: 20px;
+            padding: 10px 20px;
+        }
+        
+
+
+        .kk {
+    display: block;
+}
+
+/* Affichage uniquement sur les téléphones */
+.dd {
+    display: none;
+}
+.logo{
+        width: 180px;
+    }
+
+/* Media query pour les téléphones */
+@media (max-width: 600px) {
+    .dd {
+        display: block;
+    }
+    .kk {
+        display: none;
+    }
+    .logo{
+        width: 120px;
+    }
+}
+
+.categories-section {
+    margin-left: 150px;
+    margin-right: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: space-between;
+    margin-top: 70px;
+}
+
+.category {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 45%;
+    margin-bottom: 20px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.category img {
+    width: 30%;
+    max-width: 150px;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.category .content {
+    width: 70%;
+}
+
+.category h2 {
+    margin: 0 0 10px 0;
+    font-size: 1.5em;
+}
+
+.category p {
+    margin: 0;
+    font-size: 1em;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .categories-section {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+    .category {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .category img {
+        width: 100%;
+        max-width: none;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .category .content {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .categories-section {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+    .category h2 {
+        font-size: 1.2em;
+    }
+
+    .category p {
+        font-size: 0.9em;
+    }
+}
+
+
+/* ============================================================ */
+body {
+    font-family: Arial, sans-serif;
+}
+
+footer {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.footer-section {
+    margin: 10px;
+    flex: 1 1 70px;
+}
+
+.footer-section h4 {
+    margin-bottom: 10px;
+    font-size: 1em;
+}
+
+.footer-section a {
+    display: block;
+    margin-bottom: 8px;
+    color: #000;
+    text-decoration: none;
+    font-size: 0.8em;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
+
+.logo, .store-logo, .social-icon {
+    width: 100px;
+    margin: 5px 0;
+}
+
+.store-logo, .social-icon {
+    width: 50px;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+    }
+    .footer-section {
+    text-align: center;
+}
+    .logo, .store-logo, .social-icon {
+        width: 80px;
+    }
+}
+
+         </style>
+        <title>Projet</title>
+    </head>
+    <body>
+        <header class="header">
+            <nav class="nav container">
+                <div class="nav__data">
+                    <a href="#" class="nav__logo">
+                        <!-- <i class="ri-code-s-slash-line"></i> CodeX -->
+                        <img src="img/logo.svg" class="logo" />
+                    </a>
+
+                    <div class="nav__toggle" id="nav-toggle">
+                        <i class="ri-menu-line nav__toggle-menu"></i>
+                        <i class="ri-close-line nav__toggle-close"></i>
+                    </div>
+                </div>
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li>
+                            <a href="#" class="nav__link">Home</a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav__link">Service</a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav__link">About</a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav__link">Contact</a>
+                        </li>
+                        <li class="dropdown__item">
+                            <div class="nav__link dropdown__button">
+                                Discover <i
+                                    class="ri-arrow-down-s-line dropdown__arrow"></i>
+                            </div>
+                            <div class="dropdown__container">
+                                <div class="dropdown__content">
+                                    <div class="dropdown__group">
+                                        <!-- <div class="dropdown__icon">
+                                            <i class="ri-flashlight-line"></i>
+                                        </div> -->
+                                        <span class="dropdown__title">Most
+                                            viewed courses</span>
+                                        <ul class="dropdown__list">
+                                            <li>
+                                                <a href="#"
+                                                    class="dropdown__link">HTML
+                                                    for beginners</a>
+                                            </li>
+                                            <li>
+                                                <a href="#"
+                                                    class="dropdown__link">Advanced
+                                                    CSS</a>
+                                            </li>
+                                            <li>
+                                                <a href="#"
+                                                    class="dropdown__link">JavaScript
+                                                    OOP</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="dropdown__group">
+                                        <span class="dropdown__title">Popular
+                                            courses</span>
+                                        <ul class="dropdown__list">
+                                            <li>
+                                                <a href="#"
+                                                    class="dropdown__link">Development
+                                                    with Flutter</a>
+                                            </li>
+                                            <li>
+                                                <a href="#"
+                                                    class="dropdown__link">Web
+                                                    development with React</a>
+                                            </li>
+                                            <li>
+                                                <a href="#"
+                                                    class="dropdown__link">Backend
+                                                    development expert</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="dropdown__group">
+                                        <span
+                                            class="dropdown__title">Careers</span>
+                                        <ul class="dropdown__list">
+                                            <li>
+                                                <a href="#"
+                                                    class="dropdown__link">Web
+                                                    development</a>
+                                            </li>
+                                            <li>
+                                                <a href="#"
+                                                    class="dropdown__link">Applications
+                                                    development</a>
+                                            </li>
+                                            <li>
+                                                <a href="#"
+                                                    class="dropdown__link">UI/UX
+                                                    design</a>
+                                            </li>
+                                            <li>
+                                                <a href="#"
+                                                    class="dropdown__link">Informatic
+                                                    security</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="dropdown__group">
+                                        <span
+                                            class="dropdown__title">Certifications</span>
+                                        <ul class="dropdown__list">
+                                            <li>
+                                                <a href="#"
+                                                    class="dropdown__link">Course
+                                                    certificates</a>
+                                            </li>
+                                            <li>
+                                                <a href="#"
+                                                    class="dropdown__link">Free
+                                                    certifications</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="section__content">
+            <section class="home-section" id="home" >
+                <img src="img/4.webp" alt="Image de la page d'accueil"
+                    class="home-image">
+                <div class="centered"  style="background-color: rgba(85, 85, 85, 0.5);  height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                    <p class="centered-title">Visit Valencia</p>
+                    <p class="centered-sous-title">La destination durable en
+                        Méditerranée</p>
+                </div>
+            </section>
+            <section class="head-blog-section" id="head-blog">
+                <p class="titre">À
+                    NE PAS MANQUER</p>
+                <p class="sous-titre">Une
+                    sélection des programmes et visites qui vous
+                    séduiront
+                    dans notre ville</p>
+                <p class="ligne"></p>
+            </section>
+            <section class="blog-section" id="blog-section">
+
+                <!-- Blog posts will be inserted here by JavaScript -->
+            </section>
+            <div id="pagination" class="pagination">
+                <!-- Boutons et numéros de page seront ajoutés ici -->
+            </div>
+
+            <section class="back-section" id="back" >
+
+                <img src="img/21.webp" alt="Image de la page d'accueil"
+                    class="back-image dd">
+                <img src="img/20.webp" alt="Image de la page d'accueil"
+                    class="back-image kk">
+                <div class="back" style="background-color: rgba(85, 85, 85, 0.5);  height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                    <p class="back-p1">Tickets &
+                        Tours</p>
+                    <p class="back-p2">Visites guidées, spectacles,
+                        attractions touristiques ...</p>
+                    <button class="back-btn">DÉCOUVREZ !</button>
+                </div>
+            </section>
+
+            <section class="blog-section" id="top-blog-section">
+
+            </section>
+
+            <section class="back-section" id="back" >
+                <img src="img/40.webp" alt="Image de la page d'accueil"
+                    class="back-image">
+                <div class="back" style="background-color: rgba(85, 85, 85, 0.5);  height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                    <p class="back-p1">Les Incontournables</p>
+                    <p class="back-p2">Les options sont nombreuses ! Mais vous
+                        ne pouvez pas manquer ces 10 lieux incontournables.</p>
+                    <button class="back-btn">DÉCOUVREZ POURQUOI!</button>
+                </div>
+            </section>
+            <section class="head-blog-section" id="head-blog">
+                <p class="titre">VALENCIA NE S’ARRÊTE JAMAIS, ET VOUS NON
+                    PLUS!</p>
+                <p class="sous-titre">Fêtes, culture, sport, gastronomie...</p>
+                <p class="sous-titre">Une ville où chaque activité est une bonne
+                    raison de revenir.</p>
+                <p class="ligne"></p>
+            </section>
+
+            <section class="categories-section" id="categories-section">
+                <div class="category">
+                    <img src="img/13.webp" alt="Catégorie 1">
+                    <div class="content">
+                        <h2>Titre 1</h2>
+                        <p>Description de la première catégorie.</p>
+                    </div>
+                </div>
+                <div class="category">
+                    <img src="img/15.webp" alt="Catégorie 2">
+                    <div class="content">
+                        <h2>Titre 2</h2>
+                        <p>Description de la deuxième catégorie.</p>
+                    </div>
+                </div>
+                <div class="category">
+                    <img src="img/14.webp" alt="Catégorie 3">
+                    <div class="content">
+                        <h2>Titre 3</h2>
+                        <p>Description de la troisième catégorie.</p>
+                    </div>
+                </div>
+                <div class="category">
+                    <img src="img/11.webp" alt="Catégorie 4">
+                    <div class="content">
+                        <h2>Titre 4</h2>
+                        <p>Description de la quatrième catégorie.</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        <footer>
+            <div class="footer-container">
+                <div class="footer-section" style="text-align: center;">
+                    <img src="img/logo.svg" alt="Logo Valencia Tourism"
+                        class="logo">
+                    <!-- <img src="logo-visit-qatar.png" alt="Logo Visit Qatar"
+                        class="logo"> -->
+                </div>
+                <!-- <div class="footer-section">
+                    <h4>Téléchargez l'application</h4>
+                    <a href="#"><img src="google-play.png"
+                            alt="Obtenez-le sur Google Play"
+                            class="store-logo"></a>
+                    <a href="#"><img src="app-store.png"
+                            alt="Téléchargez sur l'App Store"
+                            class="store-logo"></a>
+                </div> -->
+                <div class="footer-section">
+                    <h4>Guide "Valencia Now"</h4>
+                    <a href="#">Dernière édition</a>
+                </div>  
+                <div class="footer-section">
+                    <h4>Suivez-nous</h4>
+                    <a href="#">facebook</a>
+                    <a href="#">instagram</a>
+                    <a href="#">twitter</a>
+                    <a href="#">youtube</a>
+                    <a href="#">tiktok</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <a href="#">Contactez-nous</a>
+                    <a href="#">Centre des médias</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Informations</h4>
+                    <a href="#">Termes et conditions</a>
+                    <a href="#">Politique de confidentialité</a>
+                    <a href="#">Site web institutionnel</a>
+                    <a href="#">Diwan de l'Émir</a>
+                    <a href="#">Politique de cookies</a>
+                    <a href="#">Logos de la marque Qatar Tourism</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Inscrivez-vous à notre newsletter</h4>
+                    <a href="#">Préférences en matière de cookies</a>
+                </div>
+            </div>
+        </footer>
+        <script src="main.js"></script>
+
+        <script>
+    const blogs = [
+        {
+            title: "Blog Title 1",
+            image: "img/13.webp",
+            description: "Aenean vel turpis scelerisque, viverra nulla in, dapibus velit. Nulla facilisi. Curabitur ut pulvinar augue."
+        },
+        {
+            title: "Blog Title 2",
+            image: "img/12.webp",
+            description: "Sed ac fermentum massa. Mauris consectetur, quam in tristique interdum, mauris orci efficitur justo, eu finibus eros orci ac est."
+        },
+        {
+            title: "Blog Title 3",
+            image: "img/11.webp",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum."
+        },
+        {
+            title: "Blog Title 1",
+            image: "img/10.webp",
+            description: "Aenean vel turpis scelerisque, viverra nulla in, dapibus velit. Nulla facilisi. Curabitur ut pulvinar augue."
+        },
+        {
+            title: "Blog Title 2",
+            image: "img/14.webp",
+            description: "Sed ac fermentum massa. Mauris consectetur, quam in tristique interdum, mauris orci efficitur justo, eu finibus eros orci ac est."
+        },
+        {
+            title: "Blog Title 3",
+            image: "img/15.webp",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum."
+        },
+        
+        {
+            title: "Blog Title 2",
+            image: "img/12.webp",
+            description: "Sed ac fermentum massa. Mauris consectetur, quam in tristique interdum, mauris orci efficitur justo, eu finibus eros orci ac est."
+        },
+        {
+            title: "Blog Title 3",
+            image: "img/11.webp",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum."
+        },
+        {
+            title: "Blog Title 1",
+            image: "img/10.webp",
+            description: "Aenean vel turpis scelerisque, viverra nulla in, dapibus velit. Nulla facilisi. Curabitur ut pulvinar augue."
+        },
+        {
+            title: "Blog Title 2",
+            image: "img/14.webp",
+            description: "Sed ac fermentum massa. Mauris consectetur, quam in tristique interdum, mauris orci efficitur justo, eu finibus eros orci ac est."
+        },
+        
+        {
+            title: "Blog Title 1",
+            image: "img/10.webp",
+            description: "Aenean vel turpis scelerisque, viverra nulla in, dapibus velit. Nulla facilisi. Curabitur ut pulvinar augue."
+        },
+        {
+            title: "Blog Title 3",
+            image: "img/11.webp",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum."
+        },
+        {
+            title: "Blog Title 2",
+            image: "img/14.webp",
+            description: "Sed ac fermentum massa. Mauris consectetur, quam in tristique interdum, mauris orci efficitur justo, eu finibus eros orci ac est."
+        },
+        
+        {
+            title: "Blog Title 1",
+            image: "img/10.webp",
+            description: "Aenean vel turpis scelerisque, viverra nulla in, dapibus velit. Nulla facilisi. Curabitur ut pulvinar augue."
+        },
+        {
+            title: "Blog Title 3",
+            image: "img/15.webp",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum."
+        },
+        
+        {
+            title: "Blog Title 3",
+            image: "img/11.webp",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum."
+        },
+        
+        {
+            title: "Blog Title 3",
+            image: "img/13.webp",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum."
+        },
+        
+        {
+            title: "Blog Title 2",
+            image: "img/12.webp",
+            description: "Sed ac fermentum massa. Mauris consectetur, quam in tristique interdum, mauris orci efficitur justo, eu finibus eros orci ac est."
+        },
+        
+        {
+            title: "Blog Title 1",
+            image: "img/13.webp",
+            description: "Aenean vel turpis scelerisque, viverra nulla in, dapibus velit. Nulla facilisi. Curabitur ut pulvinar augue."
+        },
+        {
+            title: "Blog Title 2",
+            image: "img/12.webp",
+            description: "Sed ac fermentum massa. Mauris consectetur, quam in tristique interdum, mauris orci efficitur justo, eu finibus eros orci ac est."
+        },
+        {
+            title: "Blog Title 3",
+            image: "img/11.webp",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum."
+        },
+        {
+            title: "Blog Title 1",
+            image: "img/10.webp",
+            description: "Aenean vel turpis scelerisque, viverra nulla in, dapibus velit. Nulla facilisi. Curabitur ut pulvinar augue."
+        },
+        {
+            title: "Blog Title 2",
+            image: "img/14.webp",
+            description: "Sed ac fermentum massa. Mauris consectetur, quam in tristique interdum, mauris orci efficitur justo, eu finibus eros orci ac est."
+        },
+        {
+            title: "Blog Title 3",
+            image: "img/15.webp",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum."
+        },
+        
+        {
+            title: "Blog Title 2",
+            image: "img/12.webp",
+            description: "Sed ac fermentum massa. Mauris consectetur, quam in tristique interdum, mauris orci efficitur justo, eu finibus eros orci ac est."
+        },
+        {
+            title: "Blog Title 3",
+            image: "img/11.webp",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum."
+        },
+        {
+            title: "Blog Title 1",
+            image: "img/10.webp",
+            description: "Aenean vel turpis scelerisque, viverra nulla in, dapibus velit. Nulla facilisi. Curabitur ut pulvinar augue."
+        },
+        {
+            title: "Blog Title 2",
+            image: "img/14.webp",
+            description: "Sed ac fermentum massa. Mauris consectetur, quam in tristique interdum, mauris orci efficitur justo, eu finibus eros orci ac est."
+        },
+        
+        {
+            title: "Blog Title 1",
+            image: "img/10.webp",
+            description: "Aenean vel turpis scelerisque, viverra nulla in, dapibus velit. Nulla facilisi. Curabitur ut pulvinar augue."
+        },
+        {
+            title: "Blog Title 3",
+            image: "img/11.webp",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum."
+        },
+        {
+            title: "Blog Title 2",
+            image: "img/14.webp",
+            description: "Sed ac fermentum massa. Mauris consectetur, quam in tristique interdum, mauris orci efficitur justo, eu finibus eros orci ac est."
+        },
+        
+        {
+            title: "Blog Title 2",
+            image: "img/12.webp",
+            description: "Sed ac fermentum massa. Mauris consectetur, quam in tristique interdum, mauris orci efficitur justo, eu finibus eros orci ac est."
+        },
+        
+        {
+            title: "Blog Title 1",
+            image: "img/10.webp",
+            description: "Aenean vel turpis scelerisque, viverra nulla in, dapibus velit. Nulla facilisi. Curabitur ut pulvinar augue."
+        },
+        {
+            title: "Blog Title 3",
+            image: "img/15.webp",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum."
+        },
+        
+        {
+            title: "Blog Title 3",
+            image: "img/11.webp",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum."
+        },
+        
+        {
+            title: "Blog Title 3",
+            image: "img/13.webp",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum."
+        },
+        
+        {
+            title: "Blog Title 2",
+            image: "img/12.webp",
+            description: "Sed ac fermentum massa. Mauris consectetur, quam in tristique interdum, mauris orci efficitur justo, eu finibus eros orci ac est."
+        },
+
+    ];
+
+
+    const top_blogs = [
+        {
+            title: "Blog Title 4",
+            image: "img/13.webp",
+            description: "Aenean vel turpis scelerisque, viverra nulla in, dapibus velit. Nulla facilisi. Curabitur ut pulvinar augue."
+        },
+        {
+            title: "Blog Title 5",
+            image: "img/12.webp",
+            description: "Sed ac fermentum massa. Mauris consectetur, quam in tristique interdum, mauris orci efficitur justo, eu finibus eros orci ac est."
+        },
+        {
+            title: "Blog Title 1",
+            image: "img/14.webp",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum."
+        },
+        {
+            title: "Blog Title 2",
+            image: "img/10.webp",
+            description: "Donec dictum augue non magna vehicula, eget suscipit felis hendrerit. Integer sit amet consectetur leo."
+        },
+        {
+            title: "Blog Title 3",
+            image: "img/15.webp",
+            description: "Quisque euismod lectus vitae justo tincidunt, a consectetur eros hendrerit. Vivamus vel massa sed risus."
+        },
+        {
+            title: "Blog Title 4",
+            image: "img/13.webp",
+            description: "Aenean vel turpis scelerisque, viverra nulla in, dapibus velit. Nulla facilisi. Curabitur ut pulvinar augue."
+        },]
+
+    let currentPage = 1;
+const postsPerPage = 6;
+const totalPages = Math.ceil(blogs.length / postsPerPage);
+
+function displayBlogs() {
+    const blogSection = document.getElementById('blog-section');
+    blogSection.innerHTML = '';
+    const start = (currentPage - 1) * postsPerPage;
+    const end = start + postsPerPage;
+    for (let i = start; i < end && i < blogs.length; i++) {
+        const blog = blogs[i];
+        const blogCard = document.createElement('div');
+        blogCard.className = 'blog-card';
+        blogCard.innerHTML = `
+            <img src="${blog.image}" alt="${blog.title}">
+            <div class="blog-content">
+                <h3>${blog.title}</h3>
+                <p>${blog.description}</p>
+            </div>
+        `;
+        blogSection.appendChild(blogCard);
+    }
+
+    updatePagination();
+}
+
+function updatePagination() {
+    const pagination = document.getElementById('pagination');
+    pagination.innerHTML = '';
+    const prevButton = document.createElement('button');
+    prevButton.setAttribute("class","prev_next");
+    prevButton.textContent = '←';
+    prevButton.disabled = currentPage === 1;
+    prevButton.addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage--;
+            displayBlogs();
+        }
+    });
+    pagination.appendChild(prevButton);
+
+    const maxVisiblePages = 4;
+    let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+    let endPage = Math.min(startPage + maxVisiblePages - 1, totalPages);
+
+    if (endPage - startPage + 1 < maxVisiblePages) {
+        startPage = Math.max(1, endPage - maxVisiblePages + 1);
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.setAttribute("class","num")
+        pageButton.textContent = i;
+        if (i === currentPage) {
+            pageButton.disabled = true;
+        }
+        pageButton.addEventListener('click', () => {
+            currentPage = i;
+            displayBlogs();
+        });
+        pagination.appendChild(pageButton);
+    }
+
+    const nextButton = document.createElement('button');
+    nextButton.setAttribute("class","prev_next");
+    nextButton.textContent = '→';
+    nextButton.disabled = currentPage === totalPages;
+    nextButton.addEventListener('click', () => {
+        if (currentPage < totalPages) {
+            currentPage++;
+            displayBlogs();
+        }
+    });
+    pagination.appendChild(nextButton);
+}
+
+function displayTopBlogs() {
+    const topblogSection = document.getElementById('top-blog-section');
+    topblogSection.innerHTML = '';
+    for (let i = 0; i < top_blogs.length; i++) {
+        const blog = top_blogs[i];
+        const blogCard = document.createElement('div');
+        blogCard.className = 'blog-card';
+        blogCard.innerHTML = `
+            <img src="${blog.image}" alt="${blog.title}">
+            <div class="blog-content">
+                <h3>${blog.title}</h3>
+                <p>${blog.description}</p>
+            </div>
+        `;
+        topblogSection.appendChild(blogCard);
+    }
+
+}
+
+// Initial display
+displayBlogs();
+displayTopBlogs();
+
+
+
+
+
+
+</script>
+
+    </body>
+</html>

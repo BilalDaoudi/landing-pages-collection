@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nador Moto Rent | Location de Scooters & Motos à Nador</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        amber: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                            900: '#78350f',
+                        },
+                        dark: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        arabic: ['Cairo', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        [dir="rtl"] body {
+            font-family: 'Cairo', sans-serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(120, 53, 15, 0.88) 100%), url('https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-amber-500 selection:text-white">
+
+    <!-- Top Navigation -->
+    <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-amber-500 to-amber-600 flex items-center justify-center text-white shadow-md shadow-amber-500/30">
+                    <i class="fa-solid fa-motorcycle text-2xl"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold text-white tracking-wide" data-i18n="logoTitle">NADOR <span class="text-amber-500">MOTO RENT</span></span>
+                    <span class="block text-xs text-slate-400 font-medium" data-i18n="logoSub">Scooters & Motos à Nador</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-8 rtl:space-x-reverse text-sm font-semibold text-slate-300">
+                <a href="#accueil" class="hover:text-amber-500 transition" data-i18n="navHome">Accueil</a>
+                <a href="#motos" class="hover:text-amber-500 transition" data-i18n="navMotos">Nos Motos</a>
+                <a href="#pourquoi" class="hover:text-amber-500 transition" data-i18n="navWhy">Pourquoi Nous</a>
+                <a href="#livraison" class="hover:text-amber-500 transition" data-i18n="navDelivery">Livraison Ville & Corniche</a>
+                <a href="#contact" class="hover:text-amber-500 transition" data-i18n="navContact">Contact</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                <!-- Language Selector -->
+                <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-slate-800 text-white text-xs font-bold px-3 py-2 rounded-lg border border-slate-700 focus:outline-none focus:border-amber-500 cursor-pointer">
+                    <option value="fr">🇫🇷 FR</option>
+                    <option value="ar">🇲🇦 AR</option>
+                    <option value="en">🇬🇧 EN</option>
+                    <option value="es">🇪🇸 ES</option>
+                </select>
+
+                <!-- WhatsApp Quick CTA -->
+                <a href="https://wa.me/212600000000?text=Bonjour,%20je%20souhaite%20louer%20une%20moto%20à%20Nador." target="_blank" class="hidden sm:inline-flex items-center space-x-2 rtl:space-x-reverse bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-lg shadow-emerald-600/30 transition transform hover:-translate-y-0.5">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span data-i18n="whatsappBtn">WhatsApp 24/7</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero-gradient min-h-[85vh] flex items-center justify-center text-white px-4 py-20 text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto z-10">
+            <span class="inline-flex items-center space-x-2 rtl:space-x-reverse bg-amber-600/30 border border-amber-500/50 text-amber-200 text-xs font-bold px-4 py-1.5 rounded-full mb-6 uppercase tracking-wider">
+                <i class="fa-solid fa-location-dot"></i>
+                <span data-i18n="badgeHero">Nador • Corniche Mar Chica • Centre-ville</span>
+            </span>
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6 leading-tight" data-i18n="heroTitle">
+                Explorez Nador et la Corniche en Deux Roues
+            </h1>
+            <p class="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto mb-10" data-i18n="heroSubtitle">
+                Location de scooters et motos récents, maniables et économiques. Casques et antivols fournis. Idéal pour éviter les embouteillages et profiter de Mar Chica.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#motos" class="w-full sm:w-auto bg-amber-600 hover:bg-amber-500 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-amber-600/40 transition transform hover:-translate-y-1 text-center" data-i18n="btnSeeMotos">
+                    Voir nos motos & scooters
+                </a>
+                <a href="https://wa.me/212600000000?text=Bonjour,%20je%20veux%20réserver%20une%20moto." target="_blank" class="w-full sm:w-auto bg-slate-800/90 hover:bg-slate-700 text-white font-bold px-8 py-4 rounded-xl border border-slate-700 shadow-xl transition transform hover:-translate-y-1 text-center flex items-center justify-center space-x-2 rtl:space-x-reverse">
+                    <i class="fa-brands fa-whatsapp text-emerald-400 text-xl"></i>
+                    <span data-i18n="btnFastBooking">Réservation WhatsApp Express</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fleet Section -->
+    <section id="motos" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4" data-i18n="fleetTitle">Notre Flotte de Scooters & Motos</h2>
+            <p class="text-slate-600" data-i18n="fleetSub">Des véhicules parfaits pour la ville, la promenade sur la corniche ou les escapades vers Arekmane.</p>
+            
+            <!-- Category Filters -->
+            <div class="flex flex-wrap items-center justify-center gap-2 mt-8">
+                <button onclick="filterMotos('all')" class="cat-btn active px-5 py-2.5 rounded-xl font-bold text-xs uppercase transition bg-amber-600 text-white shadow-md" data-i18n="catAll">Tous</button>
+                <button onclick="filterMotos('scooter')" class="cat-btn px-5 py-2.5 rounded-xl font-bold text-xs uppercase transition bg-white text-slate-700 hover:bg-slate-100 border border-slate-200" data-i18n="catScooter">Scooters 50cc - 125cc</button>
+                <button onclick="filterMotos('sport')" class="cat-btn px-5 py-2.5 rounded-xl font-bold text-xs uppercase transition bg-white text-slate-700 hover:bg-slate-100 border border-slate-200" data-i18n="catSport">Motos Sport & Route</button>
+                <button onclick="filterMotos('trail')" class="cat-btn px-5 py-2.5 rounded-xl font-bold text-xs uppercase transition bg-white text-slate-700 hover:bg-slate-100 border border-slate-200" data-i18n="catTrail">Trail / Aventure</button>
+            </div>
+        </div>
+
+        <!-- Moto Grid -->
+        <div id="motoGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Populated via JavaScript -->
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="pourquoi" class="bg-slate-900 text-white py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl font-extrabold mb-4" data-i18n="whyTitle">Pourquoi Louer Chez Nador Moto Rent ?</h2>
+                <p class="text-slate-400" data-i18n="whySub">Sécurité, simplicité et tarifs compétitifs pour votre séjour à Nador.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-slate-800/60 border border-slate-700/80 p-8 rounded-2xl shadow-lg">
+                    <div class="w-14 h-14 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-helmet-safety"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="why1Title">Équipement Inclus</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed" data-i18n="why1Desc">Casques homologués, gants et antivols fournis gratuitement pour chaque location de moto.</p>
+                </div>
+
+                <div class="bg-slate-800/60 border border-slate-700/80 p-8 rounded-2xl shadow-lg">
+                    <div class="w-14 h-14 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-gas-pump"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="why2Title">Consommation Économique</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed" data-i18n="why2Desc">Des scooters ultra-économiques parfaits pour se garer facilement en centre-ville et sur la corniche.</p>
+                </div>
+
+                <div class="bg-slate-800/60 border border-slate-700/80 p-8 rounded-2xl shadow-lg">
+                    <div class="w-14 h-14 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="why3Title">Assistance 7j/7</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed" data-i18n="why3Desc">Support technique et assistance rapide sur tout le territoire de Nador et ses alentours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delivery Highlight -->
+    <section id="livraison" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gradient-to-r from-amber-900 to-slate-900 rounded-3xl overflow-hidden shadow-2xl text-white grid grid-cols-1 lg:grid-cols-2">
+            <div class="p-8 sm:p-12 flex flex-col justify-center">
+                <span class="text-amber-400 text-xs font-bold uppercase tracking-wider mb-2" data-i18n="delivBadge">Service Pratique</span>
+                <h2 class="text-3xl font-extrabold mb-6" data-i18n="delivTitle">Livraison Gratuite de votre Moto à Nador</h2>
+                <p class="text-slate-300 text-sm leading-relaxed mb-6" data-i18n="delivDesc">
+                    Vous résidez dans un hôtel à la Corniche Mar Chica, un appartement en ville ou vous arrivez à l'aéroport ? Nous vous livrons la moto directement à l'endroit de votre choix à Nador.
+                </p>
+                <ul class="space-y-3 mb-8 text-sm text-slate-200">
+                    <li class="flex items-center space-x-3 rtl:space-x-reverse"><i class="fa-solid fa-circle-check text-emerald-400"></i> <span data-i18n="delivPoint1">Livraison et récupération sur site</span></li>
+                    <li class="flex items-center space-x-3 rtl:space-x-reverse"><i class="fa-solid fa-circle-check text-emerald-400"></i> <span data-i18n="delivPoint2">Contrat simple et rapide (Pièce d'identité)</span></li>
+                    <li class="flex items-center space-x-3 rtl:space-x-reverse"><i class="fa-solid fa-circle-check text-emerald-400"></i> <span data-i18n="delivPoint3">Paiement flexible (Espèces / WhatsApp)</span></li>
+                </ul>
+                <div>
+                    <a href="https://wa.me/212600000000?text=Bonjour,%20je%20souhaite%20me%20faire%20livrer%20une%20moto%20à%20Nador." target="_blank" class="inline-flex items-center space-x-2 rtl:space-x-reverse bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-3.5 rounded-xl shadow-lg transition">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                        <span data-i18n="delivBtn">Demander une livraison moto</span>
+                    </a>
+                </div>
+            </div>
+            <div class="relative min-h-[300px] lg:min-h-full">
+                <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&q=80&w=1000" alt="Nador Scooter Delivery" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 lg:bg-gradient-to-r lg:from-slate-900/40"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-slate-950 text-slate-400 pt-16 pb-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+            <div>
+                <div class="flex items-center space-x-3 rtl:space-x-reverse mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-amber-600 flex items-center justify-center text-white">
+                        <i class="fa-solid fa-motorcycle text-lg"></i>
+                    </div>
+                    <span class="text-xl font-extrabold text-white">NADOR <span class="text-amber-500">MOTO RENT</span></span>
+                </div>
+                <p class="text-sm text-slate-400 leading-relaxed mb-6" data-i18n="footerDesc">
+                    Votre agence spécialiste de location de scooters et motos à Nador, Corniche et environs.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-base mb-4" data-i18n="footerZones">Zones de Livraison</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><i class="fa-solid fa-angle-right text-amber-500 text-xs mr-1"></i> Nador Centre-ville</li>
+                    <li><i class="fa-solid fa-angle-right text-amber-500 text-xs mr-1"></i> Corniche Mar Chica</li>
+                    <li><i class="fa-solid fa-angle-right text-amber-500 text-xs mr-1"></i> Beni Ansar & Aeroport</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-base mb-4" data-i18n="footerContact">Contact Direct</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><i class="fa-solid fa-phone text-amber-500 mr-2"></i> +212 6 00 00 00 00</li>
+                    <li><i class="fa-brands fa-whatsapp text-emerald-500 mr-2"></i> +212 6 00 00 00 00 (WhatsApp)</li>
+                    <li><i class="fa-solid fa-location-dot text-amber-500 mr-2"></i> Avenue Mohammed V, Nador</li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-slate-900 text-center text-xs text-slate-500">
+            <p data-i18n="copyright">&copy; 2026 Nador Moto Rent. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative text-slate-800">
+            <button onclick="closeBookingModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600 text-xl font-bold">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="mb-6">
+                <span class="text-xs font-bold text-amber-600 uppercase bg-amber-50 px-3 py-1 rounded-full" data-i18n="modalBadge">Réservation Moto</span>
+                <h3 id="modalMotoTitle" class="text-2xl font-black text-slate-900 mt-2">Modèle de moto</h3>
+                <p id="modalMotoPrice" class="text-amber-600 font-bold text-lg">150 MAD / jour</p>
+            </div>
+
+            <form id="bookingForm" onsubmit="submitBooking(event)" class="space-y-4">
+                <input type="hidden" id="motoModelInput">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase mb-1" data-i18n="labelFullName">Nom complet</label>
+                    <input type="text" id="clientName" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-amber-500" placeholder="Ex. Youssef Benali">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1" data-i18n="labelPhone">Téléphone / WhatsApp</label>
+                        <input type="tel" id="clientPhone" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-amber-500" placeholder="+212 6...">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1" data-i18n="labelLocation">Lieu de livraison</label>
+                        <select id="clientPickup" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-amber-500">
+                            <option value="Centre-ville Nador" data-i18n="locCity">Centre-ville Nador</option>
+                            <option value="Corniche Mar Chica" data-i18n="locCorniche">Corniche Mar Chica</option>
+                            <option value="Aéroport Nador Al Aroui" data-i18n="locAirport">Aéroport Nador Al Aroui</option>
+                            <option value="Autre adresse" data-i18n="locOther">Autre adresse</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1" data-i18n="labelStart">Date de début</label>
+                        <input type="date" id="startDate" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-amber-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1" data-i18n="labelEnd">Date de fin</label>
+                        <input type="date" id="endDate" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-amber-500">
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 rounded-xl shadow-lg shadow-emerald-600/30 transition flex items-center justify-center space-x-2 rtl:space-x-reverse mt-2">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <span data-i18n="btnConfirmWhatsapp">Confirmer et réserver sur WhatsApp</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript App Code -->
+    <script>
+        const motosData = [
+            {
+                id: 1,
+                name: "Scooter SYM Orbit 3 (50cc)",
+                category: "scooter",
+                price: 150,
+                image: "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&q=80&w=800",
+                transmission: "Automatique",
+                license: "Sans permis requis (50cc)",
+                helmets: "2 Casques inclus"
+            },
+            {
+                id: 2,
+                name: "Scooter Yamaha NMAX (125cc)",
+                category: "scooter",
+                price: 250,
+                image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&q=80&w=800",
+                transmission: "Automatique",
+                license: "Permis A1 / B",
+                helmets: "2 Casques inclus"
+            },
+            {
+                id: 3,
+                name: "Scooter Honda PCX (125cc)",
+                category: "scooter",
+                price: 270,
+                image: "https://images.unsplash.com/photo-1502744688674-c919d1a8e945?auto=format&fit=crop&q=80&w=800",
+                transmission: "Automatique",
+                license: "Permis A1 / B",
+                helmets: "2 Casques inclus"
+            },
+            {
+                id: 4,
+                name: "Moto Honda CB125F",
+                category: "sport",
+                price: 220,
+                image: "https://images.unsplash.com/photo-1558981285-6f0c94958bb6?auto=format&fit=crop&q=80&w=800",
+                transmission: "Manuelle",
+                license: "Permis A1 / B",
+                helmets: "Casques + Gants"
+            },
+            {
+                id: 5,
+                name: "Yamaha MT-07",
+                category: "sport",
+                price: 600,
+                image: "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&q=80&w=800",
+                transmission: "Manuelle",
+                license: "Permis A (Moto)",
+                helmets: "Équipement complet"
+            },
+            {
+                id: 6,
+                name: "Trail BMW G310GS",
+                category: "trail",
+                price: 550,
+                image: "https://images.unsplash.com/photo-1558980664-3a031cf67ea8?auto=format&fit=crop&q=80&w=800",
+                transmission: "Manuelle",
+                license: "Permis A / A2",
+                helmets: "Idéal Aventure & Piste"
+            }
+        ];
+
+        let currentLang = 'fr';
+
+        const translations = {
+            fr: {
+                logoSub: "Scooters & Motos à Nador",
+                navHome: "Accueil",
+                navMotos: "Nos Motos",
+                navWhy: "Pourquoi Nous",
+                navDelivery: "Livraison Ville & Corniche",
+                navContact: "Contact",
+                whatsappBtn: "WhatsApp 24/7",
+                badgeHero: "Nador • Corniche Mar Chica • Centre-ville",
+                heroTitle: "Explorez Nador et la Corniche en Deux Roues",
+                heroSubtitle: "Location de scooters et motos récents, maniables et économiques. Casques et antivols fournis. Idéal pour éviter les embouteillages et profiter de Mar Chica.",
+                btnSeeMotos: "Voir nos motos & scooters",
+                btnFastBooking: "Réservation WhatsApp Express",
+                fleetTitle: "Notre Flotte de Scooters & Motos",
+                fleetSub: "Des véhicules parfaits pour la ville, la promenade sur la corniche ou les escapades vers Arekmane.",
+                catAll: "Tous",
+                catScooter: "Scooters 50cc - 125cc",
+                catSport: "Motos Sport & Route",
+                catTrail: "Trail / Aventure",
+                perDay: "/ jour",
+                btnBookMoto: "Réserver cette moto",
+                whyTitle: "Pourquoi Louer Chez Nador Moto Rent ?",
+                whySub: "Sécurité, simplicité et tarifs compétitifs pour votre séjour à Nador.",
+                why1Title: "Équipement Inclus",
+                why1Desc: "Casques homologués, gants et antivols fournis gratuitement pour chaque location de moto.",
+                why2Title: "Consommation Économique",
+                why2Desc: "Des scooters ultra-économiques parfaits pour se garer facilement en centre-ville et sur la corniche.",
+                why3Title: "Assistance 7j/7",
+                why3Desc: "Support technique et assistance rapide sur tout le territoire de Nador et ses alentours.",
+                delivBadge: "Service Pratique",
+                delivTitle: "Livraison Gratuite de votre Moto à Nador",
+                delivDesc: "Vous résidez dans un hôtel à la Corniche Mar Chica, un appartement en ville ou vous arrivez à l'aéroport ? Nous vous livrons la moto directement à l'endroit de votre choix à Nador.",
+                delivPoint1: "Livraison et récupération sur site",
+                delivPoint2: "Contrat simple et rapide (Pièce d'identité)",
+                delivPoint3: "Paiement flexible (Espèces / WhatsApp)",
+                delivBtn: "Demander une livraison moto",
+                footerDesc: "Votre agence spécialiste de location de scooters et motos à Nador, Corniche et environs.",
+                footerZones: "Zones de Livraison",
+                footerContact: "Contact Direct",
+                copyright: "© 2026 Nador Moto Rent. Tous droits réservés.",
+                modalBadge: "Réservation Moto",
+                labelFullName: "Nom complet",
+                labelPhone: "Téléphone / WhatsApp",
+                labelLocation: "Lieu de livraison",
+                locCity: "Centre-ville Nador",
+                locCorniche: "Corniche Mar Chica",
+                locAirport: "Aéroport Nador Al Aroui",
+                locOther: "Autre adresse",
+                labelStart: "Date de début",
+                labelEnd: "Date de fin",
+                btnConfirmWhatsapp: "Confirmer et réserver sur WhatsApp"
+            },
+            ar: {
+                logoSub: "الدراجات النارية في الناظور",
+                navHome: "الرئيسية",
+                navMotos: "دراجاتنا",
+                navWhy: "لماذا نحن",
+                navDelivery: "التوصيل للكورنيش والمدينة",
+                navContact: "اتصل بنا",
+                whatsappBtn: "واتساب 24/7",
+                badgeHero: "الناظور • كورنيش مارشيكا • وسط المدينة",
+                heroTitle: "اكتشف الناظور وكورنيش مارشيكا على متن دراجة نارية",
+                heroSubtitle: "تأجير سكوتر ودراجات نارية حديثة واقتصادية. الخوذات والأقفال متضمنة. مثالي لتجنب الازدحام والاستمتاع بمارشيكا.",
+                btnSeeMotos: "شاهد دراجاتنا وسكوتراتنا",
+                btnFastBooking: "حجز سريع عبر واتساب",
+                fleetTitle: "أسطول السكوتر والدراجات النارية",
+                fleetSub: "مركبات مثالية للتنقل في المدينة، التنزه على الكورنيش أو الرحلات نحو أركمان.",
+                catAll: "الكل",
+                catScooter: "سكوتر 50cc - 125cc",
+                catSport: "دراجات رياضية",
+                catTrail: "مغامرات / تريل",
+                perDay: "/ يوم",
+                btnBookMoto: "احجز هذه الدراجة",
+                whyTitle: "لماذا تختار ناظور موتو رنت؟",
+                whySub: "الأمان، البساطة والأسعار التنافسية لإقامتك في الناظور.",
+                why1Title: "معدات متضمنة",
+                why1Desc: "خوذات معتمدة، قفازات وأقفال مجانية مع كل عملية تأجير دراجة.",
+                why2Title: "استهلاك اقتصادي",
+                why2Desc: "سكوتر اقتصادي للغاية وسهل الركن في وسط المدينة وعلى الكورنيش.",
+                why3Title: "مساعدة 7 أيام في الأسبوع",
+                why3Desc: "دعم فني ومساعدة سريعة في جميع أنحاء الناظور وضواحيها.",
+                delivBadge: "خدمة عملية",
+                delivTitle: "توصيل مجاني لدراجتك في الناظور",
+                delivDesc: "هل تقيم في فندق على كورنيش مارشيكا، شقة في المدينة أو تصل إلى المطار؟ سنقوم بتوصيل الدراجة مباشرة إلى المكان الذي تختاره في الناظور.",
+                delivPoint1: "التوصيل والاستلام في الموقع",
+                delivPoint2: "عقد بسيط وسريع (بطاقة التعريف)",
+                delivPoint3: "طرق دفع مرنة (نقداً / واتساب)",
+                delivBtn: "اطلب توصيل دراجة",
+                footerDesc: "وكالتك المتخصصة في تأجير السكوتر والدراجات النارية في الناظور والكورنيش والنواحي.",
+                footerZones: "مناطق التوصيل",
+                footerContact: "اتصال مباشر",
+                copyright: "© 2026 Nador Moto Rent. جميع الحقوق محفوظة.",
+                modalBadge: "حجز دراجة",
+                labelFullName: "الاسم الكامل",
+                labelPhone: "الهاتف / واتساب",
+                labelLocation: "مكان التوصيل",
+                locCity: "وسط مدينة الناظور",
+                locCorniche: "كورنيش مارشيكا",
+                locAirport: "مطار الناظور العروي",
+                locOther: "عنوان آخر",
+                labelStart: "تاريخ البداية",
+                labelEnd: "تاريخ النهاية",
+                btnConfirmWhatsapp: "تأكيد والحجز عبر واتساب"
+            },
+            en: {
+                logoSub: "Scooters & Motorcycles in Nador",
+                navHome: "Home",
+                navMotos: "Our Bikes",
+                navWhy: "Why Us",
+                navDelivery: "City & Corniche Delivery",
+                navContact: "Contact",
+                whatsappBtn: "WhatsApp 24/7",
+                badgeHero: "Nador • Mar Chica Corniche • City Center",
+                heroTitle: "Explore Nador and the Corniche on Two Wheels",
+                heroSubtitle: "Rent recent, agile, and economical scooters and motorcycles. Helmets and locks provided. Ideal for beating traffic and enjoying Mar Chica.",
+                btnSeeMotos: "View Our Bikes & Scooters",
+                btnFastBooking: "Express WhatsApp Booking",
+                fleetTitle: "Our Scooter & Motorcycle Fleet",
+                fleetSub: "Perfect vehicles for city driving, corniche cruising, or trips to Arekmane.",
+                catAll: "All",
+                catScooter: "Scooters 50cc - 125cc",
+                catSport: "Sport & Road Bikes",
+                catTrail: "Trail / Adventure",
+                perDay: "/ day",
+                btnBookMoto: "Book This Bike",
+                whyTitle: "Why Rent With Nador Moto Rent?",
+                whySub: "Safety, simplicity, and competitive rates for your stay in Nador.",
+                why1Title: "Equipment Included",
+                why1Desc: "Approved helmets, gloves, and locks provided free of charge for every rental.",
+                why2Title: "Fuel Efficient",
+                why2Desc: "Ultra-economical scooters perfect for easy parking in downtown and along the corniche.",
+                why3Title: "7/7 Assistance",
+                why3Desc: "Technical support and rapid assistance throughout Nador and surroundings.",
+                delivBadge: "Convenient Service",
+                delivTitle: "Free Delivery of Your Bike in Nador",
+                delivDesc: "Staying at a Mar Chica Corniche hotel, a city apartment, or arriving at the airport? We deliver the bike directly to your chosen spot in Nador.",
+                delivPoint1: "Delivery and pickup on site",
+                delivPoint2: "Quick and simple contract (ID)",
+                delivPoint3: "Flexible payment (Cash / WhatsApp)",
+                delivBtn: "Request Bike Delivery",
+                footerDesc: "Your specialized agency for scooter and motorcycle rentals in Nador, Corniche, and surroundings.",
+                footerZones: "Delivery Zones",
+                footerContact: "Direct Contact",
+                copyright: "© 2026 Nador Moto Rent. All rights reserved.",
+                modalBadge: "Motorcycle Booking",
+                labelFullName: "Full Name",
+                labelPhone: "Phone / WhatsApp",
+                labelLocation: "Delivery Location",
+                locCity: "Nador City Center",
+                locCorniche: "Mar Chica Corniche",
+                locAirport: "Nador Al Aroui Airport",
+                locOther: "Other Address",
+                labelStart: "Start Date",
+                labelEnd: "End Date",
+                btnConfirmWhatsapp: "Confirm & Book on WhatsApp"
+            },
+            es: {
+                logoSub: "Motos y Scooters en Nador",
+                navHome: "Inicio",
+                navMotos: "Nuestras Motos",
+                navWhy: "Por Qué Elegirnos",
+                navDelivery: "Entrega Ciudad y Cornisa",
+                navContact: "Contacto",
+                whatsappBtn: "WhatsApp 24/7",
+                badgeHero: "Nador • Cornisa Mar Chica • Centro",
+                heroTitle: "Explora Nador y la Cornisa en Dos Ruedas",
+                heroSubtitle: "Alquiler de scooters y motos recientes, ágiles y económicos. Cascos y antirrobos incluidos. Ideal para evitar atascos y disfrutar de Mar Chica.",
+                btnSeeMotos: "Ver Motos y Scooters",
+                btnFastBooking: "Reserva Express WhatsApp",
+                fleetTitle: "Nuestra Flota de Scooters y Motos",
+                fleetSub: "Vehículos perfectos para la ciudad, paseos por la cornisa o escapadas a Arekmane.",
+                catAll: "Todos",
+                catScooter: "Scooters 50cc - 125cc",
+                catSport: "Motos Sport y Carretera",
+                catTrail: "Trail / Aventura",
+                perDay: "/ día",
+                btnBookMoto: "Reservar esta moto",
+                whyTitle: "¿Por qué alquilar con Nador Moto Rent?",
+                whySub: "Seguridad, simplicidad y tarifas competitivas para su estancia en Nador.",
+                why1Title: "Equipamiento Incluido",
+                why1Desc: "Cascos homologados, guantes y antirrobos proporcionados gratis con cada alquiler.",
+                why2Title: "Bajo Consumo",
+                why2Desc: "Scooters ultra económicos perfectos para aparcar fácilmente en el centro y la cornisa.",
+                why3Title: "Asistencia 7/7",
+                why3Desc: "Soporte técnico y asistencia rápida en todo Nador y alrededores.",
+                delivBadge: "Servicio Cómodo",
+                delivTitle: "Entrega Gratuita de tu Moto en Nador",
+                delivDesc: "¿Se hospeda en un hotel de la Cornisa Mar Chica, un piso en la ciudad o llega al aeropuerto? Le entregamos la moto directamente en el lugar que elija en Nador.",
+                delivPoint1: "Entrega y recogida in situ",
+                delivPoint2: "Contrato rápido y sencillo (DNI/Pasaporte)",
+                delivPoint3: "Pago flexible (Efectivo / WhatsApp)",
+                delivBtn: "Solicitar entrega de moto",
+                footerDesc: "Su agencia especializada en alquiler de scooters y motos en Nador, Cornisa y alrededores.",
+                footerZones: "Zonas de Entrega",
+                footerContact: "Contacto Directo",
+                copyright: "© 2026 Nador Moto Rent. Todos los derechos reservados.",
+                modalBadge: "Reserva de Moto",
+                labelFullName: "Nombre completo",
+                labelPhone: "Teléfono / WhatsApp",
+                labelLocation: "Lugar de entrega",
+                locCity: "Centro de Nador",
+                locCorniche: "Cornisa Mar Chica",
+                locAirport: "Aeropuerto Nador Al Aroui",
+                locOther: "Otra dirección",
+                labelStart: "Fecha de inicio",
+                labelEnd: "Fecha de fin",
+                btnConfirmWhatsapp: "Confirmar y reservar por WhatsApp"
+            }
+        };
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            const htmlTag = document.documentElement;
+            htmlTag.setAttribute('lang', lang);
+            if (lang === 'ar') {
+                htmlTag.setAttribute('dir', 'rtl');
+            } else {
+                htmlTag.setAttribute('dir', 'ltr');
+            }
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            renderMotos(currentFilter);
+        }
+
+        let currentFilter = 'all';
+
+        function renderMotos(filter) {
+            currentFilter = filter;
+            const grid = document.getElementById('motoGrid');
+            grid.innerHTML = '';
+
+            const filtered = filter === 'all' 
+                ? motosData 
+                : motosData.filter(m => m.category === filter);
+
+            filtered.forEach(moto => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between";
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="relative h-52 overflow-hidden bg-slate-100">
+                            <img src="${moto.image}" alt="${moto.name}" class="w-full h-full object-cover transform hover:scale-105 transition duration-500">
+                            <span class="absolute top-4 left-4 rtl:left-auto rtl:right-4 bg-slate-900/80 backdrop-blur-md text-white text-xs font-bold px-3 py-1.5 rounded-lg uppercase">
+                                ${moto.category}
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">${moto.name}</h3>
+                            <div class="grid grid-cols-1 gap-2 text-xs text-slate-600 mb-6 pb-4 border-b border-slate-100">
+                                <div><i class="fa-solid fa-gears mr-1 text-amber-500"></i> ${moto.transmission}</div>
+                                <div><i class="fa-solid fa-id-card mr-1 text-amber-500"></i> ${moto.license}</div>
+                                <div><i class="fa-solid fa-shield-halved mr-1 text-amber-500"></i> ${moto.helmets}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center justify-between">
+                        <div>
+                            <span class="text-2xl font-black text-amber-600">${moto.price} MAD</span>
+                            <span class="text-xs text-slate-400 font-medium">${translations[currentLang].perDay}</span>
+                        </div>
+                        <button onclick="openBookingModal('${moto.name}', ${moto.price})" class="bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs px-4 py-3 rounded-xl shadow-md transition">
+                            ${translations[currentLang].btnBookMoto}
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.className = "cat-btn px-5 py-2.5 rounded-xl font-bold text-xs uppercase transition bg-white text-slate-700 hover:bg-slate-100 border border-slate-200";
+            });
+            event && event.target && event.target.classList.add('bg-amber-600', 'text-white', 'shadow-md', 'border-transparent');
+        }
+
+        function filterMotos(category) {
+            renderMotos(category);
+        }
+
+        function openBookingModal(name, price) {
+            document.getElementById('motoModelInput').value = name;
+            document.getElementById('modalMotoTitle').textContent = name;
+            document.getElementById('modalMotoPrice').textContent = price + " MAD / " + (currentLang === 'ar' ? 'اليوم' : currentLang === 'es' ? 'día' : currentLang === 'en' ? 'day' : 'jour');
+            document.getElementById('bookingModal').classList.remove('hidden');
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.add('hidden');
+        }
+
+        function submitBooking(e) {
+            e.preventDefault();
+            const moto = document.getElementById('motoModelInput').value;
+            const name = document.getElementById('clientName').value;
+            const phone = document.getElementById('clientPhone').value;
+            const pickup = document.getElementById('clientPickup').value;
+            const start = document.getElementById('startDate').value;
+            const end = document.getElementById('endDate').value;
+
+            const text = `Bonjour Nador Moto Rent, je souhaite réserver une moto :%0a- Modèle : *${moto}*%0a- Nom : *${name}*%0a- Téléphone : *${phone}*%0a- Lieu de livraison : *${pickup}*%0a- Du : *${start}* Au : *${end}*`;
+
+            window.open(`https://wa.me/212600000000?text=${text}`, '_blank');
+            closeBookingModal();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMotos('all');
+        });
+    </script>
+</body>
+</html>

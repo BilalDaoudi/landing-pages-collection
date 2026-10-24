@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Pro</title>
+    <link rel="stylesheet" href="Style_sudoku.css">
+</head>
+
+<body>
+    <div class="tout">
+        <!-- Section Sélection & Start -->
+        <div class="choisir">
+            <label for="select">Niveau :</label>
+            <select name="select" id="select">
+                <option value="choisir">Choisir</option>
+                <option value="facile">Facile</option>
+                <option value="moyenne">Moyen</option>
+                <option value="difficile">Difficile</option>
+            </select>
+            <button id="start" onclick="Start(this)">START</button>
+        </div>
+
+        <!-- Section Panneau Temps & Vies -->
+        <div class="time-vie">
+            <div class="time">
+                <span id="H">00</span><span>:</span><span id="M">00</span><span>:</span><span id="S">00</span>
+            </div>
+            <p id="chance">♥♥♥♥♥</p>
+        </div>
+
+        <!-- Section Grille Sudoku -->
+        <div class="sudoku">
+            <div id="table"></div>
+            <div class="rejouer">
+                <a href="index.html"><button id="rejouer">REJOUER</button></a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script_sudoku.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+body {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background: linear-gradient(100deg, #00FFFF, #002940, #00FFFF, #002940);
+    background-size: 400% 400%;
+}
+  
+.inpXO {    
+    text-align: center;
+    font-size: 100px;
+    width: 100px;
+    height: 100px;
+    }
+
+.text {
+    font-size: 30px;
+}
+
+h3 {
+    width: 400px;
+    color: rgb(70, 70, 65);
+}
+
+.XO {
+    background-color: rgb(15, 15, 16);
+    width: 333px;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(8, 8, 8);
+    font-size: 20px;
+}
+
+button {
+    width: 150px;
+    height: 40px;
+}
+
+.J{
+    /*background-color: rgb(205, 76, 76); */
+    padding: 3px 0px;
+    padding-left: 20px;
+    font-size: 21px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+    width: 250px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+.J::placeholder{
+    color: rgb(51, 53, 55);
+    opacity: 0.5;
+}
+p{
+    font-size: 20px;
+    color: rgb(3, 3, 3);
+}
+h4{
+    display: none;
+}
+
+#msg1,#msg2{
+    display: none;
+}
+
+
+
+    .joueur {
+      display: flex;
+    }
+    .joueur div {
+        width: 50%;
+        text-align: center;
+      }
+
+
+button {
+    background-color: #d51dbd; /* Couleur de fond du bouton */
+    color: rgb(251, 251, 252); /* Couleur du texte */
+    border: none; /* Pas de bordure */
+    padding: 10px 20px; /* Espacement intérieur (haut/bas gauche/droite) */
+    font-size: 16px; /* Taille de la police */
+    cursor: pointer; /* Curseur de type pointeur au survol */
+    border-radius: 5px; /* Coins arrondis */
+    transition: background-color 0.3s ease; /* Transition de couleur en douceur */
+  }
+  
+  button:hover {
+    background-color: #4800ff; /* Nouvelle couleur de fond au survol */
+  }
+  
+
+
+  @media (max-width: 991px) {
+    .joueur {
+      display: block;
+    }
+    
+    #J1,#J2{
+      width: 80%;
+      margin-top: 5px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .joueur {
+      display: block;
+    }
+    #J1,#J2{
+      width: 100%;
+      margin-top: 5px;
+    }
+  }

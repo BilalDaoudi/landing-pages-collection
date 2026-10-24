@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Synthèse Vocale Pro</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="lang-text" data-fr="Écrivez & Écoutez : Votre Texte en Voix" 
+                            data-en="Write & Listen: Turn Your Text into Voice" 
+                            data-es="Escribe y escucha: Tu texto en voz" 
+                            data-ar="اكتب واستمع: تحويل النص إلى صوت">
+            Écrivez & Écoutez : Votre Texte en Voix
+        </h1>
+        
+        <select id="langue">
+            <option value="fr">Français</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="ar">العربية</option>
+        </select>
+        
+        <textarea id="text" placeholder="Tapez votre texte ici..." onkeyup="Length_text()"></textarea>
+        <p id="length">0</p>
+        
+        <button id="btn" class="lang-btn" data-fr="Parler" data-en="Speak" data-es="Hablar" data-ar="التحدث">
+            Parler
+        </button>
+    </div>
+
+    <script>
+        function Length_text() {
+            let text = document.getElementById("text").value;
+            document.getElementById("length").innerHTML = text.length;
+        }
+
+        document.getElementById('btn').addEventListener("click", function() {
+            const speech = new SpeechSynthesisUtterance();
+            let lang = document.getElementById("langue").value;
+            let text = document.getElementById("text").value;
+            
+            speech.text = text;
+            speech.rate = 1;
+            speech.volume = 1;
+            speech.pitch = 1;
+
+            // Correspondance des codes de langue pour la synthèse vocale
+            const langCodes = {
+                "fr": "fr-FR",
+                "en": "en-US",
+                "es": "es-ES",
+                "ar": "ar-SA"
+            };
+
+            speech.lang = langCodes[lang] || "fr-FR";
+            window.speechSynthesis.speak(speech);
+        });
+
+        // Gestion du changement de langue dynamique
+        const langueSelect = document.getElementById("langue");
+        const titleElement = document.querySelector(".lang-text");
+        const btnElement = document.querySelector(".lang-btn");
+        const textArea = document.getElementById("text");
+
+        langueSelect.addEventListener("change", function() {
+            const selectedLang = langueSelect.value;
+
+            // Mise à jour des textes dynamiques
+            titleElement.textContent = titleElement.getAttribute(`data-${selectedLang}`);
+            btnElement.textContent = btnElement.getAttribute(`data-${selectedLang}`);
+
+            // Gestion de l'orientation du texte (RTL pour l'arabe, LTR pour les autres)
+            if (selectedLang === "ar") {
+                textArea.style.direction = "rtl";
+                textArea.placeholder = "اكتب نصك هنا...";
+            } else {
+                textArea.style.direction = "ltr";
+                const placeholders = {
+                    "fr": "Tapez votre texte ici...",
+                    "en": "Type your text here...",
+                    "es": "Escribe tu texto aquí..."
+                };
+                textArea.placeholder = placeholders[selectedLang];
+            }
+        });
+    </script>
+</body>
+
+</html>

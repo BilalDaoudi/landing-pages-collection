@@ -1,0 +1,252 @@
+:root {
+    --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    --card-bg: rgba(30, 41, 59, 0.75);
+    --grid-bg: #0f172a;
+    --border-color: #334155;
+    --border-accent: #38bdf8;
+    
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent-color: #38bdf8;
+    --heart-color: #ef4444;
+    
+    --input-bg: #1e293b;
+    --input-readonly-bg: #0f172a;
+    --input-text: #f8fafc;
+    --input-user-text: #38bdf8;
+    
+    --btn-primary: #3b82f6;
+    --btn-primary-hover: #2563eb;
+    --btn-danger: #ef4444;
+    --btn-danger-hover: #dc2626;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-gradient);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--text-primary);
+    padding: 20px;
+}
+
+.tout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    max-width: 900px;
+    width: 100%;
+}
+
+/* Header / Contrôles du haut */
+.choisir {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+select#select {
+    background: var(--input-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-size: 1rem;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+select#select:focus {
+    border-color: var(--border-accent);
+}
+
+/* Grille Sudoku */
+.sudoku {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#table table {
+    border-collapse: collapse;
+    background-color: var(--grid-bg);
+    border: 3px solid var(--border-accent);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+#table td {
+    border: 1px solid var(--border-color);
+    padding: 0;
+}
+
+/* Bordures renforcées pour les sous-grilles 3x3 */
+#table tr:nth-child(3n) td {
+    border-bottom: 2px solid var(--border-accent);
+}
+
+#table td:nth-child(3n) {
+    border-right: 2px solid var(--border-accent);
+}
+
+#table tr:last-child td {
+    border-bottom: none;
+}
+
+#table td:last-child {
+    border-right: none;
+}
+
+/* Inputs de la grille */
+#table input {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    background-color: var(--input-bg);
+    color: var(--input-user-text);
+    border: none;
+    outline: none;
+    transition: background-color 0.2s;
+}
+
+#table input[readonly] {
+    background-color: var(--input-readonly-bg);
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+#table input:focus:not([readonly]) {
+    background-color: #334155;
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Panneau Chronomètre & Vies */
+.time-vie {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 450px;
+    background: rgba(15, 23, 42, 0.6);
+    border-radius: 16px;
+    padding: 12px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    margin: 0;
+}
+
+.time {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    width: auto;
+    padding: 0;
+    height: auto;
+}
+
+#chance {
+    color: var(--heart-color);
+    font-size: 1.5rem;
+    letter-spacing: 4px;
+}
+
+/* Boutons */
+button {
+    background-color: var(--btn-primary);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+    width: auto;
+    height: auto;
+}
+
+button:hover {
+    background-color: var(--btn-primary-hover);
+    transform: translateY(-1px);
+    width: auto;
+    height: auto;
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:disabled {
+    background-color: #475569;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.rejouer a {
+    text-decoration: none;
+}
+
+.rejouer button#rejouer {
+    background-color: var(--btn-danger);
+}
+
+.rejouer button#rejouer:hover {
+    background-color: var(--btn-danger-hover);
+}
+
+/* Responsive pour mobiles */
+@media screen and (max-width: 600px) {
+    .tout {
+        padding: 16px;
+        border-radius: 16px;
+    }
+
+    #table input {
+        width: 35px;
+        height: 35px;
+        font-size: 1.1rem;
+    }
+
+    .choisir {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .time-vie {
+        flex-direction: column;
+        gap: 8px;
+    }
+}

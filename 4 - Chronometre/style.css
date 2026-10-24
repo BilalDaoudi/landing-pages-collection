@@ -1,0 +1,114 @@
+:root {
+    --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --text-primary: #f8fafc;
+    --text-accent: #38bdf8;
+    
+    --btn-start-bg: #10b981;
+    --btn-start-hover: #059669;
+    --btn-stop-bg: #ef4444;
+    --btn-stop-hover: #dc2626;
+    --btn-reset-bg: #64748b;
+    --btn-reset-hover: #475569;
+    --btn-continue-bg: #3b82f6;
+    --btn-continue-hover: #2563eb;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-gradient);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--text-primary);
+}
+
+.stopwatch-container {
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    width: 360px;
+}
+
+.time h1 {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.time span#MS {
+    color: var(--text-accent);
+    font-size: 2rem;
+}
+
+.buttons-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+button {
+    width: 100%;
+    height: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 
+                0 2px 4px -1px rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+#btnstart {
+    background-color: var(--btn-start-bg);
+}
+#btnstart:hover {
+    background-color: var(--btn-start-hover);
+}
+
+#btnstop {
+    background-color: var(--btn-stop-bg);
+}
+#btnstop:hover {
+    background-color: var(--btn-stop-hover);
+}
+
+#btnreset {
+    background-color: var(--btn-reset-bg);
+}
+#btnreset:hover {
+    background-color: var(--btn-reset-hover);
+}
+
+#btncontinue {
+    background-color: var(--btn-continue-bg);
+}
+#btncontinue:hover {
+    background-color: var(--btn-continue-hover);
+}

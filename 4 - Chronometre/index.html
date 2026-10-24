@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="chronometre.ico" type="image/x-icon" />
+    <title>Chronomètre Pro</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="stopwatch-container">
+        <div class="time">
+            <h1>
+                <span id="H">00</span><span>:</span><span id="M">00</span><span>:</span><span id="S">00</span><span>:</span><span id="MS">00</span>
+            </h1>   
+        </div>
+        <div class="buttons-group">
+            <button onclick="start(this)" id="btnstart">Démarrer</button>
+            <button onclick="Stop()" id="btnstop" style="display: none;">Arrêter</button>
+            <button onclick="Reset()" id="btnreset" style="display: none;">Réinitialiser</button>
+            <button onclick="Continue()" id="btncontinue" style="display: none;">Reprendre</button>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="chronometre.ico" type="image/x-icon" />
+        <title>Time</title>
+        <script src="script.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <style>
+        
+
+    </style>
+    </head>
+
+    <body>
+        <center>
+            <div class="time">
+                <h1>
+                    <span id="H">00</span>
+                    <span>:</span>
+                    <span id="M">00</span>
+                    <span>:</span>
+                    <span id="S">00</span>
+                    <span>:</span>
+                    <span id="MS">00</span>
+                </h1>   
+            </div>
+            <button onclick="start(this)" id="btnstart">Démarrer</button>
+            <button onclick="Stop()" id="btnstop"
+                style="display: none;">Arrêter</button><br>
+            <button onclick="Reset()" id="btnreset"
+                style="display: none;">Réinitialiser</button><br><br>
+            <button onclick="Continue()" id="btncontinue"
+                style="display: none;">Reprendre</button>
+        </center>
+    </body>
+
+</html> -->
